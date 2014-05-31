@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Status | VITacademics</title>
+    <meta name="author" content="Aneesh Neelam <neelam.aneesh@gmail.com>"/>
+    <link rel="stylesheet" type="text/css" href="/foundation/css/foundation.css"/>
+    <script type="text/javascript" src="/foundation/js/vendor/modernizr.js"></script>
+</head>
+<body>
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="/">VITacademics</a></h1>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li><a href="/register">Register</a></li>
+            <li><a href="/">Login</a></li>
+        </ul>
+    </section>
+</nav>
+
+<div class="row" style="text-align: center">
+    <div class="large-12 columns">
+        <h2>System Status</h2>
+    </div>
+</div>
+
+<div class="row" style="text-align: center">
+    <div class="large-12 columns">
+        <h4>Running on <%= engine %></h4>
+    </div>
+    <div class="large-12 columns">
+        <h5>Server status: <%= serverStatus %></h5>
+    </div>
+    <div class="large-12 columns">
+        <h6>Last Updated: <%= lastUpdated %></h6>
+    </div>
+</div>
+<footer>
+    <div class="large-12 columns">
+        <hr>
+        <h6 style="text-align: center">VITacademics developed as an independent project by <a
+                    href="mailto:neelam.aneesh@gmail.com">Aneesh Neelam (11BCE2060)</a> of <a
+                    href="http://vit.ac.in/">VIT
+                University</a>.</h6>
+    </div>
+</footer>
+</body>
+</html>

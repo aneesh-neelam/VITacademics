@@ -7,6 +7,6 @@ Restarted development
 
 * Using Node.js as backend
 * Using MongoDB as DataStore
-* WebApp is pending
+* And a new WebApp
 
 More info coming soon

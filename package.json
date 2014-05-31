@@ -1,10 +1,26 @@
 {
     "name": "VITacademics",
     "version": "0.0.1",
+    "description": "",
+    "homepage": "",
+    "bugs": {
+        "url": "https://github.com/aneesh-neelam/VITacademics-Backend-Node.js/issues",
+        "email": "neelam.aneesh@gmail.com"
+    },
     "private": true,
     "scripts": {
         "start": "node ./bin/www"
     },
+    "contributors": [
+        {
+            "name": "Aneesh Neelam",
+            "email": "neelam.aneesh@gmail.com"
+        },
+        {
+            "name": "Karthik Balakrishnan",
+            "email": "karthikb351@gmail.com"
+        }
+    ],
     "dependencies": {
         "express": "~4.2.0",
         "static-favicon": "~1.0.0",
@@ -12,6 +28,16 @@
         "cookie-parser": "~1.0.1",
         "body-parser": "~1.0.0",
         "debug": "~0.7.4",
-        "ejs": "~0.8.5"
+        "ejs": "~0.8.5",
+        "forever-monitor": "~1.2.3",
+        "mongodb": "~1.4.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aneesh-neelam/VITacademics-Backend-Node.js.git"
+    },
+    "license": "GNU GPLv3",
+    "engines": {
+        "node": ">=0.10"
     }
 }

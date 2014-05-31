@@ -29,3 +29,9 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# Foundation Framework
+public/foundation/
+
+# Restricted Configuration
+config.js
