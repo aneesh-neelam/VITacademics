@@ -30,7 +30,8 @@
         "debug": "~0.7.4",
         "ejs": "~0.8.5",
         "forever-monitor": "~1.2.3",
-        "mongodb": "~1.4.5"
+        "mongodb": "~1.4.5",
+        "unirest": "~0.2.7"
     },
     "repository": {
         "type": "git",

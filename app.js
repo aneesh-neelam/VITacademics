@@ -5,8 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var api = require('./routes/api');
+var routes = require('./routes/web/index');
+var api_vellore = require('./routes/api/vellore_login.js');
+var api_chennai = require('./routes/api/chennai_login.js');
 
 var app = express();
 
@@ -22,7 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/api', api);
+app.use('/api/vellore', api_vellore);
+app.use('/api/chennai', api_chennai);
 
 /// catch 404 and forward to error handler
 app.use(function (req, res, next) {
