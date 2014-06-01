@@ -1,7 +1,6 @@
 var config = require('../../config');
 var express = require('express');
 var unirest = require('unirest');
-var fs = require('fs');
 var router = express.Router();
 
 router.get(
@@ -24,10 +23,8 @@ router.get(
             .end(
             function (response)
             {
-                fs.writeFile(
-                        './captcha/' + RegNo + '.bmp', response.body, function (err)
-                    {
-                        if (err)
+
+                if (err)
                         {
                             throw err;
                         }
@@ -45,8 +42,6 @@ router.get(
                 );
             }
         );
-    }
-);
 
 router.get(
     '/login/auto', function (req, res)
