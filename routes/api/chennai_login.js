@@ -25,23 +25,23 @@ router.get(
             {
 
                 if (err)
-                        {
-                            throw err;
-                        }
-                        var doc = {"RegNo": RegNo, "DoB": DoB, "Cookie": response.cookies};
-                        login(
-                            doc, function (callback)
-                            {
-                                callback();
-                            }
-                        );
-                        res.writeHead(200, {"Content-Type": "image/bmp"});
-                        res.write(response.body);
-                        res.end();
+                {
+                    throw err;
+                }
+                var doc = {"RegNo": RegNo, "DoB": DoB, "Cookie": response.cookies};
+                login(
+                    doc, function (callback)
+                    {
+                        callback();
                     }
                 );
+                res.writeHead(200, {"Content-Type": "image/bmp"});
+                res.write(response.body);
+                res.end();
             }
         );
+    }
+);
 
 router.get(
     '/login/auto', function (req, res)
@@ -69,7 +69,6 @@ function login(doc, callback)
             {
                 throw err;
             }
-            console.log("MongoDB Connection Opened");
             var collection = db.collection('chennai_student');
             collection.update(
                 {"RegNo": doc.RegNo}, doc, {upsert: true}, function (err, /**/docs)
@@ -78,7 +77,6 @@ function login(doc, callback)
                         function ()
                         {
                             db.close();
-                            console.log("MongoDB Connection Closed");
                         }
                     );
                 }

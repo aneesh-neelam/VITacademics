@@ -8,6 +8,7 @@
         "email": "neelam.aneesh@gmail.com"
     },
     "private": true,
+    "main": "./bin/www",
     "scripts": {
         "start": "node ./bin/www"
     },
@@ -39,6 +40,6 @@
     },
     "license": "GNU GPLv3",
     "engines": {
-        "node": ">=0.10"
+        "node": "0.10.x"
     }
 }

@@ -23,18 +23,18 @@ router.get(
             .end(
             function (response)
             {
-                        var doc = {"RegNo": RegNo, "DoB": DoB, "Cookie": response.cookies};
-                        login(
-                            doc, function (callback)
-                            {
-                                callback();
-                            }
-                        );
-                        res.writeHead(200, {"Content-Type": "image/bmp"});
-                        res.write(response.body);
-                        res.end();
+                var doc = {"RegNo": RegNo, "DoB": DoB, "Cookie": response.cookies};
+                login(
+                    doc, function (callback)
+                    {
+                        callback();
                     }
                 );
+                res.writeHead(200, {"Content-Type": "image/bmp"});
+                res.write(response.body);
+                res.end();
+            }
+        );
     });
 
 router.get(
@@ -63,7 +63,6 @@ function login(doc, callback)
             {
                 throw err;
             }
-            console.log("MongoDB Connection Opened");
             var collection = db.collection('vellore_student');
             collection.update(
                 {"RegNo": doc.RegNo}, doc, {upsert: true}, function (err, docs)
@@ -72,7 +71,6 @@ function login(doc, callback)
                         function ()
                         {
                             db.close();
-                            console.log("MongoDB Connection Closed");
                         }
                     );
                 }
