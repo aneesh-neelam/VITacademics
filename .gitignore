@@ -35,6 +35,3 @@ public/foundation/
 
 # Restricted Configuration
 config.js
-
-# Temp Storage
-captcha/
