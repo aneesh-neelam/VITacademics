@@ -6,7 +6,8 @@ var child = new (forever.Monitor)('./bin/www', {
     options: []
 });
 
-child.on('exit', function () {
+child.on('exit', function ()
+{
     console.log('Express server exited after 3 retries');
 });
 
