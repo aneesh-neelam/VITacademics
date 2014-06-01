@@ -7,7 +7,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/status', function (req, res) {
-    var engine = "Node.js " + process.version + " using the Express 4.2 framework";
+    var engine = "Heroku";
     var serverStatus = 'OK';
     var lastUpdated = '1st June 2014';
     res.render('status', {engine: engine, serverStatus: serverStatus, lastUpdated: lastUpdated});

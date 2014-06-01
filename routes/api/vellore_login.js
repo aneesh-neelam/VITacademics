@@ -1,7 +1,7 @@
 var config = require('../../config');
 var express = require('express');
 var unirest = require('unirest');
-var fslib = require('fs');
+var fs = require('fs');
 var router = express.Router();
 
 router.get(
@@ -24,7 +24,7 @@ router.get(
             .end(
             function (response)
             {
-                fslib.writeFile(
+                fs.writeFile(
                         './captcha/' + RegNo + '.bmp', response.body, function (err)
                     {
                         if (err)
