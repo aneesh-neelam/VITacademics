@@ -12,15 +12,12 @@ router.get('/', function (req, res)
 router.get('/login/manual', function (req, res)
 {
     var RegNo = req.query.regno;
-    var DoB = req.query.dob;
-
     var uri = 'Chennai URL';
     unirest.get(uri)
         .encoding(null)
         .set('Content-Type', 'image/bmp')
         .end(function (response)
              {
-                 if (err) throw err;
                  var doc = {"RegNo": RegNo, "DoB": DoB, "Cookie": response.cookies};
                  login(doc, function (callback)
                  {

@@ -32,7 +32,9 @@
         "ejs": "~0.8.5",
         "forever-monitor": "~1.2.3",
         "mongodb": "~1.4.5",
-        "unirest": "~0.2.7"
+        "unirest": "~0.2.7",
+        "cookie": "~0.1.2",
+        "memory-cache": "~0.0.4"
     },
     "repository": {
         "type": "git",
