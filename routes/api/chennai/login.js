@@ -1,15 +1,12 @@
-var config = require('../../config');
+var config = require('../../../config');
 var express = require('express');
 var unirest = require('unirest');
+var cookie = require('cookie');
+var cache = require('memory-cache');
 var MongoClient = require('mongodb').MongoClient;
 var router = express.Router();
 
-router.get('/', function (req, res)
-{
-    res.send('Chennai Login API Documentation');
-});
-
-router.get('/login/manual', function (req, res)
+router.get('/manual', function (req, res)
 {
     var RegNo = req.query.regno;
     var uri = 'Chennai URL';
@@ -29,7 +26,7 @@ router.get('/login/manual', function (req, res)
              });
 });
 
-router.get('/login/auto', function (req, res)
+router.get('/auto', function (req, res)
 {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;

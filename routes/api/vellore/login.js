@@ -1,4 +1,4 @@
-var config = require('../../config');
+var config = require('../../../config');
 var express = require('express');
 var unirest = require('unirest');
 var cookie = require('cookie');
@@ -8,13 +8,7 @@ var router = express.Router();
 
 var CookieKey = 'ASPSESSIONIDSUDTCDSD';
 
-router.get('/', function (req, res)
-{
-    res.send('Vellore Login API Documentation');
-    console.log(cache.get("11BCE0260"));
-});
-
-router.get('/login/manual', function (req, res)
+router.get('/manual', function (req, res)
 {
     var RegNo = req.query.regno;
     var uri = 'https://academics.vit.ac.in/parent/captcha.asp';
@@ -30,7 +24,7 @@ router.get('/login/manual', function (req, res)
              });
 });
 
-router.get('/login/auto', function (req, res)
+router.get('/auto', function (req, res)
 {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
@@ -42,9 +36,7 @@ router.get('/login/auto', function (req, res)
     res.send('Captchaless login!');
 });
 
-module.exports = router;
-
-router.get('/login/submit', function (req, res)
+router.get('/submit', function (req, res)
 {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
@@ -77,6 +69,8 @@ router.get('/login/submit', function (req, res)
                          res.end();
                      });
 });
+
+module.exports = router;
 
 function insert(doc, callback)
 {
