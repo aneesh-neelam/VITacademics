@@ -1,4 +1,5 @@
 var config = require('../../../config');
+var errorCodes = require('../error');
 var express = require('express');
 var unirest = require('unirest');
 var cookie = require('cookie');

@@ -1,8 +1,10 @@
 var config = require('../../../config');
+var errors = require('../error');
 var express = require('express');
 var unirest = require('unirest');
 var cookie = require('cookie');
 var cache = require('memory-cache');
+var cheerio = require('cheerio');
 var MongoClient = require('mongodb').MongoClient;
 var router = express.Router();
 
@@ -17,7 +19,7 @@ router.get('/manual', function (req, res)
         .set('Content-Type', 'image/bmp')
         .end(function (response)
              {
-                 cache.put(RegNo, response.cookies[CookieKey]);
+                 cache.put(RegNo, response.cookies[CookieKey], 180000);
                  res.writeHead(200, {"Content-Type": "image/bmp"});
                  res.write(response.body);
                  res.end();
@@ -42,32 +44,41 @@ router.get('/submit', function (req, res)
     var DoB = req.query.dob;
     var captcha = req.query.captcha;
     var CookieJar = unirest.jar();
-    var CookieVal = cache.get(RegNo);
-    var CookieSerial = cookie.serialize(CookieKey, CookieVal);
-    var uri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
-    CookieJar.add(unirest.cookie(CookieSerial), uri);
-    unirest.post(uri)
-        .jar(CookieJar)
-        .form({
-                  'wdregno': RegNo,
-                  'wdpswd': DoB,
-                  'vrfcd': captcha
-              }).end(function (response)
-                     {
-                         var newDoc = {"RegNo": RegNo, "DoB": DoB};
-                         insert(newDoc, function (callback)
+    if (cache.get(RegNo) !== null)
+    {
+        var CookieVal = cache.get(RegNo);
+        var CookieSerial = cookie.serialize(CookieKey, CookieVal);
+        var uri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
+        CookieJar.add(unirest.cookie(CookieSerial), uri);
+        unirest.post(uri)
+            .jar(CookieJar)
+            .followRedirect(true)
+            .form({
+                      'wdregno': RegNo,
+                      'wdpswd': DoB,
+                      'vrfcd': captcha
+                  }).end(function (response)
                          {
-                             callback();
+                             var newDoc = {"RegNo": RegNo, "DoB": DoB};
+                             insert(newDoc, function (callback)
+                             {
+                                 callback();
+                             });
+                             var login = false;
+                             var scraper = cheerio.load(response.body);
+                             scraper("table").each(function (i, elem)
+                                                   {
+                                                       if (new RegExp(RegNo).test(scraper(this).text()))
+                                                       {
+                                                           login = true;
+                                                           return false;
+                                                       }
+                                                   });
+                             if (login) res.send(errors.errorCodes['Success']);
+                             else res.send(errors.errorCodes['Invalid']);
                          });
-                         /*
-                          Must determine login status
-                          Respond with appropriate status code
-                          */
-                         console.log(response.headers);
-                         res.writeHead(200, {"Content-Type": "text/html"});
-                         res.write(response.body);
-                         res.end();
-                     });
+    }
+    else res.send(errors.errorCodes['TimedOut']);
 });
 
 module.exports = router;

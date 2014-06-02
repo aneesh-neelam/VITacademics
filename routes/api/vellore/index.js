@@ -1,4 +1,5 @@
 var express = require('express');
+var cache = require('memory-cache');
 var router = express.Router();
 
 router.get('/', function (req, res)
