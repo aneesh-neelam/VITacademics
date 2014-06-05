@@ -46,11 +46,6 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                       'vrfcd': Captcha
                   }).end(function (response)
                          {
-                             var doc = {"RegNo": RegNo, "DoB": DoB};
-                             mongo.insert(doc, function (callback)
-                             {
-                                 callback();
-                             });
                              var login = false;
                              var scraper = cheerio.load(response.body);
                              scraper("table").each(function (i, elem)
@@ -61,7 +56,15 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                                                            return false;
                                                        }
                                                    });
-                             if (login) callback(errors.errorCodes['Success']);
+                             if (login)
+                             {
+                                 var doc = {"RegNo": RegNo, "DoB": DoB};
+                                 mongo.insert(doc, function (mongoCallback)
+                                 {
+                                     mongoCallback();
+                                 });
+                                 callback(errors.errorCodes['Success']);
+                             }
                              else callback(errors.errorCodes['Invalid']);
                          });
     }

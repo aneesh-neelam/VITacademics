@@ -32,6 +32,3 @@ node_modules
 
 # Foundation Framework
 public/foundation/
-
-# Restricted Configuration
-config.js

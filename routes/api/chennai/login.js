@@ -1,9 +1,10 @@
-var config = require('../../../config');
 var express = require('express');
 var unirest = require('unirest');
 var cache = require('memory-cache');
 var MongoClient = require('mongodb').MongoClient;
 var router = express.Router();
+
+var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
 
 router.get('/manual', function (req, res)
 {
@@ -41,7 +42,7 @@ module.exports = router;
 
 function login(doc, callback)
 {
-    MongoClient.connect(config.MongoDB, function (err, db)
+    MongoClient.connect(mongoUri, function (err, db)
     {
         if (err) throw err;
         var collection = db.collection('chennai_student');
