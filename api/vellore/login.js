@@ -32,9 +32,9 @@ exports.getCaptcha = function (RegNo, callback)
 
 exports.submitLogin = function (RegNo, DoB, Captcha, callback)
 {
-    var CookieJar = unirest.jar();
     if (cache.get(RegNo) !== null)
     {
+        var CookieJar = unirest.jar();
         var myCookie = cache.get(RegNo);
         var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
         var uri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
@@ -59,9 +59,9 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                 {
                 };
                 mongo.insert(doc, onInsert);
-                callback(errors.errorCodes['Success']);
+                callback(errors.codes['Success']);
             }
-            else callback(errors.errorCodes['Invalid']);
+            else callback(errors.codes['Invalid']);
         };
         unirest.post(uri)
             .jar(CookieJar)
@@ -73,5 +73,5 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                           })
             .end(onPost);
     }
-    else callback(errors.errorCodes['TimedOut']);
+    else callback(errors.codes['TimedOut']);
 };
