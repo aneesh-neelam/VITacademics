@@ -8,24 +8,26 @@ var cheerio = require('cheerio');
 exports.getCaptcha = function (RegNo, callback)
 {
     var uri = 'https://academics.vit.ac.in/parent/captcha.asp';
+    var onRequest = function (response)
+    {
+        var myCookie = [];
+        var regEx = new RegExp("ASPSESSION");
+        var onEach = function (key)
+        {
+            if (regEx.test(key))
+            {
+                myCookie[0] = key;
+                myCookie[1] = response.cookies[key];
+            }
+        };
+        Object.keys(response.cookies).forEach(onEach);
+        cache.put(RegNo, myCookie, 180000);
+        callback(response.body);
+    };
     unirest.get(uri)
         .encoding(null)
         .set('Content-Type', 'image/bmp')
-        .end(function (response)
-             {
-                 var myCookie = [];
-                 var regEx = new RegExp("ASPSESSION");
-                 Object.keys(response.cookies).forEach(function (key)
-                                                       {
-                                                           if (regEx.test(key))
-                                                           {
-                                                               myCookie[0] = key;
-                                                               myCookie[1] = response.cookies[key];
-                                                           }
-                                                       });
-                 cache.put(RegNo, myCookie, 180000);
-                 callback(response.body);
-             });
+        .end(onRequest);
 };
 
 exports.submitLogin = function (RegNo, DoB, Captcha, callback)
@@ -37,6 +39,30 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
         var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
         var uri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
         CookieJar.add(unirest.cookie(cookieSerial), uri);
+        var onPost = function (response)
+        {
+            var onEach = function (i, elem)
+            {
+                if (new RegExp(RegNo).test(scraper(this).text()))
+                {
+                    login = true;
+                    return false;
+                }
+            };
+            var login = false;
+            var scraper = cheerio.load(response.body);
+            scraper("table").each(onEach);
+            if (login)
+            {
+                var doc = {"RegNo": RegNo, "DoB": DoB};
+                var onInsert = function ()
+                {
+                };
+                mongo.insert(doc, onInsert);
+                callback(errors.errorCodes['Success']);
+            }
+            else callback(errors.errorCodes['Invalid']);
+        };
         unirest.post(uri)
             .jar(CookieJar)
             .followRedirect(true)
@@ -44,29 +70,8 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                       'wdregno': RegNo,
                       'wdpswd': DoB,
                       'vrfcd': Captcha
-                  }).end(function (response)
-                         {
-                             var login = false;
-                             var scraper = cheerio.load(response.body);
-                             scraper("table").each(function (i, elem)
-                                                   {
-                                                       if (new RegExp(RegNo).test(scraper(this).text()))
-                                                       {
-                                                           login = true;
-                                                           return false;
-                                                       }
-                                                   });
-                             if (login)
-                             {
-                                 var doc = {"RegNo": RegNo, "DoB": DoB};
-                                 mongo.insert(doc, function (mongoCallback)
-                                 {
-                                     mongoCallback();
-                                 });
-                                 callback(errors.errorCodes['Success']);
-                             }
-                             else callback(errors.errorCodes['Invalid']);
-                         });
+                          })
+            .end(onPost);
     }
     else callback(errors.errorCodes['TimedOut']);
 };

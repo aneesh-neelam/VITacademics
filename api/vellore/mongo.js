@@ -4,33 +4,16 @@ var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb:/
 
 exports.insert = function (doc, callback)
 {
-    MongoClient.connect(mongoUri, function (err, db)
+    var onConnect = function (err, db)
     {
         if (err) throw err;
         var collection = db.collection('vellore_student');
-        collection.update({"RegNo": doc.RegNo}, doc, {upsert: true}, function (error, docs)
+        var onUpdate = function (err, docs)
         {
-            callback(function ()
-                     {
-                         db.close();
-                     });
-        });
-    });
-};
-
-exports.fetch = function (doc, callback)
-{
-    MongoClient.connect(mongoUri, function (err, db)
-    {
-        if (err) throw err;
-        var collection = db.collection('vellore_student');
-        var cursor = collection.find({"RegNo": doc.RegNo});
-        cursor.toArray(function (error, docs)
-                       {
-                           callback(docs[0], function ()
-                           {
-                               db.close();
-                           });
-                       });
-    });
+            db.close();
+            callback();
+        };
+        collection.update({"RegNo": doc.RegNo}, doc, {upsert: true}, onUpdate);
+    };
+    MongoClient.connect(mongoUri, onConnect);
 };

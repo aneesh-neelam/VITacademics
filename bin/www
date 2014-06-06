@@ -4,9 +4,11 @@ var app = require('../app');
 
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function ()
+var onBind = function ()
 {
     var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
     debug('Express server listening on port ' + server.address().port);
     debug("MongoDB: " + mongoUri);
-});
+};
+
+var server = app.listen(app.get('port'), onBind);
