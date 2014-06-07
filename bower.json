@@ -16,13 +16,6 @@
     },
     "license": "GPL-3.0",
     "private": true,
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
     "dependencies": {
         "foundation": "~5.2.3"
     }
