@@ -1,0 +1,29 @@
+{
+    "name": "VITacademics",
+    "version": "0.0.1",
+    "homepage": "http://vitacademics-dev.herokuapp.com/",
+    "authors": [
+        "Aneesh Neelam <neelam.aneesh@gmail.com>"
+    ],
+    "main": "bin/www",
+    "moduleType": [
+        "globals",
+        "node"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aneesh-neelam/VITacademics-Backend-Node.js.git"
+    },
+    "license": "GPL-3.0",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "foundation": "~5.2.3"
+    }
+}

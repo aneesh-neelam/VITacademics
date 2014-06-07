@@ -11,7 +11,7 @@ router.get('/status', function (req, res)
 {
     var engine = "Heroku";
     var serverStatus = 'OK';
-    var lastUpdated = '1st June 2014';
+    var lastUpdated = '7th June 2014';
     res.render('status', {engine: engine, serverStatus: serverStatus, lastUpdated: lastUpdated});
 });
 
