@@ -1,11 +1,16 @@
 {
     "name": "VITacademics",
     "version": "0.0.1",
+    "description": "",
+    "bugs": {
+        "url": "https://github.com/aneesh-neelam/VITacademics-Backend-Node.js/issues",
+        "email": "neelam.aneesh@gmail.com"
+    },
     "homepage": "http://vitacademics-dev.herokuapp.com/",
     "authors": [
         "Aneesh Neelam <neelam.aneesh@gmail.com>"
     ],
-    "main": "bin/www",
+    "main": "./bin/www",
     "moduleType": [
         "globals",
         "node"
