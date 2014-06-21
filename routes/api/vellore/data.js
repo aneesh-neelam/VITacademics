@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/refresh', function (req, res)
 {
     var RegNo = req.query.regno;
-    var onGetData = function (data)
+    var onGetData = function (err, data)
     {
         res.send(data);
     };
@@ -15,7 +15,7 @@ router.get('/refresh', function (req, res)
 router.get('/first', function (req, res)
 {
     var RegNo = req.query.regno;
-    var onGetData = function (data)
+    var onGetData = function (err, data)
     {
         res.send(data);
     };

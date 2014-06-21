@@ -1,4 +1,5 @@
 var forever = require('forever-monitor');
+var debug = require('debug')('VITacademics');
 
 var child = new (forever.Monitor)('./bin/www', {
     max: 3,
@@ -8,7 +9,7 @@ var child = new (forever.Monitor)('./bin/www', {
 
 child.on('exit', function ()
 {
-    console.log('Express server exited after 3 retries');
+    debug('VITacademics exited after 3 retries');
 });
 
 child.start();

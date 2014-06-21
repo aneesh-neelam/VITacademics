@@ -5,11 +5,15 @@ var router = express.Router();
 router.get('/manual', function (req, res)
 {
     var RegNo = req.query.regno;
-    var onGetCaptcha = function (captchaImage)
+    var onGetCaptcha = function (err, captchaResponse)
     {
-        res.writeHead(200, {"Content-Type": "image/bmp"});
-        res.write(captchaImage);
-        res.end();
+        if (err) res.send(captchaResponse);
+        else
+        {
+            res.writeHead(200, {'Content-Type': 'image/bmp'});
+            res.write(captchaResponse);
+            res.end();
+        }
     };
     api_login.getCaptcha(RegNo, onGetCaptcha);
 });
@@ -31,9 +35,10 @@ router.get('/submit', function (req, res)
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
     var Captcha = req.query.captcha;
-    var onSubmit = function (loginResponse)
+    var onSubmit = function (err, loginResponse)
     {
-        res.send(loginResponse);
+        if (err) res.send(loginResponse);
+        else res.send(loginResponse);
     };
     api_login.submitLogin(RegNo, DoB, Captcha, onSubmit);
 });

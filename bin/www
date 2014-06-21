@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-var debug = require('debug')('VITacademics');
 var app = require('../app');
+var debug = require('debug')('VITacademics');
 
 app.set('port', process.env.PORT || 3000);
 
 var onBind = function ()
 {
     var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
-    debug('Express server listening on port ' + server.address().port);
-    debug("MongoDB: " + mongoUri);
+    debug('Node.js Express server listening on port ' + server.address().port);
+    debug('Using MongoDB: ' + mongoUri);
 };
 
 var server = app.listen(app.get('port'), onBind);

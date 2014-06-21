@@ -6,14 +6,17 @@ exports.insert = function (doc, callback)
 {
     var onConnect = function (err, db)
     {
-        if (err) throw err;
-        var collection = db.collection('vellore_student');
-        var onUpdate = function (err, docs)
+        if (err) callback(err);
+        else
         {
-            db.close();
-            callback();
-        };
-        collection.update({"RegNo": doc.RegNo}, doc, {upsert: true}, onUpdate);
+            var collection = db.collection('vellore_student');
+            var onUpdate = function (err, docs)
+            {
+                db.close();
+                callback(null);
+            };
+            collection.update({"RegNo": doc.RegNo}, doc, {upsert: true}, onUpdate);
+        }
     };
     MongoClient.connect(mongoUri, onConnect);
 };

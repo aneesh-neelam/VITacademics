@@ -4,25 +4,34 @@ var unirest = require('unirest');
 var cookie = require('cookie');
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
+var debug = require('debug')('VITacademics');
 
 exports.getCaptcha = function (RegNo, callback)
 {
     var uri = 'https://academics.vit.ac.in/parent/captcha.asp';
     var onRequest = function (response)
     {
-        var myCookie = [];
-        var regEx = new RegExp("ASPSESSION");
-        var onEach = function (key)
+        if (response.error)
         {
-            if (regEx.test(key))
+            debug('VIT Academics connection failed');
+            callback(true, errors.codes.Down);
+        }
+        else
+        {
+            var myCookie = [];
+            var onEach = function (key)
             {
-                myCookie[0] = key;
-                myCookie[1] = response.cookies[key];
-            }
-        };
-        Object.keys(response.cookies).forEach(onEach);
-        cache.put(RegNo, myCookie, 180000);
-        callback(response.body);
+                var regEx = new RegExp('ASPSESSION');
+                if (regEx.test(key))
+                {
+                    myCookie[0] = key;
+                    myCookie[1] = response.cookies[key];
+                }
+            };
+            Object.keys(response.cookies).forEach(onEach);
+            cache.put(RegNo, myCookie, 180000);
+            callback(null, response.body);
+        }
     };
     unirest.get(uri)
         .encoding(null)
@@ -41,31 +50,44 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
         CookieJar.add(unirest.cookie(cookieSerial), uri);
         var onPost = function (response)
         {
-            var onEach = function (i, elem)
+            if (response.error)
             {
-                if (new RegExp(RegNo).test(scraper(this).text()))
-                {
-                    login = true;
-                    return false;
-                }
-            };
-            var login = false;
-            var scraper = cheerio.load(response.body);
-            scraper("table").each(onEach);
-            if (login)
-            {
-                var doc = {"RegNo": RegNo, "DoB": DoB};
-                var onInsert = function ()
-                {
-                };
-                mongo.insert(doc, onInsert);
-                callback(errors.codes['Success']);
+                debug('VIT Academics connection failed');
+                callback(true, errors.codes.Down);
             }
-            else callback(errors.codes['Invalid']);
+            else
+            {
+                var onEach = function (i, elem)
+                {
+                    if (new RegExp(RegNo).test(scraper(this).text()))
+                    {
+                        login = true;
+                        return false;
+                    }
+                };
+                var login = false;
+                var scraper = cheerio.load(response.body);
+                scraper('table').each(onEach);
+                if (login)
+                {
+                    var doc = {"RegNo": RegNo, "DoB": DoB};
+                    var onInsert = function (err)
+                    {
+                        if (err)
+                        {
+                            debug('MongoDB connection failed');
+                            callback(true, errors.codes.MongoDown);
+                            // Asynchronous, may or may not be reachable, need a better solution
+                        }
+                    };
+                    mongo.insert(doc, onInsert);
+                    callback(null, errors.codes.Success);
+                }
+                else callback(null, errors.codes.Invalid);
+            }
         };
         unirest.post(uri)
             .jar(CookieJar)
-            .followRedirect(true)
             .form({
                       'wdregno': RegNo,
                       'wdpswd': DoB,
@@ -73,5 +95,5 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                           })
             .end(onPost);
     }
-    else callback(errors.codes['TimedOut']);
+    else callback(null, errors.codes.TimedOut);
 };
