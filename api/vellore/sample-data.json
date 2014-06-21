@@ -1,8 +1,5 @@
 {
-    "Error": {
-        "Message": "Successful Execution",
-        "Code": 0
-    },
+    "RegNo": "11BCE0260",
     "Data": {
         "Marks": {
             "Marks": "TODO"
@@ -1916,5 +1913,9 @@
                 ]
             }
         ]
+    },
+    "Error": {
+        "Message": "Successful Execution",
+        "Code": 0
     }
 }

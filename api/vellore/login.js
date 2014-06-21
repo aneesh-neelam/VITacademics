@@ -41,6 +41,7 @@ exports.getCaptcha = function (RegNo, callback)
 
 exports.submitLogin = function (RegNo, DoB, Captcha, callback)
 {
+    var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null)
     {
         var CookieJar = unirest.jar();
@@ -80,10 +81,15 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                             // Asynchronous, may or may not be reachable, need a better solution
                         }
                     };
-                    mongo.insert(doc, onInsert);
-                    callback(null, errors.codes.Success);
+                    mongo.update(doc, 'DoB', onInsert);
+                    data.Error = errors.codes.Success;
+                    callback(null, data);
                 }
-                else callback(null, errors.codes.Invalid);
+                else
+                {
+                    data.Error = errors.codes.Invalid;
+                    callback(null, data);
+                }
             }
         };
         unirest.post(uri)
@@ -95,5 +101,9 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                           })
             .end(onPost);
     }
-    else callback(null, errors.codes.TimedOut);
+    else
+    {
+        data.Error = errors.codes.TimedOut;
+        callback(null, data);
+    }
 };

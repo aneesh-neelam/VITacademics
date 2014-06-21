@@ -5,14 +5,14 @@ var cache = require('memory-cache');
 var cookie = require('cookie');
 var cheerio = require('cheerio');
 var async = require('async');
-var fs = require('fs');
+var debug = require('debug')('VITacademics');
 
 exports.getData = function (RegNo, firsttime, callback)
 {
+    var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null)
     {
         var sem = 'WS';
-        var data;
         var scrapeAttendance = function (callback)
         {
             var uri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + sem;
@@ -21,10 +21,7 @@ exports.getData = function (RegNo, firsttime, callback)
             var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
             var onRequest = function (response)
             {
-                if (response.error)
-                {
-                    callback(true, errors.codes.Down);
-                }
+                if (response.error) callback(true, errors.codes.Down);
                 else
                 {
                     var attendance = [];
@@ -68,49 +65,53 @@ exports.getData = function (RegNo, firsttime, callback)
                         }
                     };
                     scraper('tr').each(onEach);
-                    var details = function (doc, functionCallback)
+                    var doDetails = function (doc, functionCallback)
                     {
                         var detailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
                         CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
                         var onPost = function (response)
                         {
-                            delete doc.form;
-                            var scraper = cheerio.load(response.body);
-                            scraper = cheerio.load(scraper('table table').eq(1).html());
-                            var details = [];
-                            var onDay = function (i, elem)
+                            if (response.error) functionCallback(true, errors.codes.Down);
+                            else
                             {
-                                var $ = cheerio.load(scraper(this).html());
-                                if (i > 1)
+                                delete doc.form;
+                                var scraper = cheerio.load(response.body);
+                                scraper = cheerio.load(scraper('table table').eq(1).html());
+                                var details = [];
+                                var onDay = function (i, elem)
                                 {
-                                    var sl = $('td').eq(0).text();
-                                    var date = $('td').eq(1).text();
-                                    var status = $('td').eq(3).text();
-                                    var reason = $('td').eq(5).text();
-                                    var det = {
-                                        'Serial': sl,
-                                        'Date': date,
-                                        'Attendance Status': status,
-                                        'Reason': reason
-                                    };
-                                    details.push(det);
-                                }
-                            };
-                            scraper('tr').each(onDay);
-                            doc.Details = details;
-                            functionCallback(null, doc);
+                                    var $ = cheerio.load(scraper(this).html());
+                                    if (i > 1)
+                                    {
+                                        var sl = $('td').eq(0).text();
+                                        var date = $('td').eq(1).text();
+                                        var status = $('td').eq(3).text();
+                                        var reason = $('td').eq(5).text();
+                                        var det = {
+                                            'Serial': sl,
+                                            'Date': date,
+                                            'Attendance Status': status,
+                                            'Reason': reason
+                                        };
+                                        details.push(det);
+                                    }
+                                };
+                                scraper('tr').each(onDay);
+                                doc.Details = details;
+                                functionCallback(null, doc);
+                            }
                         };
                         unirest.post(detailsUri)
                             .jar(CookieJar)
                             .form(doc.form)
                             .end(onPost);
                     };
-                    var onFinish = function (err, results)
+                    var detailsDone = function (err, results)
                     {
-                        if (err) callback(true, null);
+                        if (err) callback(true, results);
                         callback(null, results);
                     };
-                    async.map(attendance, details, onFinish);
+                    async.map(attendance, doDetails, detailsDone);
                 }
             };
             CookieJar.add(unirest.cookie(cookieSerial), uri);
@@ -154,20 +155,37 @@ exports.getData = function (RegNo, firsttime, callback)
 
         var onFinish = function (err, results)
         {
-            // TODO Aggregation and Mongo Insert
             if (err)
             {
-                data = {Error: errors.codes.Down, Data: null};
+                data.Error = errors.codes.Down;
+                data.Data = results;
                 callback(null, data);
             }
             else
             {
-                data = {Error: errors.codes.Success, Data: results};
+                // TODO Aggregation
+                data.Data = results;
+                var onInsert = function (err)
+                {
+                    if (err)
+                    {
+                        debug('MongoDB connection failed');
+                        callback(true, errors.codes.MongoDown);
+                        // Asynchronous, may or may not be reachable, need a better solution
+                    }
+                };
+                mongo.update(data, 'Data', onInsert);
+                data.Error = errors.codes.Success;
                 callback(null, data);
             }
         };
 
         async.parallel(parallelTasks, onFinish);
     }
-    else callback(null, {Error: errors.codes.TimedOut});
+    else
+    {
+        data.Error = errors.codes.TimedOut;
+        data.Data = null;
+        callback(null, data);
+    }
 };

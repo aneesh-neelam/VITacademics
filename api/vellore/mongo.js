@@ -2,20 +2,28 @@ var MongoClient = require('mongodb').MongoClient;
 
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
 
-exports.insert = function (doc, callback)
+exports.update = function (doc, key, callback)
 {
     var onConnect = function (err, db)
     {
         if (err) callback(err);
         else
         {
+            var change = {};
+            change[key] = doc[key];
             var collection = db.collection('vellore_student');
             var onUpdate = function (err, docs)
             {
-                db.close();
-                callback(null);
+                if (err) callback(err);
+                else
+                {
+                    db.close();
+                    callback(null);
+                }
             };
-            collection.update({"RegNo": doc.RegNo}, doc, {upsert: true}, onUpdate);
+            collection.findAndModify({RegNo: doc.RegNo}, [
+                ['RegNo', 'asc']
+            ], {$set: change}, {safe: true, new: true, upsert: true}, onUpdate);
         }
     };
     MongoClient.connect(mongoUri, onConnect);
