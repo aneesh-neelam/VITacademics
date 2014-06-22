@@ -15,7 +15,7 @@ exports.getData = function (RegNo, firsttime, callback)
         var sem = 'WS';
         var scrapeAttendance = function (callback)
         {
-            var uri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + sem;
+            var attendanceUri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + sem;
             var CookieJar = unirest.jar();
             var myCookie = cache.get(RegNo);
             var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
@@ -25,97 +25,112 @@ exports.getData = function (RegNo, firsttime, callback)
                 else
                 {
                     var attendance = [];
-                    var scraper = cheerio.load(response.body);
-                    scraper = cheerio.load(scraper('table table').eq(1).html());
-                    var onEach = function (i, elem)
+                    try
                     {
-                        var $ = cheerio.load(scraper(this).html());
-                        if (i > 0)
+                        var scraper = cheerio.load(response.body);
+                        scraper = cheerio.load(scraper('table table').eq(1).html());
+                        var onEach = function (i, elem)
                         {
-                            var code = $('td').eq(1).text();
-                            var title = $('td').eq(2).text();
-                            var type = $('td').eq(3).text();
-                            var slot = $('td').eq(4).text();
-                            var regdate = $('td').eq(5).text();
-                            var attended = $('td').eq(6).text();
-                            var total = $('td').eq(7).text();
-                            var percentage = $('td').eq(8).text();
-                            var classnbr = $('input[name=classnbr]').attr('value');
-                            var semcode = $('input[name=semcode]').attr('value');
-                            var from_date = $('input[name=from_date]').attr('value');
-                            var to_date = $('input[name=to_date]').attr('value');
-                            var doc = {
-                                'Class Number': classnbr,
-                                'Course Code': code,
-                                'Course Title': title,
-                                'Course Type': type,
-                                'Slot': slot,
-                                'Registration Date': regdate,
-                                'Attended Classes': attended,
-                                'Total Classes': total,
-                                'Attendance Percentage': percentage,
-                                'form': {
-                                    'semcode': semcode,
-                                    'from_date': from_date,
-                                    'to_date': to_date,
-                                    'classnbr': classnbr
-                                }
-                            };
-                            attendance.push(doc);
-                        }
-                    };
-                    scraper('tr').each(onEach);
-                    var doDetails = function (doc, functionCallback)
-                    {
-                        var detailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
-                        CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
-                        var onPost = function (response)
-                        {
-                            if (response.error) functionCallback(true, errors.codes.Down);
-                            else
+                            var $ = cheerio.load(scraper(this).html());
+                            if (i > 0)
                             {
-                                delete doc.form;
-                                var scraper = cheerio.load(response.body);
-                                scraper = cheerio.load(scraper('table table').eq(1).html());
-                                var details = [];
-                                var onDay = function (i, elem)
-                                {
-                                    var $ = cheerio.load(scraper(this).html());
-                                    if (i > 1)
-                                    {
-                                        var sl = $('td').eq(0).text();
-                                        var date = $('td').eq(1).text();
-                                        var status = $('td').eq(3).text();
-                                        var reason = $('td').eq(5).text();
-                                        var det = {
-                                            'Serial': sl,
-                                            'Date': date,
-                                            'Attendance Status': status,
-                                            'Reason': reason
-                                        };
-                                        details.push(det);
+                                var code = $('td').eq(1).text();
+                                var title = $('td').eq(2).text();
+                                var type = $('td').eq(3).text();
+                                var slot = $('td').eq(4).text();
+                                var regdate = $('td').eq(5).text();
+                                var attended = $('td').eq(6).text();
+                                var total = $('td').eq(7).text();
+                                var percentage = $('td').eq(8).text();
+                                var classnbr = $('input[name=classnbr]').attr('value');
+                                var semcode = $('input[name=semcode]').attr('value');
+                                var from_date = $('input[name=from_date]').attr('value');
+                                var to_date = $('input[name=to_date]').attr('value');
+                                var doc = {
+                                    'Class Number': classnbr,
+                                    'Course Code': code,
+                                    'Course Title': title,
+                                    'Course Type': type,
+                                    'Slot': slot,
+                                    'Registration Date': regdate,
+                                    'Attended Classes': attended,
+                                    'Total Classes': total,
+                                    'Attendance Percentage': percentage,
+                                    'form': {
+                                        'semcode': semcode,
+                                        'from_date': from_date,
+                                        'to_date': to_date,
+                                        'classnbr': classnbr
                                     }
                                 };
-                                scraper('tr').each(onDay);
-                                doc.Details = details;
-                                functionCallback(null, doc);
+                                attendance.push(doc);
                             }
                         };
-                        unirest.post(detailsUri)
-                            .jar(CookieJar)
-                            .form(doc.form)
-                            .end(onPost);
-                    };
-                    var detailsDone = function (err, results)
+                        scraper('tr').each(onEach);
+                        var doDetails = function (doc, functionCallback)
+                        {
+                            var detailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
+                            CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
+                            var onPost = function (response)
+                            {
+                                if (response.error) functionCallback(true, errors.codes.Down);
+                                else
+                                {
+                                    delete doc.form;
+                                    try
+                                    {
+                                        var scraper = cheerio.load(response.body);
+                                        scraper = cheerio.load(scraper('table table').eq(1).html());
+                                        var details = [];
+                                        var onDay = function (i, elem)
+                                        {
+                                            var $ = cheerio.load(scraper(this).html());
+                                            if (i > 1)
+                                            {
+                                                var sl = $('td').eq(0).text();
+                                                var date = $('td').eq(1).text();
+                                                var status = $('td').eq(3).text();
+                                                var reason = $('td').eq(5).text();
+                                                var det = {
+                                                    'Serial': sl,
+                                                    'Date': date,
+                                                    'Attendance Status': status,
+                                                    'Reason': reason
+                                                };
+                                                details.push(det);
+                                            }
+                                        };
+                                        scraper('tr').each(onDay);
+                                        doc.Details = details;
+                                        functionCallback(null, doc);
+                                    }
+                                    catch (ex)
+                                    {
+                                        // console.log('Scraping Attendance Details failed');
+                                        functionCallback(true, {Error: errors.codes.Invalid});
+                                    }
+                                }
+                            };
+                            unirest.post(detailsUri)
+                                .jar(CookieJar)
+                                .form(doc.form)
+                                .end(onPost);
+                        };
+                        var detailsDone = function (err, results)
+                        {
+                            callback(err, results);
+                        };
+                        async.map(attendance, doDetails, detailsDone);
+                    }
+                    catch (ex)
                     {
-                        if (err) callback(true, results);
-                        callback(null, results);
-                    };
-                    async.map(attendance, doDetails, detailsDone);
+                        // console.log('Scraping Attendance failed');
+                        callback(true, {Error: errors.codes.Invalid});
+                    }
                 }
             };
-            CookieJar.add(unirest.cookie(cookieSerial), uri);
-            unirest.post(uri)
+            CookieJar.add(unirest.cookie(cookieSerial), attendanceUri);
+            unirest.post(attendanceUri)
                 .jar(CookieJar)
                 .end(onRequest);
         };
@@ -124,7 +139,7 @@ exports.getData = function (RegNo, firsttime, callback)
         {
             var marksUri = 'https://academics.vit.ac.in/parent/marks.asp?sem=' + sem;
             // TODO Scrape Marks
-            var marks = {Marks: 'TODO'};
+            var marks = {Error: errors.codes.ToDo};
             callback(null, marks);
         };
 
@@ -132,7 +147,7 @@ exports.getData = function (RegNo, firsttime, callback)
         {
             var timetableUri = 'https://academics.vit.ac.in/parent/timetable.asp?sem=' + sem;
             // TODO Scrape Timetable
-            var timetable = {Timetable: 'TODO'};
+            var timetable = {Error: errors.codes.ToDo};
             callback(null, timetable);
         };
 
@@ -157,7 +172,7 @@ exports.getData = function (RegNo, firsttime, callback)
         {
             if (err)
             {
-                data.Error = errors.codes.Down;
+                data.Error = results.Attendance.Error || results.Marks.Error || results.Timetable.Error;
                 data.Data = results;
                 callback(null, data);
             }
@@ -170,7 +185,7 @@ exports.getData = function (RegNo, firsttime, callback)
                     if (err)
                     {
                         debug('MongoDB connection failed');
-                        callback(true, errors.codes.MongoDown);
+                        // callback(true, errors.codes.MongoDown);
                         // Asynchronous, may or may not be reachable, need a better solution
                     }
                 };

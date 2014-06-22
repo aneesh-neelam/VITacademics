@@ -58,37 +58,49 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
             }
             else
             {
-                var onEach = function (i, elem)
-                {
-                    if (new RegExp(RegNo).test(scraper(this).text()))
-                    {
-                        login = true;
-                        return false;
-                    }
-                };
                 var login = false;
-                var scraper = cheerio.load(response.body);
-                scraper('table').each(onEach);
-                if (login)
+                try
                 {
-                    var doc = {"RegNo": RegNo, "DoB": DoB};
-                    var onInsert = function (err)
+                    var scraper = cheerio.load(response.body);
+                    scraper = cheerio.load(scraper('table').eq(1).html());
+                    var onEach = function (i, elem)
                     {
-                        if (err)
+                        if (new RegExp(RegNo).test(scraper(this).text()))
                         {
-                            debug('MongoDB connection failed');
-                            callback(true, errors.codes.MongoDown);
-                            // Asynchronous, may or may not be reachable, need a better solution
+                            login = true;
+                            return false;
                         }
                     };
-                    mongo.update(doc, 'DoB', onInsert);
-                    data.Error = errors.codes.Success;
-                    callback(null, data);
+                    scraper('font').each(onEach);
                 }
-                else
+                catch (ex)
                 {
-                    data.Error = errors.codes.Invalid;
-                    callback(null, data);
+                    login = false;
+                    // console.log('Scraping Login failed');
+                }
+                finally
+                {
+                    if (login)
+                    {
+                        var doc = {"RegNo": RegNo, "DoB": DoB};
+                        var onInsert = function (err)
+                        {
+                            if (err)
+                            {
+                                debug('MongoDB connection failed');
+                                // callback(true, errors.codes.MongoDown);
+                                // Asynchronous, may or may not be reachable, need a better solution
+                            }
+                        };
+                        mongo.update(doc, 'DoB', onInsert);
+                        data.Error = errors.codes.Success;
+                        callback(null, data);
+                    }
+                    else
+                    {
+                        data.Error = errors.codes.Invalid;
+                        callback(null, data);
+                    }
                 }
             }
         };
@@ -98,7 +110,7 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                       'wdregno': RegNo,
                       'wdpswd': DoB,
                       'vrfcd': Captcha
-                          })
+                  })
             .end(onPost);
     }
     else

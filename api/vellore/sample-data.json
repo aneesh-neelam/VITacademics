@@ -2,10 +2,16 @@
     "RegNo": "11BCE0260",
     "Data": {
         "Marks": {
-            "Marks": "TODO"
+            "Error": {
+                "Message": "This feature is incomplete",
+                "Code": 8
+            }
         },
         "Timetable": {
-            "Timetable": "TODO"
+            "Error": {
+                "Message": "This feature is incomplete",
+                "Code": 8
+            }
         },
         "Attendance": [
             {
