@@ -2,9 +2,12 @@
     "name": "VITacademics",
     "version": "0.0.1",
     "description": "VITacademics Backend and Web App",
-    "homepage": "http://vitacademics-dev.herokuapp.com/",
+    "homepage": [
+        "http://vitacademics-dev.herokuapp.com/",
+        "http://vitacademics-rel.herokuapp.com/"
+    ],
     "bugs": {
-        "url": "https://github.com/aneesh-neelam/VITacademics-Backend-Node.js/issues",
+        "url": "https://github.com/aneesh-neelam/VITacademics/issues",
         "email": "neelam.aneesh@gmail.com"
     },
     "private": true,
@@ -24,26 +27,26 @@
         }
     ],
     "dependencies": {
-        "express": "~4.2.0",
-        "static-favicon": "~1.0.0",
-        "morgan": "~1.0.0",
-        "cookie-parser": "~1.0.1",
-        "body-parser": "~1.0.0",
-        "debug": "~0.7.4",
-        "ejs": "~0.8.5",
+        "express": "~4.4.5",
+        "serve-favicon": "2.0.1",
+        "morgan": "~1.1.1",
+        "cookie-parser": "~1.3.2",
+        "body-parser": "~1.4.3",
+        "debug": "~1.0.2",
+        "ejs": "~1.0.0",
         "forever-monitor": "~1.2.3",
-        "mongodb": "~1.4.5",
+        "mongodb": "~1.4.7",
         "unirest": "~0.2.7",
         "cookie": "~0.1.2",
-        "memory-cache": "~0.0.4",
-        "cheerio": "~0.16.0",
+        "memory-cache": "~0.0.5",
+        "cheerio": "~0.17.0",
         "jquery": "~2.1.1",
         "async": "~0.9.0",
-        "bower": "~1.3.4"
+        "bower": "~1.3.5"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/aneesh-neelam/VITacademics-Backend-Node.js.git"
+        "url": "https://github.com/aneesh-neelam/VITacademics.git"
     },
     "license": "GPL-3.0",
     "engines": {

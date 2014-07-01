@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "VITacademics Backend and Web App",
     "bugs": {
-        "url": "https://github.com/aneesh-neelam/VITacademics-Backend-Node.js/issues",
+        "url": "https://github.com/aneesh-neelam/VITacademics/issues",
         "email": "neelam.aneesh@gmail.com"
     },
     "homepage": "http://vitacademics-dev.herokuapp.com/",
@@ -17,11 +17,11 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/aneesh-neelam/VITacademics-Backend-Node.js.git"
+        "url": "https://github.com/aneesh-neelam/VITacademics.git"
     },
     "license": "GPL-3.0",
     "private": true,
     "dependencies": {
-        "foundation": "~5.2.3"
+        "foundation": "~5.3.0"
     }
 }
