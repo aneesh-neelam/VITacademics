@@ -76,7 +76,7 @@ exports.submitLogin = function (RegNo, DoB, Captcha, callback)
                 catch (ex)
                 {
                     login = false;
-                    // console.log('Scraping Login failed');
+                    // Scraping Login failed
                 }
                 finally
                 {

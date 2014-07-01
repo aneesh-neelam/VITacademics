@@ -4,15 +4,128 @@
         "Marks": {
             "Error": {
                 "Message": "This feature is incomplete",
-                "Code": 8
+                "Code": 7
             }
         },
-        "Timetable": {
-            "Error": {
-                "Message": "This feature is incomplete",
-                "Code": 8
+        "Timetable": [
+            {
+                "Class Number": "3851",
+                "Course Code": "CSE307",
+                "Course Title": "Internet and Web Programming",
+                "Course Type": "Theory Only",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t3 0 0 3 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "CBL",
+                "Course Option": "Regular",
+                "Slot": "E1",
+                "Venue": "SJT503",
+                "Faculty": "ANTHONIRAJ A - SCSE",
+                "Registration Status": "Registered and Approved"
+            },
+            {
+                "Class Number": "4018",
+                "Course Code": "CSE308",
+                "Course Title": "Internet and Web Programming Lab",
+                "Course Type": "Lab Only",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t0 0 3 2 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "LBC",
+                "Course Option": "Regular",
+                "Slot": "L31+L32+L33",
+                "Venue": "SJT418",
+                "Faculty": "GEETHA MARY A - SCSE",
+                "Registration Status": "Registered and Approved"
+            },
+            {
+                "Class Number": "3977",
+                "Course Code": "CSE309",
+                "Course Title": "Programming Language Translators",
+                "Course Type": "Theory Only",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t3 0 0 3 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "CBL",
+                "Course Option": "Regular",
+                "Slot": "D1",
+                "Venue": "SJT403",
+                "Faculty": "MARIMUTHU K - SCSE",
+                "Registration Status": "Registered and Approved"
+            },
+            {
+                "Class Number": "3960",
+                "Course Code": "CSE310",
+                "Course Title": "Software Engineering",
+                "Course Type": "Theory Only",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t3 0 0 3 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "PBL",
+                "Course Option": "Regular",
+                "Slot": "A1+TA1",
+                "Venue": "SJT404",
+                "Faculty": "SATISH C.J - SCSE",
+                "Registration Status": "Registered and Approved"
+            },
+            {
+                "Class Number": "3989",
+                "Course Code": "CSE311",
+                "Course Title": "Software Engineering Lab",
+                "Course Type": "Lab Only",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t0 0 3 2 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "LBC",
+                "Course Option": "Regular",
+                "Slot": "L55+L56+L57",
+                "Venue": "SJT417",
+                "Faculty": "SWATHI J.N - SCSE",
+                "Registration Status": "Registered and Approved"
+            },
+            {
+                "Class Number": "3939",
+                "Course Code": "CSE408",
+                "Course Title": "Data Warehousing and Data Mining",
+                "Course Type": "Theory Only",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t3 0 0 3 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "CBL",
+                "Course Option": "Regular",
+                "Slot": "G1+TG1",
+                "Venue": "SJT422",
+                "Faculty": "VENKATESAN M - SCSE",
+                "Registration Status": "Registered and Approved"
+            },
+            {
+                "Class Number": "3920",
+                "Course Code": "CSE412",
+                "Course Title": "Image Processing",
+                "Course Type": "Theory Only",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t3 0 0 3 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "CBL",
+                "Course Option": "Regular",
+                "Slot": "C1",
+                "Venue": "SJT422",
+                "Faculty": "NAGARAJA RAO A - SCSE",
+                "Registration Status": "Registered and Approved"
+            },
+            {
+                "Class Number": "2546",
+                "Course Code": "MAT206",
+                "Course Title": "Graph Theory and its Applications",
+                "Course Type": "Theory Only",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t3 1 0 4 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "CBL",
+                "Course Option": "Regular",
+                "Slot": "F1+TF1",
+                "Venue": "SJT421",
+                "Faculty": "SHARIEF BASHA S - SAS",
+                "Registration Status": "Registered and Approved"
+            },
+            {
+                "Class Number": "4659",
+                "Course Code": "SRC401",
+                "Course Title": "Health Information Systems",
+                "Course Type": "Project",
+                "LTPC": "\r\n\t\t\t\t\r\n\t\t\t\t0 0 0 3 \r\n\t\t\t\t\r\n\t\t\t",
+                "Course Mode": "PBC",
+                "Course Option": "Regular",
+                "Slot": "NIL",
+                "Venue": "MB210",
+                "Faculty": "SENTHIL J - SCSE",
+                "Registration Status": "Registered and Approved"
             }
-        },
+        ],
         "Attendance": [
             {
                 "Class Number": "3851",

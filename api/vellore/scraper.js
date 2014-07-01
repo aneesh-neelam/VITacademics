@@ -106,7 +106,7 @@ exports.getData = function (RegNo, firsttime, callback)
                                     }
                                     catch (ex)
                                     {
-                                        // console.log('Scraping Attendance Details failed');
+                                        // Scraping Attendance Details failed
                                         functionCallback(true, {Error: errors.codes.Invalid});
                                     }
                                 }
@@ -116,15 +116,11 @@ exports.getData = function (RegNo, firsttime, callback)
                                 .form(doc.form)
                                 .end(onPost);
                         };
-                        var detailsDone = function (err, results)
-                        {
-                            callback(err, results);
-                        };
-                        async.map(attendance, doDetails, detailsDone);
+                        async.map(attendance, doDetails, callback);
                     }
                     catch (ex)
                     {
-                        // console.log('Scraping Attendance failed');
+                        // Scraping Attendance failed
                         callback(true, {Error: errors.codes.Invalid});
                     }
                 }
@@ -146,9 +142,67 @@ exports.getData = function (RegNo, firsttime, callback)
         var scrapeTimetable = function (callback)
         {
             var timetableUri = 'https://academics.vit.ac.in/parent/timetable.asp?sem=' + sem;
-            // TODO Scrape Timetable
-            var timetable = {Error: errors.codes.ToDo};
-            callback(null, timetable);
+            var CookieJar = unirest.jar();
+            var myCookie = cache.get(RegNo);
+            var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
+            var onRequest = function (response)
+            {
+                if (response.error) callback(true, errors.codes.Down);
+                else
+                {
+                    var timetable = [];
+                    try
+                    {
+                        var scraper = cheerio.load(response.body);
+                        scraper = cheerio.load(scraper('table table').eq(0).html());
+                        var length = scraper('tr').length;
+                        var onEach = function (i, elem)
+                        {
+                            var $ = cheerio.load(scraper(this).html());
+                            if (i > 0 && i < (length - 1))
+                            {
+                                var classnbr = $('td').eq(1).text();
+                                var code = $('td').eq(2).text();
+                                var title = $('td').eq(3).text();
+                                var type = $('td').eq(4).text();
+                                var LTPC = $('td').eq(5).text();
+                                var mode = $('td').eq(6).text();
+                                var option = $('td').eq(7).text();
+                                var slot = $('td').eq(8).text();
+                                var venue = $('td').eq(9).text();
+                                var faculty = $('td').eq(10).text();
+                                var status = $('td').eq(11).text();
+                                var doc = {
+                                    'Class Number': classnbr,
+                                    'Course Code': code,
+                                    'Course Title': title,
+                                    'Course Type': type,
+                                    'LTPC': LTPC,
+                                    'Course Mode': mode,
+                                    'Course Option': option,
+                                    'Slot': slot,
+                                    'Venue': venue,
+                                    'Faculty': faculty,
+                                    'Registration Status': status
+                                };
+                                timetable.push(doc);
+                            }
+                        };
+                        scraper('tr').each(onEach);
+                        callback(null, timetable);
+                        // TODO Timetable
+                    }
+                    catch (ex)
+                    {
+                        // Scraping Timetable failed
+                        callback(true, {Error: errors.codes.Invalid});
+                    }
+                }
+            };
+            CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
+            unirest.post(timetableUri)
+                .jar(CookieJar)
+                .end(onRequest);
         };
 
         var parallelTasks;
