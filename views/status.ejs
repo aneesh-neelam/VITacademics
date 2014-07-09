@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Status | VITacademics</title>
     <meta name="author" content="Aneesh Neelam <neelam.aneesh@gmail.com>"/>
+    <title>Status | VITacademics</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/status.css"/>
     <link rel="stylesheet" type="text/css" href="/bower_components/foundation/css/foundation.css"/>
     <script type="text/javascript" src="/bower_components/modernizr/modernizr.js"></script>
 </head>
@@ -30,8 +31,20 @@
 
 <div class="row" style="text-align: center">
     <div class="large-12 columns">
-        <h4>Running on <%= engine %></h4>
+        <h4>Host: <a href=<%= hostname %>><%= host %></a></h4>
+
     </div>
+    <div class="large-12 columns">
+        <h4>Host Platform: <%= platform %></h4>
+    </div>
+    <div class="large-12 columns">
+        <h4>Host Architecture: <%= arch %></h4>
+    </div>
+    <div class="large-12 columns">
+        <h4>Node Engine: <%= engine %></h4>
+    </div>
+</div>
+<div class="row" style="text-align: center">
     <div class="large-12 columns">
         <h5>Server status: <%= serverStatus %></h5>
     </div>

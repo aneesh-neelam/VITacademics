@@ -1,5 +1,5 @@
 # WebStorm
-.idea
+.idea/
 
 # Logs
 logs
@@ -26,11 +26,11 @@ build/Release
 # Bower Components
 # Commenting this out is preferred by some people, see
 # https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
-node_modules
-public/bower_components
+node_modules/
+public/bower_components/
 
 # Users Environment Variables
 .lock-wscript
 
 # Testing
-test
+test/

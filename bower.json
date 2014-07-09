@@ -15,6 +15,13 @@
         "globals",
         "node"
     ],
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/aneesh-neelam/VITacademics.git"
