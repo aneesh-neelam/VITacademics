@@ -16,7 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var api_login = require('../../../api/vellore/login');
+var api_login = require('../../../api/vellore/login/get');
+var api_captcha = require('../../../api/vellore/login/captcha');
+var api_submit = require('../../../api/vellore/login/submit');
 var express = require('express');
 var router = express.Router();
 
@@ -58,7 +60,7 @@ router.get('/submit', function (req, res)
         if (err) res.send(loginResponse);
         else res.send(loginResponse);
     };
-    api_login.submitLogin(RegNo, DoB, Captcha, onSubmit);
+    api_submit.submitCaptcha(RegNo, DoB, Captcha, onSubmit);
 });
 
 module.exports = router;

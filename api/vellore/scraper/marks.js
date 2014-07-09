@@ -16,28 +16,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var api_data = require('../../../api/vellore/scraper/aggregate');
-var express = require('express');
-var router = express.Router();
+var errors = require('../error');
+var cache = require('memory-cache');
+var cheerio = require('cheerio');
+var cookie = require('cookie');
+var unirest = require('unirest');
 
-router.get('/refresh', function (req, res)
+exports.scrapeMarks = function (RegNo, sem, callback)
 {
-    var RegNo = req.query.regno;
-    var onGetData = function (err, data)
-    {
-        res.send(data);
-    };
-    api_data.getData(RegNo, false, onGetData)
-});
-
-router.get('/first', function (req, res)
-{
-    var RegNo = req.query.regno;
-    var onGetData = function (err, data)
-    {
-        res.send(data);
-    };
-    api_data.getData(RegNo, true, onGetData)
-});
-
-module.exports = router;
+    var marksUri = 'https://academics.vit.ac.in/parent/marks.asp?sem=' + sem;
+    // TODO Scrape Marks
+    var marks = {Error: errors.codes.ToDo};
+    callback(null, marks);
+};

@@ -16,28 +16,3 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var api_data = require('../../../api/vellore/scraper/aggregate');
-var express = require('express');
-var router = express.Router();
-
-router.get('/refresh', function (req, res)
-{
-    var RegNo = req.query.regno;
-    var onGetData = function (err, data)
-    {
-        res.send(data);
-    };
-    api_data.getData(RegNo, false, onGetData)
-});
-
-router.get('/first', function (req, res)
-{
-    var RegNo = req.query.regno;
-    var onGetData = function (err, data)
-    {
-        res.send(data);
-    };
-    api_data.getData(RegNo, true, onGetData)
-});
-
-module.exports = router;

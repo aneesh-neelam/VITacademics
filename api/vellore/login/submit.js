@@ -16,48 +16,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var mongo = require('./mongo');
-var errors = require('./error');
-var unirest = require('unirest');
-var cookie = require('cookie');
+var mongo = require('../db/mongo');
+var errors = require('../error');
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
+var cookie = require('cookie');
 var debug = require('debug')('VITacademics');
+var unirest = require('unirest');
 
-exports.getCaptcha = function (RegNo, callback)
-{
-    var uri = 'https://academics.vit.ac.in/parent/captcha.asp';
-    var onRequest = function (response)
-    {
-        if (response.error)
-        {
-            debug('VIT Academics connection failed');
-            callback(true, errors.codes.Down);
-        }
-        else
-        {
-            var myCookie = [];
-            var onEach = function (key)
-            {
-                var regEx = new RegExp('ASPSESSION');
-                if (regEx.test(key))
-                {
-                    myCookie[0] = key;
-                    myCookie[1] = response.cookies[key];
-                }
-            };
-            Object.keys(response.cookies).forEach(onEach);
-            cache.put(RegNo, myCookie, 180000);
-            callback(null, response.body);
-        }
-    };
-    unirest.get(uri)
-        .encoding(null)
-        .set('Content-Type', 'image/bmp')
-        .end(onRequest);
-};
-
-exports.submitLogin = function (RegNo, DoB, Captcha, callback)
+exports.submitCaptcha = function (RegNo, DoB, Captcha, callback)
 {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null)
