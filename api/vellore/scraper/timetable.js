@@ -33,9 +33,10 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
         if (response.error) callback(true, errors.codes.Down);
         else
         {
-            var timetable = [];
+            var timetable = {};
             try
             {
+                var tmp = {};
                 var scraper = cheerio.load(response.body);
                 scraper = cheerio.load(scraper('table table').eq(0).html());
                 var length = scraper('tr').length;
@@ -46,39 +47,72 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                     {
                         var classnbr = $('td').eq(1).text();
                         var code = $('td').eq(2).text();
-                        var title = $('td').eq(3).text();
-                        var type = $('td').eq(4).text();
-                        var LTPC = $('td').eq(5).text();
-                        var mode = $('td').eq(6).text();
-                        var option = $('td').eq(7).text();
-                        var slot = $('td').eq(8).text();
-                        var venue = $('td').eq(9).text();
-                        var faculty = $('td').eq(10).text();
-                        var status = $('td').eq(11).text();
-                        var doc = {
+                        tmp[code] = classnbr;
+                        timetable['Courses'].push({
                             'Class Number': classnbr,
                             'Course Code': code,
-                            'Course Title': title,
-                            'Course Type': type,
-                            'LTPC': LTPC,
-                            'Course Mode': mode,
-                            'Course Option': option,
-                            'Slot': slot,
-                            'Venue': venue,
-                            'Faculty': faculty,
-                            'Registration Status': status
-                        };
-                        timetable.push(doc);
+                                                      'Course Title': $('td').eq(3).text(),
+                                                      'Course Type': $('td').eq(4).text(),
+                                                      'LTPC': $('td').eq(5).text(),
+                                                      'Course Mode': $('td').eq(6).text(),
+                                                      'Course Option': $('td').eq(7).text(),
+                                                      'Slot': $('td').eq(8).text(),
+                                                      'Venue': $('td').eq(9).text(),
+                                                      'Faculty': $('td').eq(10).text(),
+                                                      'Registration Status': $('td').eq(11).text()
+                                                  });
                     }
                 };
                 scraper('tr').each(onEach);
+                if (firsttime)
+                {
+                    scraper = cheerio.load(response.body);
+                    scraper = cheerio.load(scraper('table table').eq(1).html());
+                    length = scraper('tr').length;
+
+                    var onEachRow = function (i, elem)
+                    {
+                        var day = '';
+                        var $ = cheerio.load(scraper(this).html());
+                        if (i > 1)
+                        {
+                            for (var elt = 1; elt < 12; elt++)
+                            {
+                                var t = $('td').eq(elt).text();
+                                if (t.length > 3)
+                                    day = day + tmp[t.substr(0, 5)] + ',';
+                                else
+                                    day = day + ',';
+                            }
+                            switch (i)
+                            {
+                                case 2:
+                                    timetable.Timetable.Mon = day;
+                                    break;
+                                case 3:
+                                    timetable.Timetable.Tue = day;
+                                    break;
+                                case 4:
+                                    timetable.Timetable.Wed = day;
+                                    break;
+                                case 5:
+                                    timetable.Timetable.Thu = day;
+                                    break;
+                                case 6:
+                                    timetable.Timetable.Fri = day;
+                                    break;
+                            }
+                        }
+                    };
+                    scraper('tr').each(onEachRow);
+                }
                 callback(null, timetable);
-                // TODO Timetable
+
             }
             catch (ex)
             {
                 // Scraping Timetable failed
-                callback(true, {Error: errors.codes.Invalid});
+                // callback(true, {Error: errors.codes.Invalid});
             }
         }
     };

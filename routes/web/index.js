@@ -34,8 +34,8 @@ router.get('/status', function (req, res)
         platform: process.platform,
         arch: process.arch,
         serverStatus: 'OK',
-        lastUpdated: '9th July 2014'
-    }
+        lastUpdated: '15th July 2014'
+    };
     res.render('status', status);
 });
 
