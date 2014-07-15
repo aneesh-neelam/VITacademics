@@ -62,7 +62,9 @@ exports.getData = function (RegNo, firsttime, callback)
             else
             {
                 // TODO Aggregation
-                data.Data = results;
+                data.Courses = results.Timetable.Courses;
+                data.Attendance = results.Attendance;
+                data.Marks = results.Marks;
                 var onInsert = function (err)
                 {
                     if (err)
@@ -72,7 +74,15 @@ exports.getData = function (RegNo, firsttime, callback)
                         // Asynchronous, may or may not be reachable, need a better solution
                     }
                 };
-                mongo.update(data, 'Data', onInsert);
+                if (firsttime)
+                {
+                    data.Timetable = results.Timetable.Timetable;
+                    mongo.update(data, ['Timetable', 'Courses', 'Attendance', 'Marks'], onInsert);
+                }
+                else
+                {
+                    mongo.update(data, ['Courses', 'Attendance', 'Marks'], onInsert);
+                }
                 data.Error = errors.codes.Success;
                 callback(null, data);
             }

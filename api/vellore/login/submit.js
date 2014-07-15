@@ -77,7 +77,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback)
                                 // Asynchronous, may or may not be reachable, need a better solution
                             }
                         };
-                        mongo.update(doc, 'DoB', onInsert);
+                        mongo.update(doc, ['DoB'], onInsert);
                         data.Error = errors.codes.Success;
                         callback(null, data);
                     }

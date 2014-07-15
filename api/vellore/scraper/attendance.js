@@ -31,7 +31,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response)
     {
-        if (response.error) callback(true, errors.codes.Down);
+        if (response.error) callback(false, errors.codes.Down);
         else
         {
             var attendance = [];
@@ -44,36 +44,24 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                     var $ = cheerio.load(scraper(this).html());
                     if (i > 0)
                     {
-                        var code = $('td').eq(1).text();
-                        var title = $('td').eq(2).text();
-                        var type = $('td').eq(3).text();
-                        var slot = $('td').eq(4).text();
-                        var regdate = ($('td').eq(5).text());
-                        var attended = $('td').eq(6).text();
-                        var total = $('td').eq(7).text();
-                        var percentage = $('td').eq(8).text();
                         var classnbr = $('input[name=classnbr]').attr('value');
-                        var semcode = $('input[name=semcode]').attr('value');
-                        var from_date = $('input[name=from_date]').attr('value');
-                        var to_date = $('input[name=to_date]').attr('value');
-                        var doc = {
-                            'Class Number': classnbr,
-                            'Course Code': code,
-                            'Course Title': title,
-                            'Course Type': type,
-                            'Slot': slot,
-                            'Registration Date': regdate,
-                            'Attended Classes': attended,
-                            'Total Classes': total,
-                            'Attendance Percentage': percentage,
-                            'form': {
-                                'semcode': semcode,
-                                'from_date': from_date,
-                                'to_date': to_date,
-                                'classnbr': classnbr
-                            }
-                        };
-                        attendance.push(doc);
+                        attendance.push({
+                                            'Class Number': classnbr,
+                                            'Course Code': $('td').eq(1).text(),
+                                            'Course Title': $('td').eq(2).text(),
+                                            'Course Type': $('td').eq(3).text(),
+                                            'Slot': $('td').eq(4).text(),
+                                            'Registration Date': $('td').eq(5).text(),
+                                            'Attended Classes': $('td').eq(6).text(),
+                                            'Total Classes': $('td').eq(7).text(),
+                                            'Attendance Percentage': $('td').eq(8).text(),
+                                            'form': {
+                                                'semcode': $('input[name=semcode]').attr('value'),
+                                                'from_date': $('input[name=from_date]').attr('value'),
+                                                'to_date': $('input[name=to_date]').attr('value'),
+                                                'classnbr': classnbr
+                                            }
+                                        });
                     }
                 };
                 scraper('tr').each(onEach);
@@ -83,7 +71,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                     CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
                     var onPost = function (response)
                     {
-                        if (response.error) asyncCallback(true, errors.codes.Down);
+                        if (response.error) asyncCallback(false, errors.codes.Down);
                         else
                         {
                             delete doc.form;
@@ -97,17 +85,12 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                                     var $ = cheerio.load(scraper(this).html());
                                     if (i > 1)
                                     {
-                                        var sl = $('td').eq(0).text();
-                                        var date = $('td').eq(1).text();
-                                        var status = $('td').eq(3).text();
-                                        var reason = $('td').eq(5).text();
-                                        var det = {
-                                            'Serial': sl,
-                                            'Date': date,
-                                            'Attendance Status': status,
-                                            'Reason': reason
-                                        };
-                                        details.push(det);
+                                        details.push({
+                                                         'Sl': $('td').eq(0).text(),
+                                                         'Date': $('td').eq(1).text(),
+                                                         'Status': $('td').eq(3).text(),
+                                                         'Reason': $('td').eq(5).text()
+                                                     });
                                     }
                                 };
                                 scraper('tr').each(onDay);
@@ -117,7 +100,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                             catch (ex)
                             {
                                 // Scraping Attendance Details failed
-                                asyncCallback(true, {Error: errors.codes.Invalid});
+                                asyncCallback(false, {Error: errors.codes.Invalid});
                             }
                         }
                     };
@@ -131,7 +114,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
             catch (ex)
             {
                 // Scraping Attendance failed
-                callback(true, {Error: errors.codes.Invalid});
+                callback(false, {Error: errors.codes.Invalid});
             }
         }
     };

@@ -30,10 +30,13 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response)
     {
-        if (response.error) callback(true, errors.codes.Down);
+        if (response.error) callback(false, errors.codes.Down);
         else
         {
-            var timetable = {};
+            var timetable = {
+                Courses: [],
+                Timetable: {}
+            };
             try
             {
                 var tmp = {};
@@ -49,8 +52,8 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                         var code = $('td').eq(2).text();
                         tmp[code] = classnbr;
                         timetable['Courses'].push({
-                            'Class Number': classnbr,
-                            'Course Code': code,
+                                                      'Class Number': classnbr,
+                                                      'Course Code': code,
                                                       'Course Title': $('td').eq(3).text(),
                                                       'Course Type': $('td').eq(4).text(),
                                                       'LTPC': $('td').eq(5).text(),
@@ -69,18 +72,22 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                     scraper = cheerio.load(response.body);
                     scraper = cheerio.load(scraper('table table').eq(1).html());
                     length = scraper('tr').length;
-
                     var onEachRow = function (i, elem)
                     {
                         var day = '';
                         var $ = cheerio.load(scraper(this).html());
                         if (i > 1)
                         {
-                            for (var elt = 1; elt < 12; elt++)
+                            length = $('td').length;
+                            for (var elt = 1; elt < length; elt++)
                             {
-                                var t = $('td').eq(elt).text();
-                                if (t.length > 3)
-                                    day = day + tmp[t.substr(0, 5)] + ',';
+                                var text = $('td').eq(elt).text().substr(0, 6);
+                                if (tmp[text] && elt === length - 1)
+                                    day = day + tmp[text] + '';
+                                else if (tmp[text])
+                                    day = day + tmp[text] + ',';
+                                else if (elt === length - 1)
+                                    day = day + '';
                                 else
                                     day = day + ',';
                             }
@@ -112,7 +119,7 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
             catch (ex)
             {
                 // Scraping Timetable failed
-                // callback(true, {Error: errors.codes.Invalid});
+                callback(false, {Error: errors.codes.Invalid});
             }
         }
     };

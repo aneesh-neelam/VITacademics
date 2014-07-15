@@ -20,7 +20,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
 
-exports.update = function (doc, key, callback)
+exports.update = function (doc, keys, callback)
 {
     var onConnect = function (err, db)
     {
@@ -28,7 +28,12 @@ exports.update = function (doc, key, callback)
         else
         {
             var change = {};
-            change[key] = doc[key];
+            var onEach = function (item)
+            {
+                change[item] = doc[item];
+            };
+            keys.forEach(onEach);
+
             var collection = db.collection('vellore_student');
             var onUpdate = function (err, docs)
             {
