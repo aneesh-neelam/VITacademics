@@ -30,7 +30,7 @@ exports.getData = function (RegNo, firsttime, callback)
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null)
     {
-        var sem = 'WS';
+        var sem = 'FS';
 
         var attendanceTask = function (asyncCallback)
         {
@@ -53,38 +53,90 @@ exports.getData = function (RegNo, firsttime, callback)
 
         var onFinish = function (err, results)
         {
-            if (err)
+            if (err || results.Timetable.Error.Code !== 0)
             {
-                data.Error = results.Attendance.Error || results.Marks.Error || results.Timetable.Error;
-                data.Data = results;
-                callback(null, data);
+                data.Error = results.Timetable.Error;
+                callback(true, data);
             }
             else
             {
-                // TODO Aggregation
+                delete results.Timetable.Error;
                 data.Courses = results.Timetable.Courses;
-                data.Attendance = results.Attendance;
-                data.Marks = results.Marks;
-                var onInsert = function (err)
+                var forEachCourse = function (element, asyncCallback)
                 {
-                    if (err)
+                    var foundAttendance = false;
+                    var foundMarks = false;
+                    var forEachAttendance = function (elt, i, arr)
                     {
-                        debug('MongoDB connection failed');
-                        // callback(true, errors.codes.MongoDown);
-                        // Asynchronous, may or may not be reachable, need a better solution
+                        if (element['Class Number'] === elt['Class Number'])
+                        {
+                            foundAttendance = true;
+                            elt.Supported = 'yes';
+                            delete elt['Class Number'];
+                            delete elt['Course Code'];
+                            delete elt['Course Title'];
+                            delete elt['Course Type'];
+                            delete elt['Slot'];
+                            element.Attendance = elt;
+                        }
+                    };
+                    var forEachMarks = function (elt, i, arr)
+                    {
+                        if (element['Class Number'] === elt['Class Number'])
+                        {
+                            foundMarks = true;
+                            elt.Supported = 'yes';
+                            delete elt['Class Number'];
+                            delete elt['Course Code'];
+                            delete elt['Course Title'];
+                            delete elt['Course Type'];
+                            element.Marks = elt;
+                        }
+                    };
+                    results.Attendance.forEach(forEachAttendance);
+                    results.Marks.forEach(forEachMarks);
+                    var noData = {
+                        Supported: 'no'
+                    };
+                    if (!foundAttendance)
+                    {
+                        element.Attendance = noData;
+                    }
+                    if (!foundMarks)
+                    {
+                        element.Marks = noData;
+                    }
+                    asyncCallback(null, element);
+                };
+                var doneCollate = function (err, newData)
+                {
+                    if (err) callback(true, errors.codes.Other);
+                    else
+                    {
+                        data.Courses = newData;
+                        var onInsert = function (err)
+                        {
+                            if (err)
+                            {
+                                debug('MongoDB connection failed');
+                                // callback(true, errors.codes.MongoDown);
+                                // Asynchronous, may or may not be reachable, need a better solution
+                            }
+                        };
+                        if (firsttime)
+                        {
+                            data.Timetable = results.Timetable.Timetable;
+                            mongo.update(data, ['Timetable', 'Courses'], onInsert);
+                        }
+                        else
+                        {
+                            mongo.update(data, ['Courses'], onInsert);
+                        }
+                        data.Error = errors.codes.Success;
+                        callback(null, data);
                     }
                 };
-                if (firsttime)
-                {
-                    data.Timetable = results.Timetable.Timetable;
-                    mongo.update(data, ['Timetable', 'Courses', 'Attendance', 'Marks'], onInsert);
-                }
-                else
-                {
-                    mongo.update(data, ['Courses', 'Attendance', 'Marks'], onInsert);
-                }
-                data.Error = errors.codes.Success;
-                callback(null, data);
+                async.map(data.Courses, forEachCourse, doneCollate);
             }
         };
 
@@ -93,7 +145,6 @@ exports.getData = function (RegNo, firsttime, callback)
     else
     {
         data.Error = errors.codes.TimedOut;
-        data.Data = null;
-        callback(null, data);
+        callback(true, data);
     }
 };

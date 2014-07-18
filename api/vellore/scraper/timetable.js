@@ -30,7 +30,7 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response)
     {
-        if (response.error) callback(false, errors.codes.Down);
+        if (response.error) callback(true, {Error: errors.codes.Down});
         else
         {
             var timetable = {
@@ -113,13 +113,13 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                     };
                     scraper('tr').each(onEachRow);
                 }
+                timetable.Error = errors.codes.Success;
                 callback(null, timetable);
-
             }
             catch (ex)
             {
                 // Scraping Timetable failed
-                callback(false, {Error: errors.codes.Invalid});
+                callback(true, {Error: errors.codes.Invalid});
             }
         }
     };

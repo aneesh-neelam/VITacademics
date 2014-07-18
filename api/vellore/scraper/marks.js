@@ -26,6 +26,8 @@ exports.scrapeMarks = function (RegNo, sem, callback)
 {
     var marksUri = 'https://academics.vit.ac.in/parent/marks.asp?sem=' + sem;
     // TODO Scrape Marks
-    var marks = {Error: errors.codes.ToDo};
+    var marks = [
+        {Error: errors.codes.ToDo}
+    ];
     callback(null, marks);
 };

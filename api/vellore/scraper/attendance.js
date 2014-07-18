@@ -31,7 +31,9 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response)
     {
-        if (response.error) callback(false, errors.codes.Down);
+        if (response.error) callback(false, [
+            {Error: errors.codes.Down}
+        ]);
         else
         {
             var attendance = [];
@@ -71,7 +73,9 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                     CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
                     var onPost = function (response)
                     {
-                        if (response.error) asyncCallback(false, errors.codes.Down);
+                        if (response.error) asyncCallback(false, [
+                            {Error: errors.codes.Down}
+                        ]);
                         else
                         {
                             delete doc.form;
@@ -99,8 +103,8 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                             }
                             catch (ex)
                             {
-                                // Scraping Attendance Details failed
-                                asyncCallback(false, {Error: errors.codes.Invalid});
+                                doc.Details = 'None';
+                                asyncCallback(false, doc);
                             }
                         }
                     };
@@ -114,7 +118,9 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
             catch (ex)
             {
                 // Scraping Attendance failed
-                callback(false, {Error: errors.codes.Invalid});
+                callback(false, [
+                    {Error: errors.codes.Invalid}
+                ]);
             }
         }
     };

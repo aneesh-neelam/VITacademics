@@ -42,7 +42,9 @@ exports.getCaptcha = function (RegNo, callback)
                 {
                     myCookie[0] = key;
                     myCookie[1] = response.cookies[key];
+                    return false;
                 }
+                return true;
             };
             Object.keys(response.cookies).forEach(onEach);
             cache.put(RegNo, myCookie, 180000);
