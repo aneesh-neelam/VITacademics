@@ -85,7 +85,10 @@ exports.getData = function (RegNo, firsttime, callback)
                         if (element['Class Number'] === elt['Class Number'])
                         {
                             foundMarks = true;
-                            elt.Supported = 'yes';
+                            if (elt['Type'] !== 'Project')
+                                elt.Supported = 'yes';
+                            else
+                                elt.Supported = 'no';
                             delete elt['Class Number'];
                             delete elt['Course Code'];
                             delete elt['Course Title'];
