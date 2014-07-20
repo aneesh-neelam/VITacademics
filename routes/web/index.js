@@ -21,7 +21,7 @@ var router = express.Router();
 
 router.get('/', function (req, res)
 {
-    res.render('index', { repository: 'https://github.com/aneesh-neelam/VITacademics'});
+    res.render('index', { });
 });
 
 router.get('/status', function (req, res)
@@ -34,7 +34,7 @@ router.get('/status', function (req, res)
         platform: process.platform,
         arch: process.arch,
         serverStatus: 'OK',
-        lastUpdated: '15th July 2014'
+        lastUpdated: '20th July 2014'
     };
     res.render('status', status);
 });
