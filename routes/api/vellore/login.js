@@ -45,12 +45,12 @@ router.get('/auto', function (req, res)
 {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
-    /*
-     login(doc, function (callback) {
-     callback();
-     });
-     */
-    res.send('Captchaless login!');
+    var onSubmit = function (err, loginResponse)
+    {
+        if (err) res.send(loginResponse);
+        else res.send(loginResponse);
+    };
+    api_captcha.autologin(RegNo, DoB, onSubmit);
 });
 
 router.get('/submit', function (req, res)

@@ -16,3 +16,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var debug = require('debug')('VITacademics');
+var path = require('path');
+
+var errors = require(path.join(__dirname, '..', 'error'));
+var login = require(path.join(__dirname, 'get'));
+var submit = require(path.join(__dirname, 'submit'));
+
+exports.autologin = function (RegNo, DoB, callback)
+{
+    var parseCaptcha = function (err, captchaImage)
+    {
+        if (err) callback(true, captchaImage);
+        else
+        {
+            // TODO Parse Captcha
+            var tmp_captcha = '123456';
+            submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
+        }
+    };
+    login.getCaptcha(RegNo, parseCaptcha);
+};
