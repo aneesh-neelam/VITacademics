@@ -16,22 +16,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var express = require('express');
 var favicon = require('serve-favicon');
+var logger = require('morgan');
+var path = require('path');
 
-var routes = require('./routes/web/index');
-
-var api_vellore = require('./routes/api/vellore/index.js');
-var api_vellore_login = require('./routes/api/vellore/login.js');
-var api_vellore_data = require('./routes/api/vellore/data.js');
-
-var api_chennai = require('./routes/api/chennai/index.js');
-var api_chennai_login = require('./routes/api/chennai/login.js');
-var api_chennai_data = require('./routes/api/chennai/data.js');
+var routes = require(path.join(__dirname, 'routes', 'web', 'index'));
+var api_vellore = require(path.join(__dirname, 'routes', 'api', 'vellore', 'index'));
+var api_vellore_login = require(path.join(__dirname, 'routes', 'api', 'vellore', 'login'));
+var api_vellore_data = require(path.join(__dirname, 'routes', 'api', 'vellore', 'data'));
+var api_chennai = require(path.join(__dirname, 'routes', 'api', 'chennai', 'index'));
+var api_chennai_login = require(path.join(__dirname, 'routes', 'api', 'chennai', 'login'));
+var api_chennai_data = require(path.join(__dirname, 'routes', 'api', 'chennai', 'data'));
 
 var app = express();
 

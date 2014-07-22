@@ -20,6 +20,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
 
+
 exports.update = function (doc, keys, callback)
 {
     var onConnect = function (err, db)

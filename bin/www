@@ -18,8 +18,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var app = require('../app');
 var debug = require('debug')('VITacademics');
+var path = require('path');
+
+var app = require(path.join(__dirname, '..', 'app'));
 
 app.set('port', process.env.PORT || 3000);
 

@@ -16,11 +16,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var api_login = require('../../../api/vellore/login/get');
-var api_captcha = require('../../../api/vellore/login/captcha');
-var api_submit = require('../../../api/vellore/login/submit');
 var express = require('express');
+var path = require('path');
 var router = express.Router();
+
+var api_login = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'login', 'get'));
+var api_captcha = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'login', 'captcha'));
+var api_submit = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'login', 'submit'));
+
 
 router.get('/manual', function (req, res)
 {

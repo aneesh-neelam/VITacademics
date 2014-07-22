@@ -16,13 +16,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var mongo = require('../db/mongo');
-var errors = require('../error');
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
 var cookie = require('cookie');
 var debug = require('debug')('VITacademics');
+var path = require('path');
 var unirest = require('unirest');
+
+var errors = require(path.join(__dirname, '..', 'error'));
+var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
+
 
 exports.submitCaptcha = function (RegNo, DoB, Captcha, callback)
 {

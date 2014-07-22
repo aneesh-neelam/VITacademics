@@ -16,9 +16,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var api_data = require('../../../api/vellore/scraper/aggregate');
 var express = require('express');
+var path = require('path');
 var router = express.Router();
+
+var api_data = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'scraper', 'aggregate'));
+
 
 router.get('/refresh', function (req, res)
 {

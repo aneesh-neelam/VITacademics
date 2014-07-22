@@ -20,8 +20,9 @@
 
 var forever = require('forever-monitor');
 var debug = require('debug')('VITacademics');
+var path = require('path');
 
-var child = new (forever.Monitor)('./bin/www', {
+var child = new (forever.Monitor)(path.join(__dirname, 'www'), {
     max: 3,
     silent: true,
     options: []

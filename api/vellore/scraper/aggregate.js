@@ -16,14 +16,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var attendance = require('./attendance');
-var errors = require('./../error');
-var marks = require('./marks');
-var mongo = require('./../db/mongo');
-var timetable = require('./timetable');
 var async = require('async');
 var cache = require('memory-cache');
 var debug = require('debug')('VITacademics');
+var path = require('path');
+
+var attendance = require(path.join(__dirname, 'attendance'));
+var errors = require(path.join(__dirname, '..', 'error'));
+var marks = require(path.join(__dirname, 'marks'));
+var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
+var timetable = require(path.join(__dirname, 'timetable'));
+
 
 exports.getData = function (RegNo, firsttime, callback)
 {

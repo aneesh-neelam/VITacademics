@@ -24,6 +24,7 @@ var router = express.Router();
 
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
 
+
 router.get('/manual', function (req, res)
 {
     var RegNo = req.query.regno;

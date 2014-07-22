@@ -16,11 +16,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var errors = require('../error');
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
 var cookie = require('cookie');
+var path = require('path');
 var unirest = require('unirest');
+
+var errors = require(path.join(__dirname, '..', 'error'));
+
 
 exports.scrapeMarks = function (RegNo, sem, callback)
 {
