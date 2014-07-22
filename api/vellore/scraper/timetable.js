@@ -111,6 +111,9 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                                 case 6:
                                     timetable.Timetable.Fri = day;
                                     break;
+                                case 7:
+                                    timetable.Timetable.Sat = day;
+                                    break;
                             }
                         }
                     };
