@@ -18,6 +18,7 @@
 *.txt text
 *.ini text
 *.inc text
+*.md text
 .htaccess text
 
 # These files are binary and should be left untouched
