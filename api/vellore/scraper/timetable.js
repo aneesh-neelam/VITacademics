@@ -77,7 +77,7 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                     length = scraper('tr').length;
                     var onEachRow = function (i, elem)
                     {
-                        var day = '';
+                        var day = [];
                         var $ = cheerio.load(scraper(this).html());
                         if (i > 1)
                         {
@@ -85,14 +85,10 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                             for (var elt = 1; elt < length; elt++)
                             {
                                 var text = $('td').eq(elt).text().substr(0, 6);
-                                if (tmp[text] && elt === length - 1)
-                                    day = day + tmp[text] + '';
-                                else if (tmp[text])
-                                    day = day + tmp[text] + ',';
-                                else if (elt === length - 1)
-                                    day = day + '';
+                                if (tmp[text])
+                                    day.push(Number(tmp[text]));
                                 else
-                                    day = day + ',';
+                                    day.push(0);
                             }
                             switch (i)
                             {
