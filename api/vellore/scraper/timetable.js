@@ -54,12 +54,29 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                     {
                         var classnbr = $('td').eq(1).text();
                         var code = $('td').eq(2).text();
+                        var courseType = $('td').eq(4).text();
+                        if (courseType == 'Embedded Theory')
+                        {
+                            code = code + 'ETH';
+                        }
+                        else if (courseType == 'Embedded Lab')
+                        {
+                            code = code + 'ELA';
+                        }
+                        else if (courseType == 'Theory Only')
+                        {
+                            code = code + 'TH';
+                        }
+                        else if (courseType == 'Lab Only')
+                        {
+                            code = code + 'LO';
+                        }
                         tmp[code] = classnbr;
                         timetable['Courses'].push({
                                                       'Class Number': classnbr,
-                                                      'Course Code': code,
+                                                      'Course Code': $('td').eq(2).text(),
                                                       'Course Title': $('td').eq(3).text(),
-                                                      'Course Type': $('td').eq(4).text(),
+                                                      'Course Type': courseType,
                                                       'LTPC': $('td').eq(5).text(),
                                                       'Course Mode': $('td').eq(6).text(),
                                                       'Course Option': $('td').eq(7).text(),
@@ -85,9 +102,10 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                             length = $('td').length;
                             for (var elt = 1; elt < length; elt++)
                             {
-                                var text = $('td').eq(elt).text().substr(0, 6);
-                                if (tmp[text])
-                                    day.push(Number(tmp[text]));
+                                var text = $('td').eq(elt).text().split(' ');
+                                var sub = text[0] + text[2];
+                                if (tmp[sub])
+                                    day.push(Number(tmp[sub]));
                                 else
                                     day.push(0);
                             }
