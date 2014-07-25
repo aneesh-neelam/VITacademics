@@ -19,7 +19,6 @@
  */
 
 var forever = require('forever-monitor');
-var debug = require('debug')('VITacademics');
 var path = require('path');
 
 var child = new (forever.Monitor)(path.join(__dirname, 'www'), {
@@ -30,7 +29,9 @@ var child = new (forever.Monitor)(path.join(__dirname, 'www'), {
 
 child.on('exit', function ()
 {
-    debug('VITacademics exited after 3 retries');
+    if (log)
+        log.debug('VITacademics exited after 3 retries');
+    console.log('VITacademics exited after 3 retries');
 });
 
 child.start();

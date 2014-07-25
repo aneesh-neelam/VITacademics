@@ -16,8 +16,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var debug = require('debug')('VITacademics');
 var path = require('path');
+
+var log;
+if (process.env.LOGENTRIES_TOKEN)
+{
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
 
 var errors = require(path.join(__dirname, '..', 'error'));
 var login = require(path.join(__dirname, 'get'));
@@ -30,9 +38,19 @@ exports.autologin = function (RegNo, DoB, callback)
         if (err) callback(true, captchaImage);
         else
         {
-            // TODO Parse Captcha
-            var tmp_captcha = '123456';
-            submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
+            try
+            {
+                // TODO Parse Captcha
+                var tmp_captcha = '123456';
+                submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
+            }
+            catch (ex)
+            {
+                if (log)
+                    log.log('debug', errors.codes.CaptchaParsing);
+                console.log('Captcha Parsing Error');
+                callback(true, errors.CaptchaParsing);
+            }
         }
     };
     login.getCaptcha(RegNo, parseCaptcha);

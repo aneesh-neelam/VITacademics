@@ -16,27 +16,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var log;
+if (process.env.LOGENTRIES_TOKEN)
+{
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
+
 /**
  * New Relic agent configuration.
- *
- * See lib/config.defaults.js in the agent distribution for a more complete
- * description of configuration variables and their potential values.
  */
-
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE)
 {
     var app_name = process.env.NEWRELIC_APP_NAME;
     var license = process.env.NEWRELIC_LICENSE;
+    if (log)
+        log.info('Using New Relic');
+    console.log('Using New Relic');
 }
 
 exports.config = {
-    /**
-     * Array of application names.
-     */
     app_name: [app_name],
-    /**
-     * Your New Relic license key.
-     */
     license_key: license,
     logging: {
         /**

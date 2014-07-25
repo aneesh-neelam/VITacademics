@@ -23,6 +23,15 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
+var log;
+if (process.env.LOGENTRIES_TOKEN)
+{
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
+
 var errors = require(path.join(__dirname, '..', 'error'));
 
 
@@ -34,7 +43,13 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response)
     {
-        if (response.error) callback(true, {Error: errors.codes.Down});
+        if (response.error)
+        {
+            if (log)
+                log.log('debug', errors.codes.Down);
+            console.log('VIT Academics connection failed');
+            callback(true, {Error: errors.codes.Down});
+        }
         else
         {
             var timetable = {

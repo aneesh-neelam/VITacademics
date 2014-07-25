@@ -18,8 +18,16 @@
 
 var async = require('async');
 var cache = require('memory-cache');
-var debug = require('debug')('VITacademics');
 var path = require('path');
+
+var log;
+if (process.env.LOGENTRIES_TOKEN)
+{
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
 
 var attendance = require(path.join(__dirname, 'attendance'));
 var errors = require(path.join(__dirname, '..', 'error'));
@@ -124,9 +132,9 @@ exports.getData = function (RegNo, firsttime, callback)
                         {
                             if (err)
                             {
-                                debug('MongoDB connection failed');
-                                // callback(true, errors.codes.MongoDown);
-                                // Asynchronous, may or may not be reachable, need a better solution
+                                if (log)
+                                    log.log('debug', errors.codes.MongoDown);
+                                console.log('MongoDB connection failed');
                             }
                         };
                         if (firsttime)

@@ -17,10 +17,17 @@
  */
 
 var cache = require('memory-cache');
-var cookie = require('cookie');
-var debug = require('debug')('VITacademics');
 var path = require('path');
 var unirest = require('unirest');
+
+var log;
+if (process.env.LOGENTRIES_TOKEN)
+{
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
 
 var errors = require(path.join(__dirname, '..', 'error'));
 
@@ -32,7 +39,9 @@ exports.getCaptcha = function (RegNo, callback)
     {
         if (response.error)
         {
-            debug('VIT Academics connection failed');
+            if (log)
+                log.log('debug', errors.codes.Down);
+            console.log('VIT Academics connection failed');
             callback(true, errors.codes.Down);
         }
         else

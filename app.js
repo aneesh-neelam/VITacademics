@@ -21,10 +21,20 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var path = require('path');
+
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE)
     newrelic = require('newrelic');
-var path = require('path');
+
+var log;
+if (process.env.LOGENTRIES_TOKEN)
+{
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
 
 var routes = require(path.join(__dirname, 'routes', 'web', 'index'));
 var api_vellore = require(path.join(__dirname, 'routes', 'api', 'vellore', 'index'));
@@ -76,6 +86,8 @@ if (app.get('env') === 'development')
 {
     app.use(function (err, req, res, next)
             {
+                if (log)
+                    log.log('debug', {Error: err, Message: err.message});
                 res.status(err.status || 500);
                 res.render('error', {
                     message: err.message,
@@ -87,6 +99,8 @@ if (app.get('env') === 'development')
 // production error handler, no stacktraces leaked to user
 app.use(function (err, req, res, next)
         {
+            if (log)
+                log.log('debug', {Error: err, Message: err.message});
             res.status(err.status || 500);
             res.render('error', {
                 message: err.message,

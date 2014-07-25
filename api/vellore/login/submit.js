@@ -19,9 +19,17 @@
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
 var cookie = require('cookie');
-var debug = require('debug')('VITacademics');
 var path = require('path');
 var unirest = require('unirest');
+
+var log;
+if (process.env.LOGENTRIES_TOKEN)
+{
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
 
 var errors = require(path.join(__dirname, '..', 'error'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
@@ -41,7 +49,9 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback)
         {
             if (response.error)
             {
-                debug('VIT Academics connection failed');
+                if (log)
+                    log.log('debug', errors.codes.Down);
+                console.log('VIT Academics connection failed');
                 callback(true, errors.codes.Down);
             }
             else
@@ -75,9 +85,9 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback)
                         {
                             if (err)
                             {
-                                debug('MongoDB connection failed');
-                                // callback(true, errors.codes.MongoDown);
-                                // Asynchronous, may or may not be reachable, need a better solution
+                                if (log)
+                                    log.log('debug', errors.codes.MongoDown);
+                                console.log('MongoDB connection failed');
                             }
                         };
                         mongo.update(doc, ['DoB'], onInsert);
