@@ -41,9 +41,15 @@ var onBind = function ()
 {
     var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
     if (log)
-        log.log('debug', {MongoUri: mongoUri, Port: server.address().port});
+    {
+        log.log('info', {MongoUri: mongoUri, Port: server.address().port});
+        if (process.env.HOST)
+            log.log('info', {Application: process.env.HOST});
+    }
     debug('Node.js Express server listening on port ' + server.address().port);
     debug('Using MongoDB: ' + mongoUri);
+    if (process.env.HOST)
+        debug(process.env.HOST);
 };
 
 var server = app.listen(app.get('port'), onBind);
