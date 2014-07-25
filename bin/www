@@ -18,6 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE)
+    require('newrelic');
+
 var debug = require('debug')('VITacademics');
 var path = require('path');
 

@@ -21,6 +21,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var newrelic = require('newrelic');
 var path = require('path');
 
 var routes = require(path.join(__dirname, 'routes', 'web', 'index'));
@@ -33,6 +34,7 @@ var api_chennai_data = require(path.join(__dirname, 'routes', 'api', 'chennai', 
 
 var app = express();
 
+app.locals.newrelic = newrelic;
 app.use(logger('dev'));
 
 app.set('title', 'VITacademics');
