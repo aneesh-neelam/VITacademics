@@ -22,3 +22,5 @@ The npm postinstall script to run bower may not work properly on Windows
 #### External Requirements:
 * A MongoDB instance running locally or valid "MONGOLAB_URI"/"MONGOHQ_URI" string in process.env 
 * A valid "COOKIE_SECRET" string in process.env for better security (Optional)
+* A valid "LOGENTRIES_TOKEN" in process.env for Logentries support (Optional)
+* A valid "NEWRELIC_APP_NAME" and "NEWRELIC_LICENSE" in process.env for New Relic support (Optional)
