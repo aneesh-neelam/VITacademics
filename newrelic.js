@@ -25,9 +25,6 @@ if (process.env.LOGENTRIES_TOKEN)
                             });
 }
 
-/**
- * New Relic agent configuration.
- */
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE)
 {
     var app_name = process.env.NEWRELIC_APP_NAME;
@@ -41,11 +38,6 @@ exports.config = {
     app_name: [app_name],
     license_key: license,
     logging: {
-        /**
-         * Level at which to log. 'trace' is most useful to New Relic when diagnosing
-         * issues with the agent, 'info' and higher will impose the least overhead on
-         * production applications.
-         */
         level: 'info'
     }
 };
