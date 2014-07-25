@@ -43,8 +43,8 @@ var onBind = function ()
     if (log)
     {
         log.log('info', {MongoUri: mongoUri, Port: server.address().port});
-        if (process.env.HOST)
-            log.log('info', {Application: process.env.HOST});
+        if (process.env.HOSTNAME)
+            log.log('info', {Application: process.env.HOSTNAME});
     }
     debug('Node.js Express server listening on port ' + server.address().port);
     debug('Using MongoDB: ' + mongoUri);
