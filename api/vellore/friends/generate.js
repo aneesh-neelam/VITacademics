@@ -16,3 +16,36 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var cache = require('memory-cache');
+var path = require('path');
+var underscore = require('underscore');
+
+var resource = require(path.join(__dirname, 'resource'));
+
+
+var generate = function (RegNo, validity, callback)
+{
+    var token;
+    do
+    {
+        token = underscore.sample(resource.resources, 6).join('');
+    }
+    while (cache.get(token));
+    cache.put(token, RegNo, validity * 60 * 60 * 1000);
+    callback(null, token);
+};
+
+exports.getToken = function (RegNo, callback)
+{
+    var validity = 18; // In Hours
+    var onGeneration = function (err, token)
+    {
+        var data = {
+            Token: token,
+            Validity: validity,
+            Issued: new Date().toUTCString()
+        };
+        callback(err, data)
+    };
+    generate(RegNo, validity, onGeneration);
+};

@@ -16,34 +16,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var cache = require('memory-cache');
+var express = require('express');
 var path = require('path');
+var router = express.Router();
 
-var log;
-if (process.env.LOGENTRIES_TOKEN)
+var api_friends_generate = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'friends', 'generate'));
+var api_friends_share = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'friends', 'share'));
+
+
+router.get('/regenerate', function (req, res)
 {
-    var logentries = require('node-logentries');
-    log = logentries.logger({
-                                token: process.env.LOGENTRIES_TOKEN
-                            });
-}
+    var RegNo = req.query.regno;
+    var onGetToken = function (err, data)
+    {
+        res.send(data);
+    };
+    api_friends_generate.getToken(RegNo, onGetToken)
+});
 
-
-var errors = require(path.join(__dirname, '..', 'error'));
-var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
-
-exports.getTimetable = function (token, callback)
+router.get('/share', function (req, res)
 {
-    var data = {};
-    if (cache.get(token) !== null)
+    var token = req.query.token;
+    var onGetTimetable = function (err, data)
     {
-        // TODO Fetch Timetable from DB
-        data.Error = errors.codes.ToDo;
-        callback(true, data);
-    }
-    else
-    {
-        data.Error = errors.codes.Expired;
-        callback(true, data);
-    }
-};
+        res.send(data);
+    };
+    api_friends_share.getTimetable(token, onGetTimetable)
+});
+
+module.exports = router;

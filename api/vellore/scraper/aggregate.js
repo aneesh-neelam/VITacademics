@@ -34,6 +34,7 @@ var errors = require(path.join(__dirname, '..', 'error'));
 var marks = require(path.join(__dirname, 'marks'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 var timetable = require(path.join(__dirname, 'timetable'));
+var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 
 
 exports.getData = function (RegNo, firsttime, callback)
@@ -61,6 +62,14 @@ exports.getData = function (RegNo, firsttime, callback)
             Marks: marksTask,
             Timetable: timetableTask
         };
+
+        if (firsttime)
+        {
+            parallelTasks.Token = function (asyncCallback)
+            {
+                friends.getToken(RegNo, asyncCallback)
+            };
+        }
 
         var onFinish = function (err, results)
         {
@@ -140,6 +149,7 @@ exports.getData = function (RegNo, firsttime, callback)
                         if (firsttime)
                         {
                             data.Timetable = results.Timetable.Timetable;
+                            data.Token = results.Token;
                             mongo.update(data, ['Timetable', 'Courses'], onInsert);
                         }
                         else
