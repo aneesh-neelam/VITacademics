@@ -17,16 +17,17 @@
  */
 
 var error = {
-    Success: {Message: 'Successful Execution', Code: 0},
-    TimedOut: {Message: 'Session timed out', Code: 1},
-    Invalid: {Message: 'Invalid Credentials or Captcha', Code: 2},
-    Down: {Message: 'VIT\'s servers may be down or we may be facing a connectivity issue', Code: 3},
-    MongoDown: {Message: 'Our MongoDB may be down or we may be facing a connectivity issue', Code: 4},
-    CaptchaParsing: {Message: 'Error parsing Captcha', Code: 5},
-    Expired: {Message: 'Token Expired', Code: 6},
-    ToDo: {Message: 'This feature is incomplete', Code: 7},
-    Outage: {Message: 'Our backend servers may be down or you may be facing a connectivity issue', Code: 8},
-    Other: {Message: 'An unforeseen error has occurred', Code: 9}
+    Success: {Message: 'Successful execution', Code: 0},
+    TimedOut: {Message: 'Session timed out', Code: 11},
+    Invalid: {Message: 'Invalid credentials or captcha', Code: 12},
+    CaptchaParsing: {Message: 'Error parsing captcha', Code: 13},
+    Expired: {Message: 'Token expired', Code: 14},
+    NoData: {Message: 'Requested data is not available', Code: 15},
+    ToDo: {Message: 'This feature is incomplete', Code: 50},
+    Down: {Message: 'VIT\'s servers may be down or we may be facing a connectivity issue', Code: 89},
+    MongoDown: {Message: 'Our MongoDB instance may be down or we may be facing a connectivity issue', Code: 97},
+    Outage: {Message: 'Our backend servers may be down or you may be facing a connectivity issue', Code: 98},
+    Other: {Message: 'An unforeseen error has occurred', Code: 99}
 };
 
 module.exports.codes = error;

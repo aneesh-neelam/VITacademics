@@ -37,9 +37,48 @@ exports.getTimetable = function (token, callback)
     var data = {};
     if (cache.get(token) !== null)
     {
-        // TODO Fetch Timetable from DB
-        data.Error = errors.codes.ToDo;
-        callback(true, data);
+        var keys = {
+            RegNo: 1,
+            Timetable: 1,
+            Courses: 1
+        };
+        var onFetch = function (err, doc)
+        {
+            if (err)
+            {
+                if (log)
+                    log.log('debug', {
+                        Token: token,
+                        Error: errors.codes.MongoDown
+                    });
+                console.log('MongoDB is down');
+                callback(true, {Error: errors.codes.MongoDown});
+            }
+            else if (doc)
+            {
+                if (doc.Timetable && doc.Courses && doc.RegNo)
+                {
+                    var forEachCourse = function (elt, i, arr)
+                    {
+                        delete elt['Attendance'];
+                        delete elt['Marks'];
+                    };
+                    doc.Courses.forEach(forEachCourse);
+                    var data = {
+                        Data: {
+                            RegNo: doc.RegNo,
+                            Courses: doc.Courses,
+                            Timetable: doc.Timetable
+                        },
+                        Error: errors.codes.Success
+                    };
+                    callback(true, data);
+                }
+                else callback(null, {Error: errors.codes.NoData})
+            }
+            else callback(null, {Error: errors.codes.NoData})
+        };
+        mongo.fetch({RegNo: cache.get(token)}, keys, onFetch);
     }
     else
     {

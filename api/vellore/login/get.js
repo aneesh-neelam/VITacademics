@@ -35,14 +35,18 @@ var errors = require(path.join(__dirname, '..', 'error'));
 exports.getCaptcha = function (RegNo, callback)
 {
     var uri = 'https://academics.vit.ac.in/parent/captcha.asp';
+    var data = {
+        RegNo: RegNo
+    };
     var onRequest = function (response)
     {
         if (response.error)
         {
+            data.Error = errors.codes.Down;
             if (log)
-                log.log('debug', errors.codes.Down);
+                log.log('debug', data);
             console.log('VIT Academics connection failed');
-            callback(true, errors.codes.Down);
+            callback(true, data);
         }
         else
         {

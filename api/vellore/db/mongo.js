@@ -53,34 +53,24 @@ exports.update = function (doc, keys, callback)
     MongoClient.connect(mongoUri, onConnect);
 };
 
-exports.fetch = function (doc, keys, callback)
+exports.fetch = function (queryDoc, keys, callback)
 {
-    // TODO Implement Fetch Document based on RegNo
     var onConnect = function (err, db)
     {
         if (err) callback(err);
         else
         {
-            var change = {};
-            var onEach = function (item)
-            {
-                change[item] = doc[item];
-            };
-            keys.forEach(onEach);
-
             var collection = db.collection('vellore_student');
-            var onUpdate = function (err, docs)
+            var onFetch = function (err, doc)
             {
                 if (err) callback(err);
                 else
                 {
                     db.close();
-                    callback(null);
+                    callback(null, doc);
                 }
             };
-            collection.findAndModify({RegNo: doc.RegNo}, [
-                ['RegNo', 'asc']
-            ], {$set: change}, {safe: true, new: true, upsert: true}, onUpdate);
+            collection.findOne(queryDoc, keys, onFetch)
         }
     };
     MongoClient.connect(mongoUri, onConnect);

@@ -49,10 +49,11 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback)
         {
             if (response.error)
             {
+                data.Error = errors.codes.Down;
                 if (log)
-                    log.log('debug', errors.codes.Down);
+                    log.log('debug', data);
                 console.log('VIT Academics connection failed');
-                callback(true, errors.codes.Down);
+                callback(true, data);
             }
             else
             {
@@ -86,7 +87,10 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback)
                             if (err)
                             {
                                 if (log)
-                                    log.log('debug', errors.codes.MongoDown);
+                                    log.log('debug', {
+                                        RegNo: RegNo,
+                                        Error: errors.codes.MongoDown
+                                    });
                                 console.log('MongoDB connection failed');
                             }
                         };

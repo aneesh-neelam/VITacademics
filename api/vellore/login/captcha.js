@@ -33,6 +33,9 @@ var submit = require(path.join(__dirname, 'submit'));
 
 exports.autologin = function (RegNo, DoB, callback)
 {
+    var data = {
+        RegNo: RegNo
+    };
     var parseCaptcha = function (err, captchaImage)
     {
         if (err) callback(true, captchaImage);
@@ -46,10 +49,11 @@ exports.autologin = function (RegNo, DoB, callback)
             }
             catch (ex)
             {
+                data.Error = errors.CaptchaParsing;
                 if (log)
-                    log.log('debug', errors.codes.CaptchaParsing);
+                    log.log('debug', data);
                 console.log('Captcha Parsing Error');
-                callback(true, errors.CaptchaParsing);
+                callback(true, data);
             }
         }
     };

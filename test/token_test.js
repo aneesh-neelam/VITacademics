@@ -16,25 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package base
+var tokenSystem = require('../api/vellore/friends/generate');
 
-import (
-	"fmt"
-	"net/http"
-)
-
-func init() {
-	http.HandleFunc("/unknown", UnknownHandler)
-	http.HandleFunc("/outage", OutageHandler)
-}
-
-var OutageError = "{\"Error\":{\"Message\":\"Our backend servers may be down or you may be facing a connectivity issue\",\"Code\":98}}"
-var UnknownError = "{\"Error\":{\"Message\":\"An unforeseen error has occurred\",\"Code\":99}}"
-
-func UnknownHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, UnknownError)
-}
-
-func OutageHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, OutageError)
-}
+tokenSystem.getToken('11BCE0260', function (err, token)
+{
+    console.log(token);
+});
