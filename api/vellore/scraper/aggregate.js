@@ -76,6 +76,9 @@ exports.getData = function (RegNo, firsttime, callback)
             if (err || results.Timetable.Error.Code !== 0)
             {
                 data.Error = results.Timetable.Error;
+                if (log)
+                    log.log('debug', data);
+                console.log('VIT Academics connection failed or Semester URL doesn\'t exist');
                 callback(true, data);
             }
             else
@@ -141,8 +144,9 @@ exports.getData = function (RegNo, firsttime, callback)
                         {
                             if (err)
                             {
+                                data.Error = errors.codes.MongoDown;
                                 if (log)
-                                    log.log('debug', errors.codes.MongoDown);
+                                    log.log('debug', data);
                                 console.log('MongoDB connection failed');
                             }
                         };

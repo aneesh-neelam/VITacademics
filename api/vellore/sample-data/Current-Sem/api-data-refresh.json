@@ -89,9 +89,9 @@
             "Registration Status": "Registered and Approved",
             "Attendance": {
                 "Registration Date": "19\/06\/2014 12:00:28",
-                "Attended Classes": "3",
-                "Total Classes": "6",
-                "Attendance Percentage": "50%",
+                "Attended Classes": "10",
+                "Total Classes": "11",
+                "Attendance Percentage": "91%",
                 "Details": [
                     {
                         "Sl": "1",
@@ -108,8 +108,8 @@
                     {
                         "Sl": "3",
                         "Date": "16-Jul-2014",
-                        "Status": "Absent",
-                        "Reason": " - "
+                        "Status": "On Duty",
+                        "Reason": "Placement Activity"
                     },
                     {
                         "Sl": "4",
@@ -126,7 +126,37 @@
                     {
                         "Sl": "6",
                         "Date": "23-Jul-2014",
-                        "Status": "Absent",
+                        "Status": "On Duty",
+                        "Reason": "Placement Activity"
+                    },
+                    {
+                        "Sl": "7",
+                        "Date": "25-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "8",
+                        "Date": "28-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "9",
+                        "Date": "30-Jul-2014",
+                        "Status": "On Duty",
+                        "Reason": "Placement Activity"
+                    },
+                    {
+                        "Sl": "10",
+                        "Date": "01-Aug-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "11",
+                        "Date": "04-Aug-2014",
+                        "Status": "Present",
                         "Reason": " - "
                     }
                 ],
@@ -150,9 +180,9 @@
             "Registration Status": "Registered and Approved",
             "Attendance": {
                 "Registration Date": "19\/06\/2014 12:04:59",
-                "Attended Classes": "5",
-                "Total Classes": "7",
-                "Attendance Percentage": "72%",
+                "Attended Classes": "8",
+                "Total Classes": "11",
+                "Attendance Percentage": "73%",
                 "Details": [
                     {
                         "Sl": "1",
@@ -195,6 +225,30 @@
                         "Date": "24-Jul-2014",
                         "Status": "Present",
                         "Reason": " - "
+                    },
+                    {
+                        "Sl": "8",
+                        "Date": "25-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "9",
+                        "Date": "31-Jul-2014",
+                        "Status": "Absent",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "10",
+                        "Date": "01-Aug-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "11",
+                        "Date": "05-Aug-2014",
+                        "Status": "Present",
+                        "Reason": " - "
                     }
                 ],
                 "Supported": "yes"
@@ -217,9 +271,9 @@
             "Registration Status": "Registered and Approved",
             "Attendance": {
                 "Registration Date": "19\/06\/2014 13:21:52",
-                "Attended Classes": "4",
-                "Total Classes": "5",
-                "Attendance Percentage": "80%",
+                "Attended Classes": "8",
+                "Total Classes": "9",
+                "Attendance Percentage": "89%",
                 "Details": [
                     {
                         "Sl": "1",
@@ -250,6 +304,30 @@
                         "Date": "22-Jul-2014",
                         "Status": "Present",
                         "Reason": " - "
+                    },
+                    {
+                        "Sl": "6",
+                        "Date": "23-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "7",
+                        "Date": "25-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "8",
+                        "Date": "30-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "9",
+                        "Date": "01-Aug-2014",
+                        "Status": "Present",
+                        "Reason": " - "
                     }
                 ],
                 "Supported": "yes"
@@ -272,10 +350,83 @@
             "Registration Status": "Registered and Approved",
             "Attendance": {
                 "Registration Date": "19\/06\/2014 12:01:45",
-                "Attended Classes": "0",
-                "Total Classes": "0",
-                "Attendance Percentage": "0%",
-                "Details": "None",
+                "Attended Classes": "7",
+                "Total Classes": "12",
+                "Attendance Percentage": "59%",
+                "Details": [
+                    {
+                        "Sl": "1",
+                        "Date": "10-Jul-2014",
+                        "Status": "Absent",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "2",
+                        "Date": "14-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "3",
+                        "Date": "16-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "4",
+                        "Date": "17-Jul-2014",
+                        "Status": "Absent",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "5",
+                        "Date": "21-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "6",
+                        "Date": "23-Jul-2014",
+                        "Status": "Absent",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "7",
+                        "Date": "24-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "8",
+                        "Date": "28-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "9",
+                        "Date": "30-Jul-2014",
+                        "Status": "On Duty",
+                        "Reason": "Placement Activity"
+                    },
+                    {
+                        "Sl": "10",
+                        "Date": "31-Jul-2014",
+                        "Status": "Present",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "11",
+                        "Date": "04-Aug-2014",
+                        "Status": "Absent",
+                        "Reason": " - "
+                    },
+                    {
+                        "Sl": "12",
+                        "Date": "06-Aug-2014",
+                        "Status": "Absent",
+                        "Reason": " - "
+                    }
+                ],
                 "Supported": "yes"
             },
             "Marks": {
@@ -284,7 +435,7 @@
         }
     ],
     "Error": {
-        "Message": "Successful Execution",
+        "Message": "Successful execution",
         "Code": 0
     }
 }

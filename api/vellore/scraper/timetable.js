@@ -23,15 +23,6 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var log;
-if (process.env.LOGENTRIES_TOKEN)
-{
-    var logentries = require('node-logentries');
-    log = logentries.logger({
-                                token: process.env.LOGENTRIES_TOKEN
-                            });
-}
-
 var errors = require(path.join(__dirname, '..', 'error'));
 
 
@@ -45,9 +36,6 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
     {
         if (response.error)
         {
-            if (log)
-                log.log('debug', errors.codes.Down);
-            console.log('VIT Academics connection failed');
             callback(true, {Error: errors.codes.Down});
         }
         else

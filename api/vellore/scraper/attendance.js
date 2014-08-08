@@ -106,7 +106,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                             }
                             catch (ex)
                             {
-                                doc.Details = 'None';
+                                doc.Details = [];
                                 asyncCallback(false, doc);
                             }
                         }
