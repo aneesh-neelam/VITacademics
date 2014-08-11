@@ -31,7 +31,7 @@ if (process.env.LOGENTRIES_TOKEN)
                             });
 }
 
-var errors = require(path.join(__dirname, '..', 'error'));
+var errors = require(path.join(__dirname, '..', '..', 'error'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 
 

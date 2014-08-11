@@ -30,7 +30,7 @@ if (process.env.LOGENTRIES_TOKEN)
 }
 
 var attendance = require(path.join(__dirname, 'attendance'));
-var errors = require(path.join(__dirname, '..', 'error'));
+var errors = require(path.join(__dirname, '..', '..', 'error'));
 var marks = require(path.join(__dirname, 'marks'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 var timetable = require(path.join(__dirname, 'timetable'));
@@ -78,7 +78,7 @@ exports.getData = function (RegNo, firsttime, callback)
                 data.Error = results.Timetable.Error;
                 if (log)
                     log.log('debug', data);
-                console.log('VIT Academics connection failed or Semester URL doesn\'t exist');
+                console.log(data.Error);
                 callback(true, data);
             }
             else

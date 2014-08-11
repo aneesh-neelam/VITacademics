@@ -27,7 +27,7 @@ if (process.env.LOGENTRIES_TOKEN)
                             });
 }
 
-var errors = require(path.join(__dirname, '..', 'error'));
+var errors = require(path.join(__dirname, '..', '..', 'error'));
 var login = require(path.join(__dirname, 'get'));
 var submit = require(path.join(__dirname, 'submit'));
 

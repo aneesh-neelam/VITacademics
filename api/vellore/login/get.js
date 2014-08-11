@@ -29,7 +29,7 @@ if (process.env.LOGENTRIES_TOKEN)
                             });
 }
 
-var errors = require(path.join(__dirname, '..', 'error'));
+var errors = require(path.join(__dirname, '..', '..', 'error'));
 
 
 exports.getCaptcha = function (RegNo, callback)
