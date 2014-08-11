@@ -34,7 +34,7 @@ var errors = require(path.join(__dirname, '..', '..', 'error'));
 
 exports.getCaptcha = function (RegNo, callback)
 {
-    var captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
+    var captchaUri = 'http://27.251.102.132/parent/captcha.asp';
     var data = {
         RegNo: RegNo
     };

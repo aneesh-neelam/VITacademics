@@ -43,7 +43,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback)
         var CookieJar = unirest.jar();
         var myCookie = cache.get(RegNo);
         var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
-        var submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
+        var submitUri = 'http://27.251.102.132/parent/parent_login_submit.asp';
         CookieJar.add(unirest.cookie(cookieSerial), submitUri);
         var onPost = function (response)
         {

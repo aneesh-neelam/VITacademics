@@ -16,9 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var cache = require('memory-cache');
 var path = require('path');
-var unirest = require('unirest');
 
 var log;
 if (process.env.LOGENTRIES_TOKEN)
@@ -30,46 +28,34 @@ if (process.env.LOGENTRIES_TOKEN)
 }
 
 var errors = require(path.join(__dirname, '..', '..', 'error'));
+var login = require(path.join(__dirname, 'get'));
+var submit = require(path.join(__dirname, 'submit'));
 
-
-exports.getCaptcha = function (RegNo, callback)
+exports.autologin = function (RegNo, DoB, callback)
 {
-    var captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
     var data = {
         RegNo: RegNo
     };
-    var onRequest = function (response)
+    var parseCaptcha = function (err, captchaImage)
     {
-        if (response.error)
-        {
-            data.Error = errors.codes.Down;
-            if (log)
-                log.log('debug', data);
-            console.log('VIT Academics connection failed');
-            callback(true, data);
-        }
+        if (err) callback(true, captchaImage);
         else
         {
-            var validity = 2; // In Minutes
-            var myCookie = [];
-            var onEach = function (key)
+            try
             {
-                var regEx = new RegExp('ASPSESSION');
-                if (regEx.test(key))
-                {
-                    myCookie[0] = key;
-                    myCookie[1] = response.cookies[key];
-                    return false;
-                }
-                return true;
-            };
-            Object.keys(response.cookies).forEach(onEach);
-            cache.put(RegNo, myCookie, validity * 60 * 1000);
-            callback(null, response.body);
+                // TODO Parse Captcha
+                var tmp_captcha = '123456';
+                submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
+            }
+            catch (ex)
+            {
+                data.Error = errors.CaptchaParsing;
+                if (log)
+                    log.log('debug', data);
+                console.log('Captcha Parsing Error');
+                callback(true, data);
+            }
         }
     };
-    unirest.get(captchaUri)
-        .encoding(null)
-        .set('Content-Type', 'image/bmp')
-        .end(onRequest);
+    login.getCaptcha(RegNo, parseCaptcha);
 };
