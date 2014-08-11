@@ -49,7 +49,9 @@ var app = express();
 
 if (newrelic)
     app.locals.newrelic = newrelic;
-app.use(logger('dev'));
+
+var loggerLevel = process.env.LOGGER_LEVEL || 'dev';
+app.use(logger(loggerLevel));
 
 app.set('title', 'VITacademics');
 app.use(express.static(path.join(__dirname, 'public')));
