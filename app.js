@@ -44,6 +44,7 @@ var api_vellore_friends = require(path.join(__dirname, 'routes', 'api', 'vellore
 var api_chennai = require(path.join(__dirname, 'routes', 'api', 'chennai', 'index'));
 var api_chennai_login = require(path.join(__dirname, 'routes', 'api', 'chennai', 'login'));
 var api_chennai_data = require(path.join(__dirname, 'routes', 'api', 'chennai', 'data'));
+var api_chennai_friends = require(path.join(__dirname, 'routes', 'api', 'chennai', 'friends'));
 
 var app = express();
 
@@ -75,6 +76,7 @@ app.use('/api/vellore/friends', api_vellore_friends);
 app.use('/api/chennai', api_chennai);
 app.use('/api/chennai/login', api_chennai_login);
 app.use('/api/chennai/data', api_chennai_data);
+app.use('/api/chennai/friends', api_chennai_friends);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next)

@@ -20,27 +20,28 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 
-var api_data = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'scraper', 'aggregate'));
+var api_friends_generate = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'friends', 'generate'));
+var api_friends_share = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'friends', 'share'));
 
 
-router.get('/refresh', function (req, res)
+router.get('/regenerate', function (req, res)
 {
     var RegNo = req.query.regno;
-    var onGetData = function (err, data)
+    var onGetToken = function (err, data)
     {
         res.send(data);
     };
-    api_data.getData(RegNo, false, onGetData)
+    api_friends_generate.getToken(RegNo, onGetToken)
 });
 
-router.get('/first', function (req, res)
+router.get('/share', function (req, res)
 {
-    var RegNo = req.query.regno;
-    var onGetData = function (err, data)
+    var token = req.query.token;
+    var onGetTimetable = function (err, data)
     {
         res.send(data);
     };
-    api_data.getData(RegNo, true, onGetData)
+    api_friends_share.getTimetable(token, onGetTimetable)
 });
 
 module.exports = router;

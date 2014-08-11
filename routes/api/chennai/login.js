@@ -17,60 +17,53 @@
  */
 
 var express = require('express');
-var unirest = require('unirest');
-var cache = require('memory-cache');
-var MongoClient = require('mongodb').MongoClient;
+var path = require('path');
 var router = express.Router();
 
-var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
+var api_login = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'login', 'get'));
+var api_captcha = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'login', 'captcha'));
+var api_submit = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'login', 'submit'));
 
 
 router.get('/manual', function (req, res)
 {
     var RegNo = req.query.regno;
-    var uri = 'Chennai URL';
-    unirest.get(uri)
-        .encoding(null)
-        .set('Content-Type', 'image/bmp')
-        .end(function (response)
-             {
-                 var doc = {"RegNo": RegNo, "DoB": DoB, "Cookie": response.cookies};
-                 login(doc, function (callback)
-                 {
-                     callback();
-                 });
-                 res.writeHead(200, {"Content-Type": "image/bmp"});
-                 res.write(response.body);
-                 res.end();
-             });
+    var onGetCaptcha = function (err, captchaResponse)
+    {
+        if (err) res.send(captchaResponse);
+        else
+        {
+            res.writeHead(200, {'Content-Type': 'image/bmp'});
+            res.write(captchaResponse);
+            res.end();
+        }
+    };
+    api_login.getCaptcha(RegNo, onGetCaptcha);
 });
 
 router.get('/auto', function (req, res)
 {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
-    /*
-     login(doc, function (callback) {
-     callback();
-     });
-     */
-    res.send('Captchaless login!');
+    var onSubmit = function (err, loginResponse)
+    {
+        if (err) res.send(loginResponse);
+        else res.send(loginResponse);
+    };
+    api_captcha.autologin(RegNo, DoB, onSubmit);
+});
+
+router.get('/submit', function (req, res)
+{
+    var RegNo = req.query.regno;
+    var DoB = req.query.dob;
+    var Captcha = req.query.captcha;
+    var onSubmit = function (err, loginResponse)
+    {
+        if (err) res.send(loginResponse);
+        else res.send(loginResponse);
+    };
+    api_submit.submitCaptcha(RegNo, DoB, Captcha, onSubmit);
 });
 
 module.exports = router;
-
-function login(doc, callback)
-{
-    MongoClient.connect(mongoUri, function (err, db)
-    {
-        if (err) throw err;
-        var collection = db.collection('chennai_student');
-        collection.update({"RegNo": doc.RegNo}, doc, {upsert: true}, function (err, docs)
-        {
-            callback(function ()
-                     {
-                         db.close();
-                     });
-        });
-    });
-}
