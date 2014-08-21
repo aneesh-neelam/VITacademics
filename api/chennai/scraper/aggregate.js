@@ -44,23 +44,20 @@ exports.getData = function (RegNo, firsttime, callback)
     {
         var sem = 'WS';
 
-        var attendanceTask = function (asyncCallback)
+        var parallelTasks = {};
+
+        parallelTasks.Attendance = function (asyncCallback)
         {
-            attendance.scrapeAttendance(RegNo, sem, asyncCallback)
-        };
-        var marksTask = function (asyncCallback)
-        {
-            marks.scrapeMarks(RegNo, sem, asyncCallback)
-        };
-        var timetableTask = function (asyncCallback)
-        {
-            timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
+                attendance.scrapeAttendance(RegNo, sem, asyncCallback)
         };
 
-        var parallelTasks = {
-            Attendance: attendanceTask,
-            Marks: marksTask,
-            Timetable: timetableTask
+        parallelTasks.Marks = function (asyncCallback)
+        {
+                marks.scrapeMarks(RegNo, sem, asyncCallback)
+        };
+        parallelTasks.Timetable = function (asyncCallback)
+        {
+                timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
         };
 
         if (firsttime)
