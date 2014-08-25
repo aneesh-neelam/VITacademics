@@ -12,7 +12,7 @@ Please report any bugs or issues [here] (https://github.com/aneesh-neelam/VITaca
 ###### Install all dependencies
     $ npm install
 ###### Install frontend dependencies manually (Microsoft Windows only)
-The npm postinstall script to run bower may not work properly on Windows
+The npm postinstall script to run bower may not work properly on Windows, see [this issue](https://github.com/aneesh-neelam/VITacademics/issues/1)
 
     # npm -g install bower
     $ bower install
