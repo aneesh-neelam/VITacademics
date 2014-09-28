@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
  *  VITacademics
  *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
