@@ -30,7 +30,10 @@ router.get('/manual', function (req, res)
     var RegNo = req.query.regno;
     var onGetCaptcha = function (err, captchaResponse)
     {
-        if (err) res.send(captchaResponse);
+        if (err)
+        {
+            res.send(captchaResponse);
+        }
         else
         {
             res.writeHead(200, {'Content-Type': 'image/bmp'});
@@ -47,8 +50,14 @@ router.get('/auto', function (req, res)
     var DoB = req.query.dob;
     var onSubmit = function (err, loginResponse)
     {
-        if (err) res.send(loginResponse);
-        else res.send(loginResponse);
+        if (err)
+        {
+            res.send(loginResponse);
+        }
+        else
+        {
+            res.send(loginResponse);
+        }
     };
     api_captcha.autologin(RegNo, DoB, onSubmit);
 });
@@ -60,8 +69,14 @@ router.get('/submit', function (req, res)
     var Captcha = req.query.captcha;
     var onSubmit = function (err, loginResponse)
     {
-        if (err) res.send(loginResponse);
-        else res.send(loginResponse);
+        if (err)
+        {
+            res.send(loginResponse);
+        }
+        else
+        {
+            res.send(loginResponse);
+        }
     };
     api_submit.submitCaptcha(RegNo, DoB, Captcha, onSubmit);
 });

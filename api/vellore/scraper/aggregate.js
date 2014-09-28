@@ -48,16 +48,16 @@ exports.getData = function (RegNo, firsttime, callback)
 
         parallelTasks.Attendance = function (asyncCallback)
         {
-                attendance.scrapeAttendance(RegNo, sem, asyncCallback)
+            attendance.scrapeAttendance(RegNo, sem, asyncCallback)
         };
 
         parallelTasks.Marks = function (asyncCallback)
         {
-                marks.scrapeMarks(RegNo, sem, asyncCallback)
+            marks.scrapeMarks(RegNo, sem, asyncCallback)
         };
         parallelTasks.Timetable = function (asyncCallback)
         {
-                timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
+            timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
         };
 
         if (firsttime)
@@ -74,7 +74,9 @@ exports.getData = function (RegNo, firsttime, callback)
             {
                 data.Error = results.Timetable.Error;
                 if (log)
+                {
                     log.log('debug', data);
+                }
                 console.log(data.Error);
                 callback(true, data);
             }
@@ -106,9 +108,13 @@ exports.getData = function (RegNo, firsttime, callback)
                         {
                             foundMarks = true;
                             if (elt['Type'] !== 'Project')
+                            {
                                 elt.Supported = 'yes';
+                            }
                             else
+                            {
                                 elt.Supported = 'no';
+                            }
                             delete elt['Class Number'];
                             delete elt['Course Code'];
                             delete elt['Course Title'];
@@ -133,7 +139,10 @@ exports.getData = function (RegNo, firsttime, callback)
                 };
                 var doneCollate = function (err, newData)
                 {
-                    if (err) callback(true, errors.codes.Other);
+                    if (err)
+                    {
+                        callback(true, errors.codes.Other);
+                    }
                     else
                     {
                         data.Courses = newData;
@@ -143,7 +152,9 @@ exports.getData = function (RegNo, firsttime, callback)
                             {
                                 data.Error = errors.codes.MongoDown;
                                 if (log)
+                                {
                                     log.log('debug', data);
+                                }
                                 console.log('MongoDB connection failed');
                             }
                         };

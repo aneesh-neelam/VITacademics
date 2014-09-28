@@ -19,7 +19,9 @@
  */
 
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE)
+{
     require('newrelic');
+}
 
 var log;
 if (process.env.LOGENTRIES_TOKEN)
@@ -44,12 +46,16 @@ var onBind = function ()
     {
         log.log('info', {MongoUri: mongoUri, Port: server.address().port});
         if (process.env.HOSTNAME)
+        {
             log.log('info', {Application: process.env.HOSTNAME});
+        }
     }
     debug('Node.js Express server listening on port ' + server.address().port);
     debug('Using MongoDB: ' + mongoUri);
     if (process.env.HOSTNAME)
+    {
         debug(process.env.HOSTNAME);
+    }
 };
 
 var server = app.listen(app.get('port'), onBind);

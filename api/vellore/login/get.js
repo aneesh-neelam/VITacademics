@@ -44,7 +44,9 @@ exports.getCaptcha = function (RegNo, callback)
         {
             data.Error = errors.codes.Down;
             if (log)
+            {
                 log.log('debug', data);
+            }
             console.log('VIT Academics connection failed');
             callback(true, data);
         }

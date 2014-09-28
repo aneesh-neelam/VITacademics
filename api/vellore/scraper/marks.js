@@ -34,9 +34,12 @@ exports.scrapeMarks = function (RegNo, sem, callback)
 
     var onRequest = function (response)
     {
-        if (response.error) callback(false, [
-            {Error: errors.codes.Down}
-        ]);
+        if (response.error)
+        {
+            callback(false, [
+                {Error: errors.codes.Down}
+            ]);
+        }
         else
         {
             var marks = [];

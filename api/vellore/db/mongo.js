@@ -25,7 +25,10 @@ exports.update = function (doc, keys, callback)
 {
     var onConnect = function (err, db)
     {
-        if (err) callback(err);
+        if (err)
+        {
+            callback(err);
+        }
         else
         {
             var change = {};
@@ -38,7 +41,10 @@ exports.update = function (doc, keys, callback)
             var collection = db.collection('vellore_student');
             var onUpdate = function (err, docs)
             {
-                if (err) callback(err);
+                if (err)
+                {
+                    callback(err);
+                }
                 else
                 {
                     db.close();
@@ -57,13 +63,19 @@ exports.fetch = function (queryDoc, keys, callback)
 {
     var onConnect = function (err, db)
     {
-        if (err) callback(err);
+        if (err)
+        {
+            callback(err);
+        }
         else
         {
             var collection = db.collection('vellore_student');
             var onFetch = function (err, doc)
             {
-                if (err) callback(err);
+                if (err)
+                {
+                    callback(err);
+                }
                 else
                 {
                     db.close();

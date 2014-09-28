@@ -25,7 +25,9 @@ var path = require('path');
 
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE)
+{
     newrelic = require('newrelic');
+}
 
 var log;
 if (process.env.LOGENTRIES_TOKEN)
@@ -49,7 +51,9 @@ var api_chennai_friends = require(path.join(__dirname, 'routes', 'api', 'chennai
 var app = express();
 
 if (newrelic)
+{
     app.locals.newrelic = newrelic;
+}
 
 var loggerLevel = process.env.LOGGER_LEVEL || 'dev';
 app.use(logger(loggerLevel));
@@ -93,7 +97,9 @@ if (app.get('env') === 'development')
     app.use(function (err, req, res, next)
             {
                 if (log)
+                {
                     log.log('debug', {Error: err, Message: err.message});
+                }
                 res.status(err.status || 500);
                 res.render('error', {
                     message: err.message,
@@ -107,7 +113,9 @@ if (app.get('env') === 'development')
 app.use(function (err, req, res, next)
         {
             if (log)
+            {
                 log.log('debug', {Error: err, Message: err.message});
+            }
             res.status(err.status || 500);
             res.render('error', {
                 message: err.message,

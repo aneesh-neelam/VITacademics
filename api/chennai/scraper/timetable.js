@@ -108,9 +108,13 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                                 var text = $('td').eq(elt).text().split(' ');
                                 var sub = text[0] + text[2];
                                 if (tmp[sub])
+                                {
                                     day.push(Number(tmp[sub]));
+                                }
                                 else
+                                {
                                     day.push(0);
+                                }
                             }
                             switch (i)
                             {

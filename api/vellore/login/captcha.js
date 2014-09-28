@@ -38,7 +38,10 @@ exports.autologin = function (RegNo, DoB, callback)
     };
     var parseCaptcha = function (err, captchaImage)
     {
-        if (err) callback(true, captchaImage);
+        if (err)
+        {
+            callback(true, captchaImage);
+        }
         else
         {
             try
@@ -51,7 +54,9 @@ exports.autologin = function (RegNo, DoB, callback)
             {
                 data.Error = errors.CaptchaParsing;
                 if (log)
+                {
                     log.log('debug', data);
+                }
                 console.log('Captcha Parsing Error');
                 callback(true, data);
             }
