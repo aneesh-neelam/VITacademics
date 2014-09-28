@@ -35,6 +35,6 @@
     ],
     "private": true,
     "dependencies": {
-        "foundation": "~5.4.0"
+        "foundation": "~5.4.5"
     }
 }
