@@ -3,6 +3,8 @@ VITacademics
 
 VITacademics Backend and Web App
 
+This is currently hosted [here] (http://vitacademics-rel.herokuapp.com/)
+
 For the API Documentation, check out the [Project Wiki] (https://github.com/aneesh-neelam/VITacademics/wiki)
 
 Please report any bugs or issues [here] (https://github.com/aneesh-neelam/VITacademics/issues) 
