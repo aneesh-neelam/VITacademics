@@ -42,7 +42,7 @@ exports.getData = function (RegNo, firsttime, callback)
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null)
     {
-        var sem = 'FS';
+        var sem = process.env.VELLORE_SEM || 'FS';
 
         var parallelTasks = {};
 

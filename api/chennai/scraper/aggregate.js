@@ -42,7 +42,7 @@ exports.getData = function (RegNo, firsttime, callback)
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null)
     {
-        var sem = 'WS';
+        var sem = process.env.CHENNAI_SEM || 'FS';
 
         var parallelTasks = {};
 
