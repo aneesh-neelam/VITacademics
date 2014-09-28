@@ -32,9 +32,9 @@ if (process.env.LOGENTRIES_TOKEN)
 var errors = require(path.join(__dirname, '..', '..', 'error'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 
-exports.getTimetable = function (token, callback)
+
+exports.getTimetableToken = function (token, callback)
 {
-    var data = {};
     if (cache.get(token) !== null)
     {
         var keys = {
@@ -74,54 +74,52 @@ exports.getTimetable = function (token, callback)
                         },
                         Error: errors.codes.Success
                     };
-                    callback(true, data);
+                    callback(false, data);
                 }
                 else
                 {
-                    callback(null, {Error: errors.codes.NoData})
+                    callback(false, {Error: errors.codes.NoData})
                 }
             }
             else
             {
-                callback(null, {Error: errors.codes.NoData})
+                callback(false, {Error: errors.codes.NoData})
             }
         };
         mongo.fetch({RegNo: cache.get(token)}, keys, onFetch);
     }
     else
     {
-        data.Error = errors.codes.Expired;
-        callback(true, data);
+        callback(false, {Error: errors.codes.Expired});
     }
 };
 
-exports.getTimetable = function (RegNo, DoB, callback)
+exports.getTimetableDoB = function (RegNo, DoB, callback)
 {
-    var data = {};
-    if (cache.get(token) !== null)
+    var keys = {
+        RegNo: 1,
+        Timetable: 1,
+        Courses: 1
+    };
+    var onFetch = function (err, doc)
     {
-        var keys = {
-            RegNo: 1,
-            Timetable: 1,
-            Courses: 1
-        };
-        var onFetch = function (err, doc)
+        if (err)
         {
-            if (err)
+            if (log)
             {
-                if (log)
-                {
-                    log.log('debug', {
-                        Token: token,
-                        Error: errors.codes.MongoDown
-                    });
-                }
-                console.log('MongoDB is down');
-                callback(true, {Error: errors.codes.MongoDown});
+                log.log('debug', {
+                    Token: token,
+                    Error: errors.codes.MongoDown
+                });
             }
-            else if (doc)
+            console.log('MongoDB is down');
+            callback(true, {Error: errors.codes.MongoDown});
+        }
+        else if (doc)
+        {
+            if (doc.Timetable && doc.Courses && doc.RegNo)
             {
-                if (doc.Timetable && doc.Courses && doc.RegNo)
+                if (doc.DoB === DoB)
                 {
                     var forEachCourse = function (elt, i, arr)
                     {
@@ -137,23 +135,22 @@ exports.getTimetable = function (RegNo, DoB, callback)
                         },
                         Error: errors.codes.Success
                     };
-                    callback(true, data);
+                    callback(false, data)
                 }
                 else
                 {
-                    callback(null, {Error: errors.codes.NoData})
+                    callback(false, {Error: errors.codes.Invalid});
                 }
             }
             else
             {
-                callback(null, {Error: errors.codes.NoData})
+                callback(false, {Error: errors.codes.NoData});
             }
-        };
-        mongo.fetch({RegNo: cache.get(token)}, keys, onFetch);
-    }
-    else
-    {
-        data.Error = errors.codes.Expired;
-        callback(true, data);
-    }
+        }
+        else
+        {
+            callback(false, {Error: errors.codes.NoData});
+        }
+    };
+    mongo.fetch({RegNo: RegNo}, keys, onFetch);
 };

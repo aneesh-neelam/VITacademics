@@ -36,12 +36,22 @@ router.get('/regenerate', function (req, res)
 
 router.get('/share', function (req, res)
 {
-    var token = req.query.token;
     var onGetTimetable = function (err, data)
     {
         res.send(data);
     };
-    api_friends_share.getTimetable(token, onGetTimetable)
+    if (req.query.token)
+    {
+        var token = req.query.token;
+        api_friends_share.getTimetableToken(token, onGetTimetable)
+    }
+    else if (req.query.regno && req.query.dob)
+    {
+        var regno = req.query.regno;
+        var dob = req.query.dob;
+
+        api_friends_share.getTimetableDoB(regno, dob, onGetTimetable)
+    }
 });
 
 module.exports = router;

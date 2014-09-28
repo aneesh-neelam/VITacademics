@@ -20,6 +20,7 @@ var cache = require('memory-cache');
 var path = require('path');
 var underscore = require('underscore');
 
+var errors = require(path.join(__dirname, '..', '..', 'error'));
 var resource = require(path.join(__dirname, '..', '..', 'token-resource'));
 
 
@@ -37,14 +38,16 @@ var generate = function (RegNo, validity, callback)
 
 exports.getToken = function (RegNo, callback)
 {
+    var data = {};
     var validity = 18; // In Hours
     var onGeneration = function (err, token)
     {
-        var data = {
+        data.Share = {
             Token: token,
             Validity: validity,
             Issued: new Date().toUTCString()
         };
+        data.Error = errors.codes.Success;
         callback(err, data)
     };
     generate(RegNo, validity, onGeneration);
