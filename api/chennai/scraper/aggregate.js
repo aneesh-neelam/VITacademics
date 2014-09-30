@@ -21,8 +21,7 @@ var cache = require('memory-cache');
 var path = require('path');
 
 var log;
-if (process.env.LOGENTRIES_TOKEN)
-{
+if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
                                 token: process.env.LOGENTRIES_TOKEN
@@ -37,61 +36,47 @@ var timetable = require(path.join(__dirname, 'timetable'));
 var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 
 
-exports.getData = function (RegNo, firsttime, callback)
-{
+exports.getData = function (RegNo, firsttime, callback) {
     var data = {RegNo: RegNo};
-    if (cache.get(RegNo) !== null)
-    {
+    if (cache.get(RegNo) !== null) {
         var sem = process.env.CHENNAI_SEM || 'FS';
 
         var parallelTasks = {};
 
-        parallelTasks.Attendance = function (asyncCallback)
-        {
+        parallelTasks.Attendance = function (asyncCallback) {
             attendance.scrapeAttendance(RegNo, sem, asyncCallback)
         };
 
-        parallelTasks.Marks = function (asyncCallback)
-        {
+        parallelTasks.Marks = function (asyncCallback) {
             marks.scrapeMarks(RegNo, sem, asyncCallback)
         };
-        parallelTasks.Timetable = function (asyncCallback)
-        {
+        parallelTasks.Timetable = function (asyncCallback) {
             timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
         };
 
-        if (firsttime)
-        {
-            parallelTasks.Token = function (asyncCallback)
-            {
+        if (firsttime) {
+            parallelTasks.Token = function (asyncCallback) {
                 friends.getToken(RegNo, asyncCallback)
             };
         }
 
-        var onFinish = function (err, results)
-        {
-            if (err || results.Timetable.Error.Code !== 0)
-            {
+        var onFinish = function (err, results) {
+            if (err || results.Timetable.Error.Code !== 0) {
                 data.Error = results.Timetable.Error;
-                if (log)
-                {
+                if (log) {
                     log.log('debug', data);
                 }
                 console.log(data.Error);
                 callback(true, data);
             }
-            else
-            {
+            else {
                 delete results.Timetable.Error;
                 data.Courses = results.Timetable.Courses;
-                var forEachCourse = function (element, asyncCallback)
-                {
+                var forEachCourse = function (element, asyncCallback) {
                     var foundAttendance = false;
                     var foundMarks = false;
-                    var forEachAttendance = function (elt, i, arr)
-                    {
-                        if (element['Class Number'] === elt['Class Number'])
-                        {
+                    var forEachAttendance = function (elt, i, arr) {
+                        if (element['Class Number'] === elt['Class Number']) {
                             foundAttendance = true;
                             elt.Supported = 'yes';
                             delete elt['Class Number'];
@@ -102,17 +87,13 @@ exports.getData = function (RegNo, firsttime, callback)
                             element.Attendance = elt;
                         }
                     };
-                    var forEachMarks = function (elt, i, arr)
-                    {
-                        if (element['Class Number'] === elt['Class Number'])
-                        {
+                    var forEachMarks = function (elt, i, arr) {
+                        if (element['Class Number'] === elt['Class Number']) {
                             foundMarks = true;
-                            if (elt['Type'] !== 'Project')
-                            {
+                            if (elt['Type'] !== 'Project') {
                                 elt.Supported = 'yes';
                             }
-                            else
-                            {
+                            else {
                                 elt.Supported = 'no';
                             }
                             delete elt['Class Number'];
@@ -127,45 +108,35 @@ exports.getData = function (RegNo, firsttime, callback)
                     var noData = {
                         Supported: 'no'
                     };
-                    if (!foundAttendance)
-                    {
+                    if (!foundAttendance) {
                         element.Attendance = noData;
                     }
-                    if (!foundMarks)
-                    {
+                    if (!foundMarks) {
                         element.Marks = noData;
                     }
                     asyncCallback(null, element);
                 };
-                var doneCollate = function (err, newData)
-                {
-                    if (err)
-                    {
+                var doneCollate = function (err, newData) {
+                    if (err) {
                         callback(true, errors.codes.Other);
                     }
-                    else
-                    {
+                    else {
                         data.Courses = newData;
-                        var onInsert = function (err)
-                        {
-                            if (err)
-                            {
+                        var onInsert = function (err) {
+                            if (err) {
                                 data.Error = errors.codes.MongoDown;
-                                if (log)
-                                {
+                                if (log) {
                                     log.log('debug', data);
                                 }
                                 console.log('MongoDB connection failed');
                             }
                         };
-                        if (firsttime)
-                        {
+                        if (firsttime) {
                             data.Timetable = results.Timetable.Timetable;
                             data.Token = results.Token;
                             mongo.update(data, ['Timetable', 'Courses'], onInsert);
                         }
-                        else
-                        {
+                        else {
                             mongo.update(data, ['Courses'], onInsert);
                         }
                         data.Error = errors.codes.Success;
@@ -178,8 +149,7 @@ exports.getData = function (RegNo, firsttime, callback)
 
         async.parallel(parallelTasks, onFinish);
     }
-    else
-    {
+    else {
         data.Error = errors.codes.TimedOut;
         callback(true, data);
     }

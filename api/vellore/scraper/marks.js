@@ -25,44 +25,35 @@ var unirest = require('unirest');
 var errors = require(path.join(__dirname, '..', '..', 'error'));
 
 
-exports.scrapeMarks = function (RegNo, sem, callback)
-{
+exports.scrapeMarks = function (RegNo, sem, callback) {
     var marksUri = 'https://academics.vit.ac.in/parent/marks.asp?sem=' + sem;
     var CookieJar = unirest.jar();
     var myCookie = cache.get(RegNo);
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
 
-    var onRequest = function (response)
-    {
-        if (response.error)
-        {
+    var onRequest = function (response) {
+        if (response.error) {
             callback(false, [
                 {Error: errors.codes.Down}
             ]);
         }
-        else
-        {
+        else {
             var marks = [];
-            try
-            {
+            try {
                 var scraper = cheerio.load(response.body);
                 var PBL = false;
                 var scraperPBL;
-                if (scraper('table table').length > 1)
-                {
+                if (scraper('table table').length > 1) {
                     PBL = true;
                     scraperPBL = cheerio.load(scraper('table table').eq(1).html());
                 }
                 scraper = cheerio.load(scraper('table table').eq(0).html());
-                var onEach = function (i, elem)
-                {
+                var onEach = function (i, elem) {
                     var $ = cheerio.load(scraper(this).html());
-                    if (i > 1)
-                    {
+                    if (i > 1) {
                         var length = $('td').length;
                         var classnbr = $('td').eq(1).text();
-                        if (length == 18)
-                        {
+                        if (length == 18) {
                             marks.push({
                                            'Class Number': classnbr,
                                            'Course Code': $('td').eq(2).text(),
@@ -83,8 +74,7 @@ exports.scrapeMarks = function (RegNo, sem, callback)
                                            'Type': 'CBL'
                                        });
                         }
-                        else if (length == 8)
-                        {
+                        else if (length == 8) {
                             marks.push({
                                            'Class Number': classnbr,
                                            'Course Code': $('td').eq(2).text(),
@@ -95,8 +85,7 @@ exports.scrapeMarks = function (RegNo, sem, callback)
                                            'Type': 'Lab'
                                        });
                         }
-                        else if (length == 6)
-                        {
+                        else if (length == 6) {
                             marks.push({
                                            'Class Number': classnbr,
                                            'Course Code': $('td').eq(2).text(),
@@ -108,16 +97,13 @@ exports.scrapeMarks = function (RegNo, sem, callback)
                     }
                 };
                 scraper('tr').each(onEach);
-                if (PBL)
-                {
+                if (PBL) {
                     var pblMarks = [];
-                    var onEachPBL = function (i, elem)
-                    {
+                    var onEachPBL = function (i, elem) {
                         var $ = cheerio.load(scraper(this).html());
                         var course = Math.floor(i / 8);
                         var row = i % 8;
-                        switch (row)
-                        {
+                        switch (row) {
                             case 1:
                                 pblMarks[course] = {
                                     'Class Number': $('td').eq(1).text(),
@@ -183,8 +169,7 @@ exports.scrapeMarks = function (RegNo, sem, callback)
                 }
                 callback(null, marks);
             }
-            catch (ex)
-            {
+            catch (ex) {
                 // Scraping Marks failed
                 callback(false, [
                     {Error: errors.codes.Invalid}

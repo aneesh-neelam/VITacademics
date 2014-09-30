@@ -20,7 +20,6 @@
 
 var tokenSystem = require('../api/vellore/friends/generate');
 
-tokenSystem.getToken('11BCE0260', function (err, token)
-{
+tokenSystem.getToken('11BCE0260', function (err, token) {
     console.log(token);
 });

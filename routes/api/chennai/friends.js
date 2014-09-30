@@ -24,29 +24,23 @@ var api_friends_generate = require(path.join(__dirname, '..', '..', '..', 'api',
 var api_friends_share = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'friends', 'share'));
 
 
-router.get('/regenerate', function (req, res)
-{
+router.get('/regenerate', function (req, res) {
     var RegNo = req.query.regno;
-    var onGetToken = function (err, data)
-    {
+    var onGetToken = function (err, data) {
         res.send(data);
     };
     api_friends_generate.getToken(RegNo, onGetToken)
 });
 
-router.get('/share', function (req, res)
-{
-    var onGetTimetable = function (err, data)
-    {
+router.get('/share', function (req, res) {
+    var onGetTimetable = function (err, data) {
         res.send(data);
     };
-    if (req.query.token)
-    {
+    if (req.query.token) {
         var token = req.query.token;
         api_friends_share.getTimetableToken(token, onGetTimetable)
     }
-    else if (req.query.regno && req.query.dob)
-    {
+    else if (req.query.regno && req.query.dob) {
         var regno = req.query.regno;
         var dob = req.query.dob;
 

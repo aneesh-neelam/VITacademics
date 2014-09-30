@@ -18,14 +18,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE)
-{
+if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
     require('newrelic');
 }
 
 var log;
-if (process.env.LOGENTRIES_TOKEN)
-{
+if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
                                 token: process.env.LOGENTRIES_TOKEN
@@ -39,21 +37,17 @@ var app = require(path.join(__dirname, '..', 'app'));
 
 app.set('port', process.env.PORT || 3000);
 
-var onBind = function ()
-{
+var onBind = function () {
     var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
-    if (log)
-    {
+    if (log) {
         log.log('info', {MongoUri: mongoUri, Port: server.address().port});
-        if (process.env.HOSTNAME)
-        {
+        if (process.env.HOSTNAME) {
             log.log('info', {Application: process.env.HOSTNAME});
         }
     }
     debug('Node.js Express server listening on port ' + server.address().port);
     debug('Using MongoDB: ' + mongoUri);
-    if (process.env.HOSTNAME)
-    {
+    if (process.env.HOSTNAME) {
         debug(process.env.HOSTNAME);
     }
 };

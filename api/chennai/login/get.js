@@ -21,8 +21,7 @@ var path = require('path');
 var unirest = require('unirest');
 
 var log;
-if (process.env.LOGENTRIES_TOKEN)
-{
+if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
                                 token: process.env.LOGENTRIES_TOKEN
@@ -32,33 +31,26 @@ if (process.env.LOGENTRIES_TOKEN)
 var errors = require(path.join(__dirname, '..', '..', 'error'));
 
 
-exports.getCaptcha = function (RegNo, callback)
-{
+exports.getCaptcha = function (RegNo, callback) {
     var captchaUri = 'http://27.251.102.132/parent/captcha.asp';
     var data = {
         RegNo: RegNo
     };
-    var onRequest = function (response)
-    {
-        if (response.error)
-        {
+    var onRequest = function (response) {
+        if (response.error) {
             data.Error = errors.codes.Down;
-            if (log)
-            {
+            if (log) {
                 log.log('debug', data);
             }
             console.log('VIT Academics connection failed');
             callback(true, data);
         }
-        else
-        {
+        else {
             var validity = 2; // In Minutes
             var myCookie = [];
-            var onEach = function (key)
-            {
+            var onEach = function (key) {
                 var regEx = new RegExp('ASPSESSION');
-                if (regEx.test(key))
-                {
+                if (regEx.test(key)) {
                     myCookie[0] = key;
                     myCookie[1] = response.cookies[key];
                     return false;

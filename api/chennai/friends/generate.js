@@ -24,8 +24,7 @@ var errors = require(path.join(__dirname, '..', '..', 'error'));
 var resource = require(path.join(__dirname, '..', '..', 'token-resource'));
 
 
-var generate = function (RegNo, validity, callback)
-{
+var generate = function (RegNo, validity, callback) {
     var token;
     do
     {
@@ -36,12 +35,10 @@ var generate = function (RegNo, validity, callback)
     callback(null, token);
 };
 
-exports.getToken = function (RegNo, callback)
-{
+exports.getToken = function (RegNo, callback) {
     var data = {};
     var validity = 18; // In Hours
-    var onGeneration = function (err, token)
-    {
+    var onGeneration = function (err, token) {
         data.Share = {
             Token: token,
             Validity: validity,

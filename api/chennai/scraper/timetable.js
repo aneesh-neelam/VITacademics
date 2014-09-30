@@ -26,52 +26,41 @@ var unirest = require('unirest');
 var errors = require(path.join(__dirname, '..', '..', 'error'));
 
 
-exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
-{
+exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
     var timetableUri = 'http://27.251.102.132/parent/timetable.asp?sem=' + sem;
     var CookieJar = unirest.jar();
     var myCookie = cache.get(RegNo);
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
-    var onRequest = function (response)
-    {
-        if (response.error)
-        {
+    var onRequest = function (response) {
+        if (response.error) {
             callback(true, {Error: errors.codes.Down});
         }
-        else
-        {
+        else {
             var timetable = {
                 Courses: [],
                 Timetable: {}
             };
-            try
-            {
+            try {
                 var tmp = {};
                 var scraper = cheerio.load(response.body);
                 scraper = cheerio.load(scraper('table table').eq(0).html());
                 var length = scraper('tr').length;
-                var onEach = function (i, elem)
-                {
+                var onEach = function (i, elem) {
                     var $ = cheerio.load(scraper(this).html());
-                    if (i > 0 && i < (length - 1))
-                    {
+                    if (i > 0 && i < (length - 1)) {
                         var classnbr = $('td').eq(1).text();
                         var code = $('td').eq(2).text();
                         var courseType = $('td').eq(4).text();
-                        if (courseType == 'Embedded Theory')
-                        {
+                        if (courseType == 'Embedded Theory') {
                             code = code + 'ETH';
                         }
-                        else if (courseType == 'Embedded Lab')
-                        {
+                        else if (courseType == 'Embedded Lab') {
                             code = code + 'ELA';
                         }
-                        else if (courseType == 'Theory Only')
-                        {
+                        else if (courseType == 'Theory Only') {
                             code = code + 'TH';
                         }
-                        else if (courseType == 'Lab Only')
-                        {
+                        else if (courseType == 'Lab Only') {
                             code = code + 'LO';
                         }
                         tmp[code] = classnbr;
@@ -91,33 +80,26 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                     }
                 };
                 scraper('tr').each(onEach);
-                if (firsttime)
-                {
+                if (firsttime) {
                     scraper = cheerio.load(response.body);
                     scraper = cheerio.load(scraper('table table').eq(1).html());
                     length = scraper('tr').length;
-                    var onEachRow = function (i, elem)
-                    {
+                    var onEachRow = function (i, elem) {
                         var day = [];
                         var $ = cheerio.load(scraper(this).html());
-                        if (i > 1)
-                        {
+                        if (i > 1) {
                             length = $('td').length;
-                            for (var elt = 1; elt < length; elt++)
-                            {
+                            for (var elt = 1; elt < length; elt++) {
                                 var text = $('td').eq(elt).text().split(' ');
                                 var sub = text[0] + text[2];
-                                if (tmp[sub])
-                                {
+                                if (tmp[sub]) {
                                     day.push(Number(tmp[sub]));
                                 }
-                                else
-                                {
+                                else {
                                     day.push(0);
                                 }
                             }
-                            switch (i)
-                            {
+                            switch (i) {
                                 case 2:
                                     timetable.Timetable.Mon = day;
                                     break;
@@ -144,8 +126,7 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback)
                 timetable.Error = errors.codes.Success;
                 callback(null, timetable);
             }
-            catch (ex)
-            {
+            catch (ex) {
                 // Scraping Timetable failed
                 callback(true, {Error: errors.codes.Invalid});
             }

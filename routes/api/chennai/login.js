@@ -25,17 +25,13 @@ var api_captcha = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai
 var api_submit = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'login', 'submit'));
 
 
-router.get('/manual', function (req, res)
-{
+router.get('/manual', function (req, res) {
     var RegNo = req.query.regno;
-    var onGetCaptcha = function (err, captchaResponse)
-    {
-        if (err)
-        {
+    var onGetCaptcha = function (err, captchaResponse) {
+        if (err) {
             res.send(captchaResponse);
         }
-        else
-        {
+        else {
             res.writeHead(200, {'Content-Type': 'image/bmp'});
             res.write(captchaResponse);
             res.end();
@@ -44,37 +40,29 @@ router.get('/manual', function (req, res)
     api_login.getCaptcha(RegNo, onGetCaptcha);
 });
 
-router.get('/auto', function (req, res)
-{
+router.get('/auto', function (req, res) {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
-    var onSubmit = function (err, loginResponse)
-    {
-        if (err)
-        {
+    var onSubmit = function (err, loginResponse) {
+        if (err) {
             res.send(loginResponse);
         }
-        else
-        {
+        else {
             res.send(loginResponse);
         }
     };
     api_captcha.autologin(RegNo, DoB, onSubmit);
 });
 
-router.get('/submit', function (req, res)
-{
+router.get('/submit', function (req, res) {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
     var Captcha = req.query.captcha;
-    var onSubmit = function (err, loginResponse)
-    {
-        if (err)
-        {
+    var onSubmit = function (err, loginResponse) {
+        if (err) {
             res.send(loginResponse);
         }
-        else
-        {
+        else {
             res.send(loginResponse);
         }
     };

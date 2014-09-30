@@ -19,8 +19,7 @@
 var path = require('path');
 
 var log;
-if (process.env.LOGENTRIES_TOKEN)
-{
+if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
                                 token: process.env.LOGENTRIES_TOKEN
@@ -31,30 +30,23 @@ var errors = require(path.join(__dirname, '..', '..', 'error'));
 var login = require(path.join(__dirname, 'get'));
 var submit = require(path.join(__dirname, 'submit'));
 
-exports.autologin = function (RegNo, DoB, callback)
-{
+exports.autologin = function (RegNo, DoB, callback) {
     var data = {
         RegNo: RegNo
     };
-    var parseCaptcha = function (err, captchaImage)
-    {
-        if (err)
-        {
+    var parseCaptcha = function (err, captchaImage) {
+        if (err) {
             callback(true, captchaImage);
         }
-        else
-        {
-            try
-            {
+        else {
+            try {
                 // TODO Parse Captcha
                 var tmp_captcha = '123456';
                 submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
             }
-            catch (ex)
-            {
+            catch (ex) {
                 data.Error = errors.CaptchaParsing;
-                if (log)
-                {
+                if (log) {
                     log.log('debug', data);
                 }
                 console.log('Captcha Parsing Error');

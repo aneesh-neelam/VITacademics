@@ -26,32 +26,25 @@ var unirest = require('unirest');
 var errors = require(path.join(__dirname, '..', '..', 'error'));
 
 
-exports.scrapeAttendance = function (RegNo, sem, callback)
-{
+exports.scrapeAttendance = function (RegNo, sem, callback) {
     var attendanceUri = 'http://27.251.102.132/parent/attn_report.asp?sem=' + sem;
     var CookieJar = unirest.jar();
     var myCookie = cache.get(RegNo);
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
-    var onRequest = function (response)
-    {
-        if (response.error)
-        {
+    var onRequest = function (response) {
+        if (response.error) {
             callback(false, [
                 {Error: errors.codes.Down}
             ]);
         }
-        else
-        {
+        else {
             var attendance = [];
-            try
-            {
+            try {
                 var scraper = cheerio.load(response.body);
                 scraper = cheerio.load(scraper('table table').eq(1).html());
-                var onEach = function (i, elem)
-                {
+                var onEach = function (i, elem) {
                     var $ = cheerio.load(scraper(this).html());
-                    if (i > 0)
-                    {
+                    if (i > 0) {
                         var classnbr = $('input[name=classnbr]').attr('value');
                         attendance.push({
                                             'Class Number': classnbr,
@@ -73,31 +66,24 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                     }
                 };
                 scraper('tr').each(onEach);
-                var doDetails = function (doc, asyncCallback)
-                {
+                var doDetails = function (doc, asyncCallback) {
                     var detailsUri = 'http://27.251.102.132/parent/attn_report_details.asp';
                     CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
-                    var onPost = function (response)
-                    {
-                        if (response.error)
-                        {
+                    var onPost = function (response) {
+                        if (response.error) {
                             asyncCallback(false, [
                                 {Error: errors.codes.Down}
                             ]);
                         }
-                        else
-                        {
+                        else {
                             delete doc.form;
-                            try
-                            {
+                            try {
                                 var scraper = cheerio.load(response.body);
                                 scraper = cheerio.load(scraper('table table').eq(1).html());
                                 var details = [];
-                                var onDay = function (i, elem)
-                                {
+                                var onDay = function (i, elem) {
                                     var $ = cheerio.load(scraper(this).html());
-                                    if (i > 1)
-                                    {
+                                    if (i > 1) {
                                         details.push({
                                                          'Sl': $('td').eq(0).text(),
                                                          'Date': $('td').eq(1).text(),
@@ -110,8 +96,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                                 doc.Details = details;
                                 asyncCallback(null, doc);
                             }
-                            catch (ex)
-                            {
+                            catch (ex) {
                                 doc.Details = [];
                                 asyncCallback(false, doc);
                             }
@@ -124,8 +109,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback)
                 };
                 async.map(attendance, doDetails, callback);
             }
-            catch (ex)
-            {
+            catch (ex) {
                 // Scraping Attendance failed
                 callback(false, [
                     {Error: errors.codes.Invalid}

@@ -27,10 +27,8 @@ var child = new (forever.Monitor)(path.join(__dirname, 'www'), {
     options: []
 });
 
-child.on('exit', function ()
-{
-    if (log)
-    {
+child.on('exit', function () {
+    if (log) {
         log.debug('VITacademics exited after 3 retries');
     }
     console.log('VITacademics exited after 3 retries');

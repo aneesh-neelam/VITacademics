@@ -24,14 +24,12 @@ var logger = require('morgan');
 var path = require('path');
 
 var newrelic;
-if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE)
-{
+if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
     newrelic = require('newrelic');
 }
 
 var log;
-if (process.env.LOGENTRIES_TOKEN)
-{
+if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
                                 token: process.env.LOGENTRIES_TOKEN
@@ -50,8 +48,7 @@ var api_chennai_friends = require(path.join(__dirname, 'routes', 'api', 'chennai
 
 var app = express();
 
-if (newrelic)
-{
+if (newrelic) {
     app.locals.newrelic = newrelic;
 }
 
@@ -83,45 +80,39 @@ app.use('/api/chennai/data', api_chennai_data);
 app.use('/api/chennai/friends', api_chennai_friends);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next)
-        {
-            var err = new Error('Not Found');
-            err.status = 404;
-            next(err);
-        });
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
 
 // error handlers
 // development error handler, will print stacktrace
-if (app.get('env') === 'development')
-{
-    app.use(function (err, req, res, next)
-            {
-                if (log)
-                {
-                    log.log('debug', {Error: err, Message: err.message});
-                }
-                res.status(err.status || 500);
-                res.render('error', {
-                    message: err.message,
-                    status: err.status,
-                    stack: err.stack
-                });
-            });
+if (app.get('env') === 'development') {
+    app.use(function (err, req, res, next) {
+        if (log) {
+            log.log('debug', {Error: err, Message: err.message});
+        }
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            status: err.status,
+            stack: err.stack
+        });
+    });
 }
 
 // production error handler, no stacktraces leaked to user
-app.use(function (err, req, res, next)
-        {
-            if (log)
-            {
-                log.log('debug', {Error: err, Message: err.message});
-            }
-            res.status(err.status || 500);
-            res.render('error', {
-                message: err.message,
-                status: err.status,
-                stack: ''
-            });
-        });
+app.use(function (err, req, res, next) {
+    if (log) {
+        log.log('debug', {Error: err, Message: err.message});
+    }
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        status: err.status,
+        stack: ''
+    });
+});
 
 module.exports = app;

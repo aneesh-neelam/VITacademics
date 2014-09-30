@@ -21,32 +21,24 @@ var MongoClient = require('mongodb').MongoClient;
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
 
 
-exports.update = function (doc, keys, callback)
-{
-    var onConnect = function (err, db)
-    {
-        if (err)
-        {
+exports.update = function (doc, keys, callback) {
+    var onConnect = function (err, db) {
+        if (err) {
             callback(err);
         }
-        else
-        {
+        else {
             var change = {};
-            var onEach = function (item)
-            {
+            var onEach = function (item) {
                 change[item] = doc[item];
             };
             keys.forEach(onEach);
 
             var collection = db.collection('chennai_student');
-            var onUpdate = function (err, docs)
-            {
-                if (err)
-                {
+            var onUpdate = function (err, docs) {
+                if (err) {
                     callback(err);
                 }
-                else
-                {
+                else {
                     db.close();
                     callback(null);
                 }
@@ -59,25 +51,18 @@ exports.update = function (doc, keys, callback)
     MongoClient.connect(mongoUri, onConnect);
 };
 
-exports.fetch = function (queryDoc, keys, callback)
-{
-    var onConnect = function (err, db)
-    {
-        if (err)
-        {
+exports.fetch = function (queryDoc, keys, callback) {
+    var onConnect = function (err, db) {
+        if (err) {
             callback(err);
         }
-        else
-        {
+        else {
             var collection = db.collection('chennai_student');
-            var onFetch = function (err, doc)
-            {
-                if (err)
-                {
+            var onFetch = function (err, doc) {
+                if (err) {
                     callback(err);
                 }
-                else
-                {
+                else {
                     db.close();
                     callback(null, doc);
                 }
