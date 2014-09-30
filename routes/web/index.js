@@ -20,13 +20,11 @@ var express = require('express');
 var router = express.Router();
 
 
-router.get('/', function (req, res)
-{
+router.get('/', function (req, res) {
     res.render('index', { });
 });
 
-router.get('/status', function (req, res)
-{
+router.get('/status', function (req, res) {
     var port = process.env.PORT || 3000;
     var status = {
         host: process.env.HOST || 'localhost',
@@ -35,13 +33,12 @@ router.get('/status', function (req, res)
         platform: process.platform,
         arch: process.arch,
         serverStatus: 'OK',
-        lastUpdated: '28th September 2014'
+        lastUpdated: '30th September 2014'
     };
     res.render('status', status);
 });
 
-router.get('/api', function (req, res)
-{
+router.get('/api', function (req, res) {
     res.send('API Documentation');
 });
 
