@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var bitmap = require('node-bitmap');
 var path = require('path');
 
 var log;
@@ -39,6 +40,14 @@ exports.autologin = function (RegNo, DoB, callback) {
             callback(true, captchaImage);
         }
         else {
+            var captcha = new bitmap(captchaImage);
+            captcha.init();
+            console.log(captcha.isBitmap());
+            console.log(captcha.getWidth());
+            console.log(captcha.getHeight());
+            var rgba = captcha.getData();
+            console.log(rgba);
+
             try {
                 // TODO Parse Captcha
                 var tmp_captcha = '123456';
