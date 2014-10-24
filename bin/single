@@ -16,10 +16,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var cluster = require('cluster');
-var debug = require('debug')('VITacademics');
-var path = require('path');
-
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
     require('newrelic');
 }
@@ -32,19 +28,12 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
+var debug = require('debug')('VITacademics');
+var path = require('path');
+
 var app = require(path.join(__dirname, '..', 'app'));
-var server;
 
 app.set('port', process.env.PORT || 3000);
-
-var workers = {};
-var count = parseInt(process.env.PROCESS_COUNT) || require('os').cpus().length;
-
-var spawn = function () {
-    var worker = cluster.fork();
-    workers[worker.pid] = worker;
-    return worker;
-};
 
 var onBind = function () {
     var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
@@ -54,23 +43,11 @@ var onBind = function () {
             log.log('info', {Application: process.env.HOSTNAME});
         }
     }
-    debug('Node.js Express server\'s child process listening on port ' + server.address().port);
+    debug('Node.js Express server listening on port ' + server.address().port);
     debug('Using MongoDB: ' + mongoUri);
     if (process.env.HOSTNAME) {
         debug(process.env.HOSTNAME);
     }
 };
 
-if (cluster.isMaster) {
-    for (var i = 0; i < count; ++i) {
-        spawn();
-    }
-    cluster.on('death', function (worker) {
-        console.log('Worker ' + worker.pid + ' died. Spawning a new process. ');
-        delete workers[worker.pid];
-        spawn();
-    });
-}
-else {
-    server = app.listen(app.get('port'), onBind);
-}
+var server = app.listen(app.get('port'), onBind);

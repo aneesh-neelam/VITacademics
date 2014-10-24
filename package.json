@@ -8,10 +8,10 @@
         "email": "neelam.aneesh@gmail.com"
     },
     "private": true,
-    "main": "./bin/cluster",
+    "main": "./bin/www",
     "scripts": {
         "postinstall": "./node_modules/bower/bin/bower install",
-        "start": "node ./bin/cluster"
+        "start": "node ./bin/www"
     },
     "contributors": [
         {
