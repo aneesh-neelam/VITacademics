@@ -40,7 +40,7 @@ var server;
 app.set('port', process.env.PORT || 3000);
 
 var workers = {};
-var count = process.env.PROCESS_COUNT || require('os').cpus().length;
+var count = parseInt(process.env.PROCESS_COUNT) || require('os').cpus().length;
 
 var spawn = function () {
     var worker = cluster.fork();
