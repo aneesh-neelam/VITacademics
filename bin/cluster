@@ -1,0 +1,78 @@
+#!/usr/bin/env node
+
+/*
+ *  VITacademics
+ *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+var cluster = require('cluster');
+var debug = require('debug')('VITacademics');
+var path = require('path');
+
+if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
+    require('newrelic');
+}
+
+var log;
+if (process.env.LOGENTRIES_TOKEN) {
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
+
+var app = require(path.join(__dirname, '..', 'app'));
+var server;
+
+app.set('port', process.env.PORT || 3000);
+
+var workers = {};
+var count = process.env.PROCESS_COUNT || require('os').cpus().length;
+
+var spawn = function () {
+    var worker = cluster.fork();
+    workers[worker.pid] = worker;
+    return worker;
+};
+
+var onBind = function () {
+    var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
+    if (log) {
+        log.log('info', {MongoUri: mongoUri, Port: server.address().port});
+        if (process.env.HOSTNAME) {
+            log.log('info', {Application: process.env.HOSTNAME});
+        }
+    }
+    debug('Node.js Express server\'s child process listening on port ' + server.address().port);
+    debug('Using MongoDB: ' + mongoUri);
+    if (process.env.HOSTNAME) {
+        debug(process.env.HOSTNAME);
+    }
+};
+
+if (cluster.isMaster) {
+    for (var i = 0; i < count; ++i) {
+        spawn();
+    }
+    cluster.on('death', function (worker) {
+        console.log('Worker ' + worker.pid + ' died. Spawning a new process. ');
+        delete workers[worker.pid];
+        spawn();
+    });
+}
+else {
+    server = app.listen(app.get('port'), onBind);
+}
