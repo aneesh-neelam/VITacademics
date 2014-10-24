@@ -132,6 +132,7 @@ exports.getData = function (RegNo, firsttime, callback) {
                             }
                         };
                         if (firsttime) {
+                            delete results.Token.Error;
                             data.Timetable = results.Timetable.Timetable;
                             data.Token = results.Token;
                             mongo.update(data, ['Timetable', 'Courses'], onInsert);
