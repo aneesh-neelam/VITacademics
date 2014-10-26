@@ -17,7 +17,6 @@
  */
 
 var cluster = require('cluster');
-var debug = require('debug')('VITacademics');
 var os = require('os');
 var path = require('path');
 
@@ -56,10 +55,10 @@ var onBind = function () {
             log.log('info', {Application: process.env.HOSTNAME});
         }
     }
-    debug('Node.js Express server\'s child process listening on port ' + server.address().port);
-    debug('Using MongoDB: ' + mongoUri);
+    console.log('Node.js Express server\'s child process listening on port ' + server.address().port);
+    console.log('Using MongoDB: ' + mongoUri);
     if (process.env.HOSTNAME) {
-        debug(process.env.HOSTNAME);
+        console.log(process.env.HOSTNAME);
     }
 };
 
