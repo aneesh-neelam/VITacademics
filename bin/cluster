@@ -18,6 +18,7 @@
 
 var cluster = require('cluster');
 var debug = require('debug')('VITacademics');
+var os = require('os');
 var path = require('path');
 
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
@@ -38,7 +39,8 @@ var server;
 app.set('port', process.env.PORT || 3000);
 
 var workers = {};
-var count = parseInt(process.env.PROCESS_COUNT) || require('os').cpus().length;
+var processMultiplier = parseInt(process.env.PROCESS_MULTIPLIER) || 1;
+var processCount = os.cpus().length * processMultiplier;
 
 var spawn = function () {
     var worker = cluster.fork();
@@ -62,7 +64,7 @@ var onBind = function () {
 };
 
 if (cluster.isMaster) {
-    for (var i = 0; i < count; ++i) {
+    for (var i = 0; i < processCount; ++i) {
         spawn();
     }
     cluster.on('death', function (worker) {
