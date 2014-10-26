@@ -39,7 +39,7 @@ var server;
 app.set('port', process.env.PORT || 3000);
 
 var workers = {};
-var processMultiplier = parseInt(process.env.PROCESS_MULTIPLIER) || 1;
+var processMultiplier = parseInt(process.env.PROCESS_MULTIPLIER || 1);
 var processCount = os.cpus().length * processMultiplier;
 
 var spawn = function () {
