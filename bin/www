@@ -30,7 +30,6 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
-var debug = require('debug')('VITacademics');
 var path = require('path');
 
 var app = require(path.join(__dirname, '..', 'app'));
@@ -45,10 +44,10 @@ var onBind = function () {
             log.log('info', {Application: process.env.HOSTNAME});
         }
     }
-    debug('Node.js Express server listening on port ' + server.address().port);
-    debug('Using MongoDB: ' + mongoUri);
+    console.log('Node.js Express server listening on port ' + server.address().port);
+    console.log('Using MongoDB: ' + mongoUri);
     if (process.env.HOSTNAME) {
-        debug(process.env.HOSTNAME);
+        console.log(process.env.HOSTNAME);
     }
 };
 
