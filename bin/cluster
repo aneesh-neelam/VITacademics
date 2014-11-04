@@ -38,8 +38,7 @@ var server;
 app.set('port', process.env.PORT || 3000);
 
 var workers = {};
-var processMultiplier = parseInt(process.env.PROCESS_MULTIPLIER || 1);
-var processCount = os.cpus().length * processMultiplier;
+var processCount = process.env.PROCESS_COUNT || os.cpus().length;
 
 var spawn = function () {
     var worker = cluster.fork();
@@ -48,7 +47,7 @@ var spawn = function () {
 };
 
 var onBind = function () {
-    console.log('Started Worker Process, PID: ' + process.pid);
+    console.log('Started Worker Process PID: ' + process.pid + ' and is listening for requests');
 };
 
 if (cluster.isMaster) {
@@ -70,7 +69,8 @@ if (cluster.isMaster) {
     if (process.env.HOSTNAME) {
         console.log(process.env.HOSTNAME);
     }
-    console.log('Spawning ' + processCount + ' workers');
+
+    console.log('Spawning ' + processCount + ' worker(s)');
     for (var i = 0; i < processCount; ++i) {
         spawn();
     }
