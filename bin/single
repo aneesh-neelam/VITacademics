@@ -45,15 +45,15 @@ var onBind = function () {
             log.info('Using New Relic');
         }
     }
+    console.log('Node.js Express server listening on port ' + server.address().port);
+    console.log('Process PID: ' + process.pid);
+    console.log('Using MongoDB: ' + mongoUri);
     if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
         console.log('Using New Relic');
     }
     if (process.env.HOSTNAME) {
         console.log(process.env.HOSTNAME);
     }
-    console.log('Node.js Express server listening on port ' + server.address().port);
-    console.log('Process PID: ' + process.pid);
-    console.log('Using MongoDB: ' + mongoUri);
 };
 
 var server = app.listen(app.get('port'), onBind);
