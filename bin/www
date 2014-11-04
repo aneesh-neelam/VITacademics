@@ -20,4 +20,9 @@
 
 var path = require('path');
 
-require(path.join(__dirname, 'cluster'));
+/*
+ *  Use nodemon for development
+ *  Do not use cluster on Heroku PaaS
+ */
+
+require(path.join(__dirname, 'single'));

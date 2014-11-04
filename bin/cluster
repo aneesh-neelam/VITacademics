@@ -52,23 +52,23 @@ var onBind = function () {
 
 if (cluster.isMaster) {
     var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
-    console.log('Node.js Express Server started, listening on port: ' + app.get('port'));
-    console.log('Using MongoDB: ' + mongoUri);
-    if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
-        if (log) {
-            log.info('Using New Relic');
-        }
-        console.log('Using New Relic');
-    }
     if (log) {
         log.log('info', {MongoUri: mongoUri, Port: app.get('port')});
         if (process.env.HOSTNAME) {
             log.log('info', {Application: process.env.HOSTNAME});
         }
+        if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
+            log.info('Using New Relic');
+        }
+    }
+    if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
+        console.log('Using New Relic');
     }
     if (process.env.HOSTNAME) {
         console.log(process.env.HOSTNAME);
     }
+    console.log('Node.js Express Server started, listening on port: ' + app.get('port'));
+    console.log('Using MongoDB: ' + mongoUri);
 
     console.log('Spawning ' + processCount + ' worker(s)');
     for (var i = 0; i < processCount; ++i) {
