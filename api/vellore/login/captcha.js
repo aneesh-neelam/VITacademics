@@ -31,7 +31,7 @@ var errors = require(path.join(__dirname, '..', '..', 'error'));
 var login = require(path.join(__dirname, 'get'));
 var submit = require(path.join(__dirname, 'submit'));
 
-exports.autologin = function (RegNo, DoB, callback) {
+exports.autoLogin = function (RegNo, DoB, callback) {
     var data = {
         RegNo: RegNo
     };
