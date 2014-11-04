@@ -16,9 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var bitmap = require('node-bitmap');
 var path = require('path');
-var fs = require('fs');
+// var fs = require('fs');
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
@@ -41,26 +40,20 @@ exports.autoLogin = function (RegNo, DoB, callback) {
             callback(true, captchaImage);
         }
         else {
-            // var captchaBitmap = new bitmap(captchaImage);
-            // captchaBitmap.init();
-            console.log(captchaImage.length);
-            var captchaJson = [];
-            for (var i = captchaImage.length - (25 * 132); i < captchaImage.length; i++) {
-                captchaJson.push(captchaImage.readUInt8(i));
-            }
-            // var captchaJson = JSON.stringify(captchaBitmap.read(captchaBitmap.buffer, (captchaBitmap.buffer.length - (25 * 132)), 25 * 132));
-            console.log(captchaJson.length);
-            /*
-             var pixelMap = [];
-             for (var i = 0, len = captchaJson.length; i < len; i += 132) {
-             pixelMap.push(captchaJson.slice(i, i + 132));
-             }
-             fs.writeFile('pixels.json', pixelMap, function (err) {
-             if (err) throw err;
-             });
-             */
             try {
-                // TODO Parse Captcha
+                var pixelMap = getPixelMap(captchaImage);
+                /*
+                 console.log(pixelMap.length);
+                 for(var i = 0; i < pixelMap.length; ++i) {
+                 console.log(pixelMap[i].length);
+                 }
+                 // Uncomment require('fs') at the top
+                 fs.writeFile('pixel-map.json', pixelMap, function(err)
+                 {
+                 if(err) throw err;
+                 console.log('Pixel Map saved to file: pixel-map.json');
+                 });
+                 */
                 var tmp_captcha = '123456';
                 submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
             }
@@ -70,9 +63,25 @@ exports.autoLogin = function (RegNo, DoB, callback) {
                     log.log('debug', data);
                 }
                 console.log('Captcha Parsing Error');
-                callback(true, data);
+                callback(true, null);
             }
         }
     };
     login.getCaptcha(RegNo, parseCaptcha);
+};
+
+var getPixelMap = function (bitmapBuffer) {
+    var pixelMap = [];
+    var subArray = [];
+    var row = 0;
+    for (var i = bitmapBuffer.length - (25 * 132), r = 0; i < bitmapBuffer.length; ++i, ++r) {
+        if (Math.floor(r / 132) !== row) {
+            row = Math.floor(r / 132);
+            pixelMap.push(subArray);
+            subArray = [];
+        }
+        subArray.push(bitmapBuffer.readUInt8(i));
+    }
+    pixelMap.push(subArray);
+    return pixelMap;
 };
