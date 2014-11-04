@@ -18,6 +18,7 @@
 
 var bitmap = require('node-bitmap');
 var path = require('path');
+var fs = require('fs');
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
@@ -40,14 +41,24 @@ exports.autoLogin = function (RegNo, DoB, callback) {
             callback(true, captchaImage);
         }
         else {
-            var captcha = new bitmap(captchaImage);
-            captcha.init();
-            console.log(captcha.isBitmap());
-            console.log(captcha.getWidth());
-            console.log(captcha.getHeight());
-            var rgba = captcha.getData();
-            console.log(rgba);
-
+            // var captchaBitmap = new bitmap(captchaImage);
+            // captchaBitmap.init();
+            console.log(captchaImage.length);
+            var captchaJson = [];
+            for (var i = captchaImage.length - (25 * 132); i < captchaImage.length; i++) {
+                captchaJson.push(captchaImage.readUInt8(i));
+            }
+            // var captchaJson = JSON.stringify(captchaBitmap.read(captchaBitmap.buffer, (captchaBitmap.buffer.length - (25 * 132)), 25 * 132));
+            console.log(captchaJson.length);
+            /*
+             var pixelMap = [];
+             for (var i = 0, len = captchaJson.length; i < len; i += 132) {
+             pixelMap.push(captchaJson.slice(i, i + 132));
+             }
+             fs.writeFile('pixels.json', pixelMap, function (err) {
+             if (err) throw err;
+             });
+             */
             try {
                 // TODO Parse Captcha
                 var tmp_captcha = '123456';
