@@ -1,0 +1,52 @@
+/*
+ *  VITacademics
+ *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
+    require('newrelic');
+}
+
+var log;
+if (process.env.LOGENTRIES_TOKEN) {
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
+
+var path = require('path');
+
+var app = require(path.join(__dirname, '..', 'app'));
+
+app.set('port', process.env.PORT || 3000);
+
+var onBind = function () {
+    var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
+    if (log) {
+        log.log('info', {MongoUri: mongoUri, Port: server.address().port});
+        if (process.env.HOSTNAME) {
+            log.log('info', {Application: process.env.HOSTNAME});
+        }
+    }
+    console.log('Node.js Express server listening on port ' + server.address().port);
+    console.log('Using MongoDB: ' + mongoUri);
+    if (process.env.HOSTNAME) {
+        console.log(process.env.HOSTNAME);
+    }
+};
+
+var server = app.listen(app.get('port'), onBind);
