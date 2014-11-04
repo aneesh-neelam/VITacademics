@@ -48,26 +48,30 @@ var spawn = function () {
 };
 
 var onBind = function () {
+    console.log('Started Worker Process, PID: ' + process.pid);
+};
+
+if (cluster.isMaster) {
     var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/VITacademics';
+    console.log('Node.js Express Server started, listening on port: ' + app.get('port'));
+    console.log('Using MongoDB: ' + mongoUri);
     if (log) {
-        log.log('info', {MongoUri: mongoUri, Port: server.address().port});
+        log.log('info', {MongoUri: mongoUri, Port: app.get('port')});
         if (process.env.HOSTNAME) {
             log.log('info', {Application: process.env.HOSTNAME});
         }
     }
-    console.log('Node.js Express server\'s child process listening on port ' + server.address().port);
-    console.log('Using MongoDB: ' + mongoUri);
     if (process.env.HOSTNAME) {
         console.log(process.env.HOSTNAME);
     }
-};
-
-if (cluster.isMaster) {
     for (var i = 0; i < processCount; ++i) {
         spawn();
     }
     cluster.on('death', function (worker) {
-        console.log('Worker ' + worker.pid + ' died. Spawning a new process. ');
+        console.log('Worker Process PID: ' + worker.pid + ' died. Spawning a new process. ');
+        if (log) {
+            log.debug('Worker Process PID: ' + worker.pid + ' died. Spawning a new process. ');
+        }
         delete workers[worker.pid];
         spawn();
     });
