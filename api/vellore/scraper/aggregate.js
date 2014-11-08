@@ -39,7 +39,7 @@ var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 exports.getData = function (RegNo, firsttime, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
-        var sem = process.env.VELLORE_SEM || 'FS';
+        var sem = process.env.VELLORE_CURRENT_SEMESTER || 'FS';
 
         var parallelTasks = {};
 
@@ -132,6 +132,7 @@ exports.getData = function (RegNo, firsttime, callback) {
                             }
                         };
                         if (firsttime) {
+                            delete results.Token.Error;
                             data.Timetable = results.Timetable.Timetable;
                             data.Token = results.Token;
                             mongo.update(data, ['Timetable', 'Courses'], onInsert);

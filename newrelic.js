@@ -27,10 +27,6 @@ if (process.env.LOGENTRIES_TOKEN) {
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
     var app_name = process.env.NEWRELIC_APP_NAME;
     var license = process.env.NEWRELIC_LICENSE;
-    if (log) {
-        log.info('Using New Relic');
-    }
-    console.log('Using New Relic');
 }
 
 exports.config = {

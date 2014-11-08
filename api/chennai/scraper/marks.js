@@ -101,10 +101,11 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                     var pblMarks = [];
                     var onEachPBL = function (i, elem) {
                         var $ = cheerio.load(scraper(this).html());
-                        var course = Math.floor(i / 8);
-                        var row = i % 8;
+                        var j = i - 1;
+                        var course = Math.floor(j / 7);
+                        var row = j % 7;
                         switch (row) {
-                            case 1:
+                            case 0:
                                 pblMarks[course] = {
                                     'Class Number': $('td').eq(1).text(),
                                     'Course Code': $('td').eq(2).text(),
@@ -120,42 +121,42 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                                     }
                                 };
                                 break;
-                            case 2:
+                            case 1:
                                 pblMarks[course].Details[1]['Max Marks'] = $('td').eq(1).text();
                                 pblMarks[course].Details[2]['Max Marks'] = $('td').eq(2).text();
                                 pblMarks[course].Details[3]['Max Marks'] = $('td').eq(3).text();
                                 pblMarks[course].Details[4]['Max Marks'] = $('td').eq(4).text();
                                 pblMarks[course].Details[5]['Max Marks'] = $('td').eq(5).text();
                                 break;
-                            case 3:
+                            case 2:
                                 pblMarks[course].Details[1]['Weightage'] = $('td').eq(1).text();
                                 pblMarks[course].Details[2]['Weightage'] = $('td').eq(2).text();
                                 pblMarks[course].Details[3]['Weightage'] = $('td').eq(3).text();
                                 pblMarks[course].Details[4]['Weightage'] = $('td').eq(4).text();
                                 pblMarks[course].Details[5]['Weightage'] = $('td').eq(5).text();
                                 break;
-                            case 4:
+                            case 3:
                                 pblMarks[course].Details[1]['Conducted On'] = $('td').eq(1).text();
                                 pblMarks[course].Details[2]['Conducted On'] = $('td').eq(2).text();
                                 pblMarks[course].Details[3]['Conducted On'] = $('td').eq(3).text();
                                 pblMarks[course].Details[4]['Conducted On'] = $('td').eq(4).text();
                                 pblMarks[course].Details[5]['Conducted On'] = $('td').eq(5).text();
                                 break;
-                            case 5:
+                            case 4:
                                 pblMarks[course].Details[1]['Status'] = $('td').eq(1).text();
                                 pblMarks[course].Details[2]['Status'] = $('td').eq(2).text();
                                 pblMarks[course].Details[3]['Status'] = $('td').eq(3).text();
                                 pblMarks[course].Details[4]['Status'] = $('td').eq(4).text();
                                 pblMarks[course].Details[5]['Status'] = $('td').eq(5).text();
                                 break;
-                            case 6:
+                            case 5:
                                 pblMarks[course].Details[1]['Scored Mark'] = $('td').eq(1).text();
                                 pblMarks[course].Details[2]['Scored Mark'] = $('td').eq(2).text();
                                 pblMarks[course].Details[3]['Scored Mark'] = $('td').eq(3).text();
                                 pblMarks[course].Details[4]['Scored Mark'] = $('td').eq(4).text();
                                 pblMarks[course].Details[5]['Scored Mark'] = $('td').eq(5).text();
                                 break;
-                            case 7:
+                            case 6:
                                 pblMarks[course].Details[1]['Scored %'] = $('td').eq(1).text();
                                 pblMarks[course].Details[2]['Scored %'] = $('td').eq(2).text();
                                 pblMarks[course].Details[3]['Scored %'] = $('td').eq(3).text();
