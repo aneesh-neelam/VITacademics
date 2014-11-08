@@ -21,6 +21,7 @@ var path = require('path');
 var router = express.Router();
 
 var api_data = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'scraper', 'aggregate'));
+var api_grades = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'scraper', 'grades'));
 
 
 router.get('/refresh', function (req, res) {
@@ -37,6 +38,15 @@ router.get('/first', function (req, res) {
         res.send(data);
     };
     api_data.getData(RegNo, true, onGetData)
+});
+
+router.get('/grades', function (req, res) {
+    var RegNo = req.query.regno;
+    var Sem = req.query.sem; // FS || WS
+    var onGetData = function (err, data) {
+        res.send(data);
+    };
+    api_grades.scrapeGrades(RegNo, Sem, onGetData)
 });
 
 module.exports = router;
