@@ -39,7 +39,7 @@ var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 exports.getData = function (RegNo, firsttime, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
-        var sem = process.env.VELLORE_SEM || 'FS';
+        var sem = process.env.VELLORE_CURRENT_SEMESTER || 'FS';
 
         var parallelTasks = {};
 
