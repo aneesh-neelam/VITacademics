@@ -39,7 +39,7 @@ var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 exports.getData = function (RegNo, firsttime, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
-        var sem = process.env.CHENNAI_CURRENT_SEMESTER || 'FS';
+        var sem = process.env.CHENNAI_CURRENT_SEMESTER || 'FS14';
 
         var parallelTasks = {};
 
