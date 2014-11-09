@@ -37,7 +37,7 @@ router.get('/manual', function (req, res) {
             res.end();
         }
     };
-    api_login.getCaptcha(RegNo, onGetCaptcha);
+    api_login.getCaptcha(RegNo.toUpperCase(), onGetCaptcha);
 });
 
 router.get('/auto', function (req, res) {
@@ -51,7 +51,7 @@ router.get('/auto', function (req, res) {
             res.send(loginResponse);
         }
     };
-    api_captcha.autologin(RegNo, DoB, onSubmit);
+    api_captcha.autologin(RegNo.toUpperCase(), DoB, onSubmit);
 });
 
 router.get('/submit', function (req, res) {
@@ -66,7 +66,7 @@ router.get('/submit', function (req, res) {
             res.send(loginResponse);
         }
     };
-    api_submit.submitCaptcha(RegNo, DoB, Captcha, onSubmit);
+    api_submit.submitCaptcha(RegNo.toUpperCase(), DoB, Captcha.toUpperCase(), onSubmit);
 });
 
 module.exports = router;

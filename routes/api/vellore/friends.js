@@ -29,7 +29,7 @@ router.get('/regenerate', function (req, res) {
     var onGetToken = function (err, data) {
         res.send(data);
     };
-    api_friends_generate.getToken(RegNo, onGetToken)
+    api_friends_generate.getToken(RegNo.toUpperCase(), onGetToken)
 });
 
 router.get('/share', function (req, res) {
@@ -44,7 +44,7 @@ router.get('/share', function (req, res) {
         var regno = req.query.regno;
         var dob = req.query.dob;
 
-        api_friends_share.getTimetableDoB(regno, dob, onGetTimetable)
+        api_friends_share.getTimetableDoB(regno.toUpperCase(), dob, onGetTimetable)
     }
 });
 
