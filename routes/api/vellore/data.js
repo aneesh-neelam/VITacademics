@@ -28,7 +28,7 @@ router.get('/refresh', function (req, res) {
     var onGetData = function (err, data) {
         res.send(data);
     };
-    api_data.getData(RegNo, false, onGetData)
+    api_data.getData(RegNo.toUpperCase(), false, onGetData)
 });
 
 router.get('/first', function (req, res) {
@@ -36,7 +36,7 @@ router.get('/first', function (req, res) {
     var onGetData = function (err, data) {
         res.send(data);
     };
-    api_data.getData(RegNo, true, onGetData)
+    api_data.getData(RegNo.toUpperCase(), true, onGetData)
 });
 
 module.exports = router;
