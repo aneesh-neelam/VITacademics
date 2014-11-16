@@ -33,7 +33,7 @@ router.get('/status', function (req, res) {
         platform: process.platform,
         arch: process.arch,
         serverStatus: 'OK',
-        lastUpdated: '30th September 2014'
+        lastUpdated: '16th November 2014'
     };
     res.render('status', status);
 });
