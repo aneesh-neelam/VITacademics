@@ -1,6 +1,7 @@
 /*
  *  VITacademics
  *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014  Karthik Balakrishnan <karthikb351@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,6 +18,8 @@
  */
 
 var path = require('path');
+
+var captchaParser = require(path.join(__dirname, 'captcha-parser'));
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
@@ -40,9 +43,8 @@ exports.autoLogin = function (RegNo, DoB, callback) {
         }
         else {
             try {
-                // TODO Parse Captcha
-                var tmp_captcha = '123456';
-                submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
+                var captcha = captchaParser.parseBuffer(captchaImage);
+                submit.submitCaptcha(RegNo, DoB, captcha, callback);
             }
             catch (ex) {
                 data.Error = errors.CaptchaParsing;
@@ -50,7 +52,7 @@ exports.autoLogin = function (RegNo, DoB, callback) {
                     log.log('debug', data);
                 }
                 console.log('Captcha Parsing Error');
-                callback(true, data);
+                callback(true, null);
             }
         }
     };

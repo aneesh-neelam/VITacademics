@@ -18,7 +18,8 @@
  */
 
 var path = require('path');
-// var fs = require('fs');
+
+var captchaParser = require(path.join(__dirname, 'captcha-parser'));
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
@@ -42,21 +43,8 @@ exports.autoLogin = function (RegNo, DoB, callback) {
         }
         else {
             try {
-                var pixelMap = getPixelMap(captchaImage);
-                /*
-                 console.log(pixelMap.length);
-                 for(var i = 0; i < pixelMap.length; ++i) {
-                 console.log(pixelMap[i].length);
-                 }
-                 // Uncomment require('fs') at the top
-                 fs.writeFile('pixel-map.json', pixelMap, function(err)
-                 {
-                 if(err) throw err;
-                 console.log('Pixel Map saved to file: pixel-map.json');
-                 });
-                 */
-                var tmp_captcha = '123456';
-                submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
+                var captcha = captchaParser.parseBuffer(captchaImage);
+                submit.submitCaptcha(RegNo, DoB, captcha, callback);
             }
             catch (ex) {
                 data.Error = errors.CaptchaParsing;
@@ -69,20 +57,4 @@ exports.autoLogin = function (RegNo, DoB, callback) {
         }
     };
     login.getCaptcha(RegNo, parseCaptcha);
-};
-
-var getPixelMap = function (bitmapBuffer) {
-    var pixelMap = [];
-    var subArray = [];
-    var row = 0;
-    for (var i = bitmapBuffer.length - (25 * 132), r = 0; i < bitmapBuffer.length; ++i, ++r) {
-        if (Math.floor(r / 132) !== row) {
-            row = Math.floor(r / 132);
-            pixelMap.push(subArray);
-            subArray = [];
-        }
-        subArray.push(bitmapBuffer.readUInt8(i));
-    }
-    pixelMap.push(subArray);
-    return pixelMap;
 };
