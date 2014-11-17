@@ -36,7 +36,7 @@ var timetable = require(path.join(__dirname, 'timetable'));
 var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 
 
-exports.getData = function (RegNo, firsttime, callback) {
+exports.getData = function (RegNo, DoB, firsttime, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
         if (cache.get(RegNo).DoB === DoB) {
@@ -57,7 +57,7 @@ exports.getData = function (RegNo, firsttime, callback) {
 
             if (firsttime) {
                 parallelTasks.Token = function (asyncCallback) {
-                    friends.getToken(RegNo, asyncCallback)
+                    friends.getToken(RegNo, DoB, asyncCallback)
                 };
             }
 

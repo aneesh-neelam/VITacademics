@@ -57,7 +57,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
 
             if (firsttime) {
                 parallelTasks.Token = function (asyncCallback) {
-                    friends.getToken(RegNo, asyncCallback)
+                    friends.getToken(RegNo, DoB, asyncCallback)
                 };
             }
 
