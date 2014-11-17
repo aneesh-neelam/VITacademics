@@ -26,18 +26,20 @@ var api_grades = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore'
 
 router.get('/refresh', function (req, res) {
     var RegNo = req.query.regno;
+    var DoB = req.query.dob;
     var onGetData = function (err, data) {
         res.send(data);
     };
-    api_data.getData(RegNo.toUpperCase(), false, onGetData)
+    api_data.getData(RegNo.toUpperCase(), DoB, false, onGetData)
 });
 
 router.get('/first', function (req, res) {
     var RegNo = req.query.regno;
+    var DoB = req.query.dob;
     var onGetData = function (err, data) {
         res.send(data);
     };
-    api_data.getData(RegNo.toUpperCase(), true, onGetData)
+    api_data.getData(RegNo.toUpperCase(), DoB, true, onGetData)
 });
 
 router.get('/grades', function (req, res) {

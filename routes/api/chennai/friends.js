@@ -26,10 +26,11 @@ var api_friends_share = require(path.join(__dirname, '..', '..', '..', 'api', 'c
 
 router.get('/regenerate', function (req, res) {
     var RegNo = req.query.regno;
+    var DoB = req.query.dob;
     var onGetToken = function (err, data) {
         res.send(data);
     };
-    api_friends_generate.getToken(RegNo.toUpperCase(), onGetToken)
+    api_friends_generate.getToken(RegNo.toUpperCase(), DoB, onGetToken)
 });
 
 router.get('/share', function (req, res) {
@@ -41,10 +42,10 @@ router.get('/share', function (req, res) {
         api_friends_share.getTimetableToken(token, onGetTimetable)
     }
     else if (req.query.regno && req.query.dob) {
-        var regno = req.query.regno;
-        var dob = req.query.dob;
+        var RegNo = req.query.regno;
+        var DoB = req.query.dob;
 
-        api_friends_share.getTimetableDoB(regno.toUpperCase(), dob, onGetTimetable)
+        api_friends_share.getTimetableDoB(RegNo.toUpperCase(), DoB, onGetTimetable)
     }
 });
 

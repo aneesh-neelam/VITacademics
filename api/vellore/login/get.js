@@ -58,7 +58,8 @@ exports.getCaptcha = function (RegNo, callback) {
                 return true;
             };
             Object.keys(response.cookies).forEach(onEach);
-            cache.put(RegNo, myCookie, validity * 60 * 1000);
+            var doc = {Cookie: myCookie, RegNo: RegNo};
+            cache.put(RegNo, doc, validity * 60 * 1000);
             callback(null, response.body);
         }
     };
