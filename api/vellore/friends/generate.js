@@ -20,7 +20,16 @@ var cache = require('memory-cache');
 var path = require('path');
 var underscore = require('underscore');
 
+var log;
+if (process.env.LOGENTRIES_TOKEN) {
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+                                token: process.env.LOGENTRIES_TOKEN
+                            });
+}
+
 var errors = require(path.join(__dirname, '..', '..', 'error'));
+var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 var resource = require(path.join(__dirname, '..', '..', 'token-resource'));
 
 
@@ -35,17 +44,38 @@ var generate = function (RegNo, validity, callback) {
     callback(null, token);
 };
 
-exports.getToken = function (RegNo, callback) {
-    var data = {};
-    var validity = 18; // In Hours
-    var onGeneration = function (err, token) {
-        data.Share = {
-            Token: token,
-            Validity: validity,
-            Issued: new Date().toUTCString()
-        };
-        data.Error = errors.codes.Success;
-        callback(err, data)
+exports.getToken = function (RegNo, DoB, callback) {
+    var keys = {
+        RegNo: 1,
+        DoB: 1
     };
-    generate(RegNo, validity, onGeneration);
+    var data = {RegNo: RegNo};
+    var onFetch = function (err, doc) {
+        if (err) {
+            if (log) {
+                log.log('debug', {
+                    Error: errors.codes.MongoDown
+                });
+            }
+            console.log('MongoDB is down');
+            callback(true, {Error: errors.codes.MongoDown});
+        }
+        if (doc) {
+            var validity = 18; // In Hours
+            var onGeneration = function (err, token) {
+                data.Share = {
+                    Token: token,
+                    Validity: validity,
+                    Issued: new Date().toUTCString()
+                };
+                data.Error = errors.codes.Success;
+                callback(err, data);
+            };
+            generate(RegNo, validity, onGeneration);
+        }
+        else {
+            callback(false, {Error: errors.codes.Invalid});
+        }
+    };
+    mongo.fetch({RegNo: RegNo, DoB: DoB}, keys, onFetch);
 };

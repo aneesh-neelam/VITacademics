@@ -28,7 +28,7 @@ var errors = require(path.join(__dirname, '..', '..', 'error'));
 exports.scrapeMarks = function (RegNo, sem, callback) {
     var marksUri = 'http://27.251.102.132/parent/marks.asp?sem=' + sem;
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(RegNo);
+    var myCookie = cache.get(RegNo).Cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
 
     var onRequest = function (response) {

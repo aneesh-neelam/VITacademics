@@ -39,116 +39,117 @@ var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 exports.getData = function (RegNo, firsttime, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
-        var sem = process.env.CHENNAI_CURRENT_SEMESTER || 'FS14';
+        if (cache.get(RegNo).DoB === DoB) {
+            var sem = process.env.CHENNAI_CURRENT_SEMESTER || 'FS14';
 
-        var parallelTasks = {};
+            var parallelTasks = {};
 
-        parallelTasks.Attendance = function (asyncCallback) {
-            attendance.scrapeAttendance(RegNo, sem, asyncCallback)
-        };
-
-        parallelTasks.Marks = function (asyncCallback) {
-            marks.scrapeMarks(RegNo, sem, asyncCallback)
-        };
-        parallelTasks.Timetable = function (asyncCallback) {
-            timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
-        };
-
-        if (firsttime) {
-            parallelTasks.Token = function (asyncCallback) {
-                friends.getToken(RegNo, asyncCallback)
+            parallelTasks.Attendance = function (asyncCallback) {
+                attendance.scrapeAttendance(RegNo, sem, asyncCallback)
             };
-        }
 
-        var onFinish = function (err, results) {
-            if (err || results.Timetable.Error.Code !== 0) {
-                data.Error = results.Timetable.Error;
-                if (log) {
-                    log.log('debug', data);
-                }
-                console.log(data.Error);
-                callback(true, data);
-            }
-            else {
-                delete results.Timetable.Error;
-                data.Courses = results.Timetable.Courses;
-                var forEachCourse = function (element, asyncCallback) {
-                    var foundAttendance = false;
-                    var foundMarks = false;
-                    var forEachAttendance = function (elt, i, arr) {
-                        if (element['Class Number'] === elt['Class Number']) {
-                            foundAttendance = true;
-                            elt.Supported = 'yes';
-                            delete elt['Class Number'];
-                            delete elt['Course Code'];
-                            delete elt['Course Title'];
-                            delete elt['Course Type'];
-                            delete elt['Slot'];
-                            element.Attendance = elt;
-                        }
-                    };
-                    var forEachMarks = function (elt, i, arr) {
-                        if (element['Class Number'] === elt['Class Number']) {
-                            foundMarks = true;
-                            if (elt['Type'] !== 'Project') {
-                                elt.Supported = 'yes';
-                            }
-                            else {
-                                elt.Supported = 'no';
-                            }
-                            delete elt['Class Number'];
-                            delete elt['Course Code'];
-                            delete elt['Course Title'];
-                            delete elt['Course Type'];
-                            element.Marks = elt;
-                        }
-                    };
-                    results.Attendance.forEach(forEachAttendance);
-                    results.Marks.forEach(forEachMarks);
-                    var noData = {
-                        Supported: 'no'
-                    };
-                    if (!foundAttendance) {
-                        element.Attendance = noData;
-                    }
-                    if (!foundMarks) {
-                        element.Marks = noData;
-                    }
-                    asyncCallback(null, element);
+            parallelTasks.Marks = function (asyncCallback) {
+                marks.scrapeMarks(RegNo, sem, asyncCallback)
+            };
+            parallelTasks.Timetable = function (asyncCallback) {
+                timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
+            };
+
+            if (firsttime) {
+                parallelTasks.Token = function (asyncCallback) {
+                    friends.getToken(RegNo, asyncCallback)
                 };
-                var doneCollate = function (err, newData) {
-                    if (err) {
-                        callback(true, errors.codes.Other);
+            }
+
+            var onFinish = function (err, results) {
+                if (err || results.Timetable.Error.Code !== 0) {
+                    data.Error = results.Timetable.Error;
+                    if (log) {
+                        log.log('debug', data);
                     }
-                    else {
-                        data.Courses = newData;
-                        var onInsert = function (err) {
-                            if (err) {
-                                data.Error = errors.codes.MongoDown;
-                                if (log) {
-                                    log.log('debug', data);
-                                }
-                                console.log('MongoDB connection failed');
+                    console.log(data.Error);
+                    callback(true, data);
+                }
+                else {
+                    delete results.Timetable.Error;
+                    data.Courses = results.Timetable.Courses;
+                    var forEachCourse = function (element, asyncCallback) {
+                        var foundAttendance = false;
+                        var foundMarks = false;
+                        var forEachAttendance = function (elt, i, arr) {
+                            if (element['Class Number'] === elt['Class Number']) {
+                                foundAttendance = true;
+                                elt.Supported = 'yes';
+                                delete elt['Class Number'];
+                                delete elt['Course Code'];
+                                delete elt['Course Title'];
+                                delete elt['Course Type'];
+                                delete elt['Slot'];
+                                element.Attendance = elt;
                             }
                         };
-                        if (firsttime) {
-                            delete results.Token.Error;
-                            data.Timetable = results.Timetable.Timetable;
-                            data.Token = results.Token;
-                            mongo.update(data, ['Timetable', 'Courses'], onInsert);
+                        var forEachMarks = function (elt, i, arr) {
+                            if (element['Class Number'] === elt['Class Number']) {
+                                foundMarks = true;
+                                elt.Supported = 'yes';
+                                delete elt['Class Number'];
+                                delete elt['Course Code'];
+                                delete elt['Course Title'];
+                                delete elt['Course Type'];
+                                element.Marks = elt;
+                            }
+                        };
+                        results.Attendance.forEach(forEachAttendance);
+                        results.Marks.forEach(forEachMarks);
+                        var noData = {
+                            Supported: 'no'
+                        };
+                        if (!foundAttendance) {
+                            element.Attendance = noData;
+                        }
+                        if (!foundMarks) {
+                            element.Marks = noData;
+                        }
+                        asyncCallback(null, element);
+                    };
+                    var doneCollate = function (err, newData) {
+                        if (err) {
+                            callback(true, errors.codes.Other);
                         }
                         else {
-                            mongo.update(data, ['Courses'], onInsert);
+                            data.Courses = newData;
+                            var onInsert = function (err) {
+                                if (err) {
+                                    data.Error = errors.codes.MongoDown;
+                                    if (log) {
+                                        log.log('debug', data);
+                                    }
+                                    console.log('MongoDB connection failed');
+                                }
+                            };
+                            if (firsttime) {
+                                delete results.Token.Error;
+                                data.Timetable = results.Timetable.Timetable;
+                                data.Token = results.Token;
+                                mongo.update(data, ['Timetable', 'Courses'], onInsert);
+                            }
+                            else {
+                                mongo.update(data, ['Courses'], onInsert);
+                            }
+                            data.Error = errors.codes.Success;
+                            callback(null, data);
                         }
-                        data.Error = errors.codes.Success;
-                        callback(null, data);
-                    }
-                };
-                async.map(data.Courses, forEachCourse, doneCollate);
-            }
-        };
+                    };
+                    async.map(data.Courses, forEachCourse, doneCollate);
+                }
+            };
 
-        async.parallel(parallelTasks, onFinish);
+            async.parallel(parallelTasks, onFinish);
+        }
+        else {
+            data.Error = errors.codes.Invalid;
+            callback(true, data);
+        }
     }
     else {
         data.Error = errors.codes.TimedOut;

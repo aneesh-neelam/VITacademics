@@ -38,7 +38,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
         var CookieJar = unirest.jar();
-        var myCookie = cache.get(RegNo);
+        var myCookie = cache.get(RegNo).Cookie;
         var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
         var submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
         CookieJar.add(unirest.cookie(cookieSerial), submitUri);
@@ -70,7 +70,9 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
                 }
                 finally {
                     if (login) {
-                        var doc = {"RegNo": RegNo, "DoB": DoB};
+                        var validity = 3; // In Minutes
+                        var doc = {RegNo: RegNo, DoB: DoB, Cookie: myCookie};
+                        cache.put(RegNo, doc, validity * 60 * 1000);
                         var onInsert = function (err) {
                             if (err) {
                                 if (log) {
