@@ -44,11 +44,12 @@ router.get('/first', function (req, res) {
 
 router.get('/grades', function (req, res) {
     var RegNo = req.query.regno;
+    var DoB = req.query.dob;
     var Sem = req.query.sem; // FS || WS
     var onGetData = function (err, data) {
         res.send(data);
     };
-    api_grades.scrapeGrades(RegNo, Sem, onGetData)
+    api_grades.scrapeGrades(RegNo, DoB, Sem, onGetData)
 });
 
 module.exports = router;

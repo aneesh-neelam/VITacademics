@@ -25,27 +25,33 @@ var unirest = require('unirest');
 var errors = require(path.join(__dirname, '..', '..', 'error'));
 
 
-exports.scrapeGrades = function (RegNo, sem, callback) {
+exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
-        var Sem = sem || process.env.CHENNAI_PREVIOUS_SEMESTER || 'WS';
-        var timetableUri = 'http://27.251.102.132/parent/grade.asp?sem=' + Sem;
-        var CookieJar = unirest.jar();
-        var myCookie = cache.get(RegNo);
-        var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
-        var onRequest = function (response) {
-            if (response.error) {
-                callback(true, {Error: errors.codes.Down});
-            }
-            else {
-                // TODO Grades
-                callback(null, 'Nothing');
-            }
-        };
-        CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
-        unirest.post(timetableUri)
-            .jar(CookieJar)
-            .end(onRequest);
+        if (cache.get(RegNo).DoB === DoB) {
+            var Sem = sem || process.env.CHENNAI_PREVIOUS_SEMESTER || 'WS';
+            var timetableUri = 'http://27.251.102.132/parent/grade.asp?sem=' + Sem;
+            var CookieJar = unirest.jar();
+            var myCookie = cache.get(RegNo).Cookie;
+            var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
+            var onRequest = function (response) {
+                if (response.error) {
+                    callback(true, {Error: errors.codes.Down});
+                }
+                else {
+                    // TODO Grades
+                    callback(null, 'Nothing');
+                }
+            };
+            CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
+            unirest.post(timetableUri)
+                .jar(CookieJar)
+                .end(onRequest);
+        }
+        else {
+            data.Error = errors.codes.Invalid;
+            callback(true, data);
+        }
     }
     else {
         data.Error = errors.codes.TimedOut;
