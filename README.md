@@ -3,11 +3,11 @@ VITacademics
 
 VITacademics Backend and Web App
 
-This is currently hosted [here] (http://vitacademics-rel.herokuapp.com/)
+This is currently hosted [here](http://vitacademics-rel.herokuapp.com/)
 
-For the API Documentation, check out the [Project Wiki] (https://github.com/aneesh-neelam/VITacademics/wiki)
+For the API Documentation, check out the [Project Wiki](https://github.com/aneesh-neelam/VITacademics/wiki)
 
-Please report any bugs or issues [here] (https://github.com/aneesh-neelam/VITacademics/issues) 
+Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics/issues) 
 
 #### Instructions for Installation:
 ###### Install Node.js 0.10.x 
