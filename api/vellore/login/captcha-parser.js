@@ -43,6 +43,7 @@ var getPixelMapFromBuffer = function (bitmapBuffer) {
         subArray.push(bitmapBuffer.readUInt8(i));
     }
     pixelMap.push(subArray);
+    pixelMap.reverse();
     return pixelMap;
 };
 
