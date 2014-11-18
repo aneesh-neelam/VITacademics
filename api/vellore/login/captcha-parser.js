@@ -24,7 +24,6 @@ var captchaResource = require(path.join(__dirname, 'captcha-resource'));
 
 var parseBuffer = function (bitmapBuffer) {
     var pixelMap = getPixelMapFromBuffer(bitmapBuffer);
-    // TODO Parse Captcha
     var captcha = parsePixelMap(pixelMap);
     console.log(captcha);
     return captcha;
@@ -48,6 +47,7 @@ var getPixelMapFromBuffer = function (bitmapBuffer) {
 };
 
 var parsePixelMap = function (pixelMap) {
+    // TODO Parse Captcha
     var image = pixelMap;
     var keys = captchaResource.keyMask;
     var order = captchaResource.keyOrder;
