@@ -17,6 +17,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var path = require('path');
+
 var captchaResource = require(path.join(__dirname, 'captcha-resource'));
 
 
