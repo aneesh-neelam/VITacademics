@@ -24,6 +24,7 @@ var unirest = require('unirest');
 
 var errors = require(path.join(__dirname, '..', '..', 'error'));
 
+
 exports.scrapeGrades = function (RegNo, sem, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
