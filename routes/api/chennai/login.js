@@ -21,7 +21,7 @@ var path = require('path');
 var router = express.Router();
 
 var api_login = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'login', 'get'));
-var api_captcha = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'login', 'captcha'));
+var api_captcha = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'login', 'auto'));
 var api_submit = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'login', 'submit'));
 
 
