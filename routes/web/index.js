@@ -21,11 +21,13 @@ var router = express.Router();
 
 
 router.get('/', function (req, res) {
-    res.render('index', { });
+    var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
+    res.render('index', {GoogleAnalytics: GoogleAnalytics});
 });
 
 router.get('/status', function (req, res) {
     var port = process.env.PORT || 3000;
+    var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
     var status = {
         host: process.env.HOST || 'localhost',
         hostname: process.env.HOSTNAME || 'http://localhost:' + port + '/',
@@ -33,7 +35,8 @@ router.get('/status', function (req, res) {
         platform: process.platform,
         arch: process.arch,
         serverStatus: 'OK',
-        lastUpdated: '17th November 2014'
+        lastUpdated: '18th November 2014',
+        GoogleAnalytics: GoogleAnalytics
     };
     res.render('status', status);
 });

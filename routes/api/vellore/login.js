@@ -51,7 +51,7 @@ router.get('/auto', function (req, res) {
             res.send(loginResponse);
         }
     };
-    api_captcha.autologin(RegNo.toUpperCase(), DoB, onSubmit);
+    api_captcha.autoLogin(RegNo.toUpperCase(), DoB, onSubmit);
 });
 
 router.get('/submit', function (req, res) {
