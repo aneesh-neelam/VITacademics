@@ -48,7 +48,7 @@ var getCaptcha = function (img) {
     var order = captchaResource.keyOrder;
     var keys = captchaResource.keyMask;
 
-    function matchImg(rx, ry, pix, mask) {
+    var matchImg = function (rx, ry, pix, mask) {
         var flag = 1;
         var breakflag = 0;
         var count = 0;
@@ -80,7 +80,7 @@ var getCaptcha = function (img) {
             flag = 0;
         }
         return flag;
-    }
+    };
 
     var skip = function (start, end, y) {
         var flag = 0;
