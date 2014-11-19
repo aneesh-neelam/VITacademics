@@ -69,7 +69,7 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                                                       'Course Code': $('td').eq(2).text(),
                                                       'Course Title': $('td').eq(3).text(),
                                                       'Course Type': courseType,
-                                                      'LTPC': $('td').eq(5).text(),
+                                                      'LTPC': $('td').eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
                                                       'Course Mode': $('td').eq(6).text(),
                                                       'Course Option': $('td').eq(7).text(),
                                                       'Slot': $('td').eq(8).text(),
