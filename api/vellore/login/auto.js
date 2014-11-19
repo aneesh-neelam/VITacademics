@@ -1,6 +1,7 @@
 /*
  *  VITacademics
  *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014  Karthik Balakrishnan <karthikb351@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,6 +19,8 @@
 
 var path = require('path');
 
+var captchaParser = require(path.join(__dirname, 'captcha-parser'));
+
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
@@ -30,7 +33,8 @@ var errors = require(path.join(__dirname, '..', '..', 'error'));
 var login = require(path.join(__dirname, 'get'));
 var submit = require(path.join(__dirname, 'submit'));
 
-exports.autologin = function (RegNo, DoB, callback) {
+
+exports.autoLogin = function (RegNo, DoB, callback) {
     var data = {
         RegNo: RegNo
     };
@@ -40,9 +44,8 @@ exports.autologin = function (RegNo, DoB, callback) {
         }
         else {
             try {
-                // TODO Parse Captcha
-                var tmp_captcha = '123456';
-                submit.submitCaptcha(RegNo, DoB, tmp_captcha, callback);
+                var captcha = captchaParser.parseBuffer(captchaImage);
+                submit.submitCaptcha(RegNo, DoB, captcha, callback);
             }
             catch (ex) {
                 data.Error = errors.CaptchaParsing;
@@ -50,7 +53,7 @@ exports.autologin = function (RegNo, DoB, callback) {
                     log.log('debug', data);
                 }
                 console.log('Captcha Parsing Error');
-                callback(true, data);
+                callback(true, null);
             }
         }
     };
