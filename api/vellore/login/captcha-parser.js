@@ -17,12 +17,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var path = require('path');
+
 var captchaResource = require(path.join(__dirname, 'captcha-resource'));
 
 
 var parseBuffer = function (bitmapBuffer) {
     var pixelMap = getPixelMapFromBuffer(bitmapBuffer);
-    // TODO Parse Captcha
     var captcha = parsePixelMap(pixelMap);
     console.log(captcha);
     return captcha;
@@ -41,10 +42,12 @@ var getPixelMapFromBuffer = function (bitmapBuffer) {
         subArray.push(bitmapBuffer.readUInt8(i));
     }
     pixelMap.push(subArray);
+    pixelMap.reverse();
     return pixelMap;
 };
 
 var parsePixelMap = function (pixelMap) {
+    // TODO Parse Captcha
     var image = pixelMap;
     var keys = captchaResource.keyMask;
     var order = captchaResource.keyOrder;
