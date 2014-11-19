@@ -79,6 +79,8 @@ app.use('/api/chennai/login', api_chennai_login);
 app.use('/api/chennai/data', api_chennai_data);
 app.use('/api/chennai/friends', api_chennai_friends);
 
+var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
@@ -97,7 +99,8 @@ if (app.get('env') === 'development') {
         res.render('error', {
             message: err.message,
             status: err.status,
-            stack: err.stack
+            stack: err.stack,
+            GoogleAnalytics: GoogleAnalytics
         });
     });
 }
@@ -111,7 +114,8 @@ app.use(function (err, req, res, next) {
     res.render('error', {
         message: err.message,
         status: err.status,
-        stack: ''
+        stack: '',
+        GoogleAnalytics: GoogleAnalytics
     });
 });
 

@@ -599,5 +599,5 @@ var order = [
     'Z'
 ];
 
-module.exports.keys = keys;
-module.exports.order = order;
+module.exports.keyMask = keys;
+module.exports.keyOrder = order;
