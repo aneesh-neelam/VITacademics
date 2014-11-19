@@ -21,7 +21,7 @@ var path = require('path');
 var router = express.Router();
 
 var api_login = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'login', 'get'));
-var api_captcha = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'login', 'captcha'));
+var api_captcha = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'login', 'auto'));
 var api_submit = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'login', 'submit'));
 
 
@@ -51,7 +51,7 @@ router.get('/auto', function (req, res) {
             res.send(loginResponse);
         }
     };
-    api_captcha.autologin(RegNo.toUpperCase(), DoB, onSubmit);
+    api_captcha.autoLogin(RegNo.toUpperCase(), DoB, onSubmit);
 });
 
 router.get('/submit', function (req, res) {
