@@ -40,7 +40,8 @@ exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
                 }
                 else {
                     // TODO Grades
-                    callback(null, 'Nothing');
+                    data.Error = errors.codes.ToDo;
+                    callback(true, data);
                 }
             };
             CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
