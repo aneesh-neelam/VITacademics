@@ -35,14 +35,14 @@ router.get('/status', function (req, res) {
         platform: process.platform,
         arch: process.arch,
         serverStatus: 'OK',
-        lastUpdated: '19th November 2014',
+        lastUpdated: '21st November 2014',
         GoogleAnalytics: GoogleAnalytics
     };
     res.render('status', status);
 });
 
 router.get('/api', function (req, res) {
-    res.send('API Documentation');
+    res.redirect('https://github.com/aneesh-neelam/VITacademics/wiki');
 });
 
 module.exports = router;
