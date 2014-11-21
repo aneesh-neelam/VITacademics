@@ -39,7 +39,7 @@ router.get('/share', function (req, res) {
     };
     if (req.query.token) {
         var token = req.query.token;
-        api_friends_share.getTimetableToken(token, onGetTimetable)
+        api_friends_share.getTimetableToken(token.toUpperCase(), onGetTimetable)
     }
     else if (req.query.regno && req.query.dob) {
         var RegNo = req.query.regno;
