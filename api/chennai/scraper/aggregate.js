@@ -163,9 +163,8 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                                     }
                                 };
                                 if (firsttime) {
-                                    delete results.Token.Error;
                                     data.Timetable = results.Timetable.Timetable;
-                                    data.Token = results.Token;
+                                    data.Share = results.Token.Share;
                                     mongo.update(data, ['Timetable', 'Courses', 'Refreshed'], onInsert);
                                 }
                                 else {

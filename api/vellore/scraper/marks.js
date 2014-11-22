@@ -43,60 +43,68 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                 var scraper = cheerio.load(response.body);
                 var PBL = false;
                 var scraperPBL;
+                var CBL = true;
                 if (scraper('table table').length > 1) {
                     PBL = true;
                     scraperPBL = cheerio.load(scraper('table table').eq(1).html());
                 }
+                else if (scraper('u').eq(1).text().substring(0, 3) === 'PBL') {
+                    PBL = true;
+                    scraperPBL = cheerio.load(scraper('table table').eq(0).html());
+                    CBL = false;
+                }
                 scraper = cheerio.load(scraper('table table').eq(0).html());
-                var onEach = function (i, elem) {
-                    var $ = cheerio.load(scraper(this).html());
-                    if (i > 1) {
-                        var length = $('td').length;
-                        var classnbr = $('td').eq(1).text();
-                        if (length == 18) {
-                            marks.push({
-                                           'Class Number': classnbr,
-                                           'Course Code': $('td').eq(2).text(),
-                                           'Course Title': $('td').eq(3).text(),
-                                           'Course Type': $('td').eq(4).text(),
-                                           'CAT I': $('td').eq(6).text(),
-                                           'CAT I Status': $('td').eq(5).text(),
-                                           'CAT II': $('td').eq(8).text(),
-                                           'CAT II Status': $('td').eq(7).text(),
-                                           'Quiz I': $('td').eq(10).text(),
-                                           'Quiz I Status': $('td').eq(9).text(),
-                                           'Quiz II': $('td').eq(12).text(),
-                                           'Quiz II Status': $('td').eq(11).text(),
-                                           'Quiz III': $('td').eq(14).text(),
-                                           'Quiz III Status': $('td').eq(13).text(),
-                                           'Assignment': $('td').eq(16).text(),
-                                           'Assignment Status': $('td').eq(15).text(),
-                                           'Type': 'CBL'
-                                       });
+                if (CBL) {
+                    var onEach = function (i, elem) {
+                        var $ = cheerio.load(scraper(this).html());
+                        if (i > 1) {
+                            var length = $('td').length;
+                            var classnbr = $('td').eq(1).text();
+                            if (length == 18) {
+                                marks.push({
+                                               'Class Number': classnbr,
+                                               'Course Code': $('td').eq(2).text(),
+                                               'Course Title': $('td').eq(3).text(),
+                                               'Course Type': $('td').eq(4).text(),
+                                               'CAT I': $('td').eq(6).text(),
+                                               'CAT I Status': $('td').eq(5).text(),
+                                               'CAT II': $('td').eq(8).text(),
+                                               'CAT II Status': $('td').eq(7).text(),
+                                               'Quiz I': $('td').eq(10).text(),
+                                               'Quiz I Status': $('td').eq(9).text(),
+                                               'Quiz II': $('td').eq(12).text(),
+                                               'Quiz II Status': $('td').eq(11).text(),
+                                               'Quiz III': $('td').eq(14).text(),
+                                               'Quiz III Status': $('td').eq(13).text(),
+                                               'Assignment': $('td').eq(16).text(),
+                                               'Assignment Status': $('td').eq(15).text(),
+                                               'Type': 'CBL'
+                                           });
+                            }
+                            else if (length == 8) {
+                                marks.push({
+                                               'Class Number': classnbr,
+                                               'Course Code': $('td').eq(2).text(),
+                                               'Course Title': $('td').eq(3).text(),
+                                               'Course Type': $('td').eq(4).text(),
+                                               'Lab CAM': $('td').eq(7).text(),
+                                               'Lab CAM Status': $('td').eq(6).text(),
+                                               'Type': 'Lab'
+                                           });
+                            }
+                            else if (length == 6) {
+                                marks.push({
+                                               'Class Number': classnbr,
+                                               'Course Code': $('td').eq(2).text(),
+                                               'Course Title': $('td').eq(3).text(),
+                                               'Course Type': $('td').eq(4).text(),
+                                               'Type': 'Project'
+                                           });
+                            }
                         }
-                        else if (length == 8) {
-                            marks.push({
-                                           'Class Number': classnbr,
-                                           'Course Code': $('td').eq(2).text(),
-                                           'Course Title': $('td').eq(3).text(),
-                                           'Course Type': $('td').eq(4).text(),
-                                           'Lab CAM': $('td').eq(7).text(),
-                                           'Lab CAM Status': $('td').eq(6).text(),
-                                           'Type': 'Lab'
-                                       });
-                        }
-                        else if (length == 6) {
-                            marks.push({
-                                           'Class Number': classnbr,
-                                           'Course Code': $('td').eq(2).text(),
-                                           'Course Title': $('td').eq(3).text(),
-                                           'Course Type': $('td').eq(4).text(),
-                                           'Type': 'Project'
-                                       });
-                        }
-                    }
-                };
-                scraper('tr').each(onEach);
+                    };
+                    scraper('tr').each(onEach);
+                }
                 if (PBL) {
                     var pblMarks = [];
                     var onEachPBL = function (i, elem) {
