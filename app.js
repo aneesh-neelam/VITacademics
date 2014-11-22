@@ -20,6 +20,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express = require('express');
 var favicon = require('serve-favicon');
+var ga = require('node-ga');
 var logger = require('morgan');
 var path = require('path');
 
@@ -69,6 +70,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 var cookieSecret = process.env.COOKIE_SECRET || 'randomsecretstring';
 app.use(cookieParser(cookieSecret, {signed: true}));
 
+var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
+app.use(ga(GoogleAnalytics, {
+    safe: true
+}));
+
 app.use('/', routes);
 app.use('/api/vellore', api_vellore);
 app.use('/api/vellore/login', api_vellore_login);
@@ -78,8 +84,6 @@ app.use('/api/chennai', api_chennai);
 app.use('/api/chennai/login', api_chennai_login);
 app.use('/api/chennai/data', api_chennai_data);
 app.use('/api/chennai/friends', api_chennai_friends);
-
-var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
