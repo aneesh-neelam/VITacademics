@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /*
  *  VITacademics
  *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
@@ -18,8 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var tokenSystem = require('../api/vellore/friends/generate');
+var path = require('path');
 
-tokenSystem.getToken('11BCE0260', function (err, token) {
-    console.log(token);
-});
+var api_login = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'login', 'get'));
+var api_captcha = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'login', 'auto'));
+var api_submit = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'login', 'submit'));
+var api_data = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'scraper', 'aggregate'));
+var api_friends_generate = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'friends', 'generate'));
+var api_friends_share = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'friends', 'share'));
+
+// TODO tests
