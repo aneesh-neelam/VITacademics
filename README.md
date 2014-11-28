@@ -13,11 +13,6 @@ Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacad
 ###### Install Node.js 0.10.x 
 ###### Install all dependencies
     $ npm install
-###### Install frontend dependencies manually (Microsoft Windows only)
-The npm postinstall script to run bower may not work properly on Windows, see [this issue](https://github.com/aneesh-neelam/VITacademics/issues/1)
-
-    # npm -g install bower
-    $ bower install
 ###### Run the server locally at port 3000 or "PORT" in process.env
     $ npm start
     
