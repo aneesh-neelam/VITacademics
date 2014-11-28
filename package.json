@@ -1,6 +1,6 @@
 {
     "name": "VITacademics",
-    "version": "0.8.7",
+    "version": "0.8.8",
     "description": "VITacademics Backend and Web App",
     "homepage": "http://vitacademics-dev.herokuapp.com/",
     "bugs": {
@@ -53,8 +53,7 @@
         "newrelic": "~1.14.0",
         "node-logentries": "~0.1.4",
         "underscore": "~1.7.0",
-        "node-ga": "~0.1.1",
-        "mocha": "~2.0.1"
+        "node-ga": "~0.1.1"
     },
     "repository": {
         "type": "git",
@@ -69,5 +68,8 @@
     ],
     "engines": {
         "node": "0.10.x"
+    },
+    "devDependencies": {
+        "mocha": "~2.0.1"
     }
 }
