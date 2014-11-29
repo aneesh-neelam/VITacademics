@@ -131,7 +131,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                             results.Attendance.forEach(forEachAttendance);
                             results.Marks.forEach(forEachMarks);
                             var noData = {
-                                Supported: 'no'
+                                Supported: false
                             };
                             if (!foundAttendance) {
                                 element.Attendance = noData;
