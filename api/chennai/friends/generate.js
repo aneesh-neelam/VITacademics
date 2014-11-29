@@ -61,7 +61,7 @@ exports.getToken = function (RegNo, DoB, callback) {
             callback(true, {Error: errors.codes.MongoDown});
         }
         if (doc) {
-            var validity = 18; // In Hours
+            var validity = 24; // In Hours
             var onGeneration = function (err, token) {
                 data.Share = {
                     Token: token,

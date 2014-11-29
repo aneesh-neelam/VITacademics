@@ -131,7 +131,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                             results.Attendance.forEach(forEachAttendance);
                             results.Marks.forEach(forEachMarks);
                             var noData = {
-                                Supported: 'no'
+                                Supported: false
                             };
                             if (!foundAttendance) {
                                 element.Attendance = noData;
@@ -165,10 +165,18 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                                 if (firsttime) {
                                     data.Timetable = results.Timetable.Timetable;
                                     data.Share = results.Token.Share;
-                                    mongo.update(data, ['Timetable', 'Courses', 'Refreshed'], onInsert);
+                                    data.Withdrawn = results.Timetable.Withdrawn;
+                                    mongo.update(data, ['Timetable', 'Courses', 'Refreshed', 'Withdrawn'], onInsert);
+                                }
+                                else if (results.Timetable.Withdrawn) {
+                                    data.Timetable = results.Timetable.Timetable;
+                                    data.Withdrawn = results.Timetable.Withdrawn;
+                                    mongo.update(data, ['Timetable', 'Courses', 'Refreshed', 'Withdrawn'], onInsert);
+                                    delete data.Timetable;
                                 }
                                 else {
-                                    mongo.update(data, ['Courses', 'Refreshed'], onInsert);
+                                    data.Withdrawn = results.Timetable.Withdrawn;
+                                    mongo.update(data, ['Courses', 'Refreshed', 'Withdrawn'], onInsert);
                                 }
                                 data.Cached = false;
                                 data.Error = errors.codes.Success;

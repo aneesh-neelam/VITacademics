@@ -38,11 +38,15 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
         else {
             var timetable = {
                 Courses: [],
-                Timetable: {}
+                Timetable: {},
+                Withdrawn: false
             };
             try {
                 var tmp = {};
                 var scraper = cheerio.load(response.body);
+                if (scraper('table table').length == 3) {
+                    timetable.Withdrawn = true;
+                }
                 scraper = cheerio.load(scraper('table table').eq(0).html());
                 var length = scraper('tr').length;
                 var onEach = function (i, elem) {
@@ -80,9 +84,14 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                     }
                 };
                 scraper('tr').each(onEach);
-                if (firsttime) {
+                if (firsttime || timetable.Withdrawn) {
                     scraper = cheerio.load(response.body);
-                    scraper = cheerio.load(scraper('table table').eq(1).html());
+                    if (timetable.Withdrawn) {
+                        scraper = cheerio.load(scraper('table table').eq(2).html());
+                    }
+                    else {
+                        scraper = cheerio.load(scraper('table table').eq(1).html());
+                    }
                     length = scraper('tr').length;
                     var onEachRow = function (i, elem) {
                         var day = [];
