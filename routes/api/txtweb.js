@@ -29,7 +29,7 @@ router.get('/', function (req, res) {
     if (message && mobileHash) {
         var onGet = function (err, messages) {
             if (err) {
-
+                res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: false});
             }
             else {
                 res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: false});

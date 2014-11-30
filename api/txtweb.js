@@ -36,7 +36,36 @@ var vellore_aggregate = require(path.join(__dirname, 'vellore', 'scraper', 'aggr
 
 
 var parseMessage = function (message, mobile, callback) {
-    callback(false, ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub']);
+    var reply = [
+        'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
+        'Get Course Details:  @vitacademics course [CourseCode]',
+        'Get Today\'s Classes: @vitacademics today',
+        'Get Attendance: @vitacademics attendance',
+        'Get Marks: @vitacademics marks',
+        'Help - @vitacademics help'
+    ];
+    var args = message.toUpperCase().split();
+    if (args[0] === 'REGISTER') {
+        // TODO
+        reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    }
+    else if (args[0] === 'COURSE') {
+        // TODO
+        reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    }
+    else if (args[0] === 'TODAY') {
+        // TODO
+        reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    }
+    else if (args[0] === 'ATTENDANCE') {
+        // TODO
+        reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    }
+    else if (args[0] === 'MARKS') {
+        // TODO
+        reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    }
+    callback(false, reply);
 };
 
 module.exports.parseMessage = parseMessage;
