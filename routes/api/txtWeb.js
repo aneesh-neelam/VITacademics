@@ -21,9 +21,9 @@ var router = express.Router();
 
 
 router.get('/', function (req, res) {
-    if (res.query['txtweb-message'] && res.query['txtweb-mobile']) {
-        console.log(res.query['txtweb-message']);
-        console.log(res.query['txtweb-mobile']);
+    if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
+        console.log(req.query['txtweb-message']);
+        console.log(req.query['txtweb-mobile']);
     }
     else {
         var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
