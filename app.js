@@ -38,6 +38,7 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 var routes = require(path.join(__dirname, 'routes', 'web', 'index'));
+var api_txtWeb = require(path.join(__dirname, 'routes', 'api', 'txtWeb'));
 var api_vellore = require(path.join(__dirname, 'routes', 'api', 'vellore', 'index'));
 var api_vellore_login = require(path.join(__dirname, 'routes', 'api', 'vellore', 'login'));
 var api_vellore_data = require(path.join(__dirname, 'routes', 'api', 'vellore', 'data'));
@@ -76,6 +77,7 @@ app.use(ga(GoogleAnalytics, {
 }));
 
 app.use('/', routes);
+app.use('/api/txtweb', api_txtWeb);
 app.use('/api/vellore', api_vellore);
 app.use('/api/vellore/login', api_vellore_login);
 app.use('/api/vellore/data', api_vellore_data);
