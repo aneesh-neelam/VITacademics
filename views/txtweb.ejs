@@ -26,7 +26,7 @@
     <meta name="author" content="Aneesh Neelam <neelam.aneesh@gmail.com>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="txtweb-appkey" content="f137b995-5146-4c2e-b8d4-5df474f39316"/>
-    <title>TxtWeb Service | VITacademics</title>
+    <title>SMS | VITacademics</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/status.css"/>
     <link rel="stylesheet" type="text/css" href="/bower_components/foundation/css/foundation.css"/>
     <script type="text/javascript" src="/bower_components/modernizr/modernizr.js"></script>
@@ -47,5 +47,15 @@
     </script>
 </head>
 <body>
+<% if (instructions) { %>
+<h4>List of Commands</h4>
+<% } %>
+<% for(var i = 0; i < messages.length; ++i) { %>
+<label><%= messages[i] %></label>
+<% } %>
+<% if (instructions) { %>
+<br>
+<h6>Send SMS to 51115</h6>
+<% } %>
 </body>
 </html>

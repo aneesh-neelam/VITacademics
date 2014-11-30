@@ -21,13 +21,26 @@ var router = express.Router();
 
 
 router.get('/', function (req, res) {
-    if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
+    var message = req.query['txtweb-message'];
+    var mobileHash = req.query['txtweb-mobile'];
+    var messages = [];
+    if (message && mobileHash) {
         console.log(req.query['txtweb-message']);
         console.log(req.query['txtweb-mobile']);
+        messages = [];
+        res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: false});
     }
     else {
         var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
-        res.render('txtweb', {GoogleAnalytics: GoogleAnalytics});
+        messages = [
+            'Register with VITacademics SMS - @vitacademics register [Campus] [RegNo] [DoB]',
+            'Course Details - @vitacademics course [CourseCode]',
+            'Today\'s Classes - @vitacademics today',
+            'Attendance - @vitacademics attendance',
+            'Marks - @vitacademics marks',
+            'Help - @vitacademics help'
+        ];
+        res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: true});
     }
 });
 
