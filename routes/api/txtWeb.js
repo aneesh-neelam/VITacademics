@@ -33,11 +33,11 @@ router.get('/', function (req, res) {
     else {
         var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
         messages = [
-            'Register with VITacademics SMS - @vitacademics register [Campus] [RegNo] [DoB]',
-            'Course Details - @vitacademics course [CourseCode]',
-            'Today\'s Classes - @vitacademics today',
-            'Attendance - @vitacademics attendance',
-            'Marks - @vitacademics marks',
+            'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
+            'Get Course Details:  @vitacademics course [CourseCode]',
+            'Get Today\'s Classes: @vitacademics today',
+            'Get Attendance: @vitacademics attendance',
+            'Get Marks: @vitacademics marks',
             'Help - @vitacademics help'
         ];
         res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: true});
