@@ -23,6 +23,7 @@ var router = express.Router();
 router.get('/', function (req, res) {
     var message = req.query['txtweb-message'];
     var mobileHash = req.query['txtweb-mobile'];
+    var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
     var messages = [];
     if (message && mobileHash) {
         console.log(req.query['txtweb-message']);
@@ -31,7 +32,6 @@ router.get('/', function (req, res) {
         res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: false});
     }
     else {
-        var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
         messages = [
             'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
             'Get Course Details:  @vitacademics course [CourseCode]',
