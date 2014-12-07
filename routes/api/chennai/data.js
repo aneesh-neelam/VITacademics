@@ -27,7 +27,7 @@ router.get('/refresh', function (req, res) {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
     var onGetData = function (err, data) {
-        res.send(data);
+        res.json(data);
     };
     api_data.getData(RegNo.toUpperCase(), DoB, false, onGetData)
 });
@@ -36,7 +36,7 @@ router.get('/first', function (req, res) {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
     var onGetData = function (err, data) {
-        res.send(data);
+        res.json(data);
     };
     api_data.getData(RegNo.toUpperCase(), DoB, true, onGetData)
 });
