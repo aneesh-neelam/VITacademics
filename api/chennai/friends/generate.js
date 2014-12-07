@@ -28,7 +28,7 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 var resource = require(path.join(__dirname, '..', '..', 'token-resource'));
 
@@ -46,36 +46,36 @@ var generate = function (RegNo, validity, callback) {
 
 exports.getToken = function (RegNo, DoB, callback) {
     var keys = {
-        RegNo: 1,
-        DoB: 1
+        reg_no: 1,
+        dob: 1
     };
-    var data = {RegNo: RegNo};
+    var data = {reg_no: RegNo};
     var onFetch = function (err, doc) {
         if (err) {
             if (log) {
                 log.log('debug', {
-                    Error: errors.codes.MongoDown
+                    status: status.codes.mongoDown
                 });
             }
             console.log('MongoDB is down');
-            callback(true, {Error: errors.codes.MongoDown});
+            callback(true, {status: status.codes.mongoDown});
         }
         if (doc) {
             var validity = 24; // In Hours
             var onGeneration = function (err, token) {
-                data.Share = {
-                    Token: token,
-                    Validity: validity,
-                    Issued: new Date().toJSON()
+                data.share = {
+                    token: token,
+                    validity: validity,
+                    issued: new Date().toJSON()
                 };
-                data.Error = errors.codes.Success;
+                data.status = status.codes.success;
                 callback(err, data);
             };
             generate(RegNo, validity, onGeneration);
         }
         else {
-            callback(false, {Error: errors.codes.Invalid});
+            callback(false, {status: status.codes.invalid});
         }
     };
-    mongo.fetch({RegNo: RegNo, DoB: DoB}, keys, onFetch);
+    mongo.fetch({reg_no: RegNo, dob: DoB}, keys, onFetch);
 };
