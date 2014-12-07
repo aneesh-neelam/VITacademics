@@ -51,7 +51,6 @@ exports.getTimetableToken = function (token, callback) {
                 callback(true, {status: status.codes.mongoDown});
             }
             else if (doc) {
-                console.log(doc);
                 if (doc.timetable && doc.courses && doc.reg_no) {
                     var forEachCourse = function (elt, i, arr) {
                         delete elt['attendance'];
@@ -101,7 +100,6 @@ exports.getTimetableDoB = function (RegNo, DoB, callback) {
             callback(true, {status: status.codes.mongoDown});
         }
         else if (doc) {
-            console.log(doc);
             if (doc.timetable && doc.courses && doc.reg_no) {
                 var forEachCourse = function (elt, i, arr) {
                     delete elt['attendance'];
