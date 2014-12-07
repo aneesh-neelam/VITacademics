@@ -30,12 +30,12 @@ var status = require(path.join(__dirname, '..', '..', 'status'));
 exports.scrapeAttendance = function (RegNo, sem, callback) {
     var attendanceUri = 'http://27.251.102.132/parent/attn_report.asp?sem=' + sem;
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(RegNo).Cookie;
+    var myCookie = cache.get(RegNo).cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response) {
         if (response.error) {
             callback(false, [
-                {Error: errors.codes.Down}
+                {status: status.codes.vitDown}
             ]);
         }
         else {
@@ -68,12 +68,12 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                 };
                 scraper('tr').each(onEach);
                 var doDetails = function (doc, asyncCallback) {
-                    var detailsUri = 'http://27.251.102.132/parent/attn_report_details.asp';
+                    var detailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
                     CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
                     var onPost = function (response) {
                         if (response.error) {
                             asyncCallback(false, [
-                                {Error: errors.codes.Down}
+                                {status: status.codes.vitDown}
                             ]);
                         }
                         else {
@@ -94,11 +94,11 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                                     }
                                 };
                                 scraper('tr').each(onDay);
-                                doc.Details = details;
+                                doc.details = details;
                                 asyncCallback(null, doc);
                             }
                             catch (ex) {
-                                doc.Details = [];
+                                doc.details = [];
                                 asyncCallback(false, doc);
                             }
                         }
@@ -113,7 +113,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
             catch (ex) {
                 // Scraping Attendance failed
                 callback(false, [
-                    {Error: errors.codes.Invalid}
+                    {status: status.codes.invalid}
                 ]);
             }
         }
