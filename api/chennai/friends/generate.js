@@ -66,7 +66,7 @@ exports.getToken = function (RegNo, DoB, callback) {
                 data.Share = {
                     Token: token,
                     Validity: validity,
-                    Issued: new Date().toUTCString()
+                    Issued: new Date().toJSON()
                 };
                 data.Error = errors.codes.Success;
                 callback(err, data);
