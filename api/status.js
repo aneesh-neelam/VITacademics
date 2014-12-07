@@ -17,7 +17,7 @@
  */
 
 var error = {
-    success: {message: 'Successful execution', Code: 0},
+    success: {message: 'Successful execution', code: 0},
     timedOut: {message: 'Session timed out', code: 11},
     invalid: {message: 'Invalid credentials or captcha', code: 12},
     captchaParsing: {message: 'Error parsing captcha', code: 13},

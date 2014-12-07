@@ -47,15 +47,15 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                     if (i > 0) {
                         var classnbr = $('input[name=classnbr]').attr('value');
                         attendance.push({
-                                            'Class Number': classnbr,
-                                            'Course Code': $('td').eq(1).text(),
-                                            'Course Title': $('td').eq(2).text(),
-                                            'Course Type': $('td').eq(3).text(),
-                                            'Slot': $('td').eq(4).text(),
-                                            'Registration Date': $('td').eq(5).text(),
-                                            'Attended Classes': $('td').eq(6).text(),
-                                            'Total Classes': $('td').eq(7).text(),
-                                            'Attendance Percentage': $('td').eq(8).text(),
+                                            'class_number': classnbr,
+                                            'course_code': $('td').eq(1).text(),
+                                            'course_title': $('td').eq(2).text(),
+                                            'course_type': $('td').eq(3).text(),
+                                            'slot': $('td').eq(4).text(),
+                                            'registration_date': $('td').eq(5).text(),
+                                            'attended_classes': $('td').eq(6).text(),
+                                            'total_classes': $('td').eq(7).text(),
+                                            'attendance_percentage': $('td').eq(8).text(),
                                             'form': {
                                                 'semcode': $('input[name=semcode]').attr('value'),
                                                 'from_date': $('input[name=from_date]').attr('value'),
@@ -85,10 +85,10 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                                     var $ = cheerio.load(scraper(this).html());
                                     if (i > 1) {
                                         details.push({
-                                                         'Sl': $('td').eq(0).text(),
-                                                         'Date': $('td').eq(1).text(),
-                                                         'Status': $('td').eq(3).text(),
-                                                         'Reason': $('td').eq(5).text()
+                                                         'sl': $('td').eq(0).text(),
+                                                         'date': $('td').eq(1).text(),
+                                                         'status': $('td').eq(3).text(),
+                                                         'reason': $('td').eq(5).text()
                                                      });
                                     }
                                 };
