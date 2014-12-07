@@ -147,7 +147,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                             }
                             else {
                                 data.Courses = newData;
-                                data.Refreshed = new Date().toUTCString();
+                                data.Refreshed = new Date().toJSON();
                                 var onInsert = function (err) {
                                     if (err) {
                                         data.Error = errors.codes.MongoDown;
