@@ -58,7 +58,7 @@ exports.getCaptcha = function (RegNo, callback) {
                 return true;
             };
             Object.keys(response.cookies).forEach(onEach);
-            var doc = {Cookie: myCookie, RegNo: RegNo};
+            var doc = {cookie: myCookie, reg_no: RegNo};
             cache.put(RegNo, doc, validity * 60 * 1000);
             callback(null, response.body);
         }

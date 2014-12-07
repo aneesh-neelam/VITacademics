@@ -23,18 +23,18 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeAttendance = function (RegNo, sem, callback) {
     var attendanceUri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + sem;
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(RegNo).Cookie;
+    var myCookie = cache.get(RegNo).cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response) {
         if (response.error) {
             callback(false, [
-                {Error: errors.codes.Down}
+                {status: status.codes.vitDown}
             ]);
         }
         else {
@@ -72,7 +72,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                     var onPost = function (response) {
                         if (response.error) {
                             asyncCallback(false, [
-                                {Error: errors.codes.Down}
+                                {status: status.codes.vitDown}
                             ]);
                         }
                         else {
@@ -93,11 +93,11 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                                     }
                                 };
                                 scraper('tr').each(onDay);
-                                doc.Details = details;
+                                doc.details = details;
                                 asyncCallback(null, doc);
                             }
                             catch (ex) {
-                                doc.Details = [];
+                                doc.details = [];
                                 asyncCallback(false, doc);
                             }
                         }
@@ -112,7 +112,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
             catch (ex) {
                 // Scraping Attendance failed
                 callback(false, [
-                    {Error: errors.codes.Invalid}
+                    {status: status.codes.invalid}
                 ]);
             }
         }
