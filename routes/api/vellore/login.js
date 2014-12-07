@@ -45,10 +45,10 @@ router.get('/auto', function (req, res) {
     var DoB = req.query.dob;
     var onSubmit = function (err, loginResponse) {
         if (err) {
-            res.send(loginResponse);
+            res.json(loginResponse);
         }
         else {
-            res.send(loginResponse);
+            res.json(loginResponse);
         }
     };
     api_captcha.autoLogin(RegNo.toUpperCase(), DoB, onSubmit);
@@ -60,10 +60,10 @@ router.get('/submit', function (req, res) {
     var Captcha = req.query.captcha;
     var onSubmit = function (err, loginResponse) {
         if (err) {
-            res.send(loginResponse);
+            res.json(loginResponse);
         }
         else {
-            res.send(loginResponse);
+            res.json(loginResponse);
         }
     };
     api_submit.submitCaptcha(RegNo.toUpperCase(), DoB, Captcha.toUpperCase(), onSubmit);

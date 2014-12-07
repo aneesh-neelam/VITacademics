@@ -2,6 +2,7 @@
  *  VITacademics
  *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2014  Saurabh Joshi <battlex94@gmail.com>
+ *  Copyright (C) 2014  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,29 +24,29 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
     var timetableUri = 'https://academics.vit.ac.in/parent/timetable.asp?sem=' + sem;
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(RegNo).Cookie;
+    var myCookie = cache.get(RegNo).cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response) {
         if (response.error) {
-            callback(true, {Error: errors.codes.Down});
+            callback(true, {status: status.codes.vitDown});
         }
         else {
             var timetable = {
-                Courses: [],
-                Timetable: {},
-                Withdrawn: false
+                courses: [],
+                timetable: {},
+                withdrawn: false
             };
             try {
                 var tmp = {};
                 var scraper = cheerio.load(response.body);
                 if (scraper('table table').length == 3) {
-                    timetable.Withdrawn = true;
+                    timetable.withdrawn = true;
                 }
                 scraper = cheerio.load(scraper('table table').eq(0).html());
                 var length = scraper('tr').length;
@@ -68,25 +69,25 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                             code = code + 'LO';
                         }
                         tmp[code] = classnbr;
-                        timetable['Courses'].push({
-                                                      'Class Number': classnbr,
-                                                      'Course Code': $('td').eq(2).text(),
-                                                      'Course Title': $('td').eq(3).text(),
-                                                      'Course Type': courseType,
-                                                      'LTPC': $('td').eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
-                                                      'Course Mode': $('td').eq(6).text(),
-                                                      'Course Option': $('td').eq(7).text(),
-                                                      'Slot': $('td').eq(8).text(),
-                                                      'Venue': $('td').eq(9).text(),
-                                                      'Faculty': $('td').eq(10).text(),
-                                                      'Registration Status': $('td').eq(11).text()
+                        timetable['courses'].push({
+                                                      'class_number': classnbr,
+                                                      'course_code': $('td').eq(2).text(),
+                                                      'course_title': $('td').eq(3).text(),
+                                                      'course_type': courseType,
+                                                      'ltpc': $('td').eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
+                                                      'course_mode': $('td').eq(6).text(),
+                                                      'course_option': $('td').eq(7).text(),
+                                                      'slot': $('td').eq(8).text(),
+                                                      'venue': $('td').eq(9).text(),
+                                                      'faculty': $('td').eq(10).text(),
+                                                      'registration_status': $('td').eq(11).text()
                                                   });
                     }
                 };
                 scraper('tr').each(onEach);
-                if (firsttime || timetable.Withdrawn) {
+                if (firsttime || timetable.withdrawn) {
                     scraper = cheerio.load(response.body);
-                    if (timetable.Withdrawn) {
+                    if (timetable.withdrawn) {
                         scraper = cheerio.load(scraper('table table').eq(2).html());
                     }
                     else {
@@ -110,34 +111,34 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                             }
                             switch (i) {
                                 case 2:
-                                    timetable.Timetable.Mon = day;
+                                    timetable.timetable.mon = day;
                                     break;
                                 case 3:
-                                    timetable.Timetable.Tue = day;
+                                    timetable.timetable.tue = day;
                                     break;
                                 case 4:
-                                    timetable.Timetable.Wed = day;
+                                    timetable.timetable.wed = day;
                                     break;
                                 case 5:
-                                    timetable.Timetable.Thu = day;
+                                    timetable.timetable.thu = day;
                                     break;
                                 case 6:
-                                    timetable.Timetable.Fri = day;
+                                    timetable.timetable.fri = day;
                                     break;
                                 case 7:
-                                    timetable.Timetable.Sat = day;
+                                    timetable.timetable.sat = day;
                                     break;
                             }
                         }
                     };
                     scraper('tr').each(onEachRow);
                 }
-                timetable.Error = errors.codes.Success;
+                timetable.status = status.codes.success;
                 callback(null, timetable);
             }
             catch (ex) {
                 // Scraping Timetable failed
-                callback(true, {Error: errors.codes.Invalid});
+                callback(true, {status: status.codes.invalid});
             }
         }
     };

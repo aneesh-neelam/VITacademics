@@ -2,6 +2,7 @@
  *  VITacademics
  *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2014  Saurabh Joshi <battlex94@gmail.com>
+ *  Copyright (C) 2014  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,7 +24,7 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
@@ -69,17 +70,17 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                         }
                         tmp[code] = classnbr;
                         timetable['Courses'].push({
-                                                      'Class Number': classnbr,
-                                                      'Course Code': $('td').eq(2).text(),
-                                                      'Course Title': $('td').eq(3).text(),
-                                                      'Course Type': courseType,
-                                                      'LTPC': $('td').eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
-                                                      'Course Mode': $('td').eq(6).text(),
-                                                      'Course Option': $('td').eq(7).text(),
-                                                      'Slot': $('td').eq(8).text(),
-                                                      'Venue': $('td').eq(9).text(),
-                                                      'Faculty': $('td').eq(10).text(),
-                                                      'Registration Status': $('td').eq(11).text()
+                                                      'class_number': classnbr,
+                                                      'course_code': $('td').eq(2).text(),
+                                                      'course_title': $('td').eq(3).text(),
+                                                      'course_type': courseType,
+                                                      'ltpc': $('td').eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
+                                                      'course_mode': $('td').eq(6).text(),
+                                                      'course_option': $('td').eq(7).text(),
+                                                      'slot': $('td').eq(8).text(),
+                                                      'venue': $('td').eq(9).text(),
+                                                      'faculty': $('td').eq(10).text(),
+                                                      'registration_status': $('td').eq(11).text()
                                                   });
                     }
                 };

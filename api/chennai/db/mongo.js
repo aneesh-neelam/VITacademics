@@ -43,8 +43,8 @@ exports.update = function (doc, keys, callback) {
                     callback(null);
                 }
             };
-            collection.findAndModify({RegNo: doc.RegNo}, [
-                ['RegNo', 'asc']
+            collection.findAndModify({reg_no: doc.reg_no}, [
+                ['reg_no', 'asc']
             ], {$set: change}, {safe: true, new: true, upsert: true}, onUpdate);
         }
     };
