@@ -38,7 +38,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
     var data = {reg_no: RegNo};
     if (cache.get(RegNo) !== null) {
         var CookieJar = unirest.jar();
-        var myCookie = cache.get(RegNo).Cookie;
+        var myCookie = cache.get(RegNo).cookie;
         var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
         var submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
         CookieJar.add(unirest.cookie(cookieSerial), submitUri);
@@ -71,7 +71,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
                 finally {
                     if (login) {
                         var validity = 3; // In Minutes
-                        var doc = {reg_no: RegNo, dob: DoB, Cookie: myCookie};
+                        var doc = {reg_no: RegNo, dob: DoB, cookie: myCookie};
                         cache.put(RegNo, doc, validity * 60 * 1000);
                         var onInsert = function (err) {
                             if (err) {
@@ -84,7 +84,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
                                 console.log('MongoDB connection failed');
                             }
                         };
-                        mongo.update(doc, ['dob'], onInsert);
+                        mongo.update(doc, ['reg_no', 'dob'], onInsert);
                         data.status = status.codes.success;
                         callback(null, data);
                     }

@@ -22,19 +22,19 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeMarks = function (RegNo, sem, callback) {
     var marksUri = 'https://academics.vit.ac.in/parent/marks.asp?sem=' + sem;
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(RegNo).Cookie;
+    var myCookie = cache.get(RegNo).cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
 
     var onRequest = function (response) {
         if (response.error) {
             callback(false, [
-                {Error: errors.codes.Down}
+                {status: status.codes.vitDown}
             ]);
         }
         else {
@@ -121,55 +121,55 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                                     'course_type': $('td').eq(4).text(),
                                     'type': 'PBL',
                                     'details': {
-                                        1: {Title: $('td').eq(6).text()},
-                                        2: {Title: $('td').eq(7).text()},
-                                        3: {Title: $('td').eq(8).text()},
-                                        4: {Title: $('td').eq(9).text()},
-                                        5: {Title: $('td').eq(10).text()}
+                                        1: {title: $('td').eq(6).text()},
+                                        2: {title: $('td').eq(7).text()},
+                                        3: {title: $('td').eq(8).text()},
+                                        4: {title: $('td').eq(9).text()},
+                                        5: {title: $('td').eq(10).text()}
                                     }
                                 };
                                 break;
                             case 1:
-                                pblMarks[course].details[1]['Max Marks'] = $('td').eq(1).text();
-                                pblMarks[course].details[2]['Max Marks'] = $('td').eq(2).text();
-                                pblMarks[course].details[3]['Max Marks'] = $('td').eq(3).text();
-                                pblMarks[course].details[4]['Max Marks'] = $('td').eq(4).text();
-                                pblMarks[course].details[5]['Max Marks'] = $('td').eq(5).text();
+                                pblMarks[course].details[1]['max_marks'] = $('td').eq(1).text();
+                                pblMarks[course].details[2]['max_marks'] = $('td').eq(2).text();
+                                pblMarks[course].details[3]['max_marks'] = $('td').eq(3).text();
+                                pblMarks[course].details[4]['max_marks'] = $('td').eq(4).text();
+                                pblMarks[course].details[5]['max_marks'] = $('td').eq(5).text();
                                 break;
                             case 2:
-                                pblMarks[course].details[1]['Weightage'] = $('td').eq(1).text();
-                                pblMarks[course].details[2]['Weightage'] = $('td').eq(2).text();
-                                pblMarks[course].details[3]['Weightage'] = $('td').eq(3).text();
-                                pblMarks[course].details[4]['Weightage'] = $('td').eq(4).text();
-                                pblMarks[course].details[5]['Weightage'] = $('td').eq(5).text();
+                                pblMarks[course].details[1]['weightage'] = $('td').eq(1).text();
+                                pblMarks[course].details[2]['weightage'] = $('td').eq(2).text();
+                                pblMarks[course].details[3]['weightage'] = $('td').eq(3).text();
+                                pblMarks[course].details[4]['weightage'] = $('td').eq(4).text();
+                                pblMarks[course].details[5]['weightage'] = $('td').eq(5).text();
                                 break;
                             case 3:
-                                pblMarks[course].details[1]['Conducted On'] = $('td').eq(1).text();
-                                pblMarks[course].details[2]['Conducted On'] = $('td').eq(2).text();
-                                pblMarks[course].details[3]['Conducted On'] = $('td').eq(3).text();
-                                pblMarks[course].details[4]['Conducted On'] = $('td').eq(4).text();
-                                pblMarks[course].details[5]['Conducted On'] = $('td').eq(5).text();
+                                pblMarks[course].details[1]['conducted_on'] = $('td').eq(1).text();
+                                pblMarks[course].details[2]['conducted_on'] = $('td').eq(2).text();
+                                pblMarks[course].details[3]['conducted_on'] = $('td').eq(3).text();
+                                pblMarks[course].details[4]['conducted_on'] = $('td').eq(4).text();
+                                pblMarks[course].details[5]['conducted_on'] = $('td').eq(5).text();
                                 break;
                             case 4:
-                                pblMarks[course].details[1]['Status'] = $('td').eq(1).text();
-                                pblMarks[course].details[2]['Status'] = $('td').eq(2).text();
-                                pblMarks[course].details[3]['Status'] = $('td').eq(3).text();
-                                pblMarks[course].details[4]['Status'] = $('td').eq(4).text();
-                                pblMarks[course].details[5]['Status'] = $('td').eq(5).text();
+                                pblMarks[course].details[1]['status'] = $('td').eq(1).text();
+                                pblMarks[course].details[2]['status'] = $('td').eq(2).text();
+                                pblMarks[course].details[3]['status'] = $('td').eq(3).text();
+                                pblMarks[course].details[4]['status'] = $('td').eq(4).text();
+                                pblMarks[course].details[5]['status'] = $('td').eq(5).text();
                                 break;
                             case 5:
-                                pblMarks[course].details[1]['Scored Mark'] = $('td').eq(1).text();
-                                pblMarks[course].details[2]['Scored Mark'] = $('td').eq(2).text();
-                                pblMarks[course].details[3]['Scored Mark'] = $('td').eq(3).text();
-                                pblMarks[course].details[4]['Scored Mark'] = $('td').eq(4).text();
-                                pblMarks[course].details[5]['Scored Mark'] = $('td').eq(5).text();
+                                pblMarks[course].details[1]['scored_mark'] = $('td').eq(1).text();
+                                pblMarks[course].details[2]['scored_mark'] = $('td').eq(2).text();
+                                pblMarks[course].details[3]['scored_mark'] = $('td').eq(3).text();
+                                pblMarks[course].details[4]['scored_mark'] = $('td').eq(4).text();
+                                pblMarks[course].details[5]['scored_mark'] = $('td').eq(5).text();
                                 break;
                             case 6:
-                                pblMarks[course].details[1]['Scored %'] = $('td').eq(1).text();
-                                pblMarks[course].details[2]['Scored %'] = $('td').eq(2).text();
-                                pblMarks[course].details[3]['Scored %'] = $('td').eq(3).text();
-                                pblMarks[course].details[4]['Scored %'] = $('td').eq(4).text();
-                                pblMarks[course].details[5]['Scored %'] = $('td').eq(5).text();
+                                pblMarks[course].details[1]['scored_%'] = $('td').eq(1).text();
+                                pblMarks[course].details[2]['scored_%'] = $('td').eq(2).text();
+                                pblMarks[course].details[3]['scored_%'] = $('td').eq(3).text();
+                                pblMarks[course].details[4]['scored_%'] = $('td').eq(4).text();
+                                pblMarks[course].details[5]['scored_%'] = $('td').eq(5).text();
                                 break;
                         }
                     };
@@ -181,7 +181,7 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
             catch (ex) {
                 // Scraping Marks failed
                 callback(false, [
-                    {Error: errors.codes.Invalid}
+                    {status: status.codes.invalid}
                 ]);
             }
         }
