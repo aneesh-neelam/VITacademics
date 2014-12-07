@@ -64,7 +64,7 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                             if (length == 18) {
                                 marks.push({
                                                'class_number': classnbr,
-                                               'course_Code': $('td').eq(2).text(),
+                                               'course_code': $('td').eq(2).text(),
                                                'course_title': $('td').eq(3).text(),
                                                'course_type': $('td').eq(4).text(),
                                                'cat1': $('td').eq(6).text(),
