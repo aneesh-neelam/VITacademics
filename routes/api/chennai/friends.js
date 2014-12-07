@@ -28,14 +28,14 @@ router.get('/regenerate', function (req, res) {
     var RegNo = req.query.regno;
     var DoB = req.query.dob;
     var onGetToken = function (err, data) {
-        res.send(data);
+        res.json(data);
     };
     api_friends_generate.getToken(RegNo.toUpperCase(), DoB, onGetToken)
 });
 
 router.get('/share', function (req, res) {
     var onGetTimetable = function (err, data) {
-        res.send(data);
+        res.json(data);
     };
     if (req.query.token) {
         var token = req.query.token;
