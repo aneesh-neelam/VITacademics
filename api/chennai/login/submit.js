@@ -84,7 +84,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
                                 console.log('MongoDB connection failed');
                             }
                         };
-                        mongo.update(doc, ['DoB'], onInsert);
+                        mongo.update(doc, ['dob'], onInsert);
                         data.status = status.codes.success;
                         callback(null, data);
                     }

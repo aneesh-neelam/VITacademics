@@ -30,23 +30,23 @@ var status = require(path.join(__dirname, '..', '..', 'status'));
 exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
     var timetableUri = 'http://27.251.102.132/parent/timetable.asp?sem=' + sem;
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(RegNo).Cookie;
+    var myCookie = cache.get(RegNo).cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response) {
         if (response.error) {
-            callback(true, {Error: errors.codes.Down});
+            callback(true, {status: status.codes.vitDown});
         }
         else {
             var timetable = {
-                Courses: [],
-                Timetable: {},
-                Withdrawn: false
+                courses: [],
+                timetable: {},
+                withdrawn: false
             };
             try {
                 var tmp = {};
                 var scraper = cheerio.load(response.body);
                 if (scraper('table table').length == 3) {
-                    timetable.Withdrawn = true;
+                    timetable.withdrawn = true;
                 }
                 scraper = cheerio.load(scraper('table table').eq(0).html());
                 var length = scraper('tr').length;
@@ -69,7 +69,7 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                             code = code + 'LO';
                         }
                         tmp[code] = classnbr;
-                        timetable['Courses'].push({
+                        timetable['courses'].push({
                                                       'class_number': classnbr,
                                                       'course_code': $('td').eq(2).text(),
                                                       'course_title': $('td').eq(3).text(),
@@ -85,9 +85,9 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                     }
                 };
                 scraper('tr').each(onEach);
-                if (firsttime || timetable.Withdrawn) {
+                if (firsttime || timetable.withdrawn) {
                     scraper = cheerio.load(response.body);
-                    if (timetable.Withdrawn) {
+                    if (timetable.withdrawn) {
                         scraper = cheerio.load(scraper('table table').eq(2).html());
                     }
                     else {
@@ -111,34 +111,34 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                             }
                             switch (i) {
                                 case 2:
-                                    timetable.Timetable.Mon = day;
+                                    timetable.timetable.mon = day;
                                     break;
                                 case 3:
-                                    timetable.Timetable.Tue = day;
+                                    timetable.timetable.tue = day;
                                     break;
                                 case 4:
-                                    timetable.Timetable.Wed = day;
+                                    timetable.timetable.wed = day;
                                     break;
                                 case 5:
-                                    timetable.Timetable.Thu = day;
+                                    timetable.timetable.thu = day;
                                     break;
                                 case 6:
-                                    timetable.Timetable.Fri = day;
+                                    timetable.timetable.fri = day;
                                     break;
                                 case 7:
-                                    timetable.Timetable.Sat = day;
+                                    timetable.timetable.sat = day;
                                     break;
                             }
                         }
                     };
                     scraper('tr').each(onEachRow);
                 }
-                timetable.Error = errors.codes.Success;
+                timetable.status = status.codes.success;
                 callback(null, timetable);
             }
             catch (ex) {
                 // Scraping Timetable failed
-                callback(true, {Error: errors.codes.Invalid});
+                callback(true, {status: status.codes.invalid});
             }
         }
     };

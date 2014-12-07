@@ -91,7 +91,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                     };
                 }
 
-                var myCookie = cache.get(RegNo).Cookie;
+                var myCookie = cache.get(RegNo).cookie;
 
                 var onFinish = function (err, results) {
                     if (err || results.timetable.status.code !== 0) {
@@ -111,7 +111,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                             var forEachAttendance = function (elt, i, arr) {
                                 if (element['class_number'] === elt['class_number']) {
                                     foundAttendance = true;
-                                    elt.supported = 'yes';
+                                    elt.supported = true;
                                     delete elt['class_number'];
                                     delete elt['course_code'];
                                     delete elt['course_title'];
@@ -123,7 +123,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                             var forEachMarks = function (elt, i, arr) {
                                 if (element['class_number'] === elt['class_number']) {
                                     foundMarks = true;
-                                    elt.supported = 'yes';
+                                    elt.supported = true;
                                     delete elt['class_number'];
                                     delete elt['course_code'];
                                     delete elt['course_title'];
