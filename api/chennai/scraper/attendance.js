@@ -68,7 +68,7 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                 };
                 scraper('tr').each(onEach);
                 var doDetails = function (doc, asyncCallback) {
-                    var detailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
+                    var detailsUri = 'http://27.251.102.132/parent/attn_report_details.asp';
                     CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
                     var onPost = function (response) {
                         if (response.error) {
