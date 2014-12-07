@@ -58,13 +58,13 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                         callback(true, {status: status.codes.mongoDown});
                     }
                     else if (mongoDoc) {
-                        callback(true, {status: status.codes.noData});
-                    }
-                    else {
                         delete mongoDoc['_id'];
                         mongoDoc.status = status.codes.success;
                         mongoDoc.cached = true;
                         callback(false, mongoDoc);
+                    }
+                    else {
+                        callback(true, {status: status.codes.noData});
                     }
                 };
                 mongo.fetch({reg_no: RegNo, dob: DoB}, keys, onFetch);
