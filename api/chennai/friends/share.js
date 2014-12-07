@@ -112,7 +112,7 @@ exports.getTimetableDoB = function (RegNo, DoB, callback) {
                         courses: doc.courses,
                         timetable: doc.timetable
                     },
-                    status: status.codes.Success
+                    status: status.codes.success
                 };
                 callback(false, data)
             }
