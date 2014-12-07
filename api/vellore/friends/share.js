@@ -28,101 +28,101 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 
 
 exports.getTimetableToken = function (token, callback) {
     if (cache.get(token) !== null) {
         var keys = {
-            RegNo: 1,
-            Timetable: 1,
-            Courses: 1
+            reg_no: 1,
+            timetable: 1,
+            courses: 1
         };
         var onFetch = function (err, doc) {
             if (err) {
                 if (log) {
                     log.log('debug', {
-                        Token: token,
-                        Error: errors.codes.MongoDown
+                        token: token,
+                        status: status.codes.mongoDown
                     });
                 }
                 console.log('MongoDB is down');
-                callback(true, {Error: errors.codes.MongoDown});
+                callback(true, {status: status.codes.mongoDown});
             }
             else if (doc) {
-                if (doc.Timetable && doc.Courses && doc.RegNo) {
+                if (doc.timetable && doc.courses && doc.reg_no) {
                     var forEachCourse = function (elt, i, arr) {
-                        delete elt['Attendance'];
-                        delete elt['Marks'];
+                        delete elt['attendance'];
+                        delete elt['marks'];
                     };
-                    doc.Courses.forEach(forEachCourse);
+                    doc.courses.forEach(forEachCourse);
                     var data = {
-                        Data: {
-                            RegNo: doc.RegNo,
-                            Courses: doc.Courses,
-                            Timetable: doc.Timetable
+                        data: {
+                            reg_no: doc.reg_no,
+                            courses: doc.courses,
+                            timetable: doc.timetable
                         },
-                        Error: errors.codes.Success
+                        status: status.codes.success
                     };
                     callback(false, data);
                 }
                 else {
-                    callback(false, {Error: errors.codes.NoData});
+                    callback(false, {status: status.codes.noData})
                 }
             }
             else {
-                callback(false, {Error: errors.codes.NoData});
+                callback(false, {status: status.codes.noData})
             }
         };
-        mongo.fetch({RegNo: cache.get(token)}, keys, onFetch);
+        mongo.fetch({reg_no: cache.get(token)}, keys, onFetch);
     }
     else {
-        callback(false, {Error: errors.codes.Expired});
+        callback(false, {status: status.codes.tokenExpired});
     }
 };
 
 exports.getTimetableDoB = function (RegNo, DoB, callback) {
     var keys = {
-        RegNo: 1,
-        Timetable: 1,
-        Courses: 1
+        reg_no: 1,
+        timetable: 1,
+        courses: 1
     };
     var onFetch = function (err, doc) {
         if (err) {
             if (log) {
                 log.log('debug', {
-                    Token: token,
-                    Error: errors.codes.MongoDown
+                    reg_no: RegNo,
+                    status: status.codes.mongoDown
                 });
             }
             console.log('MongoDB is down');
-            callback(true, {Error: errors.codes.MongoDown});
+            callback(true, {status: status.codes.mongoDown});
         }
         else if (doc) {
-            if (doc.Timetable && doc.Courses && doc.RegNo) {
+            if (doc.timetable && doc.courses && doc.reg_no) {
                 var forEachCourse = function (elt, i, arr) {
-                    delete elt['Attendance'];
-                    delete elt['Marks'];
+                    delete elt['attendance'];
+                    delete elt['marks'];
                 };
-                doc.Courses.forEach(forEachCourse);
+                doc.courses.forEach(forEachCourse);
                 var data = {
-                    Data: {
-                        RegNo: doc.RegNo,
-                        Courses: doc.Courses,
-                        Timetable: doc.Timetable
+                    data: {
+                        reg_no: doc.reg_no,
+                        courses: doc.courses,
+                        timetable: doc.timetable
                     },
-                    Error: errors.codes.Success
+                    status: status.codes.Success
                 };
                 callback(false, data)
             }
             else {
-                callback(false, {Error: errors.codes.NoData});
+                callback(false, {status: status.codes.noData});
             }
         }
         else {
-            callback(false, {Error: errors.codes.NoData});
+            callback(false, {status: status.codes.noData});
         }
     };
-    mongo.fetch({RegNo: RegNo, DoB: DoB}, keys, onFetch);
+    mongo.fetch({reg_no: RegNo, dob: DoB}, keys, onFetch);
 };
