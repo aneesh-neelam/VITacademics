@@ -29,14 +29,14 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var login = require(path.join(__dirname, 'get'));
 var submit = require(path.join(__dirname, 'submit'));
 
 
 exports.autoLogin = function (RegNo, DoB, callback) {
     var data = {
-        RegNo: RegNo
+        reg_no: RegNo
     };
     var parseCaptcha = function (err, captchaImage) {
         if (err) {
@@ -48,7 +48,7 @@ exports.autoLogin = function (RegNo, DoB, callback) {
                 submit.submitCaptcha(RegNo, DoB, captcha, callback);
             }
             catch (ex) {
-                data.Error = errors.CaptchaParsing;
+                data.status = status.captchaParsing;
                 if (log) {
                     log.log('debug', data);
                 }

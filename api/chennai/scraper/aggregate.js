@@ -29,7 +29,7 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 var attendance = require(path.join(__dirname, 'attendance'));
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var marks = require(path.join(__dirname, 'marks'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 var timetable = require(path.join(__dirname, 'timetable'));
@@ -37,53 +37,56 @@ var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 
 
 exports.getData = function (RegNo, DoB, firsttime, callback) {
-    var data = {RegNo: RegNo};
+    var data = {reg_no: RegNo};
     if (cache.get(RegNo) !== null) {
-        if (cache.get(RegNo).DoB === DoB) {
-            if (cache.get(RegNo).Refresh && !(firsttime)) {
+        if (cache.get(RegNo).dob === DoB) {
+            if (cache.get(RegNo).refreshed && !(firsttime)) {
                 var keys = {
-                    RegNo: 1,
-                    Courses: 1,
-                    Refreshed: 1
+                    reg_no: 1,
+                    courses: 1,
+                    refreshed: 1
                 };
                 var onFetch = function (err, mongoDoc) {
                     if (err) {
                         if (log) {
                             log.log('debug', {
-                                RegNo: RegNo,
-                                Error: errors.codes.MongoDown
+                                reg_no: RegNo,
+                                status: status.codes.mongoDown
                             });
                         }
                         console.log('MongoDB is down');
-                        callback(true, {Error: errors.codes.MongoDown});
+                        callback(true, {status: status.codes.mongoDown});
+                    }
+                    else if (mongoDoc) {
+                        callback(true, {status: status.codes.noData});
                     }
                     else {
                         delete mongoDoc['_id'];
-                        mongoDoc.Error = errors.codes.Success;
-                        mongoDoc.Cached = true;
+                        mongoDoc.status = status.codes.success;
+                        mongoDoc.cached = true;
                         callback(false, mongoDoc);
                     }
                 };
-                mongo.fetch({RegNo: RegNo, DoB: DoB}, keys, onFetch);
+                mongo.fetch({reg_no: RegNo, dob: DoB}, keys, onFetch);
             }
             else {
                 var sem = process.env.CHENNAI_CURRENT_SEMESTER || 'FS14';
 
                 var parallelTasks = {};
 
-                parallelTasks.Attendance = function (asyncCallback) {
+                parallelTasks.attendance = function (asyncCallback) {
                     attendance.scrapeAttendance(RegNo, sem, asyncCallback)
                 };
 
-                parallelTasks.Marks = function (asyncCallback) {
+                parallelTasks.marks = function (asyncCallback) {
                     marks.scrapeMarks(RegNo, sem, asyncCallback)
                 };
-                parallelTasks.Timetable = function (asyncCallback) {
+                parallelTasks.timetable = function (asyncCallback) {
                     timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
                 };
 
                 if (firsttime) {
-                    parallelTasks.Token = function (asyncCallback) {
+                    parallelTasks.token = function (asyncCallback) {
                         friends.getToken(RegNo, DoB, asyncCallback)
                     };
                 }
@@ -91,66 +94,66 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                 var myCookie = cache.get(RegNo).Cookie;
 
                 var onFinish = function (err, results) {
-                    if (err || results.Timetable.Error.Code !== 0) {
-                        data.Error = results.Timetable.Error;
+                    if (err || results.timetable.status.code !== 0) {
+                        data.status = results.timetable.status;
                         if (log) {
                             log.log('debug', data);
                         }
-                        console.log(data.Error);
+                        console.log(data.status);
                         callback(true, data);
                     }
                     else {
-                        delete results.Timetable.Error;
-                        data.Courses = results.Timetable.Courses;
+                        delete results.timetable.status;
+                        data.courses = results.timetable.courses;
                         var forEachCourse = function (element, asyncCallback) {
                             var foundAttendance = false;
                             var foundMarks = false;
                             var forEachAttendance = function (elt, i, arr) {
-                                if (element['Class Number'] === elt['Class Number']) {
+                                if (element['class_number'] === elt['class_number']) {
                                     foundAttendance = true;
-                                    elt.Supported = 'yes';
-                                    delete elt['Class Number'];
-                                    delete elt['Course Code'];
-                                    delete elt['Course Title'];
-                                    delete elt['Course Type'];
-                                    delete elt['Slot'];
-                                    element.Attendance = elt;
+                                    elt.supported = 'yes';
+                                    delete elt['class_number'];
+                                    delete elt['course_code'];
+                                    delete elt['course_title'];
+                                    delete elt['course_type'];
+                                    delete elt['slot'];
+                                    element.attendance = elt;
                                 }
                             };
                             var forEachMarks = function (elt, i, arr) {
-                                if (element['Class Number'] === elt['Class Number']) {
+                                if (element['class_number'] === elt['class_number']) {
                                     foundMarks = true;
-                                    elt.Supported = 'yes';
-                                    delete elt['Class Number'];
-                                    delete elt['Course Code'];
-                                    delete elt['Course Title'];
-                                    delete elt['Course Type'];
-                                    element.Marks = elt;
+                                    elt.supported = 'yes';
+                                    delete elt['class_number'];
+                                    delete elt['course_code'];
+                                    delete elt['course_title'];
+                                    delete elt['course_type'];
+                                    element.marks = elt;
                                 }
                             };
-                            results.Attendance.forEach(forEachAttendance);
-                            results.Marks.forEach(forEachMarks);
+                            results.attendance.forEach(forEachAttendance);
+                            results.marks.forEach(forEachMarks);
                             var noData = {
-                                Supported: false
+                                supported: false
                             };
                             if (!foundAttendance) {
-                                element.Attendance = noData;
+                                element.attendance = noData;
                             }
                             if (!foundMarks) {
-                                element.Marks = noData;
+                                element.marks = noData;
                             }
                             asyncCallback(null, element);
                         };
                         var doneCollate = function (err, newData) {
                             if (err) {
-                                callback(true, errors.codes.Other);
+                                callback(true, status.codes.other);
                             }
                             else {
-                                data.Courses = newData;
-                                data.Refreshed = new Date().toUTCString();
+                                data.courses = newData;
+                                data.refreshed = new Date().toJSON();
                                 var onInsert = function (err) {
                                     if (err) {
-                                        data.Error = errors.codes.MongoDown;
+                                        data.status = status.codes.mongoDown;
                                         if (log) {
                                             log.log('debug', data);
                                         }
@@ -158,32 +161,32 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                                     }
                                     else {
                                         var validity = 3; // In Minutes
-                                        var doc = {RegNo: RegNo, DoB: DoB, Cookie: myCookie, Refresh: !firsttime};
+                                        var doc = {reg_no: RegNo, dob: DoB, cookie: myCookie, refreshed: !firsttime};
                                         cache.put(RegNo, doc, validity * 60 * 1000);
                                     }
                                 };
                                 if (firsttime) {
-                                    data.Timetable = results.Timetable.Timetable;
-                                    data.Share = results.Token.Share;
-                                    data.Withdrawn = results.Timetable.Withdrawn;
-                                    mongo.update(data, ['Timetable', 'Courses', 'Refreshed', 'Withdrawn'], onInsert);
+                                    data.timetable = results.timetable.timetable;
+                                    data.share = results.token.share;
+                                    data.withdrawn = results.timetable.withdrawn;
+                                    mongo.update(data, ['timetable', 'courses', 'refreshed', 'withdrawn'], onInsert);
                                 }
-                                else if (results.Timetable.Withdrawn) {
-                                    data.Timetable = results.Timetable.Timetable;
-                                    data.Withdrawn = results.Timetable.Withdrawn;
-                                    mongo.update(data, ['Timetable', 'Courses', 'Refreshed', 'Withdrawn'], onInsert);
-                                    delete data.Timetable;
+                                else if (results.timetable.withdrawn) {
+                                    data.timetable = results.timetable.timetable;
+                                    data.withdrawn = results.timetable.withdrawn;
+                                    mongo.update(data, ['timetable', 'courses', 'refreshed', 'withdrawn'], onInsert);
+                                    delete data.timetable;
                                 }
                                 else {
-                                    data.Withdrawn = results.Timetable.Withdrawn;
-                                    mongo.update(data, ['Courses', 'Refreshed', 'Withdrawn'], onInsert);
+                                    data.withdrawn = results.timetable.withdrawn;
+                                    mongo.update(data, ['courses', 'refreshed', 'withdrawn'], onInsert);
                                 }
-                                data.Cached = false;
-                                data.Error = errors.codes.Success;
+                                data.cached = false;
+                                data.status = status.codes.success;
                                 callback(null, data);
                             }
                         };
-                        async.map(data.Courses, forEachCourse, doneCollate);
+                        async.map(data.courses, forEachCourse, doneCollate);
                     }
                 };
 
@@ -191,12 +194,12 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
             }
         }
         else {
-            data.Error = errors.codes.Invalid;
+            data.status = status.codes.invalid;
             callback(true, data);
         }
     }
     else {
-        data.Error = errors.codes.TimedOut;
+        data.status = status.codes.timedOut;
         callback(true, data);
     }
 };

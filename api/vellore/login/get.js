@@ -28,17 +28,17 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.getCaptcha = function (RegNo, callback) {
     var captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
     var data = {
-        RegNo: RegNo
+        reg_no: RegNo
     };
     var onRequest = function (response) {
         if (response.error) {
-            data.Error = errors.codes.Down;
+            data.status = status.codes.vitDown;
             if (log) {
                 log.log('debug', data);
             }
@@ -58,7 +58,7 @@ exports.getCaptcha = function (RegNo, callback) {
                 return true;
             };
             Object.keys(response.cookies).forEach(onEach);
-            var doc = {Cookie: myCookie, RegNo: RegNo};
+            var doc = {cookie: myCookie, reg_no: RegNo};
             cache.put(RegNo, doc, validity * 60 * 1000);
             callback(null, response.body);
         }

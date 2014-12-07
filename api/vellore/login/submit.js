@@ -30,21 +30,21 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
 
 
 exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
-    var data = {RegNo: RegNo};
+    var data = {reg_no: RegNo};
     if (cache.get(RegNo) !== null) {
         var CookieJar = unirest.jar();
-        var myCookie = cache.get(RegNo).Cookie;
+        var myCookie = cache.get(RegNo).cookie;
         var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
         var submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
         CookieJar.add(unirest.cookie(cookieSerial), submitUri);
         var onPost = function (response) {
             if (response.error) {
-                data.Error = errors.codes.Down;
+                data.status = status.codes.vitDown;
                 if (log) {
                     log.log('debug', data);
                 }
@@ -71,25 +71,25 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
                 finally {
                     if (login) {
                         var validity = 3; // In Minutes
-                        var doc = {RegNo: RegNo, DoB: DoB, Cookie: myCookie};
+                        var doc = {reg_no: RegNo, dob: DoB, cookie: myCookie};
                         cache.put(RegNo, doc, validity * 60 * 1000);
                         var onInsert = function (err) {
                             if (err) {
                                 if (log) {
                                     log.log('debug', {
-                                        RegNo: RegNo,
-                                        Error: errors.codes.MongoDown
+                                        reg_no: RegNo,
+                                        status: status.codes.mongoDown
                                     });
                                 }
                                 console.log('MongoDB connection failed');
                             }
                         };
-                        mongo.update(doc, ['DoB'], onInsert);
-                        data.Error = errors.codes.Success;
+                        mongo.update(doc, ['dob'], onInsert);
+                        data.status = status.codes.success;
                         callback(null, data);
                     }
                     else {
-                        data.Error = errors.codes.Invalid;
+                        data.status = status.codes.invalid;
                         callback(null, data);
                     }
                 }
@@ -105,7 +105,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
             .end(onPost);
     }
     else {
-        data.Error = errors.codes.TimedOut;
+        data.status = status.codes.timedOut;
         callback(null, data);
     }
 };
