@@ -146,7 +146,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                                 element.attendance = noData;
                             }
                             if (!foundMarks) {
-                                element.marks = noData;
+                                element[element.course_mode.toLowerCase() + "_marks"] = noData;
                             }
                             asyncCallback(null, element);
                         };
