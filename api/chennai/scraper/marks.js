@@ -78,8 +78,7 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                                                'quiz3': $('td').eq(14).text(),
                                                'quiz3_status': $('td').eq(13).text(),
                                                'assignment': $('td').eq(16).text(),
-                                               'assignment_status': $('td').eq(15).text(),
-                                               'type': 'CBL'
+                                               'assignment_status': $('td').eq(15).text()
                                            });
                             }
                             else if (length == 8) {
@@ -89,8 +88,7 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                                                'course_title': $('td').eq(3).text(),
                                                'course_type': $('td').eq(4).text(),
                                                'lab_cam': $('td').eq(7).text(),
-                                               'lab_cam_status': $('td').eq(6).text(),
-                                               'type': 'Lab'
+                                               'lab_cam_status': $('td').eq(6).text()
                                            });
                             }
                             else if (length == 6) {
@@ -98,8 +96,7 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                                                'class_number': classnbr,
                                                'course_code': $('td').eq(2).text(),
                                                'course_title': $('td').eq(3).text(),
-                                               'course_type': $('td').eq(4).text(),
-                                               'type': 'Project'
+                                               'course_type': $('td').eq(4).text()
                                            });
                             }
                         }
@@ -120,7 +117,6 @@ exports.scrapeMarks = function (RegNo, sem, callback) {
                                     'course_code': $('td').eq(2).text(),
                                     'course_title': $('td').eq(3).text(),
                                     'course_type': $('td').eq(4).text(),
-                                    'type': 'PBL',
                                     'details': {
                                         1: {title: $('td').eq(6).text()},
                                         2: {title: $('td').eq(7).text()},
