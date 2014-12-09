@@ -1,6 +1,6 @@
 {
     "name": "VITacademics",
-    "version": "0.10.6",
+    "version": "0.10.7",
     "description": "VITacademics Backend and Web App",
     "homepage": "http://vitacademics-dev.herokuapp.com/",
     "bugs": {
@@ -48,7 +48,7 @@
         "body-parser": "~1.10.0",
         "ejs": "~1.0.0",
         "mongodb": "~1.4.23",
-        "unirest": "~0.3.0",
+        "unirest": "~0.3.2",
         "cookie": "~0.1.2",
         "memory-cache": "~0.0.5",
         "cheerio": "~0.18.0",

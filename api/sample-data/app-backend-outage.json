@@ -1,0 +1,6 @@
+{
+    "error": {
+        "message": "Our backend servers may be down or you may be facing a connectivity issue",
+        "code": 98
+    }
+}
