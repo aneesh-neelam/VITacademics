@@ -130,10 +130,10 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                                     delete elt['course_title'];
                                     delete elt['course_type'];
                                     if (elt.details) {
-                                        element[element.course_mode.toLowerCase() + "_marks"] = underscore.values(elt.details);
+                                        element['pbl_marks'] = underscore.values(elt.details);
                                     }
                                     else {
-                                        element[element.course_mode.toLowerCase() + "_marks"] = elt;
+                                        element[element.course_mode.toLowerCase() + '_marks'] = elt;
                                     }
                                 }
                             };
@@ -146,7 +146,12 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                                 element.attendance = noData;
                             }
                             if (!foundMarks) {
-                                element[element.course_mode.toLowerCase() + "_marks"] = noData;
+                                if (element.course_mode === 'PBL' || element.course_mode === 'RBL') {
+                                    element['pbl_marks'] = noData;
+                                }
+                                else {
+                                    element[element.course_mode.toLowerCase() + '_marks'] = noData;
+                                }
                             }
                             asyncCallback(null, element);
                         };
