@@ -1,0 +1,12 @@
+{
+    "reg_no": "11BCE0260",
+    "share": {
+        "token": "86FHTS",
+        "validity": 24,
+        "issued": "2014-12-09T14:45:21.455Z"
+    },
+    "status": {
+        "message": "Successful execution",
+        "code": 0
+    }
+}

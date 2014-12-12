@@ -19,6 +19,7 @@
 var async = require('async');
 var cache = require('memory-cache');
 var path = require('path');
+var underscore = require('underscore');
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
@@ -128,7 +129,12 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                                     delete elt['course_code'];
                                     delete elt['course_title'];
                                     delete elt['course_type'];
-                                    element.marks = elt;
+                                    if (elt.details) {
+                                        element['pbl_marks'] = underscore.values(elt.details);
+                                    }
+                                    else {
+                                        element[element.course_mode.toLowerCase() + '_marks'] = elt;
+                                    }
                                 }
                             };
                             results.attendance.forEach(forEachAttendance);
@@ -140,7 +146,12 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                                 element.attendance = noData;
                             }
                             if (!foundMarks) {
-                                element.marks = noData;
+                                if (element.course_mode === 'PBL' || element.course_mode === 'RBL') {
+                                    element['pbl_marks'] = noData;
+                                }
+                                else {
+                                    element[element.course_mode.toLowerCase() + '_marks'] = noData;
+                                }
                             }
                             asyncCallback(null, element);
                         };
