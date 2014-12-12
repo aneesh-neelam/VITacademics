@@ -1,0 +1,6 @@
+{
+    "status": {
+        "message": "Our MongoDB instance may be down or we may be facing a connectivity issue",
+        "code": 97
+    }
+}

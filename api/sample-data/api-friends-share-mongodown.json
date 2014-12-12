@@ -1,6 +1,0 @@
-{
-    "Error": {
-        "Message": "Our MongoDB instance may be down or we may be facing a connectivity issue",
-        "Code": 97
-    }
-}

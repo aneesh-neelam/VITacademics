@@ -1,0 +1,6 @@
+{
+    "status": {
+        "message": "Token expired",
+        "code": 14
+    }
+}
