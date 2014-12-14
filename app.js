@@ -75,6 +75,13 @@ app.use(ga(GoogleAnalytics, {
     safe: true
 }));
 
+// Allow cross-origin resource sharing
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.use('/', routes);
 app.use('/api/vellore', api_vellore);
 app.use('/api/vellore/login', api_vellore_login);
