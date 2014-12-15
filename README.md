@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/aneesh-neelam/VITacademics.png?label=ready&title=Ready)](https://waffle.io/aneesh-neelam/VITacademics)
 VITacademics
 ============
 
