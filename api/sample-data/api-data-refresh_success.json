@@ -13,8 +13,10 @@
             "venue": "SJT404",
             "faculty": "RISHIN HALDAR - SCSE",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 12:07:52",
+                "registration_date": "19\/06\/2014 12:07:52",
                 "attended_classes": "38",
                 "total_classes": "45",
                 "attendance_percentage": "85%",
@@ -320,8 +322,14 @@
             "venue": "NIL",
             "faculty": "ACAD FACULTY - ACAD",
             "registration_status": "Registered and Approved",
-            "pbc_marks": {"supported": true},
-            "attendance": {"supported": false}
+            "bill_date": " \/ ",
+            "project_title": null,
+            "pbc_marks": {
+                "supported": true
+            },
+            "attendance": {
+                "supported": false
+            }
         },
         {
             "class_number": "5087",
@@ -335,8 +343,10 @@
             "venue": "SJT408",
             "faculty": "AJU D - SCSE",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 12:00:28",
+                "registration_date": "19\/06\/2014 12:00:28",
                 "attended_classes": "37",
                 "total_classes": "44",
                 "attendance_percentage": "85%",
@@ -636,8 +646,10 @@
             "venue": "SJT505",
             "faculty": "ALEX NOEL JOSEPH RAJ - SENSE",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 12:04:59",
+                "registration_date": "19\/06\/2014 12:04:59",
                 "attended_classes": "32",
                 "total_classes": "42",
                 "attendance_percentage": "77%",
@@ -925,8 +937,10 @@
             "venue": "TT331",
             "faculty": "SELVAKUMAR D S - SSL",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 13:21:52",
+                "registration_date": "19\/06\/2014 13:21:52",
                 "attended_classes": "42",
                 "total_classes": "43",
                 "attendance_percentage": "98%",
@@ -1220,8 +1234,10 @@
             "venue": "CDMM403",
             "faculty": "NARAYANAN S. - SMBS",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 12:01:45",
+                "registration_date": "19\/06\/2014 12:01:45",
                 "attended_classes": "35",
                 "total_classes": "45",
                 "attendance_percentage": "78%",
@@ -1528,27 +1544,27 @@
                     "scored_%": "22.00"
                 },
                 {
-                    "title": "N/A",
-                    "max_marks": "N/A",
-                    "weightage": "N/A",
-                    "conducted_on": "N/A",
-                    "status": "N/A",
-                    "scored_mark": "N/A",
-                    "scored_%": "N/A"
+                    "title": "N\/A",
+                    "max_marks": "N\/A",
+                    "weightage": "N\/A",
+                    "conducted_on": "N\/A",
+                    "status": "N\/A",
+                    "scored_mark": "N\/A",
+                    "scored_%": "N\/A"
                 },
                 {
-                    "title": "N/A",
-                    "max_marks": "N/A",
-                    "weightage": "N/A",
-                    "conducted_on": "N/A",
-                    "status": "N/A",
-                    "scored_mark": "N/A",
-                    "scored_%": "N/A"
+                    "title": "N\/A",
+                    "max_marks": "N\/A",
+                    "weightage": "N\/A",
+                    "conducted_on": "N\/A",
+                    "status": "N\/A",
+                    "scored_mark": "N\/A",
+                    "scored_%": "N\/A"
                 }
             ]
         }
     ],
-    "refreshed": "2014-12-09T14:28:21.089Z",
+    "refreshed": "2014-12-20T12:53:07.244Z",
     "withdrawn": false,
     "cached": false,
     "status": {
