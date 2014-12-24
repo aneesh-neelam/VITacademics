@@ -1,6 +1,8 @@
 /*
  *  VITacademics
  *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2014  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -65,22 +67,21 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-var cookieSecret = process.env.COOKIE_SECRET || 'randomsecretstring';
-app.use(cookieParser(cookieSecret, {signed: true}));
+var secret = process.env.SECRET_KEY || 'randomsecretstring';
+app.use(cookieParser(secret, {signed: true}));
 
-   // ***CSRF Protection***
+// ***CSRF Protection***
 //Initializing sessions (backend storage)
 app.use(session({
-    secret: "keyboard-cat", //change process.env.secretstring later.
+                    secret: secret,
     resave: false,
     saveUninitialized: true
 }));
 app.use(csrf());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-
 
 var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
 app.use(ga(GoogleAnalytics, {

@@ -56,6 +56,26 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                         var classnbr = $('td').eq(1).text();
                         var code = $('td').eq(2).text();
                         var courseType = $('td').eq(4).text();
+                        var columns = $('td').length;
+                        var slot = null;
+                        var venue = null;
+                        var faculty = null;
+                        var registrationStatus = null;
+                        var billDate = null;
+                        var projectTitle = null;
+                        if (columns === 13) {
+                            slot = $('td').eq(8).text();
+                            venue = $('td').eq(9).text();
+                            faculty = $('td').eq(10).text();
+                            registrationStatus = $('td').eq(11).text();
+                            billDate = $('td').eq(12).text();
+                        }
+                        else if (columns === 12) {
+                            projectTitle = $('td').eq(8).text().split(':')[1];
+                            faculty = $('td').eq(9).text().split(':')[1];
+                            registrationStatus = $('td').eq(10).text();
+                            billDate = $('td').eq(11).text();
+                        }
                         if (courseType == 'Embedded Theory') {
                             code = code + 'ETH';
                         }
@@ -77,10 +97,12 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                                                       'ltpc': $('td').eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
                                                       'course_mode': $('td').eq(6).text(),
                                                       'course_option': $('td').eq(7).text(),
-                                                      'slot': $('td').eq(8).text(),
-                                                      'venue': $('td').eq(9).text(),
-                                                      'faculty': $('td').eq(10).text(),
-                                                      'registration_status': $('td').eq(11).text()
+                                                      'slot': slot,
+                                                      'venue': venue,
+                                                      'faculty': faculty,
+                                                      'registration_status': registrationStatus,
+                                                      'bill_date': billDate,
+                                                      'project_title': projectTitle
                                                   });
                     }
                 };
