@@ -57,7 +57,9 @@
         "newrelic": "~1.14.3",
         "node-logentries": "~0.1.4",
         "underscore": "~1.7.0",
-        "node-ga": "~0.1.1"
+        "node-ga": "~0.1.1",
+        "express-session": "~1.9.3",
+        "csurf": "~1.6.3"
     },
     "repository": {
         "type": "git",
