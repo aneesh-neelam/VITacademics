@@ -29,18 +29,18 @@ exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
     var data = {RegNo: RegNo};
     if (cache.get(RegNo) !== null) {
         if (cache.get(RegNo).DoB === DoB) {
-            var Sem = sem || process.env.CHENNAI_PREVIOUS_SEMESTER || 'WS';
+            var Sem = sem || process.env.VELLORE_PREVIOUS_SEMESTER || 'WS';
             var timetableUri = 'http://27.251.102.132/parent/grade.asp?sem=' + Sem;
             var CookieJar = unirest.jar();
             var myCookie = cache.get(RegNo).Cookie;
             var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
             var onRequest = function (response) {
                 if (response.error) {
-                    callback(true, {Error: errors.codes.Down});
+                    callback(true, {status: status.codes.vitDown});
                 }
                 else {
                     // TODO Grades
-                    data.Error = errors.codes.ToDo;
+                    data.status = status.codes.toDo;
                     callback(true, data);
                 }
             };
@@ -50,12 +50,12 @@ exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
                 .end(onRequest);
         }
         else {
-            data.Error = errors.codes.Invalid;
+            data.status = status.codes.invalid;
             callback(true, data);
         }
     }
     else {
-        data.Error = errors.codes.TimedOut;
+        data.status = status.codes.timedOut;
         callback(true, data);
     }
 };
