@@ -140,10 +140,7 @@ var getCaptcha = function (img) {
         var f = 0;
         for (x = xoff; x < 25; ++x) {
             for (y = yoff; y < 132; ++y) {
-                if (skip(skipstart, skipend, y)) {
-
-                }
-                else {
+                if (!(skip(skipstart, skipend, y))) {
                     if (matchImg(x, y, img, mask)) {
                         skipstart.push(y);
                         skipend.push(y + mask[0].length);
