@@ -21,6 +21,7 @@ var path = require('path');
 var router = express.Router();
 
 var api_data = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'scraper', 'aggregate'));
+var api_grades = require(path.join(__dirname, '..', '..', '..', 'api', 'chennai', 'scraper', 'grades'));
 
 
 router.get('/refresh', function (req, res) {
@@ -39,6 +40,16 @@ router.get('/first', function (req, res) {
         res.json(data);
     };
     api_data.getData(RegNo.toUpperCase(), DoB, true, onGetData)
+});
+
+router.get('/grades', function (req, res) {
+    var RegNo = req.query.regno;
+    var DoB = req.query.dob;
+    var Sem = req.query.sem; // FS || WS
+    var onGetData = function (err, data) {
+        res.send(data);
+    };
+    api_grades.scrapeGrades(RegNo, DoB, Sem, onGetData);
 });
 
 module.exports = router;
