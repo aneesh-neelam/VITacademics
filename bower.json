@@ -1,6 +1,6 @@
 {
     "name": "VITacademics",
-    "version": "0.10.8",
+    "version": "0.10.12",
     "description": "VITacademics Backend and Web App",
     "bugs": {
         "url": "https://github.com/aneesh-neelam/VITacademics/issues",
@@ -13,6 +13,7 @@
         "Kishore Narendran <kishore.narendran09@gmail.com>",
         "Saurabh Joshi <battlex94@gmail.com>",
         "Siddharth Gupta <sids.1992@gmail.com>",
+        "Sreeram Boyapati <sreeram.boyapati2011@gmail.com>",
         "Ayush Agarwal <agarwalayush161@gmail.com>"
     ],
     "main": "./bin/www",
@@ -40,6 +41,6 @@
     ],
     "private": true,
     "dependencies": {
-        "foundation": "~5.4.7"
+        "foundation": "~5.5.0"
     }
 }

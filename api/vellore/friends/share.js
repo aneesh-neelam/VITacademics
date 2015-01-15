@@ -55,6 +55,10 @@ exports.getTimetableToken = function (token, callback) {
                     var forEachCourse = function (elt, i, arr) {
                         delete elt['attendance'];
                         delete elt['marks'];
+                        delete elt['cbl_marks'];
+                        delete elt['lbc_marks'];
+                        delete elt['pbc_marks'];
+                        delete elt['pbl_marks'];
                     };
                     doc.courses.forEach(forEachCourse);
                     var data = {
@@ -104,6 +108,10 @@ exports.getTimetableDoB = function (RegNo, DoB, callback) {
                 var forEachCourse = function (elt, i, arr) {
                     delete elt['attendance'];
                     delete elt['marks'];
+                    delete elt['cbl_marks'];
+                    delete elt['lbc_marks'];
+                    delete elt['pbc_marks'];
+                    delete elt['pbl_marks'];
                 };
                 doc.courses.forEach(forEachCourse);
                 var data = {

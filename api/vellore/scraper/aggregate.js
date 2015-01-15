@@ -71,7 +71,7 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                 mongo.fetch({reg_no: RegNo, dob: DoB}, keys, onFetch);
             }
             else {
-                var sem = process.env.VELLORE_CURRENT_SEMESTER || 'FS';
+                var sem = process.env.VELLORE_CURRENT_SEMESTER || 'WS';
 
                 var parallelTasks = {};
 
