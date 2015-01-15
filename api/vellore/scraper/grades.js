@@ -22,7 +22,7 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
@@ -36,11 +36,11 @@ exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
             var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
             var onRequest = function (response) {
                 if (response.error) {
-                    callback(true, {Error: errors.codes.Down});
+                    callback(true, {status: status.codes.vitDown});
                 }
                 else {
                     // TODO Grades
-                    data.Error = errors.codes.ToDo;
+                    data.status = status.codes.toDo;
                     callback(true, data);
                 }
             };
@@ -50,12 +50,12 @@ exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
                 .end(onRequest);
         }
         else {
-            data.Error = errors.codes.Invalid;
+            data.status = status.codes.invalid;
             callback(true, data);
         }
     }
     else {
-        data.Error = errors.codes.TimedOut;
+        data.status = status.codes.timedOut;
         callback(true, data);
     }
 };
