@@ -1,6 +1,6 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ router.get('/status', function (req, res) {
         platform: process.platform,
         arch: process.arch,
         serverStatus: 'OK',
-        lastUpdated: '24th December 2014',
+        lastUpdated: '15th January 2015',
         GoogleAnalytics: GoogleAnalytics
     };
     res.render('status', status);

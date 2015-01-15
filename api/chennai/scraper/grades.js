@@ -1,6 +1,6 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var errors = require(path.join(__dirname, '..', '..', 'error'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
