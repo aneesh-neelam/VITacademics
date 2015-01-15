@@ -1,6 +1,6 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
+ *  Copyright (C) 2015  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

@@ -1,7 +1,7 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
- *  Copyright (C) 2014  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015  Karthik Balakrishnan <karthikb351@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -141,7 +141,7 @@ var getCaptcha = function (img) {
         for (x = xoff; x < 25; ++x) {
             for (y = yoff; y < 132; ++y) {
                 if (skip(skipstart, skipend, y)) {
-                    continue;
+
                 }
                 else {
                     if (matchImg(x, y, img, mask)) {
