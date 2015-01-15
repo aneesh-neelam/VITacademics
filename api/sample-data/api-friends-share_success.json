@@ -14,21 +14,8 @@
                 "venue": "SJT404",
                 "faculty": "RISHIN HALDAR - SCSE",
                 "registration_status": "Registered and Approved",
-                "cbl_marks": {
-                    "cat1": "28.00",
-                    "cat1_status": "Present",
-                    "cat2": "25.00",
-                    "cat2_status": "Present",
-                    "quiz1": "1.00",
-                    "quiz1_status": "Present",
-                    "quiz2": "5.00",
-                    "quiz2_status": "Present",
-                    "quiz3": "3.00",
-                    "quiz3_status": "Present",
-                    "assignment": "5.00",
-                    "assignment_status": "Present",
-                    "supported": true
-                }
+                "bill_date": " \/ ",
+                "project_title": null
             },
             {
                 "class_number": "2030",
@@ -42,7 +29,8 @@
                 "venue": "NIL",
                 "faculty": "ACAD FACULTY - ACAD",
                 "registration_status": "Registered and Approved",
-                "pbc_marks": {"supported": true}
+                "bill_date": " \/ ",
+                "project_title": null
             },
             {
                 "class_number": "5087",
@@ -56,21 +44,8 @@
                 "venue": "SJT408",
                 "faculty": "AJU D - SCSE",
                 "registration_status": "Registered and Approved",
-                "cbl_marks": {
-                    "cat1": "28.00",
-                    "cat1_status": "Present",
-                    "cat2": "32.00",
-                    "cat2_status": "Present",
-                    "quiz1": "4.50",
-                    "quiz1_status": "Present",
-                    "quiz2": "3.00",
-                    "quiz2_status": "Present",
-                    "quiz3": "2.00",
-                    "quiz3_status": "Present",
-                    "assignment": "5.00",
-                    "assignment_status": "Present",
-                    "supported": true
-                }
+                "bill_date": " \/ ",
+                "project_title": null
             },
             {
                 "class_number": "1986",
@@ -84,21 +59,8 @@
                 "venue": "SJT505",
                 "faculty": "ALEX NOEL JOSEPH RAJ - SENSE",
                 "registration_status": "Registered and Approved",
-                "cbl_marks": {
-                    "cat1": "22.00",
-                    "cat1_status": "Present",
-                    "cat2": "22.50",
-                    "cat2_status": "Present",
-                    "quiz1": "3.75",
-                    "quiz1_status": "Present",
-                    "quiz2": "1.50",
-                    "quiz2_status": "Present",
-                    "quiz3": "1.25",
-                    "quiz3_status": "Present",
-                    "assignment": "5.00",
-                    "assignment_status": "Present",
-                    "supported": true
-                }
+                "bill_date": " \/ ",
+                "project_title": null
             },
             {
                 "class_number": "4844",
@@ -112,21 +74,8 @@
                 "venue": "TT331",
                 "faculty": "SELVAKUMAR D S - SSL",
                 "registration_status": "Registered and Approved",
-                "cbl_marks": {
-                    "cat1": "41.00",
-                    "cat1_status": "Present",
-                    "cat2": "37.00",
-                    "cat2_status": "Present",
-                    "quiz1": "4.00",
-                    "quiz1_status": "Present",
-                    "quiz2": "4.00",
-                    "quiz2_status": "Present",
-                    "quiz3": "4.00",
-                    "quiz3_status": "Present",
-                    "assignment": "5.00",
-                    "assignment_status": "Present",
-                    "supported": true
-                }
+                "bill_date": " \/ ",
+                "project_title": null
             },
             {
                 "class_number": "5647",
@@ -140,53 +89,8 @@
                 "venue": "CDMM403",
                 "faculty": "NARAYANAN S. - SMBS",
                 "registration_status": "Registered and Approved",
-                "pbl_marks": [
-                    {
-                        "title": "TUTORIAL",
-                        "max_marks": "5",
-                        "weightage": "5",
-                        "conducted_on": "07-Aug-2014",
-                        "status": "Present",
-                        "scored_mark": "2.00",
-                        "scored_%": "2.00"
-                    },
-                    {
-                        "title": "MID-TERM EXAMINATION",
-                        "max_marks": "20",
-                        "weightage": "20",
-                        "conducted_on": "08-Oct-2014",
-                        "status": "Present",
-                        "scored_mark": "15.50",
-                        "scored_%": "15.50"
-                    },
-                    {
-                        "title": "CASE STUDY PRESENTATION",
-                        "max_marks": "25",
-                        "weightage": "25",
-                        "conducted_on": "08-Nov-2014",
-                        "status": "Present",
-                        "scored_mark": "22.00",
-                        "scored_%": "22.00"
-                    },
-                    {
-                        "title": "N/A",
-                        "max_marks": "N/A",
-                        "weightage": "N/A",
-                        "conducted_on": "N/A",
-                        "status": "N/A",
-                        "scored_mark": "N/A",
-                        "scored_%": "N/A"
-                    },
-                    {
-                        "title": "N/A",
-                        "max_marks": "N/A",
-                        "weightage": "N/A",
-                        "conducted_on": "N/A",
-                        "status": "N/A",
-                        "scored_mark": "N/A",
-                        "scored_%": "N/A"
-                    }
-                ]
+                "bill_date": " \/ ",
+                "project_title": null
             }
         ],
         "timetable": {

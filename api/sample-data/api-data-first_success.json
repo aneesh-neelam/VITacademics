@@ -13,8 +13,10 @@
             "venue": "SJT404",
             "faculty": "RISHIN HALDAR - SCSE",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 12:07:52",
+                "registration_date": "19\/06\/2014 12:07:52",
                 "attended_classes": "38",
                 "total_classes": "45",
                 "attendance_percentage": "85%",
@@ -320,8 +322,14 @@
             "venue": "NIL",
             "faculty": "ACAD FACULTY - ACAD",
             "registration_status": "Registered and Approved",
-            "pbc_marks": {"supported": true},
-            "attendance": {"supported": false}
+            "bill_date": " \/ ",
+            "project_title": null,
+            "pbc_marks": {
+                "supported": true
+            },
+            "attendance": {
+                "supported": false
+            }
         },
         {
             "class_number": "5087",
@@ -335,8 +343,10 @@
             "venue": "SJT408",
             "faculty": "AJU D - SCSE",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 12:00:28",
+                "registration_date": "19\/06\/2014 12:00:28",
                 "attended_classes": "37",
                 "total_classes": "44",
                 "attendance_percentage": "85%",
@@ -636,8 +646,10 @@
             "venue": "SJT505",
             "faculty": "ALEX NOEL JOSEPH RAJ - SENSE",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 12:04:59",
+                "registration_date": "19\/06\/2014 12:04:59",
                 "attended_classes": "32",
                 "total_classes": "42",
                 "attendance_percentage": "77%",
@@ -925,8 +937,10 @@
             "venue": "TT331",
             "faculty": "SELVAKUMAR D S - SSL",
             "registration_status": "Registered and Approved",
+            "bill_date": " \/ ",
+            "project_title": null,
             "attendance": {
-                "registration_date": "19/06/2014 13:21:52",
+                "registration_date": "19\/06\/2014 13:21:52",
                 "attended_classes": "42",
                 "total_classes": "43",
                 "attendance_percentage": "98%",
@@ -1220,285 +1234,8 @@
             "venue": "CDMM403",
             "faculty": "NARAYANAN S. - SMBS",
             "registration_status": "Registered and Approved",
-            "attendance": {
-                "registration_date": "19/06/2014 12:01:45",
-                "attended_classes": "35",
-                "total_classes": "45",
-                "attendance_percentage": "78%",
-                "details": [
-                    {
-                        "sl": "1",
-                        "date": "10-Jul-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "2",
-                        "date": "14-Jul-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "3",
-                        "date": "16-Jul-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "4",
-                        "date": "17-Jul-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "5",
-                        "date": "21-Jul-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "6",
-                        "date": "23-Jul-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "7",
-                        "date": "24-Jul-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "8",
-                        "date": "28-Jul-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "9",
-                        "date": "30-Jul-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "10",
-                        "date": "31-Jul-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "11",
-                        "date": "04-Aug-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "12",
-                        "date": "06-Aug-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "13",
-                        "date": "07-Aug-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "14",
-                        "date": "11-Aug-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "15",
-                        "date": "13-Aug-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "16",
-                        "date": "14-Aug-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "17",
-                        "date": "18-Aug-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "18",
-                        "date": "20-Aug-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "19",
-                        "date": "21-Aug-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "20",
-                        "date": "01-Sep-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "21",
-                        "date": "03-Sep-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "22",
-                        "date": "04-Sep-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "23",
-                        "date": "08-Sep-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "24",
-                        "date": "10-Sep-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "25",
-                        "date": "11-Sep-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "26",
-                        "date": "15-Sep-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "27",
-                        "date": "17-Sep-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "28",
-                        "date": "18-Sep-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "29",
-                        "date": "22-Sep-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "30",
-                        "date": "24-Sep-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "31",
-                        "date": "25-Sep-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "32",
-                        "date": "29-Sep-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "33",
-                        "date": "01-Oct-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "34",
-                        "date": "13-Oct-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "35",
-                        "date": "15-Oct-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "36",
-                        "date": "16-Oct-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "37",
-                        "date": "27-Oct-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "38",
-                        "date": "29-Oct-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "39",
-                        "date": "30-Oct-2014",
-                        "status": "On Duty",
-                        "reason": "Placement Activity"
-                    },
-                    {
-                        "sl": "40",
-                        "date": "03-Nov-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "41",
-                        "date": "05-Nov-2014",
-                        "status": "Absent",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "42",
-                        "date": "06-Nov-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "43",
-                        "date": "10-Nov-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "44",
-                        "date": "12-Nov-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    },
-                    {
-                        "sl": "45",
-                        "date": "13-Nov-2014",
-                        "status": "Present",
-                        "reason": " - "
-                    }
-                ],
-                "supported": true
-            },
+            "bill_date": " \/ ",
+            "project_title": null,
             "pbl_marks": [
                 {
                     "title": "TUTORIAL",
@@ -1528,27 +1265,30 @@
                     "scored_%": "22.00"
                 },
                 {
-                    "title": "N/A",
-                    "max_marks": "N/A",
-                    "weightage": "N/A",
-                    "conducted_on": "N/A",
-                    "status": "N/A",
-                    "scored_mark": "N/A",
-                    "scored_%": "N/A"
+                    "title": "N\/A",
+                    "max_marks": "N\/A",
+                    "weightage": "N\/A",
+                    "conducted_on": "N\/A",
+                    "status": "N\/A",
+                    "scored_mark": "N\/A",
+                    "scored_%": "N\/A"
                 },
                 {
-                    "title": "N/A",
-                    "max_marks": "N/A",
-                    "weightage": "N/A",
-                    "conducted_on": "N/A",
-                    "status": "N/A",
-                    "scored_mark": "N/A",
-                    "scored_%": "N/A"
+                    "title": "N\/A",
+                    "max_marks": "N\/A",
+                    "weightage": "N\/A",
+                    "conducted_on": "N\/A",
+                    "status": "N\/A",
+                    "scored_mark": "N\/A",
+                    "scored_%": "N\/A"
                 }
-            ]
+            ],
+            "attendance": {
+                "supported": false
+            }
         }
     ],
-    "refreshed": "2014-12-09T14:24:49.326Z",
+    "refreshed": "2014-12-20T12:53:00.419Z",
     "timetable": {
         "mon": [
             0,
@@ -1648,9 +1388,9 @@
         ]
     },
     "share": {
-        "token": "JIBAHF",
+        "token": "FBOULZ",
         "validity": 24,
-        "issued": "2014-12-09T14:24:46.472Z"
+        "issued": "2014-12-20T12:52:38.750Z"
     },
     "withdrawn": false,
     "cached": false,
