@@ -23,10 +23,10 @@ var router = express.Router();
 var loginManual = require(path.join(__dirname, '..', 'api', 'login', 'get'));
 var loginAuto = require(path.join(__dirname, '..', 'api', 'login', 'auto'));
 var loginSubmit = require(path.join(__dirname, '..', 'api', 'login', 'submit'));
-var dataAggregate = require(path.join(__dirname, '..', 'api', 'data', 'aggregate'));
-var dataGrades = require(path.join(__dirname, '..', 'api', 'data', 'grades'));
-var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
-var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
+//var dataAggregate = require(path.join(__dirname, '..', 'api', 'data', 'aggregate'));
+//var dataGrades = require(path.join(__dirname, '..', 'api', 'data', 'grades'));
+//var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
+//var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
 
 
 router.get('/login/manual', function (req, res) {

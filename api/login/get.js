@@ -45,7 +45,7 @@ exports.get = function (app, data, callback) {
             if (log) {
                 log.log('debug', data);
             }
-            console.log('VIT Academics connection failed');
+            console.log(data.status);
             callback(true, data);
         }
         else {
@@ -61,13 +61,12 @@ exports.get = function (app, data, callback) {
                 return true;
             };
             Object.keys(response.cookies).forEach(onEach);
-            var doc = {cookie: myCookie, reg_no: RegNo};
-            cache.put(RegNo, doc, validity * 60 * 1000);
+            data.cookie = myCookie;
+            cache.put(data.reg_no, data, validity * 60 * 1000);
             callback(null, response.body);
         }
     };
     unirest.get(captchaUri)
         .encoding(null)
-        .set('Content-Type', 'image/bmp')
         .end(onRequest);
 };

@@ -26,21 +26,25 @@ var log;
 if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
-                                token: process.env.LOGENTRIES_TOKEN
-                            });
+        token: process.env.LOGENTRIES_TOKEN
+    });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
-var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
+var status = require(path.join(__dirname, '..', 'status'));
 
 
-exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
-    var data = {reg_no: RegNo};
-    if (cache.get(RegNo) !== null) {
+exports.get = function (app, data, callback) {
+    if (cache.get(data.reg_no) !== null) {
         var CookieJar = unirest.jar();
-        var myCookie = cache.get(RegNo).cookie;
+        var myCookie = cache.get(data.reg_no).cookie;
         var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
-        var submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
+        var submitUri;
+        if (data.campus === 'vellore') {
+            submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
+        }
+        else if (data.campus === 'chennai') {
+            submitUri = 'http://27.251.102.132/parent/parent_login_submit.asp';
+        }
         CookieJar.add(unirest.cookie(cookieSerial), submitUri);
         var onPost = function (response) {
             if (response.error) {
@@ -48,7 +52,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
                 if (log) {
                     log.log('debug', data);
                 }
-                console.log('VIT Academics connection failed');
+                console.log(data.status);
                 callback(true, data);
             }
             else {
@@ -57,7 +61,7 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
                     var scraper = cheerio.load(response.body);
                     scraper = cheerio.load(scraper('table').eq(1).html());
                     var onEach = function (i, elem) {
-                        if (new RegExp(RegNo).test(scraper(this).text())) {
+                        if (new RegExp(data.reg_no).test(scraper(this).text())) {
                             login = true;
                             return false;
                         }
@@ -66,27 +70,31 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
                 }
                 catch (ex) {
                     login = false;
-                    // Scraping Login failed
                 }
                 finally {
                     if (login) {
                         var validity = 3; // In Minutes
-                        var doc = {reg_no: RegNo, dob: DoB, cookie: myCookie};
-                        cache.put(RegNo, doc, validity * 60 * 1000);
-                        var onInsert = function (err) {
+                        delete data['captcha'];
+                        cache.put(data.reg_no, data, validity * 60 * 1000);
+                        var onUpdate = function (err) {
                             if (err) {
+                                data.status = status.codes.mongoDown;
                                 if (log) {
-                                    log.log('debug', {
-                                        reg_no: RegNo,
-                                        status: status.codes.mongoDown
-                                    });
+                                    log.log('debug', data);
                                 }
-                                console.log('MongoDB connection failed');
+                                console.log(data.status);
+                                callback(true, data);
+                            }
+                            else {
+                                data.status = status.codes.success;
+                                callback(null, data);
                             }
                         };
-                        mongo.update(doc, ['dob'], onInsert);
-                        data.status = status.codes.success;
-                        callback(null, data);
+                        var collection = app.db.collection('student');
+                        delete data['cookie'];
+                        collection.findAndModify({reg_no: data.reg_no}, [
+                            ['reg_no', 'asc']
+                        ], {$set: {dob: data.dob}}, {safe: true, new: true, upsert: true}, onUpdate);
                     }
                     else {
                         data.status = status.codes.invalid;
@@ -98,10 +106,10 @@ exports.submitCaptcha = function (RegNo, DoB, Captcha, callback) {
         unirest.post(submitUri)
             .jar(CookieJar)
             .form({
-                      'wdregno': RegNo,
-                      'wdpswd': DoB,
-                      'vrfcd': Captcha
-                  })
+                'wdregno': data.reg_no,
+                'wdpswd': data.dob,
+                'vrfcd': data.captcha
+            })
             .end(onPost);
     }
     else {

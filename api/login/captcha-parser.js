@@ -156,7 +156,7 @@ var getCaptcha = function (img) {
         }
     }
     sort(sorter, captcha);
-    var res = "";
+    var res = '';
     for (var i = 0; i < captcha.length; ++i) {
         res = res + captcha[i];
     }

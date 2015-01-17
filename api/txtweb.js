@@ -27,12 +27,12 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 var status = require(path.join(__dirname, 'status'));
-var chennai_login = require(path.join(__dirname, 'chennai', 'login', 'auto'));
-var chennai_mongo = require(path.join(__dirname, 'chennai', 'db', 'mongo'));
-var chennai_aggregate = require(path.join(__dirname, 'chennai', 'scraper', 'aggregate'));
-var vellore_login = require(path.join(__dirname, 'vellore', 'login', 'auto'));
-var vellore_mongo = require(path.join(__dirname, 'vellore', 'db', 'mongo'));
-var vellore_aggregate = require(path.join(__dirname, 'vellore', 'scraper', 'aggregate'));
+// var chennai_login = require(path.join(__dirname, 'chennai', 'login', 'auto'));
+// var chennai_mongo = require(path.join(__dirname, 'chennai', 'db', 'mongo'));
+// var chennai_aggregate = require(path.join(__dirname, 'chennai', 'scraper', 'aggregate'));
+// var vellore_login = require(path.join(__dirname, 'vellore', 'login', 'auto'));
+// var vellore_mongo = require(path.join(__dirname, 'vellore', 'db', 'mongo'));
+// var vellore_aggregate = require(path.join(__dirname, 'vellore', 'scraper', 'aggregate'));
 
 
 var parseMessage = function (message, mobile, callback) {

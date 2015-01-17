@@ -29,33 +29,30 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
 var login = require(path.join(__dirname, 'get'));
+var status = require(path.join(__dirname, '..', 'status'));
 var submit = require(path.join(__dirname, 'submit'));
 
 
-exports.autoLogin = function (RegNo, DoB, callback) {
-    var data = {
-        reg_no: RegNo
-    };
+exports.get = function (app, data, callback) {
     var parseCaptcha = function (err, captchaImage) {
         if (err) {
             callback(true, captchaImage);
         }
         else {
             try {
-                var captcha = captchaParser.parseBuffer(captchaImage);
-                submit.submitCaptcha(RegNo, DoB, captcha, callback);
+                data.captcha = captchaParser.parseBuffer(captchaImage);
             }
             catch (ex) {
                 data.status = status.captchaParsing;
                 if (log) {
                     log.log('debug', data);
                 }
-                console.log('Captcha Parsing Error');
-                callback(true, null);
+                console.log(data.status);
+                callback(true, data);
             }
+            submit.get(app, data, callback);
         }
     };
-    login.getCaptcha(RegNo, parseCaptcha);
+    login.get(app, data, parseCaptcha);
 };
