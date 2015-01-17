@@ -22,10 +22,6 @@ var router = express.Router();
 
 router.get('/', function (req, res) {
     var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
-    var collection = req.db.collection('vellore_student');
-    collection.findOne(function (err, doc) {
-        console.log(doc);
-    });
     res.render('index', {GoogleAnalytics: GoogleAnalytics});
 });
 
