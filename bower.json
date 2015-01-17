@@ -1,46 +1,46 @@
 {
-    "name": "VITacademics",
-    "version": "0.10.12",
-    "description": "VITacademics Backend and Web App",
-    "bugs": {
-        "url": "https://github.com/aneesh-neelam/VITacademics/issues",
-        "email": "neelam.aneesh@gmail.com"
-    },
-    "homepage": "http://vitacademics-dev.herokuapp.com/",
-    "authors": [
-        "Aneesh Neelam <neelam.aneesh@gmail.com>",
-        "Karthik Balakrishnan <karthikb351@gmail.com>",
-        "Kishore Narendran <kishore.narendran09@gmail.com>",
-        "Saurabh Joshi <battlex94@gmail.com>",
-        "Siddharth Gupta <sids.1992@gmail.com>",
-        "Sreeram Boyapati <sreeram.boyapati2011@gmail.com>",
-        "Ayush Agarwal <agarwalayush161@gmail.com>"
-    ],
-    "main": "./bin/www",
-    "moduleType": [
-        "globals",
-        "node"
-    ],
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/aneesh-neelam/VITacademics.git"
-    },
-    "license": "GPL-3.0+",
-    "licenses": [
-        {
-            "type": "GPL-3.0+",
-            "url": "https://www.gnu.org/licenses/gpl-3.0-standalone.html"
-        }
-    ],
-    "private": true,
-    "dependencies": {
-        "foundation": "~5.5.0"
+  "name": "VITacademics",
+  "version": "0.11.2",
+  "description": "VITacademics Backend and Web App",
+  "bugs": {
+    "url": "https://github.com/aneesh-neelam/VITacademics/issues",
+    "email": "neelam.aneesh@gmail.com"
+  },
+  "homepage": "http://vitacademics-dev.herokuapp.com/",
+  "authors": [
+    "Aneesh Neelam <neelam.aneesh@gmail.com>",
+    "Karthik Balakrishnan <karthikb351@gmail.com>",
+    "Kishore Narendran <kishore.narendran09@gmail.com>",
+    "Saurabh Joshi <battlex94@gmail.com>",
+    "Siddharth Gupta <sids.1992@gmail.com>",
+    "Sreeram Boyapati <sreeram.boyapati2011@gmail.com>",
+    "Ayush Agarwal <agarwalayush161@gmail.com>"
+  ],
+  "main": "./bin/www",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aneesh-neelam/VITacademics.git"
+  },
+  "license": "GPL-3.0+",
+  "licenses": [
+    {
+      "type": "GPL-3.0+",
+      "url": "https://www.gnu.org/licenses/gpl-3.0-standalone.html"
     }
+  ],
+  "private": true,
+  "dependencies": {
+    "foundation": "~5.5.0"
+  }
 }

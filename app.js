@@ -26,6 +26,7 @@ var csrf = require('csurf');
 var session = require('express-session');
 var ga = require('node-ga');
 var logger = require('morgan');
+var mongodb = require('express-mongo-db');
 var path = require('path');
 
 var newrelic;
@@ -37,8 +38,8 @@ var log;
 if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
-                                token: process.env.LOGENTRIES_TOKEN
-                            });
+        token: process.env.LOGENTRIES_TOKEN
+    });
 }
 
 var routes = require(path.join(__dirname, 'routes', 'web', 'index'));
@@ -71,10 +72,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 var secret = process.env.SECRET_KEY || 'randomsecretstring';
 app.use(cookieParser(secret, {signed: true}));
 
+var mongodbOptions = {
+    host: process.env.MONGODB_HOST_AUTH,
+    db: process.env.MONGODB_DATABASE || 'VITacademics'
+};
+app.use(mongodb(require('mongodb'), mongodbOptions));
+
 // ***CSRF Protection***
-//Initializing sessions (backend storage)
+// Initializing sessions (backend storage)
 app.use(session({
-                    secret: secret,
+    secret: secret,
     resave: false,
     saveUninitialized: true
 }));
@@ -90,7 +97,7 @@ app.use(ga(GoogleAnalytics, {
 }));
 
 // Allow cross-origin resource sharing
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
