@@ -42,17 +42,10 @@ if (process.env.LOGENTRIES_TOKEN) {
     });
 }
 
-var routes = require(path.join(__dirname, 'routes', 'web', 'index'));
-var api_txtWeb = require(path.join(__dirname, 'routes', 'api', 'txtweb'));
-var test_routes = require(path.join(__dirname, 'routes', 'tests', 'index'));
-var api_vellore = require(path.join(__dirname, 'routes', 'api', 'vellore', 'index'));
-var api_vellore_login = require(path.join(__dirname, 'routes', 'api', 'vellore', 'login'));
-var api_vellore_data = require(path.join(__dirname, 'routes', 'api', 'vellore', 'data'));
-var api_vellore_friends = require(path.join(__dirname, 'routes', 'api', 'vellore', 'friends'));
-var api_chennai = require(path.join(__dirname, 'routes', 'api', 'chennai', 'index'));
-var api_chennai_login = require(path.join(__dirname, 'routes', 'api', 'chennai', 'login'));
-var api_chennai_data = require(path.join(__dirname, 'routes', 'api', 'chennai', 'data'));
-var api_chennai_friends = require(path.join(__dirname, 'routes', 'api', 'chennai', 'friends'));
+var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
+var testRoutes = require(path.join(__dirname, 'routes', 'test'));
+var txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
+var webRoutes = require(path.join(__dirname, 'routes', 'web'));
 
 var app = express();
 
@@ -103,19 +96,12 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', routes);
-app.use('/tests', test_routes);
-app.use('/api/txtweb', api_txtWeb);
-app.use('/api/vellore', api_vellore);
-app.use('/api/vellore/login', api_vellore_login);
-app.use('/api/vellore/data', api_vellore_data);
-app.use('/api/vellore/friends', api_vellore_friends);
-app.use('/api/chennai', api_chennai);
-app.use('/api/chennai/login', api_chennai_login);
-app.use('/api/chennai/data', api_chennai_data);
-app.use('/api/chennai/friends', api_chennai_friends);
-//***
-//
+app.use('/', webRoutes);
+app.use('/tests', testRoutes);
+app.use('/txtweb', txtwebRoutes);
+app.use('/api/vellore', apiRoutes);
+app.use('/api/chennai', apiRoutes);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

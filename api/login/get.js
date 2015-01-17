@@ -28,14 +28,17 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+var status = require(path.join(__dirname, '..', 'status'));
 
 
-exports.getCaptcha = function (RegNo, callback) {
-    var captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
-    var data = {
-        reg_no: RegNo
-    };
+exports.get = function (app, data, callback) {
+    var captchaUri;
+    if (data.campus === 'vellore') {
+        captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
+    }
+    else if (data.campus === 'chennai') {
+        captchaUri = 'http://27.251.102.132/parent/captcha.asp';
+    }
     var onRequest = function (response) {
         if (response.error) {
             data.status = status.codes.vitDown;

@@ -24,32 +24,6 @@ var api_data = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 
 var api_grades = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'scraper', 'grades'));
 
 
-router.get('/refresh', function (req, res) {
-    var RegNo = req.query.regno;
-    var DoB = req.query.dob;
-    var onGetData = function (err, data) {
-        res.json(data);
-    };
-    api_data.getData(RegNo.toUpperCase(), DoB, false, onGetData)
-});
 
-router.get('/first', function (req, res) {
-    var RegNo = req.query.regno;
-    var DoB = req.query.dob;
-    var onGetData = function (err, data) {
-        res.json(data);
-    };
-    api_data.getData(RegNo.toUpperCase(), DoB, true, onGetData)
-});
-
-router.get('/grades', function (req, res) {
-    var RegNo = req.query.regno;
-    var DoB = req.query.dob;
-    var Sem = req.query.sem; // FS || WS
-    var onGetData = function (err, data) {
-        res.send(data);
-    };
-    api_grades.scrapeGrades(RegNo, DoB, Sem, onGetData)
-});
 
 module.exports = router;

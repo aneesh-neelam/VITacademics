@@ -24,29 +24,6 @@ var api_friends_generate = require(path.join(__dirname, '..', '..', '..', 'api',
 var api_friends_share = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'friends', 'share'));
 
 
-router.get('/regenerate', function (req, res) {
-    var RegNo = req.query.regno;
-    var DoB = req.query.dob;
-    var onGetToken = function (err, data) {
-        res.json(data);
-    };
-    api_friends_generate.getToken(RegNo.toUpperCase(), DoB, onGetToken)
-});
 
-router.get('/share', function (req, res) {
-    var onGetTimetable = function (err, data) {
-        res.json(data);
-    };
-    if (req.query.token) {
-        var token = req.query.token;
-        api_friends_share.getTimetableToken(token.toUpperCase(), onGetTimetable)
-    }
-    else if (req.query.regno && req.query.dob) {
-        var RegNo = req.query.regno;
-        var DoB = req.query.dob;
-
-        api_friends_share.getTimetableDoB(RegNo.toUpperCase(), DoB, onGetTimetable)
-    }
-});
 
 module.exports = router;

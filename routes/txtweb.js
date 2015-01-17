@@ -20,22 +20,22 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 
-var api_txtweb = require(path.join(__dirname, '..', '..', 'api', 'txtweb'));
+var api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
 
 router.get('/', function (req, res) {
-    var message = req.query['txtweb-message'];
-    var mobileHash = req.query['txtweb-mobile'];
-    var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
-    if (message && mobileHash) {
-        var onGet = function (err, messages) {
-            if (err) {
-                res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: false});
-            }
-            else {
-                res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: false});
-            }
+    var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
+    if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
+        var app = {
+            db: req.db
         };
-        api_txtweb.parseMessage(message, mobileHash, onGet);
+        var data = {
+            message: req.query['txtweb-message'],
+            mobileHash: req.query['txtweb-mobile']
+        };
+        var onGet = function (err, messages) {
+            res.render('txtweb', {GoogleAnalytics: googleAnalyticsToken, messages: messages, instructions: false});
+        };
+        api_txtweb.parseMessage(app, data, onGet);
     }
     else {
         var messages = [
@@ -46,7 +46,7 @@ router.get('/', function (req, res) {
             'Get Marks: @vitacademics marks',
             'Help - @vitacademics help'
         ];
-        res.render('txtweb', {GoogleAnalytics: GoogleAnalytics, messages: messages, instructions: true});
+        res.render('txtweb', {GoogleAnalytics: googleAnalyticsToken, messages: messages, instructions: true});
     }
 });
 

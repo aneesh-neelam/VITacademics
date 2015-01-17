@@ -25,48 +25,4 @@ var api_captcha = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore
 var api_submit = require(path.join(__dirname, '..', '..', '..', 'api', 'vellore', 'login', 'submit'));
 
 
-router.get('/manual', function (req, res) {
-    var RegNo = req.query.regno;
-    var onGetCaptcha = function (err, captchaResponse) {
-        if (err) {
-            res.send(captchaResponse);
-        }
-        else {
-            res.writeHead(200, {'Content-Type': 'image/bmp'});
-            res.write(captchaResponse);
-            res.end();
-        }
-    };
-    api_login.getCaptcha(RegNo.toUpperCase(), onGetCaptcha);
-});
-
-router.get('/auto', function (req, res) {
-    var RegNo = req.query.regno;
-    var DoB = req.query.dob;
-    var onSubmit = function (err, loginResponse) {
-        if (err) {
-            res.json(loginResponse);
-        }
-        else {
-            res.json(loginResponse);
-        }
-    };
-    api_captcha.autoLogin(RegNo.toUpperCase(), DoB, onSubmit);
-});
-
-router.get('/submit', function (req, res) {
-    var RegNo = req.query.regno;
-    var DoB = req.query.dob;
-    var Captcha = req.query.captcha;
-    var onSubmit = function (err, loginResponse) {
-        if (err) {
-            res.json(loginResponse);
-        }
-        else {
-            res.json(loginResponse);
-        }
-    };
-    api_submit.submitCaptcha(RegNo.toUpperCase(), DoB, Captcha.toUpperCase(), onSubmit);
-});
-
 module.exports = router;
