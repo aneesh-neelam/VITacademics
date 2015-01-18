@@ -23,84 +23,30 @@ var log;
 if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
-                                token: process.env.LOGENTRIES_TOKEN
-                            });
+        token: process.env.LOGENTRIES_TOKEN
+    });
 }
 
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
-var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
+var status = require(path.join(__dirname, '..', 'status'));
 
 
-exports.getTimetableToken = function (token, callback) {
-    if (cache.get(token) !== null) {
-        var keys = {
-            reg_no: 1,
-            timetable: 1,
-            courses: 1
-        };
-        var onFetch = function (err, doc) {
-            if (err) {
-                if (log) {
-                    log.log('debug', {
-                        token: token,
-                        status: status.codes.mongoDown
-                    });
-                }
-                console.log('MongoDB is down');
-                callback(true, {status: status.codes.mongoDown});
-            }
-            else if (doc) {
-                if (doc.timetable && doc.courses && doc.reg_no) {
-                    var forEachCourse = function (elt, i, arr) {
-                        delete elt['attendance'];
-                        delete elt['marks'];
-                        delete elt['cbl_marks'];
-                        delete elt['lbc_marks'];
-                        delete elt['pbc_marks'];
-                        delete elt['pbl_marks'];
-                    };
-                    doc.courses.forEach(forEachCourse);
-                    var data = {
-                        data: {
-                            reg_no: doc.reg_no,
-                            courses: doc.courses,
-                            timetable: doc.timetable
-                        },
-                        status: status.codes.success
-                    };
-                    callback(false, data);
-                }
-                else {
-                    callback(false, {status: status.codes.noData})
-                }
-            }
-            else {
-                callback(false, {status: status.codes.noData})
-            }
-        };
-        mongo.fetch({reg_no: cache.get(token)}, keys, onFetch);
-    }
-    else {
-        callback(false, {status: status.codes.tokenExpired});
-    }
-};
-
-exports.getTimetableDoB = function (RegNo, DoB, callback) {
+exports.get = function (app, data, callback) {
+    var collection = app.db.collection('student');
     var keys = {
         reg_no: 1,
         timetable: 1,
-        courses: 1
+        courses: 1,
+        campus: 1,
+        semester: 1
     };
     var onFetch = function (err, doc) {
         if (err) {
             if (log) {
-                log.log('debug', {
-                    reg_no: RegNo,
-                    status: status.codes.mongoDown
-                });
+                data.status = status.codes.mongoDown;
+                log.log('debug', data);
             }
-            console.log('MongoDB is down');
+            console.log(data.status);
             callback(true, {status: status.codes.mongoDown});
         }
         else if (doc) {
@@ -113,24 +59,31 @@ exports.getTimetableDoB = function (RegNo, DoB, callback) {
                     delete elt['pbc_marks'];
                     delete elt['pbl_marks'];
                 };
+                delete doc['_id'];
                 doc.courses.forEach(forEachCourse);
-                var data = {
-                    data: {
-                        reg_no: doc.reg_no,
-                        courses: doc.courses,
-                        timetable: doc.timetable
-                    },
-                    status: status.codes.success
-                };
-                callback(false, data)
+                doc.status = status.codes.success;
+                callback(false, doc);
             }
             else {
-                callback(false, {status: status.codes.noData});
+                data.status = status.codes.noData;
+                callback(false, data);
             }
         }
         else {
-            callback(false, {status: status.codes.noData});
+            data.status = status.codes.noData;
+            callback(false, data);
         }
     };
-    mongo.fetch({reg_no: RegNo, dob: DoB}, keys, onFetch);
+    if (data.token) {
+        if (cache.get(data.token)) {
+            collection.findOne({reg_no: cache.get(data.token)}, keys, onFetch);
+        }
+        else {
+            data.status = codes.tokenExpired;
+            callback(false, data);
+        }
+    }
+    else {
+        collection.findOne({reg_no: data.reg_no, dob: data.dob}, keys, onFetch);
+    }
 };

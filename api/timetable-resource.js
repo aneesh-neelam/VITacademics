@@ -16,13 +16,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var path = require('path');
+var emptyDay = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+];
 
-var api_login = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'login', 'get'));
-var api_captcha = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'login', 'auto'));
-var api_submit = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'login', 'submit'));
-var api_data = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'scraper', 'aggregate'));
-var api_friends_generate = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'friends', 'generate'));
-var api_friends_share = require(path.join(__dirname, '..', '..', 'api', 'chennai', 'friends', 'share'));
+var timetable = {
+    mon: emptyDay,
+    tue: emptyDay,
+    wed: emptyDay,
+    thu: emptyDay,
+    fri: emptyDay,
+    sat: emptyDay
+};
 
-// TODO tests
+module.exports.emptyTimetable = timetable;

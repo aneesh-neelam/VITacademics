@@ -21,8 +21,5 @@
 var assert = require('assert');
 var path = require('path');
 
-var api_vellore = require(path.join(__dirname, 'vellore', 'vellore-api'));
-var api_chennai = require(path.join(__dirname, 'chennai', 'chennai-api'));
-
 // TODO tests
 console.log('Hello!');

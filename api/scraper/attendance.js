@@ -24,56 +24,64 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+var status = require(path.join(__dirname, '..', 'status'));
 
 
-exports.scrapeAttendance = function (RegNo, sem, callback) {
-    var attendanceUri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + sem;
+exports.scrapeAttendance = function (app, data, callback) {
+    var attendanceUri;
+    var attendanceDetailsUri;
+    if (data.campus === 'vellore') {
+        attendanceUri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;
+        attendanceDetailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
+    }
+    else if (data.campus === 'chennai') {
+        attendanceUri = 'http://27.251.102.132/parent/attn_report.asp?sem=' + data.semester;
+        attendanceDetailsUri = 'http://27.251.102.132/parent/attn_report_details.asp';
+    }
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(RegNo).cookie;
+    var myCookie = cache.get(data.reg_no).cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response) {
         if (response.error) {
             callback(false, [
-                {status: status.codes.vitDown}
+                status.codes.vitDown
             ]);
         }
         else {
             var attendance = [];
-            try {
+            // try {
                 var scraper = cheerio.load(response.body);
                 scraper = cheerio.load(scraper('table table').eq(1).html());
                 var onEach = function (i, elem) {
-                    var $ = cheerio.load(scraper(this).html());
+                    var htmlRow = cheerio.load(scraper(this).html());
+                    var htmlColumn = htmlRow('td');
                     if (i > 0) {
-                        var classnbr = $('input[name=classnbr]').attr('value');
+                        var classnbr = htmlRow('input[name=classnbr]').attr('value');
                         attendance.push({
-                                            'class_number': classnbr,
-                                            'course_code': $('td').eq(1).text(),
-                                            'course_title': $('td').eq(2).text(),
-                                            'course_type': $('td').eq(3).text(),
-                                            'slot': $('td').eq(4).text(),
-                                            'registration_date': $('td').eq(5).text(),
-                                            'attended_classes': $('td').eq(6).text(),
-                                            'total_classes': $('td').eq(7).text(),
-                                            'attendance_percentage': $('td').eq(8).text(),
-                                            'form': {
-                                                'semcode': $('input[name=semcode]').attr('value'),
-                                                'from_date': $('input[name=from_date]').attr('value'),
-                                                'to_date': $('input[name=to_date]').attr('value'),
-                                                'classnbr': classnbr
-                                            }
-                                        });
+                            'class_number': classnbr,
+                            'course_code': htmlColumn.eq(1).text(),
+                            'course_title': htmlColumn.eq(2).text(),
+                            'course_type': htmlColumn.eq(3).text(),
+                            'slot': htmlColumn.eq(4).text(),
+                            'registration_date': htmlColumn.eq(5).text(),
+                            'attended_classes': htmlColumn.eq(6).text(),
+                            'total_classes': htmlColumn.eq(7).text(),
+                            'attendance_percentage': htmlColumn.eq(8).text(),
+                            'form': {
+                                'semcode': htmlRow('input[name=semcode]').attr('value'),
+                                'from_date': htmlRow('input[name=from_date]').attr('value'),
+                                'to_date': htmlRow('input[name=to_date]').attr('value'),
+                                'classnbr': classnbr
+                            }
+                        });
                     }
                 };
                 scraper('tr').each(onEach);
                 var doDetails = function (doc, asyncCallback) {
-                    var detailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
-                    CookieJar.add(unirest.cookie(cookieSerial), detailsUri);
                     var onPost = function (response) {
                         if (response.error) {
                             asyncCallback(false, [
-                                {status: status.codes.vitDown}
+                                status.codes.vitDown
                             ]);
                         }
                         else {
@@ -83,14 +91,14 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                                 scraper = cheerio.load(scraper('table table').eq(1).html());
                                 var details = [];
                                 var onDay = function (i, elem) {
-                                    var $ = cheerio.load(scraper(this).html());
+                                    var htmlColumn = cheerio.load(scraper(this).html())('td');
                                     if (i > 1) {
                                         details.push({
-                                                         'sl': $('td').eq(0).text(),
-                                                         'date': $('td').eq(1).text(),
-                                                         'status': $('td').eq(3).text(),
-                                                         'reason': $('td').eq(5).text()
-                                                     });
+                                            'sl': htmlColumn.eq(0).text(),
+                                            'date': htmlColumn.eq(1).text(),
+                                            'status': htmlColumn.eq(3).text(),
+                                            'reason': htmlColumn.eq(5).text()
+                                        });
                                     }
                                 };
                                 scraper('tr').each(onDay);
@@ -103,22 +111,24 @@ exports.scrapeAttendance = function (RegNo, sem, callback) {
                             }
                         }
                     };
-                    unirest.post(detailsUri)
+                    unirest.post(attendanceDetailsUri)
                         .jar(CookieJar)
                         .form(doc.form)
                         .end(onPost);
                 };
                 async.map(attendance, doDetails, callback);
+            /*
             }
             catch (ex) {
-                // Scraping Attendance failed
                 callback(false, [
-                    {status: status.codes.invalid}
+             status.codes.invalid
                 ]);
             }
+             */
         }
     };
     CookieJar.add(unirest.cookie(cookieSerial), attendanceUri);
+    CookieJar.add(unirest.cookie(cookieSerial), attendanceDetailsUri);
     unirest.post(attendanceUri)
         .jar(CookieJar)
         .end(onRequest);

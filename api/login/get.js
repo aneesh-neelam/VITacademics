@@ -61,8 +61,11 @@ exports.get = function (app, data, callback) {
                 return true;
             };
             Object.keys(response.cookies).forEach(onEach);
-            data.cookie = myCookie;
-            cache.put(data.reg_no, data, validity * 60 * 1000);
+            var doc = {
+                reg_no: data.reg_no,
+                cookie: myCookie
+            };
+            cache.put(data.reg_no, doc, validity * 60 * 1000);
             callback(null, response.body);
         }
     };

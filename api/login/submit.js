@@ -47,6 +47,7 @@ exports.get = function (app, data, callback) {
         }
         CookieJar.add(unirest.cookie(cookieSerial), submitUri);
         var onPost = function (response) {
+            delete data['captcha'];
             if (response.error) {
                 data.status = status.codes.vitDown;
                 if (log) {
@@ -74,8 +75,12 @@ exports.get = function (app, data, callback) {
                 finally {
                     if (login) {
                         var validity = 3; // In Minutes
-                        delete data['captcha'];
-                        cache.put(data.reg_no, data, validity * 60 * 1000);
+                        var doc = {
+                            reg_no: data.reg_no,
+                            dob: data.dob,
+                            cookie: myCookie
+                        };
+                        cache.put(data.reg_no, doc, validity * 60 * 1000);
                         var onUpdate = function (err) {
                             if (err) {
                                 data.status = status.codes.mongoDown;
@@ -91,10 +96,13 @@ exports.get = function (app, data, callback) {
                             }
                         };
                         var collection = app.db.collection('student');
-                        delete data['cookie'];
                         collection.findAndModify({reg_no: data.reg_no}, [
                             ['reg_no', 'asc']
-                        ], {$set: {dob: data.dob}}, {safe: true, new: true, upsert: true}, onUpdate);
+                        ], {$set: {dob: data.dob, campus: data.campus}}, {
+                            safe: true,
+                            new: true,
+                            upsert: true
+                        }, onUpdate);
                     }
                     else {
                         data.status = status.codes.invalid;

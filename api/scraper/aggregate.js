@@ -25,74 +25,80 @@ var log;
 if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
-                                token: process.env.LOGENTRIES_TOKEN
-                            });
+        token: process.env.LOGENTRIES_TOKEN
+    });
 }
 
 var attendance = require(path.join(__dirname, 'attendance'));
-var status = require(path.join(__dirname, '..', '..', 'status'));
-var marks = require(path.join(__dirname, 'marks'));
-var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
-var timetable = require(path.join(__dirname, 'timetable'));
 var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
+var marks = require(path.join(__dirname, 'marks'));
+var status = require(path.join(__dirname, '..', 'status'));
+var timetable = require(path.join(__dirname, 'timetable'));
 
 
-exports.getData = function (RegNo, DoB, firsttime, callback) {
-    var data = {reg_no: RegNo};
-    if (cache.get(RegNo) !== null) {
-        if (cache.get(RegNo).dob === DoB) {
-            if (cache.get(RegNo).refreshed && !(firsttime)) {
+exports.get = function (app, data, callback) {
+    if (cache.get(data.reg_no) !== null) {
+        if (cache.get(data.reg_no).dob === data.dob) {
+            var collection = app.db.collection('student');
+            if (cache.get(data.reg_no).refreshed && !(data.first_time)) {
                 var keys = {
                     reg_no: 1,
+                    dob: 1,
+                    campus: 1,
                     courses: 1,
-                    refreshed: 1
+                    refreshed: 1,
+                    withdrawn: 1,
+                    semester: 1
                 };
                 var onFetch = function (err, mongoDoc) {
                     if (err) {
                         if (log) {
-                            log.log('debug', {
-                                reg_no: RegNo,
-                                status: status.codes.mongoDown
-                            });
+                            data.status = status.codes.mongoDown;
+                            log.log('debug', data);
                         }
-                        console.log('MongoDB is down');
-                        callback(true, {status: status.codes.mongoDown});
+                        console.log(data.status);
+                        callback(true, data);
                     }
                     else if (mongoDoc) {
                         delete mongoDoc['_id'];
+                        mongoDoc.first_time = data.first_time;
                         mongoDoc.status = status.codes.success;
                         mongoDoc.cached = true;
                         callback(false, mongoDoc);
                     }
                     else {
-                        callback(true, {status: status.codes.noData});
+                        data.status = status.codes.noData;
+                        callback(true, data);
                     }
                 };
-                mongo.fetch({reg_no: RegNo, dob: DoB}, keys, onFetch);
+                collection.findOne({reg_no: data.reg_no, dob: data.dob}, keys, onFetch);
             }
             else {
-                var sem = process.env.VELLORE_CURRENT_SEMESTER || 'WS';
-
+                if (data.campus === 'vellore') {
+                    data.semester = process.env.VELLORE_SEMESTER || 'WS';
+                }
+                else if (data.campus === 'chennai') {
+                    data.semester = process.env.CHENNAI_SEMESTER || 'WS15';
+                }
                 var parallelTasks = {};
-
                 parallelTasks.attendance = function (asyncCallback) {
-                    attendance.scrapeAttendance(RegNo, sem, asyncCallback)
+                    attendance.scrapeAttendance(app, data, asyncCallback)
                 };
 
                 parallelTasks.marks = function (asyncCallback) {
-                    marks.scrapeMarks(RegNo, sem, asyncCallback)
+                    marks.scrapeMarks(app, data, asyncCallback)
                 };
                 parallelTasks.timetable = function (asyncCallback) {
-                    timetable.scrapeTimetable(RegNo, sem, firsttime, asyncCallback)
+                    timetable.scrapeTimetable(app, data, asyncCallback)
                 };
 
-                if (firsttime) {
+                if (data.first_time) {
                     parallelTasks.token = function (asyncCallback) {
-                        friends.getToken(RegNo, DoB, asyncCallback)
+                        friends.get(app, data, asyncCallback)
                     };
                 }
 
-                var myCookie = cache.get(RegNo).cookie;
+                var myCookie = cache.get(data.reg_no).cookie;
 
                 var onFinish = function (err, results) {
                     if (err || results.timetable.status.code !== 0) {
@@ -162,45 +168,79 @@ exports.getData = function (RegNo, DoB, firsttime, callback) {
                             else {
                                 data.courses = newData;
                                 data.refreshed = new Date().toJSON();
-                                var onInsert = function (err) {
+                                var onUpdate = function (err) {
                                     if (err) {
                                         data.status = status.codes.mongoDown;
                                         if (log) {
                                             log.log('debug', data);
                                         }
-                                        console.log('MongoDB connection failed');
+                                        console.log(data.status);
+                                        callback(true, data);
                                     }
                                     else {
                                         var validity = 3; // In Minutes
-                                        var doc = {reg_no: RegNo, dob: DoB, cookie: myCookie, refreshed: !firsttime};
-                                        cache.put(RegNo, doc, validity * 60 * 1000);
+                                        var doc = {
+                                            reg_no: data.reg_no,
+                                            dob: data.dob,
+                                            cookie: myCookie,
+                                            refreshed: !data.first_time
+                                        };
+                                        cache.put(data.reg_no, doc, validity * 60 * 1000);
+                                        data.cached = false;
+                                        data.status = status.codes.success;
+                                        callback(null, data);
                                     }
                                 };
-                                if (firsttime) {
+                                if (data.first_time) {
                                     data.timetable = results.timetable.timetable;
                                     data.share = results.token.share;
                                     data.withdrawn = results.timetable.withdrawn;
-                                    mongo.update(data, ['timetable', 'courses', 'refreshed', 'withdrawn'], onInsert);
+                                    collection.findAndModify({reg_no: data.reg_no}, [
+                                        ['reg_no', 'asc']
+                                    ], {
+                                        $set: {
+                                            timetable: data.timetable,
+                                            courses: data.courses,
+                                            semester: data.semester,
+                                            refreshed: data.refreshed,
+                                            withdrawn: data.withdrawn
+                                        }
+                                    }, {safe: true, new: true, upsert: true}, onUpdate);
                                 }
                                 else if (results.timetable.withdrawn) {
                                     data.timetable = results.timetable.timetable;
                                     data.withdrawn = results.timetable.withdrawn;
-                                    mongo.update(data, ['timetable', 'courses', 'refreshed', 'withdrawn'], onInsert);
+                                    collection.findAndModify({reg_no: data.reg_no}, [
+                                        ['reg_no', 'asc']
+                                    ], {
+                                        $set: {
+                                            timetable: data.timetable,
+                                            semester: data.semester,
+                                            courses: data.courses,
+                                            refreshed: data.refreshed,
+                                            withdrawn: data.withdrawn
+                                        }
+                                    }, {safe: true, new: true, upsert: true}, onUpdate);
                                     delete data.timetable;
                                 }
                                 else {
                                     data.withdrawn = results.timetable.withdrawn;
-                                    mongo.update(data, ['courses', 'refreshed', 'withdrawn'], onInsert);
+                                    collection.findAndModify({reg_no: data.reg_no}, [
+                                        ['reg_no', 'asc']
+                                    ], {
+                                        $set: {
+                                            courses: data.courses,
+                                            semester: data.semester,
+                                            refreshed: data.refreshed,
+                                            withdrawn: data.withdrawn
+                                        }
+                                    }, {safe: true, new: true, upsert: true}, onUpdate);
                                 }
-                                data.cached = false;
-                                data.status = status.codes.success;
-                                callback(null, data);
                             }
                         };
                         async.map(data.courses, forEachCourse, doneCollate);
                     }
                 };
-
                 async.parallel(parallelTasks, onFinish);
             }
         }

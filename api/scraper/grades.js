@@ -22,40 +22,10 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+var status = require(path.join(__dirname, '..', 'status'));
 
 
-exports.scrapeGrades = function (RegNo, DoB, sem, callback) {
-    var data = {RegNo: RegNo};
-    if (cache.get(RegNo) !== null) {
-        if (cache.get(RegNo).DoB === DoB) {
-            var Sem = sem || process.env.VELLORE_PREVIOUS_SEMESTER || 'WS';
-            var timetableUri = 'https://academics.vit.ac.in/parent/grade.asp?sem=' + Sem;
-            var CookieJar = unirest.jar();
-            var myCookie = cache.get(RegNo).Cookie;
-            var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
-            var onRequest = function (response) {
-                if (response.error) {
-                    callback(true, {status: status.codes.vitDown});
-                }
-                else {
-                    // TODO Grades
-                    data.status = status.codes.toDo;
-                    callback(true, data);
-                }
-            };
-            CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
-            unirest.post(timetableUri)
-                .jar(CookieJar)
-                .end(onRequest);
-        }
-        else {
-            data.status = status.codes.invalid;
-            callback(true, data);
-        }
-    }
-    else {
-        data.status = status.codes.timedOut;
-        callback(true, data);
-    }
+exports.get = function (app, data, callback) {
+    data.status = status.codes.toDo;
+    callback(false, data);
 };

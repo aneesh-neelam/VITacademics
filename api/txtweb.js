@@ -26,16 +26,12 @@ if (process.env.LOGENTRIES_TOKEN) {
                             });
 }
 
+var api_login = require(path.join(__dirname, 'login', 'auto'));
+var api_aggregate = require(path.join(__dirname, 'scraper', 'aggregate'));
 var status = require(path.join(__dirname, 'status'));
-// var chennai_login = require(path.join(__dirname, 'chennai', 'login', 'auto'));
-// var chennai_mongo = require(path.join(__dirname, 'chennai', 'db', 'mongo'));
-// var chennai_aggregate = require(path.join(__dirname, 'chennai', 'scraper', 'aggregate'));
-// var vellore_login = require(path.join(__dirname, 'vellore', 'login', 'auto'));
-// var vellore_mongo = require(path.join(__dirname, 'vellore', 'db', 'mongo'));
-// var vellore_aggregate = require(path.join(__dirname, 'vellore', 'scraper', 'aggregate'));
 
 
-var parseMessage = function (message, mobile, callback) {
+var parseMessage = function (app, data, callback) {
     var reply = [
         'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
         'Get Course Details:  @vitacademics course [CourseCode]',
@@ -44,7 +40,7 @@ var parseMessage = function (message, mobile, callback) {
         'Get Marks: @vitacademics marks',
         'Help - @vitacademics help'
     ];
-    var args = message.toUpperCase().split();
+    var args = data.message.toUpperCase().split();
     if (args[0] === 'REGISTER') {
         // TODO
         reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];

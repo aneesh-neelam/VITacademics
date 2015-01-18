@@ -98,7 +98,7 @@ app.use(function (req, res, next) {
 
 app.use('/', webRoutes);
 app.use('/tests', testRoutes);
-app.use('/txtweb', txtwebRoutes);
+app.use('/api/txtweb', txtwebRoutes);
 app.use('/api/vellore', apiRoutes);
 app.use('/api/chennai', apiRoutes);
 

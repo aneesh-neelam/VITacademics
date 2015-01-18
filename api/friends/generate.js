@@ -24,32 +24,26 @@ var log;
 if (process.env.LOGENTRIES_TOKEN) {
     var logentries = require('node-logentries');
     log = logentries.logger({
-                                token: process.env.LOGENTRIES_TOKEN
-                            });
+        token: process.env.LOGENTRIES_TOKEN
+    });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
-var mongo = require(path.join(__dirname, '..', 'db', 'mongo'));
-var resource = require(path.join(__dirname, '..', '..', 'token-resource'));
+var status = require(path.join(__dirname, '..', 'status'));
+var resource = require(path.join(__dirname, '..', 'token-resource'));
 
 
-var generate = function (RegNo, validity, callback) {
+var generate = function (regNo, validity, callback) {
     var token;
     do
     {
         token = underscore.sample(resource.resources, 6).join('');
     }
     while (cache.get(token));
-    cache.put(token, RegNo, validity * 60 * 60 * 1000);
+    cache.put(token, regNo, validity * 60 * 60 * 1000);
     callback(null, token);
 };
 
-exports.getToken = function (RegNo, DoB, callback) {
-    var keys = {
-        reg_no: 1,
-        dob: 1
-    };
-    var data = {reg_no: RegNo};
+exports.get = function (app, data, callback) {
     var onFetch = function (err, doc) {
         if (err) {
             if (log) {
@@ -57,7 +51,6 @@ exports.getToken = function (RegNo, DoB, callback) {
                     status: status.codes.mongoDown
                 });
             }
-            console.log('MongoDB is down');
             callback(true, {status: status.codes.mongoDown});
         }
         if (doc) {
@@ -71,11 +64,12 @@ exports.getToken = function (RegNo, DoB, callback) {
                 data.status = status.codes.success;
                 callback(err, data);
             };
-            generate(RegNo, validity, onGeneration);
+            generate(data.reg_no, validity, onGeneration);
         }
         else {
             callback(false, {status: status.codes.invalid});
         }
     };
-    mongo.fetch({reg_no: RegNo, dob: DoB}, keys, onFetch);
+    var collection = app.db.collection('student');
+    collection.findOne({reg_no: data.reg_no, dob: data.dob}, onFetch);
 };

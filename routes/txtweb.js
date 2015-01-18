@@ -30,7 +30,7 @@ router.get('/', function (req, res) {
         };
         var data = {
             message: req.query['txtweb-message'],
-            mobileHash: req.query['txtweb-mobile']
+            mobile: req.query['txtweb-mobile']
         };
         var onGet = function (err, messages) {
             res.render('txtweb', {GoogleAnalytics: googleAnalyticsToken, messages: messages, instructions: false});

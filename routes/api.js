@@ -23,10 +23,10 @@ var router = express.Router();
 var loginManual = require(path.join(__dirname, '..', 'api', 'login', 'get'));
 var loginAuto = require(path.join(__dirname, '..', 'api', 'login', 'auto'));
 var loginSubmit = require(path.join(__dirname, '..', 'api', 'login', 'submit'));
-//var dataAggregate = require(path.join(__dirname, '..', 'api', 'data', 'aggregate'));
-//var dataGrades = require(path.join(__dirname, '..', 'api', 'data', 'grades'));
-//var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
-//var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
+var dataAggregate = require(path.join(__dirname, '..', 'api', 'scraper', 'aggregate'));
+var dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'));
+var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
+var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
 
 
 router.get('/login/manual', function (req, res) {
@@ -154,13 +154,17 @@ router.get('/friends/regenerate', function (req, res) {
 });
 
 router.get('/friends/share', function (req, res) {
+    var token;
+    var reg_no;
+    if (req.query.token) token = req.query.token.toUpperCase();
+    if (req.query.regno) reg_no = req.query.regno.toUpperCase();
     var app = {
         db: req.db
     };
     var data = {
-        reg_no: req.query.regno.toUpperCase(),
+        reg_no: reg_no,
         dob: req.query.dob,
-        token: req.query.token.toUpperCase(),
+        token: token,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
     var onGetTimetable = function (err, data) {

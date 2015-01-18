@@ -24,17 +24,27 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+var status = require(path.join(__dirname, '..', 'status'));
+var timetableResource = require(path.join(__dirname, '..', 'timetable-resource'));
 
 
-exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
-    var timetableUri = 'https://academics.vit.ac.in/parent/timetable.asp?sem=' + sem;
+exports.scrapeTimetable = function (app, data, callback) {
+    var timetableUri;
+    if (data.campus === 'vellore') {
+        timetableUri = 'https://academics.vit.ac.in/parent/timetable.asp?sem=' + data.semester;
+    }
+    else if (data.campus === 'chennai') {
+        timetableUri = 'http://27.251.102.132/parent/timetable.asp?sem=' + data.semester;
+    }
+
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(RegNo).cookie;
+    var myCookie = cache.get(data.reg_no).cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
     var onRequest = function (response) {
         if (response.error) {
-            callback(true, {status: status.codes.vitDown});
+            data.status = status.codes.vitDown;
+            callback(true, data);
+            console.log(data.status);
         }
         else {
             var timetable = {
@@ -48,119 +58,125 @@ exports.scrapeTimetable = function (RegNo, sem, firsttime, callback) {
                 if (scraper('table table').length == 3) {
                     timetable.withdrawn = true;
                 }
-                scraper = cheerio.load(scraper('table table').eq(0).html());
-                var length = scraper('tr').length;
-                var onEach = function (i, elem) {
-                    var $ = cheerio.load(scraper(this).html());
-                    if (i > 0 && i < (length - 1)) {
-                        var classnbr = $('td').eq(1).text();
-                        var code = $('td').eq(2).text();
-                        var courseType = $('td').eq(4).text();
-                        var columns = $('td').length;
-                        var slot = null;
-                        var venue = null;
-                        var faculty = null;
-                        var registrationStatus = null;
-                        var billDate = null;
-                        var projectTitle = null;
-                        if (columns === 13) {
-                            slot = $('td').eq(8).text();
-                            venue = $('td').eq(9).text();
-                            faculty = $('td').eq(10).text();
-                            registrationStatus = $('td').eq(11).text();
-                            billDate = $('td').eq(12).text();
-                        }
-                        else if (columns === 12) {
-                            projectTitle = $('td').eq(8).text().split(':')[1];
-                            faculty = $('td').eq(9).text().split(':')[1];
-                            registrationStatus = $('td').eq(10).text();
-                            billDate = $('td').eq(11).text();
-                        }
-                        if (courseType == 'Embedded Theory') {
-                            code = code + 'ETH';
-                        }
-                        else if (courseType == 'Embedded Lab') {
-                            code = code + 'ELA';
-                        }
-                        else if (courseType == 'Theory Only') {
-                            code = code + 'TH';
-                        }
-                        else if (courseType == 'Lab Only') {
-                            code = code + 'LO';
-                        }
-                        tmp[code] = classnbr;
-                        timetable['courses'].push({
-                                                      'class_number': classnbr,
-                                                      'course_code': $('td').eq(2).text(),
-                                                      'course_title': $('td').eq(3).text(),
-                                                      'course_type': courseType,
-                                                      'ltpc': $('td').eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
-                                                      'course_mode': $('td').eq(6).text(),
-                                                      'course_option': $('td').eq(7).text(),
-                            'slot': slot,
-                            'venue': venue,
-                            'faculty': faculty,
-                            'registration_status': registrationStatus,
-                            'bill_date': billDate,
-                            'project_title': projectTitle
-                                                  });
-                    }
-                };
-                scraper('tr').each(onEach);
-                if (firsttime || timetable.withdrawn) {
-                    scraper = cheerio.load(response.body);
-                    if (timetable.withdrawn) {
-                        scraper = cheerio.load(scraper('table table').eq(2).html());
-                    }
-                    else {
-                        scraper = cheerio.load(scraper('table table').eq(1).html());
-                    }
-                    length = scraper('tr').length;
-                    var onEachRow = function (i, elem) {
-                        var day = [];
-                        var $ = cheerio.load(scraper(this).html());
-                        if (i > 1) {
-                            length = $('td').length;
-                            for (var elt = 1; elt < length; elt++) {
-                                var text = $('td').eq(elt).text().split(' ');
-                                var sub = text[0] + text[2];
-                                if (tmp[sub]) {
-                                    day.push(Number(tmp[sub]));
-                                }
-                                else {
-                                    day.push(0);
-                                }
+                if (scraper('b').eq(1).text().substring(0, 2) === 'No') {
+                    timetable.timetable = timetableResource.emptyTimetable;
+                }
+                else {
+                    scraper = cheerio.load(scraper('table table').eq(0).html());
+                    var length = scraper('tr').length;
+                    var onEach = function (i, elem) {
+                        if (i > 0 && i < (length - 1)) {
+                            var htmlColumn = cheerio.load(scraper(this).html())('td');
+                            var classnbr = htmlColumn.eq(1).text();
+                            var code = htmlColumn.eq(2).text();
+                            var courseType = htmlColumn.eq(4).text();
+                            var columns = htmlColumn.length;
+                            var slot = null;
+                            var venue = null;
+                            var faculty = null;
+                            var registrationStatus = null;
+                            var billDate = null;
+                            var projectTitle = null;
+                            if (columns === 13) {
+                                slot = htmlColumn.eq(8).text();
+                                venue = htmlColumn.eq(9).text();
+                                faculty = htmlColumn.eq(10).text();
+                                registrationStatus = htmlColumn.eq(11).text();
+                                billDate = htmlColumn.eq(12).text();
                             }
-                            switch (i) {
-                                case 2:
-                                    timetable.timetable.mon = day;
-                                    break;
-                                case 3:
-                                    timetable.timetable.tue = day;
-                                    break;
-                                case 4:
-                                    timetable.timetable.wed = day;
-                                    break;
-                                case 5:
-                                    timetable.timetable.thu = day;
-                                    break;
-                                case 6:
-                                    timetable.timetable.fri = day;
-                                    break;
-                                case 7:
-                                    timetable.timetable.sat = day;
-                                    break;
+                            else if (columns === 12) {
+                                projectTitle = htmlColumn.eq(8).text().split(':')[1];
+                                faculty = htmlColumn.eq(9).text().split(':')[1];
+                                registrationStatus = htmlColumn.eq(10).text();
+                                billDate = htmlColumn.eq(11).text();
                             }
+                            if (courseType == 'Embedded Theory') {
+                                code = code + 'ETH';
+                            }
+                            else if (courseType == 'Embedded Lab') {
+                                code = code + 'ELA';
+                            }
+                            else if (courseType == 'Theory Only') {
+                                code = code + 'TH';
+                            }
+                            else if (courseType == 'Lab Only') {
+                                code = code + 'LO';
+                            }
+                            tmp[code] = classnbr;
+                            timetable['courses'].push({
+                                'class_number': classnbr,
+                                'course_code': htmlColumn.eq(2).text(),
+                                'course_title': htmlColumn.eq(3).text(),
+                                'course_type': courseType,
+                                'ltpc': htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
+                                'course_mode': htmlColumn.eq(6).text(),
+                                'course_option': htmlColumn.eq(7).text(),
+                                'slot': slot,
+                                'venue': venue,
+                                'faculty': faculty,
+                                'registration_status': registrationStatus,
+                                'bill_date': billDate,
+                                'project_title': projectTitle
+                            });
                         }
                     };
-                    scraper('tr').each(onEachRow);
+                    scraper('tr').each(onEach);
+                    if (data.first_time || timetable.withdrawn) {
+                        scraper = cheerio.load(response.body);
+                        if (timetable.withdrawn) {
+                            scraper = cheerio.load(scraper('table table').eq(2).html());
+                        }
+                        else {
+                            scraper = cheerio.load(scraper('table table').eq(1).html());
+                        }
+                        length = scraper('tr').length;
+                        var onEachRow = function (i, elem) {
+                            var day = [];
+                            var htmlRow = cheerio.load(scraper(this).html());
+                            if (i > 1) {
+                                var htmlColumn = htmlRow('td');
+                                length = htmlColumn.length;
+                                for (var elt = 1; elt < length; elt++) {
+                                    var text = htmlColumn.eq(elt).text().split(' ');
+                                    var sub = text[0] + text[2];
+                                    if (tmp[sub]) {
+                                        day.push(Number(tmp[sub]));
+                                    }
+                                    else {
+                                        day.push(0);
+                                    }
+                                }
+                                switch (i) {
+                                    case 2:
+                                        timetable.timetable.mon = day;
+                                        break;
+                                    case 3:
+                                        timetable.timetable.tue = day;
+                                        break;
+                                    case 4:
+                                        timetable.timetable.wed = day;
+                                        break;
+                                    case 5:
+                                        timetable.timetable.thu = day;
+                                        break;
+                                    case 6:
+                                        timetable.timetable.fri = day;
+                                        break;
+                                    case 7:
+                                        timetable.timetable.sat = day;
+                                        break;
+                                }
+                            }
+                        };
+                        scraper('tr').each(onEachRow);
+                    }
                 }
                 timetable.status = status.codes.success;
                 callback(null, timetable);
             }
             catch (ex) {
-                // Scraping Timetable failed
-                callback(true, {status: status.codes.invalid});
+                data.status = status.codes.invalid;
+                callback(true, data);
             }
         }
     };
