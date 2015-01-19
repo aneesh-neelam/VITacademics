@@ -49,7 +49,7 @@ exports.scrapeAttendance = function (app, data, callback) {
         }
         else {
             var attendance = [];
-            // try {
+            try {
                 var scraper = cheerio.load(response.body);
                 scraper = cheerio.load(scraper('table table').eq(1).html());
                 var onEach = function (i, elem) {
@@ -117,14 +117,12 @@ exports.scrapeAttendance = function (app, data, callback) {
                         .end(onPost);
                 };
                 async.map(attendance, doDetails, callback);
-            /*
             }
             catch (ex) {
                 callback(false, [
-             status.codes.invalid
+                    status.codes.invalid
                 ]);
             }
-             */
         }
     };
     CookieJar.add(unirest.cookie(cookieSerial), attendanceUri);

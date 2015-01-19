@@ -121,7 +121,7 @@ if (app.get('env') === 'development') {
             message: err.message,
             status: err.status,
             stack: err.stack,
-            GoogleAnalytics: googleAnalyticsToken
+            googleAnalyticsToken: googleAnalyticsToken
         });
     });
 }
@@ -136,7 +136,7 @@ app.use(function (err, req, res, next) {
         message: err.message,
         status: err.status,
         stack: '',
-        GoogleAnalytics: googleAnalyticsToken
+        googleAnalyticsToken: googleAnalyticsToken
     });
 });
 

@@ -79,7 +79,7 @@ exports.get = function (app, data, callback) {
             collection.findOne({reg_no: cache.get(data.token)}, keys, onFetch);
         }
         else {
-            data.status = codes.tokenExpired;
+            data.status = status.codes.tokenExpired;
             callback(false, data);
         }
     }

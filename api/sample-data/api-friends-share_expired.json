@@ -1,6 +1,8 @@
 {
-    "status": {
-        "message": "Token expired",
-        "code": 14
-    }
+  "token": "ABCDEF",
+  "campus": "chennai",
+  "status": {
+    "message": "Token expired",
+    "code": 14
+  }
 }

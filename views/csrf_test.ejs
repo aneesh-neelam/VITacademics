@@ -19,15 +19,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title><%= title %> </title>
+    <meta charset="UTF-8">
+    <title><%= title %> </title>
 </head>
 <body>
 <p><%= message %></p>
+
 <form action="/tests/csrf_test" method="POST">
-    <input type="hidden" name='_csrf' value=<%= csrfToken %> />
+    <input type="hidden" name='_csrf' value=<%= csrfToken %>/>
     <label>
-        <input type="text" name="color" />
+        <input type="text" name="color"/>
     </label>
     <input type="submit"/>
 </form>

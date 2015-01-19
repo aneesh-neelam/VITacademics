@@ -55,7 +55,7 @@ router.get('/', function (req, res) {
         res.render('txtweb', {
             googleAnalyticsToken: googleAnalyticsToken,
             messages: messages,
-            instructions: false,
+            instructions: true,
             txtWebAppKey: txtWebAppKey
         });
     }

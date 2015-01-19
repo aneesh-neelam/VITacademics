@@ -60,15 +60,10 @@ router.get('/login/submit', function (req, res) {
         captcha: req.query.captcha.toUpperCase(),
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onSubmit = function (err, loginResponse) {
-        if (err) {
-            res.json(loginResponse);
-        }
-        else {
-            res.json(loginResponse);
-        }
+    var onGet = function (err, loginResponse) {
+        res.json(loginResponse);
     };
-    loginSubmit.get(app, data, onSubmit);
+    loginSubmit.get(app, data, onGet);
 });
 
 router.get('/login/auto', function (req, res) {
@@ -80,15 +75,10 @@ router.get('/login/auto', function (req, res) {
         dob: req.query.dob,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onSubmit = function (err, loginResponse) {
-        if (err) {
-            res.json(loginResponse);
-        }
-        else {
-            res.json(loginResponse);
-        }
+    var onGet = function (err, loginResponse) {
+        res.json(loginResponse);
     };
-    loginAuto.get(app, data, onSubmit);
+    loginAuto.get(app, data, onGet);
 });
 
 router.get('/data/first', function (req, res) {
@@ -101,10 +91,10 @@ router.get('/data/first', function (req, res) {
         first_time: true,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGetData = function (err, data) {
+    var onGet = function (err, data) {
         res.json(data);
     };
-    dataAggregate.get(app, data, onGetData)
+    dataAggregate.get(app, data, onGet);
 });
 
 router.get('/data/refresh', function (req, res) {
@@ -117,10 +107,10 @@ router.get('/data/refresh', function (req, res) {
         first_time: false,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGetData = function (err, data) {
+    var onGet = function (err, data) {
         res.json(data);
     };
-    dataAggregate.get(app, data, onGetData)
+    dataAggregate.get(app, data, onGet);
 });
 
 router.get('/data/grades', function (req, res) {
@@ -132,10 +122,10 @@ router.get('/data/grades', function (req, res) {
         dob: req.query.dob,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGetData = function (err, data) {
+    var onGet = function (err, data) {
         res.send(data);
     };
-    dataGrades.get(app, data, onGetData)
+    dataGrades.get(app, data, onGet);
 });
 
 router.get('/friends/regenerate', function (req, res) {
@@ -147,10 +137,10 @@ router.get('/friends/regenerate', function (req, res) {
         dob: req.query.dob,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGetToken = function (err, data) {
+    var onGet = function (err, data) {
         res.json(data);
     };
-    friendsGenerate.get(app, data, onGetToken)
+    friendsGenerate.get(app, data, onGet);
 });
 
 router.get('/friends/share', function (req, res) {
@@ -167,10 +157,10 @@ router.get('/friends/share', function (req, res) {
         token: token,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGetTimetable = function (err, data) {
+    var onGet = function (err, data) {
         res.json(data);
     };
-    friendsShare.get(app, data, onGetTimetable)
+    friendsShare.get(app, data, onGet);
 });
 
 module.exports = router;

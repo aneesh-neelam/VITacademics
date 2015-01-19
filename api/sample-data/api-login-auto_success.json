@@ -1,7 +1,9 @@
 {
-    "reg_no": "11BCE0260",
-    "status": {
-        "message": "Successful execution",
-        "code": 0
-    }
+  "reg_no": "11BCE0260",
+  "campus": "vellore",
+  "dob": "20101993",
+  "status": {
+    "message": "Successful execution",
+    "code": 0
+  }
 }
