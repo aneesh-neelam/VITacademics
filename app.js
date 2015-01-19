@@ -84,8 +84,8 @@ app.use(csrf());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-var GoogleAnalytics = process.env.GOOGLE_ANALYTICS || 'UA-35429946-2';
-app.use(ga(GoogleAnalytics, {
+var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
+app.use(ga(googleAnalyticsToken, {
     safe: true
 }));
 
@@ -121,7 +121,7 @@ if (app.get('env') === 'development') {
             message: err.message,
             status: err.status,
             stack: err.stack,
-            GoogleAnalytics: GoogleAnalytics
+            GoogleAnalytics: googleAnalyticsToken
         });
     });
 }
@@ -136,7 +136,7 @@ app.use(function (err, req, res, next) {
         message: err.message,
         status: err.status,
         stack: '',
-        GoogleAnalytics: GoogleAnalytics
+        GoogleAnalytics: googleAnalyticsToken
     });
 });
 

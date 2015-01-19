@@ -25,7 +25,7 @@
     <meta charset="UTF-8"/>
     <meta name="author" content="Aneesh Neelam <neelam.aneesh@gmail.com>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="txtweb-appkey" content="f137b995-5146-4c2e-b8d4-5df474f39316"/>
+    <meta name="txtweb-appkey" content="<%= txtWebAppKey %>"/>
     <title>SMS | VITacademics</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/status.css"/>
     <link rel="stylesheet" type="text/css" href="/bower_components/foundation/css/foundation.css"/>
@@ -42,7 +42,7 @@
             a.src = g;
             m.parentNode.insertBefore(a, m)
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', '<%= GoogleAnalytics %>', 'auto');
+        ga('create', '<%= googleAnalyticsToken %>', 'auto');
         ga('send', 'pageview');
     </script>
 </head>

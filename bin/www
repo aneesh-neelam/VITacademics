@@ -18,11 +18,74 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var cluster = require('cluster');
+var os = require('os');
 var path = require('path');
 
-/*
- *  Use nodemon for development
- *  Do not use cluster on Heroku PaaS
- */
+if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
+    require('newrelic');
+}
 
-require(path.join(__dirname, 'single'));
+var log;
+if (process.env.LOGENTRIES_TOKEN) {
+    var logentries = require('node-logentries');
+    log = logentries.logger({
+        token: process.env.LOGENTRIES_TOKEN
+    });
+}
+
+var app = require(path.join(__dirname, '..', 'app'));
+var server;
+
+app.set('port', process.env.PORT || 3000);
+
+var workers = {};
+var processCount = process.env.PROCESS_COUNT || os.cpus().length;
+
+var spawn = function () {
+    var worker = cluster.fork();
+    workers[worker.pid] = worker;
+    return worker;
+};
+
+var onBind = function () {
+    console.log('Started Worker Process PID: ' + process.pid + ' and is listening for requests. ');
+};
+
+if (cluster.isMaster) {
+    var mongoHostAuth = process.env.MONGO_HOST_AUTH || 'localhost';
+    var mongoDatabase = process.env.MONGO_DATABASE || 'VITacademics';
+    if (log) {
+        log.log('info', {mongoHostAuth: mongoHostAuth, mongoDatabase: mongoDatabase, Port: app.get('port')});
+        if (process.env.HOSTNAME) {
+            log.log('info', {Application: process.env.HOSTNAME});
+        }
+        if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
+            log.info('Using New Relic');
+        }
+    }
+    console.log('Node.js Express Server started, listening on port: ' + app.get('port'));
+    console.log('Using MongoDB Host: ' + mongoHostAuth + ', and MongoDB Database: ' + mongoDatabase);
+    if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
+        console.log('Using New Relic');
+    }
+    if (process.env.HOSTNAME) {
+        console.log(process.env.HOSTNAME);
+    }
+
+    console.log('Spawning ' + processCount + ' worker(s)');
+    for (var i = 0; i < processCount; ++i) {
+        spawn();
+    }
+    cluster.on('exit', function (worker, code, signal) {
+        console.log('Worker Process PID: ' + worker.process.pid + ' died, Code/Signal: ' + code || signal + '. Spawning a new process. ');
+        if (log) {
+            log.debug('Worker Process PID: ' + worker.process.pid + ' died, Code/Signal: ' + code || signal + '. Spawning a new process. ');
+        }
+        delete workers[worker.pid];
+        spawn();
+    });
+}
+else {
+    server = app.listen(app.get('port'), onBind);
+}
