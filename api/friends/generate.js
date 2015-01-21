@@ -44,14 +44,14 @@ var generate = function (regNo, validity, callback) {
 };
 
 exports.get = function (app, data, callback) {
+    var collection = app.db.collection('student');
     var onFetch = function (err, doc) {
         if (err) {
+            data.status = status.codes.mongoDown;
             if (log) {
-                log.log('debug', {
-                    status: status.codes.mongoDown
-                });
+                log.log('debug', data);
             }
-            callback(true, {status: status.codes.mongoDown});
+            callback(true, data);
         }
         if (doc) {
             var validity = 24; // In Hours
@@ -67,9 +67,9 @@ exports.get = function (app, data, callback) {
             generate(data.reg_no, validity, onGeneration);
         }
         else {
-            callback(false, {status: status.codes.invalid});
+            data.status = status.codes.invalid;
+            callback(false, data);
         }
     };
-    var collection = app.db.collection('student');
     collection.findOne({reg_no: data.reg_no, dob: data.dob}, onFetch);
 };

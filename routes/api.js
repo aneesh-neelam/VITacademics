@@ -51,13 +51,13 @@ router.get('/login/manual', function (req, res) {
         reg_no: req.query.regno.toUpperCase(),
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGetCaptcha = function (err, captchaResponse) {
+    var onGetCaptcha = function (err, response) {
         if (err) {
-            res.send(captchaResponse);
+            res.send(response);
         }
         else {
             res.writeHead(200, {'Content-Type': 'image/bmp'});
-            res.write(captchaResponse);
+            res.write(response);
             res.end();
         }
     };
@@ -74,8 +74,8 @@ router.get('/login/submit', function (req, res) {
         captcha: req.query.captcha.toUpperCase(),
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGet = function (err, loginResponse) {
-        res.json(loginResponse);
+    var onGet = function (err, response) {
+        res.json(response);
     };
     loginSubmit.get(app, data, onGet);
 });
@@ -89,8 +89,8 @@ router.get('/login/auto', function (req, res) {
         dob: req.query.dob,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGet = function (err, loginResponse) {
-        res.json(loginResponse);
+    var onGet = function (err, response) {
+        res.json(response);
     };
     loginAuto.get(app, data, onGet);
 });
@@ -105,8 +105,8 @@ router.get('/data/first', function (req, res) {
         first_time: true,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGet = function (err, data) {
-        res.json(data);
+    var onGet = function (err, response) {
+        res.json(response);
     };
     dataAggregate.get(app, data, onGet);
 });
@@ -121,8 +121,8 @@ router.get('/data/refresh', function (req, res) {
         first_time: false,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGet = function (err, data) {
-        res.json(data);
+    var onGet = function (err, response) {
+        res.json(response);
     };
     dataAggregate.get(app, data, onGet);
 });
@@ -136,8 +136,8 @@ router.get('/data/grades', function (req, res) {
         dob: req.query.dob,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGet = function (err, data) {
-        res.send(data);
+    var onGet = function (err, response) {
+        res.send(response);
     };
     dataGrades.get(app, data, onGet);
 });
@@ -151,8 +151,8 @@ router.get('/friends/regenerate', function (req, res) {
         dob: req.query.dob,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGet = function (err, data) {
-        res.json(data);
+    var onGet = function (err, response) {
+        res.json(response);
     };
     friendsGenerate.get(app, data, onGet);
 });
@@ -171,8 +171,8 @@ router.get('/friends/share', function (req, res) {
         token: token,
         campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    var onGet = function (err, data) {
-        res.json(data);
+    var onGet = function (err, response) {
+        res.json(response);
     };
     friendsShare.get(app, data, onGet);
 });

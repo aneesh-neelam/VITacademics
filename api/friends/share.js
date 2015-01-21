@@ -42,8 +42,8 @@ exports.get = function (app, data, callback) {
     };
     var onFetch = function (err, doc) {
         if (err) {
+            data.status = status.codes.mongoDown;
             if (log) {
-                data.status = status.codes.mongoDown;
                 log.log('debug', data);
             }
             console.log(data.status);
