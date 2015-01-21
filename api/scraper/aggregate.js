@@ -71,7 +71,7 @@ exports.get = function (app, data, callback) {
                         callback(true, data);
                     }
                 };
-                collection.findOne({reg_no: data.reg_no, dob: data.dob}, keys, onFetch);
+                collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
             }
             else {
                 if (data.campus === 'vellore') {
