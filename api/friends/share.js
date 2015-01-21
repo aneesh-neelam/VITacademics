@@ -62,6 +62,18 @@ exports.get = function (app, data, callback) {
                 delete doc['_id'];
                 doc.courses.forEach(forEachCourse);
                 doc.status = status.codes.success;
+
+                /* Android App Compatibility Mode */
+                doc.data = {
+                    reg_no: doc.reg_no,
+                    timetable: doc.timetable,
+                    courses: doc.courses,
+                    compatibility: {
+                        message: 'For compatibility with Android App version 3.5.0, do not use "data" key, should be deprecated soon'
+                    }
+                };
+                /* Android App Compatibility Mode */
+
                 callback(false, doc);
             }
             else {
