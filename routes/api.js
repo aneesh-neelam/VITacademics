@@ -32,7 +32,8 @@ var system = require(path.join(__dirname, '..', 'api', 'system'));
 
 router.get('/system', function (req, res) {
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         campus: req.originalUrl.split('/')[2].toLowerCase()
@@ -45,7 +46,8 @@ router.get('/system', function (req, res) {
 
 router.get('/login/manual', function (req, res) {
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         reg_no: req.query.regno.toUpperCase(),
@@ -66,7 +68,8 @@ router.get('/login/manual', function (req, res) {
 
 router.get('/login/submit', function (req, res) {
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         reg_no: req.query.regno.toUpperCase(),
@@ -82,7 +85,8 @@ router.get('/login/submit', function (req, res) {
 
 router.get('/login/auto', function (req, res) {
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         reg_no: req.query.regno.toUpperCase(),
@@ -97,7 +101,8 @@ router.get('/login/auto', function (req, res) {
 
 router.get('/data/first', function (req, res) {
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         reg_no: req.query.regno.toUpperCase(),
@@ -113,7 +118,8 @@ router.get('/data/first', function (req, res) {
 
 router.get('/data/refresh', function (req, res) {
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         reg_no: req.query.regno.toUpperCase(),
@@ -129,7 +135,8 @@ router.get('/data/refresh', function (req, res) {
 
 router.get('/data/grades', function (req, res) {
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         reg_no: req.query.regno.toUpperCase(),
@@ -144,7 +151,8 @@ router.get('/data/grades', function (req, res) {
 
 router.get('/friends/regenerate', function (req, res) {
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         reg_no: req.query.regno.toUpperCase(),
@@ -163,7 +171,8 @@ router.get('/friends/share', function (req, res) {
     if (req.query.token) token = req.query.token.toUpperCase();
     if (req.query.regno) reg_no = req.query.regno.toUpperCase();
     var app = {
-        db: req.db
+        db: req.db,
+        queue: req.queue
     };
     var data = {
         reg_no: reg_no,

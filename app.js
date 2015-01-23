@@ -27,6 +27,7 @@ var session = require('express-session');
 var ga = require('node-ga');
 var logger = require('morgan');
 var mongodb = require('express-mongo-db');
+var jackrabbit = require('jackrabbit');
 var path = require('path');
 
 var newrelic;
@@ -70,6 +71,26 @@ var mongodbOptions = {
     db: process.env.MONGODB_DATABASE || 'VITacademics'
 };
 app.use(mongodb(require('mongodb'), mongodbOptions));
+
+var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
+var queue = jackrabbit(amqpUri);
+var queues = {
+    greet: 'greet',
+    test: 'test'
+};
+queue.on('connected', function () {
+    var eachQueue = function (key) {
+        var onReady = function () {
+        };
+        queue.create(queues[key], {prefetch: 0}, onReady);
+    };
+    Object.keys(queues).forEach(eachQueue);
+});
+app.use(function (req, res, next) {
+    queue.queues = queues;
+    req.queue = queue;
+    next();
+});
 
 // ***CSRF Protection***
 // Initializing sessions (backend storage)

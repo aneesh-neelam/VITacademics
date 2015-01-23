@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.11.12",
+  "version": "0.11.13",
   "description": "VITacademics Backend and Web App",
   "homepage": "http://vitacademics-dev.herokuapp.com/",
   "bugs": {
@@ -56,6 +56,7 @@
     "express": "~4.11.1",
     "express-mongo-db": "^0.4.0",
     "express-session": "~1.10.1",
+    "jackrabbit": "^3.0.8",
     "memory-cache": "~0.0.5",
     "mongodb": "~1.4.29",
     "morgan": "~1.5.1",

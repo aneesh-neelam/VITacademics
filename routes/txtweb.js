@@ -27,7 +27,8 @@ router.get('/', function (req, res) {
     var txtWebAppKey = process.env.TXTWEB_APP_KEY || 'randomkey';
     if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
         var app = {
-            db: req.db
+            db: req.db,
+            queue: req.queue
         };
         var data = {
             message: req.query['txtweb-message'],
