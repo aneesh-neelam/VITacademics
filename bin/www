@@ -53,13 +53,17 @@ var onBind = function () {
 };
 
 if (cluster.isMaster) {
-    var mongoHostAuth = process.env.MONGODB_HOST_AUTH || 'localhost';
-    var mongoDatabase = process.env.MONGODB_DATABASE || 'VITacademics';
+    var mongo = {
+        MongoDB_Host: process.env.MONGODB_HOST || 'localhost',
+        MongoDB_Port: process.env.MONGODB_PORT || '27017',
+        MongoDB_Database: process.env.MONGODB_DATABASE || 'VITacademics',
+        MongoDB_Username: process.env.MONGODB_USERNAME || '',
+        MongoDB_Password: process.env.MONGODB_PASSWORD || ''
+    };
     var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
     if (log) {
         log.log('info', {
-            mongoHostAuth: mongoHostAuth,
-            mongoDatabase: mongoDatabase,
+            mongoDB: mongo,
             port: app.get('port'),
             rabbitMQUri: amqpUri
         });
@@ -71,8 +75,8 @@ if (cluster.isMaster) {
         }
     }
     console.log('Node.js Express Server started, listening on port: ' + app.get('port'));
-    console.log('Using MongoDB Host: ' + mongoHostAuth + ', and MongoDB Database: ' + mongoDatabase);
-    console.log('Using RabbitMQ Uri: ' + amqpUri);
+    console.log(mongo);
+    console.log('RabbitMQ Uri: ' + amqpUri);
     if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
         console.log('Using New Relic');
     }

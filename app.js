@@ -67,8 +67,13 @@ var secret = process.env.SECRET_KEY || 'randomsecretstring';
 app.use(cookieParser(secret, {signed: true}));
 
 var mongodbOptions = {
-    host: process.env.MONGODB_HOST_AUTH,
-    db: process.env.MONGODB_DATABASE || 'VITacademics'
+    hosts: [{
+        host: process.env.MONGODB_HOST,
+        port: process.env.MONGODB_PORT
+    }],
+    database: process.env.MONGODB_DATABASE || 'VITacademics',
+    username: process.env.MONGODB_USERNAME,
+    password: process.env.MONGODB_PASSWORD
 };
 app.use(mongodb(require('mongodb'), mongodbOptions));
 
