@@ -1,6 +1,7 @@
 var jackrabbit = require('jackrabbit');
 
-var queue = jackrabbit('amqp://localhost');
+var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
+var queue = jackrabbit(amqpUri);
 
 queue.on('connected', function () {
     var name = 'VITacademics';
