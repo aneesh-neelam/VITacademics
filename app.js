@@ -77,10 +77,10 @@ var queue = jackrabbit(amqpUri);
 queue.on('connected', function () {
     var onReady = function () {
     };
-    queue.create('vitacademics', {prefetch: 0}, onReady);
+    queue.create('VITacademics', {prefetch: 0}, onReady);
 });
 app.use(function (req, res, next) {
-    queue.name = 'vitacademics';
+    queue.name = 'VITacademics';
     req.queue = queue;
     next();
 });

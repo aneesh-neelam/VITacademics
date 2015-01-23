@@ -3,7 +3,7 @@ var jackrabbit = require('jackrabbit');
 var queue = jackrabbit('amqp://localhost');
 
 queue.on('connected', function () {
-    var name = 'vitacademics';
+    var name = 'VITacademics';
     var onReady = function () {
         var onJob = function (job, ack) {
             console.log(job.name);
