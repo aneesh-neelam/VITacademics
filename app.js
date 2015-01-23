@@ -68,8 +68,8 @@ app.use(cookieParser(secret, {signed: true}));
 
 var mongodbOptions = {
     hosts: [{
-        host: process.env.MONGODB_HOST,
-        port: process.env.MONGODB_PORT
+        host: process.env.MONGODB_HOST || '127.0.0.1',
+        port: process.env.MONGODB_PORT || '27017'
     }],
     database: process.env.MONGODB_DATABASE || 'VITacademics',
     username: process.env.MONGODB_USERNAME,
