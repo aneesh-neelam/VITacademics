@@ -3,19 +3,13 @@ var jackrabbit = require('jackrabbit');
 var queue = jackrabbit('amqp://localhost');
 
 queue.on('connected', function () {
-    var queues = {
-        greet: 'greet',
-        test: 'test'
-    };
-    var eachQueue = function (key) {
-        var onReady = function () {
-            var onJob = function (job, ack) {
-                console.log(job.name);
-                ack();
-            };
-            queue.handle(queues[key], onJob);
+    var name = 'vitacademics';
+    var onReady = function () {
+        var onJob = function (job, ack) {
+            console.log(job.name);
+            ack();
         };
-        queue.create(queues[key], {prefetch: 1000}, onReady);
+        queue.handle(name, onJob);
     };
-    Object.keys(queues).forEach(eachQueue);
+    queue.create(name, {prefetch: 1000}, onReady);
 });

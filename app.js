@@ -74,20 +74,13 @@ app.use(mongodb(require('mongodb'), mongodbOptions));
 
 var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
 var queue = jackrabbit(amqpUri);
-var queues = {
-    greet: 'greet',
-    test: 'test'
-};
 queue.on('connected', function () {
-    var eachQueue = function (key) {
-        var onReady = function () {
-        };
-        queue.create(queues[key], {prefetch: 0}, onReady);
+    var onReady = function () {
     };
-    Object.keys(queues).forEach(eachQueue);
+    queue.create('vitacademics', {prefetch: 0}, onReady);
 });
 app.use(function (req, res, next) {
-    queue.queues = queues;
+    queue.name = 'vitacademics';
     req.queue = queue;
     next();
 });
