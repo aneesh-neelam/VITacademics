@@ -53,8 +53,8 @@ var onBind = function () {
 };
 
 if (cluster.isMaster) {
-    var mongoHostAuth = process.env.MONGO_HOST_AUTH || 'localhost';
-    var mongoDatabase = process.env.MONGO_DATABASE || 'VITacademics';
+    var mongoHostAuth = process.env.MONGODB_HOST_AUTH || 'localhost';
+    var mongoDatabase = process.env.MONGODB_DATABASE || 'VITacademics';
     var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
     if (log) {
         log.log('info', {
