@@ -1,6 +1,6 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ var parseMessage = function (app, data, callback) {
         'Get Marks: @vitacademics marks',
         'Help - @vitacademics help'
     ];
-    var args = data.message.toUpperCase().split();
+    var args = data.message.toUpperCase().split(' ');
     if (args[0] === 'REGISTER') {
         // TODO
         reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];

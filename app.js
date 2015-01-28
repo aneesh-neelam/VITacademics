@@ -73,7 +73,23 @@ var mongodbOptions = {
     }],
     database: process.env.MONGODB_DATABASE || 'VITacademics',
     username: process.env.MONGODB_USERNAME,
-    password: process.env.MONGODB_PASSWORD
+    password: process.env.MONGODB_PASSWORD,
+    options: {
+        db: {
+            native_parser: true,
+            recordQueryStats: true,
+            retryMiliSeconds: 500,
+            numberOfRetries: 10
+        },
+        server: {
+            socketOptions: {
+                keepAlive: 1,
+                connectTimeoutMS: 30000
+            },
+            auto_reconnect: true,
+            poolSize: 100
+        }
+    }
 };
 app.use(mongodb(require('mongodb'), mongodbOptions));
 
