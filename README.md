@@ -9,7 +9,8 @@ VITacademics
 
 The VITacademics Backend and Web App
 
-Check out the [Project Wiki](https://github.com/aneesh-neelam/VITacademics/wiki)
+Check out the [Project Wiki](https://github.com/aneesh-neelam/VITacademics/wiki) for more information
+
 For the API Documentation, check out the [JSON API Page](https://github.com/aneesh-neelam/VITacademics/wiki/JSON-API)
 
 Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics/issues) 
