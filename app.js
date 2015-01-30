@@ -106,6 +106,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+/*
 // ***CSRF Protection***
 // Initializing sessions (backend storage)
 app.use(session({
@@ -114,6 +115,7 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(csrf());
+*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

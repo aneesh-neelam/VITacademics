@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "VITacademics Backend and Web App",
   "bugs": {
     "url": "https://github.com/aneesh-neelam/VITacademics/issues",
@@ -41,6 +41,6 @@
   ],
   "private": true,
   "dependencies": {
-    "foundation": "~5.5.0"
+    "foundation": "~5.5.1"
   }
 }
