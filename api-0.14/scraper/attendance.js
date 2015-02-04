@@ -51,7 +51,7 @@ exports.scrapeAttendance = function (app, data, callback) {
             var attendance = [];
             try {
                 var scraper = cheerio.load(response.body);
-                scraper = cheerio.load(scraper('table table').eq(1).html())
+                scraper = cheerio.load(scraper('table table').eq(1).html());
                 var onEach = function (i, elem) {
                     var htmlRow = cheerio.load(scraper(this).html());
                     var htmlColumn = htmlRow('td');
@@ -70,7 +70,7 @@ exports.scrapeAttendance = function (app, data, callback) {
                             form: {
                                 semcode: htmlRow('input[name=semcode]').attr('value'),
                                 from_date: htmlRow('input[name=from_date]').attr('value'),
-                                to_date: htmlRow('inpt[name=to_date]').attr('value'),
+                                to_date: htmlRow('input[name=to_date]').attr('value'),
                                 classnbr: classnbr
                             }
                         });
