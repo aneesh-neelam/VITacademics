@@ -51,27 +51,27 @@ exports.scrapeAttendance = function (app, data, callback) {
             var attendance = [];
             try {
                 var scraper = cheerio.load(response.body);
-                scraper = cheerio.load(scraper('table table').eq(1).html());
+                scraper = cheerio.load(scraper('table table').eq(1).html())
                 var onEach = function (i, elem) {
                     var htmlRow = cheerio.load(scraper(this).html());
                     var htmlColumn = htmlRow('td');
                     if (i > 0) {
                         var classnbr = htmlRow('input[name=classnbr]').attr('value');
                         attendance.push({
-                            'class_number': classnbr,
-                            'course_code': htmlColumn.eq(1).text(),
-                            'course_title': htmlColumn.eq(2).text(),
-                            'course_type': htmlColumn.eq(3).text(),
-                            'slot': htmlColumn.eq(4).text(),
-                            'registration_date': htmlColumn.eq(5).text(),
-                            'attended_classes': htmlColumn.eq(6).text(),
-                            'total_classes': htmlColumn.eq(7).text(),
-                            'attendance_percentage': htmlColumn.eq(8).text(),
-                            'form': {
-                                'semcode': htmlRow('input[name=semcode]').attr('value'),
-                                'from_date': htmlRow('input[name=from_date]').attr('value'),
-                                'to_date': htmlRow('input[name=to_date]').attr('value'),
-                                'classnbr': classnbr
+                            class_number: classnbr,
+                            course_code: htmlColumn.eq(1).text(),
+                            course_title: htmlColumn.eq(2).text(),
+                            course_type: htmlColumn.eq(3).text(),
+                            slot: htmlColumn.eq(4).text(),
+                            registration_date: htmlColumn.eq(5).text(),
+                            attended_classes: htmlColumn.eq(6).text(),
+                            total_classes: htmlColumn.eq(7).text(),
+                            attendance_percentage: htmlColumn.eq(8).text(),
+                            form: {
+                                semcode: htmlRow('input[name=semcode]').attr('value'),
+                                from_date: htmlRow('input[name=from_date]').attr('value'),
+                                to_date: htmlRow('inpt[name=to_date]').attr('value'),
+                                classnbr: classnbr
                             }
                         });
                     }
@@ -94,10 +94,10 @@ exports.scrapeAttendance = function (app, data, callback) {
                                     var htmlColumn = cheerio.load(scraper(this).html())('td');
                                     if (i > 1) {
                                         details.push({
-                                            'sl': htmlColumn.eq(0).text(),
-                                            'date': htmlColumn.eq(1).text(),
-                                            'status': htmlColumn.eq(3).text(),
-                                            'reason': htmlColumn.eq(5).text()
+                                            sl: htmlColumn.eq(0).text(),
+                                            date: htmlColumn.eq(1).text(),
+                                            status: htmlColumn.eq(3).text(),
+                                            reason: htmlColumn.eq(5).text()
                                         });
                                     }
                                 };

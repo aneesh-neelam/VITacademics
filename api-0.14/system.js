@@ -61,5 +61,5 @@ exports.get = function (app, data, callback) {
             callback(true, data);
         }
     };
-    collection.findOne({campus: data.campus}, keys, onFetch);
+    collection.findOne({}, keys, onFetch);
 };

@@ -68,40 +68,43 @@ exports.scrapeMarks = function (app, data, callback) {
                             var classnbr = htmlColumn.eq(1).text();
                             if (length == 18) {
                                 marks.push({
-                                    'class_number': classnbr,
-                                    'course_code': htmlColumn.eq(2).text(),
-                                    'course_title': htmlColumn.eq(3).text(),
-                                    'course_type': htmlColumn.eq(4).text(),
-                                    'cat1': htmlColumn.eq(6).text(),
-                                    'cat1_status': htmlColumn.eq(5).text(),
-                                    'cat2': htmlColumn.eq(8).text(),
-                                    'cat2_status': htmlColumn.eq(7).text(),
-                                    'quiz1': htmlColumn.eq(10).text(),
-                                    'quiz1_status': htmlColumn.eq(9).text(),
-                                    'quiz2': htmlColumn.eq(12).text(),
-                                    'quiz2_status': htmlColumn.eq(11).text(),
-                                    'quiz3': htmlColumn.eq(14).text(),
-                                    'quiz3_status': htmlColumn.eq(13).text(),
-                                    'assignment': htmlColumn.eq(16).text(),
-                                    'assignment_status': htmlColumn.eq(15).text()
+                                    class_number: classnbr,
+                                    course_code: htmlColumn.eq(2).text(),
+                                    course_title: htmlColumn.eq(3).text(),
+                                    course_type: htmlColumn.eq(4).text(),
+                                    cat1: htmlColumn.eq(6).text(),
+                                    cat1_status: htmlColumn.eq(5).text(),
+                                    cat2: htmlColumn.eq(8).text(),
+                                    cat2_status: htmlColumn.eq(7).text(),
+                                    quiz1: htmlColumn.eq(10).text(),
+                                    quiz1_status: htmlColumn.eq(9).text(),
+                                    quiz2: htmlColumn.eq(12).text(),
+                                    quiz2_status: htmlColumn.eq(11).text(),
+                                    quiz3: htmlColumn.eq(14).text(),
+                                    quiz3_status: htmlColumn.eq(13).text(),
+                                    assignment: htmlColumn.eq(16).text(),
+                                    assignment_status: htmlColumn.eq(15).text(),
+                                    marks_type: 1
                                 });
                             }
                             else if (length == 8) {
                                 marks.push({
-                                    'class_number': classnbr,
-                                    'course_code': htmlColumn.eq(2).text(),
-                                    'course_title': htmlColumn.eq(3).text(),
-                                    'course_type': htmlColumn.eq(4).text(),
-                                    'lab_cam': htmlColumn.eq(7).text(),
-                                    'lab_cam_status': htmlColumn.eq(6).text()
+                                    class_number: classnbr,
+                                    course_code: htmlColumn.eq(2).text(),
+                                    course_title: htmlColumn.eq(3).text(),
+                                    course_type: htmColumn.eq(4).text(),
+                                    lab_cam: htmlColumn.eq(7).text(),
+                                    lab_cam_status: htmlColumn.eq(6).text(),
+                                    marks_type: 2
                                 });
                             }
                             else if (length == 6) {
                                 marks.push({
-                                    'class_number': classnbr,
-                                    'course_code': htmlColumn.eq(2).text(),
-                                    'course_title': htmlColumn.eq(3).text(),
-                                    'course_type': htmlColumn.eq(4).text()
+                                    class_number: classnbr,
+                                    course_code: htmlColumn.eq(2).text(),
+                                    course_title: htmlColumn.eq(3).text(),
+                                    course_type: htmlColumn.eq(4).text(),
+                                    marks_type = 3
                                 });
                             }
                         }
@@ -118,11 +121,12 @@ exports.scrapeMarks = function (app, data, callback) {
                         switch (row) {
                             case 0:
                                 pblMarks[course] = {
-                                    'class_number': htmlColumn.eq(1).text(),
-                                    'course_code': htmlColumn.eq(2).text(),
-                                    'course_title': htmlColumn.eq(3).text(),
-                                    'course_type': htmlColumn.eq(4).text(),
-                                    'details': {
+                                    class_number: htmlColumn.eq(1).text(),
+                                    course_code: htmlColumn.eq(2).text(),
+                                    course_title: htmlColumn.eq(3).text(),
+                                    course_type: htmlColumn.eq(4).text(),
+                                    marks_type = 4,
+                                    details: {
                                         1: {title: htmlColumn.eq(6).text()},
                                         2: {title: htmlColumn.eq(7).text()},
                                         3: {title: htmlColumn.eq(8).text()},

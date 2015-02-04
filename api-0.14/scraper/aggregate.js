@@ -115,6 +115,31 @@ exports.get = function (app, data, callback) {
                         var forEachCourse = function (element, asyncCallback) {
                             var foundAttendance = false;
                             var foundMarks = false;
+                            switch (element.course_mode.toUpperCase()) {
+                              case 'CBL':
+                                element.course_type = 1.0;
+                                break;
+                              case 'LBC':
+                                element.course_type = 2.0;
+                                break;
+                              case 'PBL':
+                                element.course_type = 3.1;
+                                break;
+                              case 'RBL':
+                                element.course_type = 3.2;
+                                break;
+                              case 'PBC':
+                                if (element.project_title) {
+                                  element.course_type = 4.1;
+                                }
+                                else {
+                                  element.course_type = 4.2;
+                                }
+                                break;
+                              default:
+                                element.course_type = 0;
+                                break;
+                            }
                             var forEachAttendance = function (elt, i, arr) {
                                 if (element['class_number'] === elt['class_number']) {
                                     foundAttendance = true;
@@ -135,12 +160,7 @@ exports.get = function (app, data, callback) {
                                     delete elt['course_code'];
                                     delete elt['course_title'];
                                     delete elt['course_type'];
-                                    if (elt.details) {
-                                        element['pbl_marks'] = underscore.values(elt.details);
-                                    }
-                                    else {
-                                        element[element.course_mode.toLowerCase() + '_marks'] = elt;
-                                    }
+                                    element.marks = elt;
                                 }
                             };
                             results.attendance.forEach(forEachAttendance);
@@ -152,12 +172,7 @@ exports.get = function (app, data, callback) {
                                 element.attendance = noData;
                             }
                             if (!foundMarks) {
-                                if (element.course_mode === 'PBL' || element.course_mode === 'RBL') {
-                                    element['pbl_marks'] = noData;
-                                }
-                                else {
-                                    element[element.course_mode.toLowerCase() + '_marks'] = noData;
-                                }
+                                element.marks = noData;
                             }
                             asyncCallback(null, element);
                         };

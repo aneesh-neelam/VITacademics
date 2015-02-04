@@ -104,19 +104,19 @@ exports.scrapeTimetable = function (app, data, callback) {
                             }
                             tmp[code] = classnbr;
                             timetable['courses'].push({
-                                'class_number': classnbr,
-                                'course_code': htmlColumn.eq(2).text(),
-                                'course_title': htmlColumn.eq(3).text(),
-                                'course_type': courseType,
-                                'ltpc': htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
-                                'course_mode': htmlColumn.eq(6).text(),
-                                'course_option': htmlColumn.eq(7).text(),
-                                'slot': slot,
-                                'venue': venue,
-                                'faculty': faculty,
-                                'registration_status': registrationStatus,
-                                'bill_date': billDate,
-                                'project_title': projectTitle
+                                class_number: classnbr,
+                                course_code: htmlColumn.eq(2).text(),
+                                course_title: htmlColumn.eq(3).text(),
+                                course_type: courseType,
+                                ltpc: htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
+                                course_mode: htmlColumn.eq(6).text(),
+                                course_option: htmlColumn.eq(7).text(),
+                                slot: slot,
+                                venue: venue,
+                                faculty: faculty,
+                                registration_status: registrationStatus,
+                                bill_date: billDate,
+                                project_title: projectTitle
                             });
                         }
                     };
@@ -148,22 +148,22 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 }
                                 switch (i) {
                                     case 2:
-                                        timetable.timetable.mon = day;
+                                        timetable.timetable.monday = day;
                                         break;
                                     case 3:
-                                        timetable.timetable.tue = day;
+                                        timetable.timetable.tuesday = day;
                                         break;
                                     case 4:
-                                        timetable.timetable.wed = day;
+                                        timetable.timetable.wednesday = day;
                                         break;
                                     case 5:
-                                        timetable.timetable.thu = day;
+                                        timetable.timetable.thursday = day;
                                         break;
                                     case 6:
-                                        timetable.timetable.fri = day;
+                                        timetable.timetable.friday = day;
                                         break;
                                     case 7:
-                                        timetable.timetable.sat = day;
+                                        timetable.timetable.saturday = day;
                                         break;
                                 }
                             }
