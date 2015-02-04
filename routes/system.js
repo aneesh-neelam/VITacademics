@@ -29,7 +29,7 @@ router.get('/system', function (req, res) {
         queue: req.queue
     };
     var data = {
-        campus: req.originalUrl.split('/')[2].toLowerCase()
+        campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
         res.json(response);

@@ -35,7 +35,7 @@ router.get('/login', function (req, res) {
     var data = {
         reg_no: req.query.regno.toUpperCase(),
         dob: req.query.dob,
-        campus: req.originalUrl.split('/')[2].toLowerCase()
+        campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
         res.json(response);
@@ -52,7 +52,7 @@ router.get('/register', function (req, res) {
         reg_no: req.query.regno.toUpperCase(),
         dob: req.query.dob,
         first_time: true,
-        campus: req.originalUrl.split('/')[2].toLowerCase()
+        campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
         res.json(response);
@@ -69,7 +69,7 @@ router.get('/refresh', function (req, res) {
         reg_no: req.query.regno.toUpperCase(),
         dob: req.query.dob,
         first_time: false,
-        campus: req.originalUrl.split('/')[2].toLowerCase()
+        campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
         res.json(response);
@@ -85,7 +85,7 @@ router.get('/grades', function (req, res) {
     var data = {
         reg_no: req.query.regno.toUpperCase(),
         dob: req.query.dob,
-        campus: req.originalUrl.split('/')[2].toLowerCase()
+        campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
         res.send(response);
@@ -101,7 +101,7 @@ router.get('/token', function (req, res) {
     var data = {
         reg_no: req.query.regno.toUpperCase(),
         dob: req.query.dob,
-        campus: req.originalUrl.split('/')[2].toLowerCase()
+        campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
         res.json(response);
@@ -122,7 +122,7 @@ router.get('/share', function (req, res) {
         reg_no: reg_no,
         dob: req.query.dob,
         token: token,
-        campus: req.originalUrl.split('/')[2].toLowerCase()
+        campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
         res.json(response);
