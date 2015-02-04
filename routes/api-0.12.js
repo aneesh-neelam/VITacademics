@@ -20,14 +20,14 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 
-var loginManual = require(path.join(__dirname, '..', 'api', 'login', 'get'));
-var loginAuto = require(path.join(__dirname, '..', 'api', 'login', 'auto'));
-var loginSubmit = require(path.join(__dirname, '..', 'api', 'login', 'submit'));
-var dataAggregate = require(path.join(__dirname, '..', 'api', 'scraper', 'aggregate'));
-var dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'));
-var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
-var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
-var system = require(path.join(__dirname, '..', 'api', 'system'));
+var loginManual = require(path.join(__dirname, '..', 'api-0.12', 'login', 'get'));
+var loginAuto = require(path.join(__dirname, '..', 'api-0.12', 'login', 'auto'));
+var loginSubmit = require(path.join(__dirname, '..', 'api-0.12', 'login', 'submit'));
+var dataAggregate = require(path.join(__dirname, '..', 'api-0.12', 'scraper', 'aggregate'));
+var dataGrades = require(path.join(__dirname, '..', 'api-0.12', 'scraper', 'grades'));
+var friendsGenerate = require(path.join(__dirname, '..', 'api-0.12', 'friends', 'generate'));
+var friendsShare = require(path.join(__dirname, '..', 'api-0.12', 'friends', 'share'));
+var system = require(path.join(__dirname, '..', 'api-0.12', 'system'));
 
 
 router.get('/system', function (req, res) {

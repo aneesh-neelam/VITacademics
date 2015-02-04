@@ -1,0 +1,10 @@
+{
+  "reg_no": "11BCE0260",
+  "dob": "20101993",
+  "first_time": false,
+  "campus": "vellore",
+  "status": {
+    "message": "Session timed out",
+    "code": 11
+  }
+}

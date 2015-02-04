@@ -1,0 +1,193 @@
+{
+  "reg_no": "11BCE0260",
+  "dob": "20101993",
+  "first_time": true,
+  "campus": "vellore",
+  "semester": "WS",
+  "share": {
+    "token": "V8IET1",
+    "validity": 24,
+    "issued": "2015-01-19T12:32:36.461Z"
+  },
+  "status": {
+    "message": "Successful execution",
+    "code": 0
+  },
+  "courses": [
+    {
+      "class_number": "4607",
+      "course_code": "CSE424",
+      "course_title": "Adhoc Wireless Networks",
+      "course_type": "Theory Only",
+      "ltpc": "3003",
+      "course_mode": "CBL",
+      "course_option": "Audit",
+      "slot": "A1+TA1",
+      "venue": "SJT422",
+      "faculty": "ANANDA KUMAR S - SCSE",
+      "registration_status": "Registered and Approved",
+      "bill_date": " / ",
+      "project_title": null,
+      "attendance": {
+        "registration_date": "16/12/2014 11:39:49",
+        "attended_classes": "0",
+        "total_classes": "3",
+        "attendance_percentage": "0%",
+        "details": [
+          {
+            "sl": "1",
+            "date": "05-Jan-2015",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": "2",
+            "date": "06-Jan-2015",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": "3",
+            "date": "08-Jan-2015",
+            "status": "Absent",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "cbl_marks": {
+        "cat1": "",
+        "cat1_status": "",
+        "cat2": "",
+        "cat2_status": "",
+        "quiz1": "",
+        "quiz1_status": "",
+        "quiz2": "",
+        "quiz2_status": "",
+        "quiz3": "",
+        "quiz3_status": "",
+        "assignment": "",
+        "assignment_status": "",
+        "supported": true
+      }
+    },
+    {
+      "class_number": "5640",
+      "course_code": "CSE499",
+      "course_title": "Project Work",
+      "course_type": "Project",
+      "ltpc": "00020",
+      "course_mode": "PBC",
+      "course_option": "Regular",
+      "slot": null,
+      "venue": null,
+      "faculty": "SENTHIL J - SCSE",
+      "registration_status": "Registered and Approved by Faculty",
+      "bill_date": " / ",
+      "project_title": "Utilizing RFID and Biometrics for Secure Educational Testing",
+      "pbc_marks": {"supported": true},
+      "attendance": {"supported": false}
+    }
+  ],
+  "refreshed": "2015-01-19T12:32:38.272Z",
+  "timetable": {
+    "mon": [
+      4607,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "tue": [
+      0,
+      0,
+      0,
+      4607,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "wed": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "thu": [
+      0,
+      4607,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "fri": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sat": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "withdrawn": false,
+  "cached": false
+}
