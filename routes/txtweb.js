@@ -20,7 +20,7 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 
-var api_txtweb = require(path.join(__dirname, '..', 'api-0.14', 'txtweb'));
+var api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
 
 router.get('/', function (req, res) {
     var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';

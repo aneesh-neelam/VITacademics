@@ -43,8 +43,8 @@ if (process.env.LOGENTRIES_TOKEN) {
     });
 }
 
-var apiRoutes_012 = require(path.join(__dirname, 'routes', 'api-0.12'));
-var apiRoutes_014 = require(path.join(__dirname, 'routes', 'api-0.14'));
+var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
+var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
 var testRoutes = require(path.join(__dirname, 'routes', 'test'));
 var txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
 var webRoutes = require(path.join(__dirname, 'routes', 'web'));
@@ -136,11 +136,11 @@ app.use(function (req, res, next) {
 
 app.use('/', webRoutes);
 app.use('/tests', testRoutes);
-app.use('/api/0.14/vellore', apiRoutes_014);
-app.use('/api/0.14/chennai', apiRoutes_014);
+app.use('/api/v2/vellore', apiRoutes);
+app.use('/api/v2/chennai', apiRoutes);
 app.use('/api/txtweb', txtwebRoutes);
-app.use('/api/vellore', apiRoutes_012);
-app.use('/api/chennai', apiRoutes_012);
+app.use('/api/vellore', apiRoutesLegacy);
+app.use('/api/chennai', apiRoutesLegacy);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

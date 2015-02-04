@@ -20,7 +20,7 @@ var express = require('express');
 var path = require('path');
 var router = express.Router();
 
-var system = require(path.join(__dirname, '..', 'api-0.14', 'system'));
+var system = require(path.join(__dirname, '..', 'api', 'system'));
 
 
 router.get('/system', function (req, res) {
