@@ -69,7 +69,7 @@ exports.get = function (app, data, callback) {
                     timetable: doc.timetable,
                     courses: doc.courses,
                     compatibility: {
-                        message: 'For compatibility with Android App version 3.5.0, do not use "data" key, should be deprecated soon'
+                        message: 'For compatibility with Android App version 3.5.0, do not use "data" key, should be deprecated soon. Or will forever be present as Legacy Support. God help us all, we have become Microsoft. '
                     }
                 };
                 /* Android App Compatibility Mode */
