@@ -35,7 +35,7 @@ router.get('/status', function (req, res) {
         platform: process.platform,
         arch: process.arch,
         serverStatus: 'OK',
-        lastUpdated: '31st January 2015',
+        lastUpdated: '4th February 2015',
         googleAnalyticsToken: googleAnalyticsToken
     };
     res.render('status', status);
