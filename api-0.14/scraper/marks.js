@@ -104,7 +104,7 @@ exports.scrapeMarks = function (app, data, callback) {
                                     course_code: htmlColumn.eq(2).text(),
                                     course_title: htmlColumn.eq(3).text(),
                                     course_type: htmlColumn.eq(4).text(),
-                                    marks_type = 3
+                                    marks_type: 3
                                 });
                             }
                         }
@@ -125,7 +125,7 @@ exports.scrapeMarks = function (app, data, callback) {
                                     course_code: htmlColumn.eq(2).text(),
                                     course_title: htmlColumn.eq(3).text(),
                                     course_type: htmlColumn.eq(4).text(),
-                                    marks_type = 4,
+                                    marks_type: 4,
                                     details: {
                                         1: {title: htmlColumn.eq(6).text()},
                                         2: {title: htmlColumn.eq(7).text()},
