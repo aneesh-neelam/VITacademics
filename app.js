@@ -108,15 +108,15 @@ app.use(function (req, res, next) {
 });
 
 /*
-// ***CSRF Protection***
-// Initializing sessions (backend storage)
-app.use(session({
-    secret: secret,
-    resave: false,
-    saveUninitialized: true
-}));
-app.use(csrf());
-*/
+ // ***CSRF Protection***
+ // Initializing sessions (backend storage)
+ app.use(session({
+ secret: secret,
+ resave: false,
+ saveUninitialized: true
+ }));
+ app.use(csrf());
+ */
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

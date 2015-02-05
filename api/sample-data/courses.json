@@ -1,716 +1,715 @@
 [
-    {
-      "class_number": "5115",
-      "course_code": "CSE321",
-      "course_title": "Introduction to Artificial Intelligence",
-      "course_type": "Theory Only",
-      "ltpc": "3003",
-      "course_mode": "CBL",
-      "course_option": "Audit",
-      "slot": "C2",
-      "venue": "SJT404",
-      "faculty": "RISHIN HALDAR - SCSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null,
-      "attendance": {
-        "registration_date": "19/06/2014 12:07:52",
-        "attended_classes": "38",
-        "total_classes": "45",
-        "attendance_percentage": "85%",
-        "details": [
-          {
-            "sl": "1",
-            "date": "10-Jul-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "2",
-            "date": "14-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "3",
-            "date": "16-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "4",
-            "date": "17-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "5",
-            "date": "21-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "6",
-            "date": "23-Jul-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "7",
-            "date": "24-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "8",
-            "date": "28-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "9",
-            "date": "30-Jul-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "10",
-            "date": "31-Jul-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "11",
-            "date": "04-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "12",
-            "date": "06-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "13",
-            "date": "07-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "14",
-            "date": "11-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "15",
-            "date": "13-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "16",
-            "date": "14-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "17",
-            "date": "18-Aug-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "18",
-            "date": "20-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "19",
-            "date": "21-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "20",
-            "date": "01-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "21",
-            "date": "03-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "22",
-            "date": "04-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "23",
-            "date": "08-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "24",
-            "date": "10-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "25",
-            "date": "11-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "26",
-            "date": "15-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "27",
-            "date": "17-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "28",
-            "date": "18-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "29",
-            "date": "22-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "30",
-            "date": "24-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "31",
-            "date": "25-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "32",
-            "date": "29-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "33",
-            "date": "01-Oct-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "34",
-            "date": "13-Oct-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "35",
-            "date": "15-Oct-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "36",
-            "date": "16-Oct-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "37",
-            "date": "27-Oct-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "38",
-            "date": "29-Oct-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "39",
-            "date": "30-Oct-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "40",
-            "date": "03-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "41",
-            "date": "05-Nov-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "42",
-            "date": "06-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "43",
-            "date": "10-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "44",
-            "date": "12-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "45",
-            "date": "13-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "cbl_marks": {
-        "cat1": "28.00",
-        "cat1_status": "Present",
-        "cat2": "25.00",
-        "cat2_status": "Present",
-        "quiz1": "1.00",
-        "quiz1_status": "Present",
-        "quiz2": "5.00",
-        "quiz2_status": "Present",
-        "quiz3": "3.00",
-        "quiz3_status": "Present",
-        "assignment": "5.00",
-        "assignment_status": "Present",
-        "supported": true
-      }
-    },
-    {
-      "class_number": "2030",
-      "course_code": "CSE398",
-      "course_title": "Mini Project",
-      "course_type": "Project",
-      "ltpc": "0002",
-      "course_mode": "PBC",
-      "course_option": "Regular",
-      "slot": "NIL",
-      "venue": "NIL",
-      "faculty": "ACAD FACULTY - ACAD",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null,
-      "pbc_marks": {"supported": true},
-      "attendance": {"supported": false}
-    },
-    {
-      "class_number": "5647",
-      "course_code": "MEE437",
-      "course_title": "Operations Research",
-      "course_type": "Theory Only",
-      "ltpc": "2103",
-      "course_mode": "PBL",
-      "course_option": "Regular",
-      "slot": "C1",
-      "venue": "CDMM403",
-      "faculty": "NARAYANAN S. - SMBS",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null,
-      "attendance": {
-        "registration_date": "19/06/2014 12:01:45",
-        "attended_classes": "35",
-        "total_classes": "45",
-        "attendance_percentage": "78%",
-        "details": [
-          {
-            "sl": "1",
-            "date": "10-Jul-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "2",
-            "date": "14-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "3",
-            "date": "16-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "4",
-            "date": "17-Jul-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "5",
-            "date": "21-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "6",
-            "date": "23-Jul-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "7",
-            "date": "24-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "8",
-            "date": "28-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "9",
-            "date": "30-Jul-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "10",
-            "date": "31-Jul-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "11",
-            "date": "04-Aug-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "12",
-            "date": "06-Aug-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "13",
-            "date": "07-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "14",
-            "date": "11-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "15",
-            "date": "13-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "16",
-            "date": "14-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "17",
-            "date": "18-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "18",
-            "date": "20-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "19",
-            "date": "21-Aug-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "20",
-            "date": "01-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "21",
-            "date": "03-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "22",
-            "date": "04-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "23",
-            "date": "08-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "24",
-            "date": "10-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "25",
-            "date": "11-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "26",
-            "date": "15-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "27",
-            "date": "17-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "28",
-            "date": "18-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "29",
-            "date": "22-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "30",
-            "date": "24-Sep-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "31",
-            "date": "25-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "32",
-            "date": "29-Sep-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "33",
-            "date": "01-Oct-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "34",
-            "date": "13-Oct-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "35",
-            "date": "15-Oct-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "36",
-            "date": "16-Oct-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "37",
-            "date": "27-Oct-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "38",
-            "date": "29-Oct-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "39",
-            "date": "30-Oct-2014",
-            "status": "On Duty",
-            "reason": "Placement Activity"
-          },
-          {
-            "sl": "40",
-            "date": "03-Nov-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "41",
-            "date": "05-Nov-2014",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": "42",
-            "date": "06-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "43",
-            "date": "10-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "44",
-            "date": "12-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": "45",
-            "date": "13-Nov-2014",
-            "status": "Present",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "pbl_marks": [
+  {
+    "class_number": "5115",
+    "course_code": "CSE321",
+    "course_title": "Introduction to Artificial Intelligence",
+    "course_type": "Theory Only",
+    "ltpc": "3003",
+    "course_mode": "CBL",
+    "course_option": "Audit",
+    "slot": "C2",
+    "venue": "SJT404",
+    "faculty": "RISHIN HALDAR - SCSE",
+    "registration_status": "Registered and Approved",
+    "bill_date": " / ",
+    "project_title": null,
+    "attendance": {
+      "registration_date": "19/06/2014 12:07:52",
+      "attended_classes": "38",
+      "total_classes": "45",
+      "attendance_percentage": "85%",
+      "details": [
         {
-          "title": "TUTORIAL",
-          "max_marks": "5",
-          "weightage": "5",
-          "conducted_on": "07-Aug-2014",
+          "sl": "1",
+          "date": "10-Jul-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "2",
+          "date": "14-Jul-2014",
           "status": "Present",
-          "scored_mark": "2.00",
-          "scored_%": "2.00"
+          "reason": " - "
         },
         {
-          "title": "MID-TERM EXAMINATION",
-          "max_marks": "20",
-          "weightage": "20",
-          "conducted_on": "08-Oct-2014",
+          "sl": "3",
+          "date": "16-Jul-2014",
           "status": "Present",
-          "scored_mark": "15.50",
-          "scored_%": "15.50"
+          "reason": " - "
         },
         {
-          "title": "CASE STUDY PRESENTATION",
-          "max_marks": "25",
-          "weightage": "25",
-          "conducted_on": "08-Nov-2014",
+          "sl": "4",
+          "date": "17-Jul-2014",
           "status": "Present",
-          "scored_mark": "22.00",
-          "scored_%": "22.00"
+          "reason": " - "
         },
         {
-          "title": "N/A",
-          "max_marks": "N/A",
-          "weightage": "N/A",
-          "conducted_on": "N/A",
-          "status": "N/A",
-          "scored_mark": "N/A",
-          "scored_%": "N/A"
+          "sl": "5",
+          "date": "21-Jul-2014",
+          "status": "Present",
+          "reason": " - "
         },
         {
-          "title": "N/A",
-          "max_marks": "N/A",
-          "weightage": "N/A",
-          "conducted_on": "N/A",
-          "status": "N/A",
-          "scored_mark": "N/A",
-          "scored_%": "N/A"
+          "sl": "6",
+          "date": "23-Jul-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "7",
+          "date": "24-Jul-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "8",
+          "date": "28-Jul-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "9",
+          "date": "30-Jul-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "10",
+          "date": "31-Jul-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "11",
+          "date": "04-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "12",
+          "date": "06-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "13",
+          "date": "07-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "14",
+          "date": "11-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "15",
+          "date": "13-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "16",
+          "date": "14-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "17",
+          "date": "18-Aug-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "18",
+          "date": "20-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "19",
+          "date": "21-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "20",
+          "date": "01-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "21",
+          "date": "03-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "22",
+          "date": "04-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "23",
+          "date": "08-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "24",
+          "date": "10-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "25",
+          "date": "11-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "26",
+          "date": "15-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "27",
+          "date": "17-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "28",
+          "date": "18-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "29",
+          "date": "22-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "30",
+          "date": "24-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "31",
+          "date": "25-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "32",
+          "date": "29-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "33",
+          "date": "01-Oct-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "34",
+          "date": "13-Oct-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "35",
+          "date": "15-Oct-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "36",
+          "date": "16-Oct-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "37",
+          "date": "27-Oct-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "38",
+          "date": "29-Oct-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "39",
+          "date": "30-Oct-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "40",
+          "date": "03-Nov-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "41",
+          "date": "05-Nov-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "42",
+          "date": "06-Nov-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "43",
+          "date": "10-Nov-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "44",
+          "date": "12-Nov-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "45",
+          "date": "13-Nov-2014",
+          "status": "Present",
+          "reason": " - "
         }
-      ]
+      ],
+      "supported": true
     },
-    {
-      "class_number": "5640",
-      "course_code": "CSE499",
-      "course_title": "Project Work",
-      "course_type": "Project",
-      "ltpc": "00020",
-      "course_mode": "PBC",
-      "course_option": "Regular",
-      "slot": null,
-      "venue": null,
-      "faculty": "SENTHIL J - SCSE",
-      "registration_status": "Registered and Approved by Faculty",
-      "bill_date": " / ",
-      "project_title": "Utilizing RFID and Biometrics for Secure Educational Testing",
-      "pbc_marks": {"supported": true},
-      "attendance": {"supported": false}
-    },
-    {
-      "class_number": "5507",
-      "course_code": "HUM121",
-      "course_title": "Ethics and Values",
-      "course_type": "Embedded Lab",
-      "ltpc": "0021",
-      "course_mode": "LBC",
-      "course_option": "Regular",
-      "slot": "L11+L12",
-      "venue": "SJT114",
-      "faculty": "ALLI P - SSL",
-      "registration_status": "Registered and Approved",
-      "bill_date": " \/ ",
-      "project_title": null,
-      "attendance": {
-        "registration_date": "07\/01\/2015 15:12:55",
-        "attended_classes": "0",
-        "total_classes": "0",
-        "attendance_percentage": "0%",
-        "details": [
-
-        ],
-        "supported": true
-      },
-      "lbc_marks": {
-        "lab_cam": "",
-        "lab_cam_status": "",
-        "supported": true
-      }
+    "cbl_marks": {
+      "cat1": "28.00",
+      "cat1_status": "Present",
+      "cat2": "25.00",
+      "cat2_status": "Present",
+      "quiz1": "1.00",
+      "quiz1_status": "Present",
+      "quiz2": "5.00",
+      "quiz2_status": "Present",
+      "quiz3": "3.00",
+      "quiz3_status": "Present",
+      "assignment": "5.00",
+      "assignment_status": "Present",
+      "supported": true
     }
+  },
+  {
+    "class_number": "2030",
+    "course_code": "CSE398",
+    "course_title": "Mini Project",
+    "course_type": "Project",
+    "ltpc": "0002",
+    "course_mode": "PBC",
+    "course_option": "Regular",
+    "slot": "NIL",
+    "venue": "NIL",
+    "faculty": "ACAD FACULTY - ACAD",
+    "registration_status": "Registered and Approved",
+    "bill_date": " / ",
+    "project_title": null,
+    "pbc_marks": {"supported": true},
+    "attendance": {"supported": false}
+  },
+  {
+    "class_number": "5647",
+    "course_code": "MEE437",
+    "course_title": "Operations Research",
+    "course_type": "Theory Only",
+    "ltpc": "2103",
+    "course_mode": "PBL",
+    "course_option": "Regular",
+    "slot": "C1",
+    "venue": "CDMM403",
+    "faculty": "NARAYANAN S. - SMBS",
+    "registration_status": "Registered and Approved",
+    "bill_date": " / ",
+    "project_title": null,
+    "attendance": {
+      "registration_date": "19/06/2014 12:01:45",
+      "attended_classes": "35",
+      "total_classes": "45",
+      "attendance_percentage": "78%",
+      "details": [
+        {
+          "sl": "1",
+          "date": "10-Jul-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "2",
+          "date": "14-Jul-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "3",
+          "date": "16-Jul-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "4",
+          "date": "17-Jul-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "5",
+          "date": "21-Jul-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "6",
+          "date": "23-Jul-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "7",
+          "date": "24-Jul-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "8",
+          "date": "28-Jul-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "9",
+          "date": "30-Jul-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "10",
+          "date": "31-Jul-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "11",
+          "date": "04-Aug-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "12",
+          "date": "06-Aug-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "13",
+          "date": "07-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "14",
+          "date": "11-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "15",
+          "date": "13-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "16",
+          "date": "14-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "17",
+          "date": "18-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "18",
+          "date": "20-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "19",
+          "date": "21-Aug-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "20",
+          "date": "01-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "21",
+          "date": "03-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "22",
+          "date": "04-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "23",
+          "date": "08-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "24",
+          "date": "10-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "25",
+          "date": "11-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "26",
+          "date": "15-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "27",
+          "date": "17-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "28",
+          "date": "18-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "29",
+          "date": "22-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "30",
+          "date": "24-Sep-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "31",
+          "date": "25-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "32",
+          "date": "29-Sep-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "33",
+          "date": "01-Oct-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "34",
+          "date": "13-Oct-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "35",
+          "date": "15-Oct-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "36",
+          "date": "16-Oct-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "37",
+          "date": "27-Oct-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "38",
+          "date": "29-Oct-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "39",
+          "date": "30-Oct-2014",
+          "status": "On Duty",
+          "reason": "Placement Activity"
+        },
+        {
+          "sl": "40",
+          "date": "03-Nov-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "41",
+          "date": "05-Nov-2014",
+          "status": "Absent",
+          "reason": " - "
+        },
+        {
+          "sl": "42",
+          "date": "06-Nov-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "43",
+          "date": "10-Nov-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "44",
+          "date": "12-Nov-2014",
+          "status": "Present",
+          "reason": " - "
+        },
+        {
+          "sl": "45",
+          "date": "13-Nov-2014",
+          "status": "Present",
+          "reason": " - "
+        }
+      ],
+      "supported": true
+    },
+    "pbl_marks": [
+      {
+        "title": "TUTORIAL",
+        "max_marks": "5",
+        "weightage": "5",
+        "conducted_on": "07-Aug-2014",
+        "status": "Present",
+        "scored_mark": "2.00",
+        "scored_%": "2.00"
+      },
+      {
+        "title": "MID-TERM EXAMINATION",
+        "max_marks": "20",
+        "weightage": "20",
+        "conducted_on": "08-Oct-2014",
+        "status": "Present",
+        "scored_mark": "15.50",
+        "scored_%": "15.50"
+      },
+      {
+        "title": "CASE STUDY PRESENTATION",
+        "max_marks": "25",
+        "weightage": "25",
+        "conducted_on": "08-Nov-2014",
+        "status": "Present",
+        "scored_mark": "22.00",
+        "scored_%": "22.00"
+      },
+      {
+        "title": "N/A",
+        "max_marks": "N/A",
+        "weightage": "N/A",
+        "conducted_on": "N/A",
+        "status": "N/A",
+        "scored_mark": "N/A",
+        "scored_%": "N/A"
+      },
+      {
+        "title": "N/A",
+        "max_marks": "N/A",
+        "weightage": "N/A",
+        "conducted_on": "N/A",
+        "status": "N/A",
+        "scored_mark": "N/A",
+        "scored_%": "N/A"
+      }
+    ]
+  },
+  {
+    "class_number": "5640",
+    "course_code": "CSE499",
+    "course_title": "Project Work",
+    "course_type": "Project",
+    "ltpc": "00020",
+    "course_mode": "PBC",
+    "course_option": "Regular",
+    "slot": null,
+    "venue": null,
+    "faculty": "SENTHIL J - SCSE",
+    "registration_status": "Registered and Approved by Faculty",
+    "bill_date": " / ",
+    "project_title": "Utilizing RFID and Biometrics for Secure Educational Testing",
+    "pbc_marks": {"supported": true},
+    "attendance": {"supported": false}
+  },
+  {
+    "class_number": "5507",
+    "course_code": "HUM121",
+    "course_title": "Ethics and Values",
+    "course_type": "Embedded Lab",
+    "ltpc": "0021",
+    "course_mode": "LBC",
+    "course_option": "Regular",
+    "slot": "L11+L12",
+    "venue": "SJT114",
+    "faculty": "ALLI P - SSL",
+    "registration_status": "Registered and Approved",
+    "bill_date": " \/ ",
+    "project_title": null,
+    "attendance": {
+      "registration_date": "07\/01\/2015 15:12:55",
+      "attended_classes": "0",
+      "total_classes": "0",
+      "attendance_percentage": "0%",
+      "details": [
+      ],
+      "supported": true
+    },
+    "lbc_marks": {
+      "lab_cam": "",
+      "lab_cam_status": "",
+      "supported": true
+    }
+  }
 ]
