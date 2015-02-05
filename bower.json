@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.13.8",
+  "version": "0.13.9",
   "description": "VITacademics Backend and Web App",
   "bugs": {
     "url": "https://github.com/aneesh-neelam/VITacademics/issues",
@@ -16,7 +16,7 @@
     "Sreeram Boyapati <sreeram.boyapati2011@gmail.com>",
     "Ayush Agarwal <agarwalayush161@gmail.com>"
   ],
-  "main": "./bin/www",
+  "main": "bin/www",
   "moduleType": [
     "globals",
     "node"

@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.13.8",
+  "version": "0.13.9",
   "description": "VITacademics Backend and Web App",
   "homepage": "http://vitacademics-dev.herokuapp.com/",
   "bugs": {
@@ -8,11 +8,11 @@
     "email": "neelam.aneesh@gmail.com"
   },
   "private": true,
-  "main": "./bin/www",
+  "main": "bin/www",
   "scripts": {
     "postinstall": "bower install",
-    "start": "node ./bin/www",
-    "test": "mocha ./test"
+    "start": "node bin/www",
+    "test": "mocha test"
   },
   "contributors": [
     {
