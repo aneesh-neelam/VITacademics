@@ -27,7 +27,7 @@ var error = {
     toDo: {message: 'This feature is incomplete', code: 50},
     vitDown: {message: 'VIT\'s servers may be down or we may be facing a connectivity issue', code: 89},
     mongoDown: {message: 'Our MongoDB instance may be down or we may be facing a connectivity issue', code: 97},
-    outage: {message: 'Our backend servers may be down or you may be facing a connectivity issue', code: 98},
+    maintenance: {message: 'Our backend servers are down for maintenance', code: 98},
     other: {message: 'An unforeseen error has occurred', code: 99}
 };
 

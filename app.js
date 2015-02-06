@@ -18,17 +18,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var csrf = require('csurf');
 var express = require('express');
 var favicon = require('serve-favicon');
-var csrf = require('csurf');
-var session = require('express-session');
 var ga = require('node-ga');
+var jackrabbit = require('jackrabbit');
 var logger = require('morgan');
 var mongodb = require('express-mongo-db');
-var jackrabbit = require('jackrabbit');
 var path = require('path');
+var session = require('express-session');
 
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
@@ -44,6 +44,7 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
+var apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
 var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
 var testRoutes = require(path.join(__dirname, 'routes', 'test'));
 var txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
@@ -136,9 +137,10 @@ app.use(function (req, res, next) {
 
 app.use('/', webRoutes);
 app.use('/tests', testRoutes);
+app.use('/api/txtweb', txtwebRoutes);
+app.use('/api/v2/system', apiSystemRoutes);
 app.use('/api/v2/vellore', apiRoutes);
 app.use('/api/v2/chennai', apiRoutes);
-app.use('/api/txtweb', txtwebRoutes);
 app.use('/api/vellore', apiRoutesLegacy);
 app.use('/api/chennai', apiRoutesLegacy);
 
