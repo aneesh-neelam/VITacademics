@@ -23,14 +23,3 @@ var path = require('path');
 
 // TODO tests
 console.log('Hello!');
-
-var router = require('../routes/web.js')
-
-describe('routes.js  ', function(){
-	describe('Module router ', function(){
-		it('should have a get method', function(){
-			assert.equal(typeof router, 'function')
-			assert.equal(typeof router.get, 'function');
-		})
-	})
-});
