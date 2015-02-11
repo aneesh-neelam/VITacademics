@@ -44,15 +44,10 @@ if (process.env.LOGENTRIES_TOKEN) {
 var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
 var apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
 var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
-var testRoutes = require(path.join(__dirname, 'routes', 'test'));
 var txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
 var webRoutes = require(path.join(__dirname, 'routes', 'web'));
 
 var app = express();
-
-if (newrelic) {
-    app.locals.newrelic = newrelic;
-}
 
 var loggerLevel = process.env.LOGGER_LEVEL || 'dev';
 app.use(logger(loggerLevel));
@@ -117,6 +112,11 @@ app.use(function (req, res, next) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// New Relic in Template
+if (newrelic) {
+    app.locals.newrelic = newrelic;
+}
+
 // Google Analytics
 var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
 app.use(ga(googleAnalyticsToken, {
@@ -132,7 +132,6 @@ app.use(function (req, res, next) {
 
 // Routes
 app.use('/', webRoutes);
-app.use('/tests', testRoutes);
 app.use('/api/txtweb', txtwebRoutes);
 app.use('/api/v2/system', apiSystemRoutes);
 app.use('/api/v2/vellore', apiRoutes);
