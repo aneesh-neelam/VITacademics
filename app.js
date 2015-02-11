@@ -20,7 +20,6 @@
 
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var csrf = require('csurf');
 var express = require('express');
 var favicon = require('serve-favicon');
 var ga = require('node-ga');
@@ -28,7 +27,6 @@ var jackrabbit = require('jackrabbit');
 var logger = require('morgan');
 var mongodb = require('express-mongo-db');
 var path = require('path');
-var session = require('express-session');
 
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
@@ -60,14 +58,20 @@ var loggerLevel = process.env.LOGGER_LEVEL || 'dev';
 app.use(logger(loggerLevel));
 
 app.set('title', 'VITacademics');
+
+// Static and Favicon
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
+
+// Body Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+// Cookie Parser
 var secret = process.env.SECRET_KEY || 'randomsecretstring';
 app.use(cookieParser(secret, {signed: true}));
 
+// MongoDB
 var mongodbOptions = {
     hosts: [{
         host: process.env.MONGODB_HOST || '127.0.0.1',
@@ -95,6 +99,7 @@ var mongodbOptions = {
 };
 app.use(mongodb(require('mongodb'), mongodbOptions));
 
+// RabbitMQ
 var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
 var queue = jackrabbit(amqpUri);
 queue.on('connected', function () {
@@ -108,33 +113,24 @@ app.use(function (req, res, next) {
     next();
 });
 
-/*
- // ***CSRF Protection***
- // Initializing sessions (backend storage)
- app.use(session({
- secret: secret,
- resave: false,
- saveUninitialized: true
- }));
- app.use(csrf());
- */
-
-// view engine setup
+// View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Google Analytics
 var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
 app.use(ga(googleAnalyticsToken, {
     safe: true
 }));
 
-// Allow cross-origin resource sharing
+// Allow Cross-Origin Resource Eharing
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
+// Routes
 app.use('/', webRoutes);
 app.use('/tests', testRoutes);
 app.use('/api/txtweb', txtwebRoutes);
@@ -144,15 +140,15 @@ app.use('/api/v2/chennai', apiRoutes);
 app.use('/api/vellore', apiRoutesLegacy);
 app.use('/api/chennai', apiRoutesLegacy);
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-// error handlers
-// development error handler, will print stacktrace
+// Error handlers
+// Development error handler, will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         if (log) {
@@ -168,7 +164,7 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler, no stacktraces leaked to user
+// Production error handler, no stacktraces leaked to user
 app.use(function (err, req, res, next) {
     if (log) {
         log.log('debug', {Error: err, Message: err.message});
