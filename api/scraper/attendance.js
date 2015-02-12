@@ -26,6 +26,12 @@ var unirest = require('unirest');
 
 var status = require(path.join(__dirname, '..', 'status'));
 
+var toISODateString = function (date) {
+    function pad(n){return n<10 ? '0'+n : n}
+    return date.getUTCFullYear()+'-'
+        + pad(date.getUTCMonth()+1)+'-'
+        + pad(date.getUTCDate());
+}
 
 exports.scrapeAttendance = function (app, data, callback) {
     var attendanceUri;
@@ -95,7 +101,7 @@ exports.scrapeAttendance = function (app, data, callback) {
                                     if (i > 1) {
                                         details.push({
                                             sl: htmlColumn.eq(0).text(),
-                                            date: new Date(Date.parse(htmlColumn.eq(1).text())).toDateString(),
+                                            date: toISODateString(new Date(Date.parse(htmlColumn.eq(1).text()))),
                                             status: htmlColumn.eq(3).text(),
                                             reason: htmlColumn.eq(5).text()
                                         });
