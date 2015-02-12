@@ -103,8 +103,9 @@ queue.queues = {
     mobile: 'mobile'
 };
 queue.on('connected', function () {
-    var forEachQueue = function(elt, i, arr) {
-        queue.create(elt, {prefetch: 0}, function(){});
+    var forEachQueue = function (elt, i, arr) {
+        queue.create(elt, {prefetch: 0}, function () {
+        });
     };
     underscore.values(queue.queues).forEach(forEachQueue);
 });

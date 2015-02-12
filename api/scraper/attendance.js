@@ -2,6 +2,7 @@
  *  VITacademics
  *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
+ *  Copyright (C) 2015  Karthik Balakrishnan <karthikb351@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,11 +28,14 @@ var unirest = require('unirest');
 var status = require(path.join(__dirname, '..', 'status'));
 
 var toISODateString = function (date) {
-    function pad(n){return n<10 ? '0'+n : n}
-    return date.getUTCFullYear()+'-'
-        + pad(date.getUTCMonth()+1)+'-'
+    function pad(n) {
+        return n < 10 ? '0' + n : n
+    }
+
+    return date.getUTCFullYear() + '-'
+        + pad(date.getUTCMonth() + 1) + '-'
         + pad(date.getUTCDate());
-}
+};
 
 exports.scrapeAttendance = function (app, data, callback) {
     var attendanceUri;
