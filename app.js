@@ -27,6 +27,7 @@ var jackrabbit = require('jackrabbit');
 var logger = require('morgan');
 var mongodb = require('express-mongo-db');
 var path = require('path');
+var underscore = require('underscore');
 
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
@@ -85,10 +86,10 @@ var mongodbOptions = {
         server: {
             socketOptions: {
                 keepAlive: 1,
-                connectTimeoutMS: 30000
+                connectTimeoutMS: 10000
             },
             auto_reconnect: true,
-            poolSize: 100
+            poolSize: 50
         }
     }
 };
@@ -97,13 +98,17 @@ app.use(mongodb(require('mongodb'), mongodbOptions));
 // RabbitMQ
 var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
 var queue = jackrabbit(amqpUri);
+queue.queues = {
+    main: 'VITacademics',
+    mobile: 'mobile'
+};
 queue.on('connected', function () {
-    var onReady = function () {
+    var forEachQueue = function(elt, i, arr) {
+        queue.create(elt, {prefetch: 0}, function(){});
     };
-    queue.create('VITacademics', {prefetch: 0}, onReady);
+    underscore.values(queue.queues).forEach(forEachQueue);
 });
 app.use(function (req, res, next) {
-    queue.name = 'VITacademics';
     req.queue = queue;
     next();
 });
