@@ -95,7 +95,7 @@ exports.scrapeAttendance = function (app, data, callback) {
                                     if (i > 1) {
                                         details.push({
                                             sl: htmlColumn.eq(0).text(),
-                                            date: htmlColumn.eq(1).text(),
+                                            date: new Date(Date.parse(htmlColumn.eq(1).text())).toDateString(),
                                             status: htmlColumn.eq(3).text(),
                                             reason: htmlColumn.eq(5).text()
                                         });
