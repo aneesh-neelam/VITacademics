@@ -18,10 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var jackrabbit = require('jackrabbit');
-
-var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
-var queue = jackrabbit(amqpUri);
+var memwatch = require('memwatch');
+var path = require('path');
 
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
@@ -36,14 +34,12 @@ if (process.env.LOGENTRIES_TOKEN) {
     });
 }
 
-queue.on('connected', function () {
-    var name = 'VITacademics';
-    var onReady = function () {
-        var onJob = function (job, ack) {
-            console.log(job.name);
-            ack();
-        };
-        queue.handle(name, onJob);
-    };
-    queue.create(name, {prefetch: 1000}, onReady);
-});
+var app = require(path.join(__dirname, '..', 'bin', 'www'));
+
+var log = function (data) {
+    console.log(JSON.stringify(data));
+    if (log) log.log('info', data);
+};
+
+memwatch.on('leak', log);
+memwatch.on('stats', log);
