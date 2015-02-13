@@ -44,11 +44,11 @@ exports.get = function (app, data, callback) {
                 reg_no: 1,
                 dob: 1,
                 campus: 1,
-                courses: 1,
-                refreshed: 1,
-                withdrawn_courses: 1,
                 semester: 1,
-                timetable: 1
+                courses: 1,
+                withdrawn_courses: 1,
+                timetable: 1,
+                refreshed: 1
             };
             var onFetch = function (err, mongoDoc) {
                 if (err) {

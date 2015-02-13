@@ -155,9 +155,41 @@ exports.scrapeTimetable = function (app, data, callback) {
                     var onEachRow = function (i, elem) {
                         var day = [];
                         var htmlRow = cheerio.load(timetableScraper(this).html());
-                        var getSlotTimings = function (column, course_type, timing_type) {
-                            // TODO
-                            return timing_type + column;
+                        var getSlotTimings = function (column, timing_type_end) {
+                            var toISOTimeString = function (time) {
+                                var hours = pad(time.getHours());
+                                var minutes = pad(time.getMinutes());
+                                var seconds = pad(time.getSeconds());
+
+                                function pad(n) {
+                                    return n < 10 ? '0' + n : n
+                                }
+
+                                return hours + ":" + minutes + ":" + seconds;
+                            };
+                            var morning_start_hour = 8;
+                            var afternoon_start_hour = 14;
+                            var time = new Date();
+                            time.setSeconds(0);
+                            column = column - 1;
+                            if (column > 0 && column < 5 || column > 6 && column < 11) {
+                                if (column < 6) {
+                                    time.setHours(morning_start_hour + column);
+                                }
+                                else {
+                                    time.setHours(afternoon_start_hour + (column % 6));
+                                }
+                                if (timing_type_end) {
+                                    time.setMinutes(50);
+                                }
+                                else {
+                                    time.setMinutes(0);
+                                }
+                            }
+                            else {
+                                // TODO
+                            }
+                            return toISOTimeString(time);
                         };
                         var getDay = function (row) {
                             var weekday = '';
@@ -193,14 +225,14 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 if (tmp[sub]) {
                                     if (last) {
                                         if (last.class_number === tmp[sub] && last.day === getDay(i)) {
-                                            last.end_time = getSlotTimings(elt, text[2], 'end');
+                                            last.end_time = getSlotTimings(elt, true);
                                         }
                                         else {
                                             timetable.timings.push(last);
                                             last = {
                                                 class_number: tmp[sub],
-                                                start_time: getSlotTimings(elt, text[2], 'start'),
-                                                end_time: getSlotTimings(elt, text[2], 'end'),
+                                                start_time: getSlotTimings(elt, false),
+                                                end_time: getSlotTimings(elt, true),
                                                 day: getDay(i)
                                             };
                                         }
@@ -208,8 +240,8 @@ exports.scrapeTimetable = function (app, data, callback) {
                                     else {
                                         last = {
                                             class_number: tmp[sub],
-                                            start_time: getSlotTimings(elt, text[2], 'end'),
-                                            end_time: getSlotTimings(elt, text[2], 'end'),
+                                            start_time: getSlotTimings(elt, false),
+                                            end_time: getSlotTimings(elt, true),
                                             day: getDay(i)
                                         };
                                     }

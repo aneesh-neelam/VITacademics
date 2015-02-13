@@ -27,13 +27,6 @@ var unirest = require('unirest');
 
 var status = require(path.join(__dirname, '..', 'status'));
 
-var toISODateString = function (date) {
-    function pad(n) {
-        return n < 10 ? '0' + n : n
-    }
-
-    return date.getUTCFullYear() + '-' + pad(date.getUTCMonth() + 1) + '-' + pad(date.getUTCDate());
-};
 
 exports.scrapeAttendance = function (app, data, callback) {
     var attendanceUri;
@@ -99,6 +92,13 @@ exports.scrapeAttendance = function (app, data, callback) {
                                 scraper = cheerio.load(scraper('table table').eq(1).html());
                                 var details = [];
                                 var onDay = function (i, elem) {
+                                    var toISODateString = function (date) {
+                                        function pad(n) {
+                                            return n < 10 ? '0' + n : n
+                                        }
+
+                                        return date.getUTCFullYear() + '-' + pad(date.getUTCMonth() + 1) + '-' + pad(date.getUTCDate());
+                                    };
                                     var htmlColumn = cheerio.load(scraper(this).html())('td');
                                     if (i > 1) {
                                         details.push({
