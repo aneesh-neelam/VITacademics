@@ -159,9 +159,11 @@ exports.get = function (app, data, callback) {
                                     element.marks = elt;
                                 }
                             };
+                            element.timings = [];
                             var forEachTimings = function (elt, i, arr) {
                                 if (element['class_number'] === elt['class_number']) {
-                                    element.courses.push(elt);
+                                    delete elt['class_number'];
+                                    element.timings.push(elt);
                                 }
                             };
                             results.attendance.forEach(forEachAttendance);

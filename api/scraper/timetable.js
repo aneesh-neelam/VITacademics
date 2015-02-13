@@ -155,39 +155,79 @@ exports.scrapeTimetable = function (app, data, callback) {
                     var onEachRow = function (i, elem) {
                         var day = [];
                         var htmlRow = cheerio.load(timetableScraper(this).html());
+                        var getSlotTimings = function (column, course_type, timing_type) {
+                            // TODO
+                            return timing_type + column;
+                        };
+                        var getDay = function (row) {
+                            var weekday = '';
+                            switch (row) {
+                                case 2:
+                                    weekday = 'monday';
+                                    break;
+                                case 3:
+                                    weekday = 'tuesday';
+                                    break;
+                                case 4:
+                                    weekday = 'wednesday';
+                                    break;
+                                case 5:
+                                    weekday = 'thursday';
+                                    break;
+                                case 6:
+                                    weekday = 'friday';
+                                    break;
+                                case 7:
+                                    weekday = 'saturday';
+                                    break;
+                            }
+                            return weekday;
+                        };
                         if (i > 1) {
                             var htmlColumn = htmlRow('td');
                             length = htmlColumn.length;
+                            var last = null;
                             for (var elt = 1; elt < length; elt++) {
                                 var text = htmlColumn.eq(elt).text().split(' ');
                                 var sub = text[0] + text[2];
                                 if (tmp[sub]) {
+                                    if (last) {
+                                        if (last.class_number === tmp[sub] && last.day === getDay(i)) {
+                                            last.end_time = getSlotTimings(elt, text[2], 'end');
+                                        }
+                                        else {
+                                            timetable.timings.push(last);
+                                            last = {
+                                                class_number: tmp[sub],
+                                                start_time: getSlotTimings(elt, text[2], 'start'),
+                                                end_time: getSlotTimings(elt, text[2], 'end'),
+                                                day: getDay(i)
+                                            };
+                                        }
+                                    }
+                                    else {
+                                        last = {
+                                            class_number: tmp[sub],
+                                            start_time: getSlotTimings(elt, text[2], 'end'),
+                                            end_time: getSlotTimings(elt, text[2], 'end'),
+                                            day: getDay(i)
+                                        };
+                                    }
                                     day.push(Number(tmp[sub]));
                                 }
                                 else {
+                                    if (last) {
+                                        timetable.timings.push(last);
+                                        last = null;
+                                    }
                                     day.push(0);
                                 }
                             }
-                            switch (i) {
-                                case 2:
-                                    timetable.timetable.monday = day;
-                                    break;
-                                case 3:
-                                    timetable.timetable.tuesday = day;
-                                    break;
-                                case 4:
-                                    timetable.timetable.wednesday = day;
-                                    break;
-                                case 5:
-                                    timetable.timetable.thursday = day;
-                                    break;
-                                case 6:
-                                    timetable.timetable.friday = day;
-                                    break;
-                                case 7:
-                                    timetable.timetable.saturday = day;
-                                    break;
+                            if (last) {
+                                timetable.timings.push(last);
+                                last = null;
                             }
+                            timetable.timetable[getDay(i)] = day;
                         }
                     };
                     timetableScraper('tr').each(onEachRow);
