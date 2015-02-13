@@ -183,5 +183,6 @@ exports.scrapeTimetable = function (app, data, callback) {
     CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
     unirest.post(timetableUri)
         .jar(CookieJar)
+        .timeout(29000)
         .end(onRequest);
 };

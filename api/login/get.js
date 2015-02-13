@@ -71,5 +71,6 @@ exports.get = function (app, data, callback) {
     };
     unirest.get(captchaUri)
         .encoding(null)
+        .timeout(29000)
         .end(onRequest);
 };

@@ -118,6 +118,7 @@ exports.get = function (app, data, callback) {
                 'wdpswd': data.dob,
                 'vrfcd': data.captcha
             })
+            .timeout(29000)
             .end(onPost);
     }
     else {

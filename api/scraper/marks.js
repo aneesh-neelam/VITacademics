@@ -195,5 +195,6 @@ exports.scrapeMarks = function (app, data, callback) {
     CookieJar.add(unirest.cookie(cookieSerial), marksUri);
     unirest.post(marksUri)
         .jar(CookieJar)
+        .timeout(29000)
         .end(onRequest);
 };
