@@ -40,37 +40,37 @@ exports.get = function (app, data, callback) {
     if (cache.get(data.reg_no) !== null) {
         if (cache.get(data.reg_no).dob === data.dob) {
             var collection = app.db.collection('student');
-            if (cache.get(data.reg_no).refreshed && !(data.first_time)) {
-                var keys = {
-                    reg_no: 1,
-                    dob: 1,
-                    campus: 1,
-                    courses: 1,
-                    refreshed: 1,
-                    withdrawn: 1,
-                    semester: 1
-                };
-                var onFetch = function (err, mongoDoc) {
-                    if (err) {
-                        data.status = status.codes.mongoDown;
-                        if (log) {
-                            log.log('debug', data);
-                        }
-                        console.log(data.status);
-                        callback(true, data);
+            var keys = {
+                reg_no: 1,
+                dob: 1,
+                campus: 1,
+                courses: 1,
+                refreshed: 1,
+                withdrawn_courses: 1,
+                semester: 1,
+                timetable: 1
+            };
+            var onFetch = function (err, mongoDoc) {
+                if (err) {
+                    data.status = status.codes.mongoDown;
+                    if (log) {
+                        log.log('debug', data);
                     }
-                    else if (mongoDoc) {
-                        delete mongoDoc['_id'];
-                        mongoDoc.first_time = data.first_time;
-                        mongoDoc.status = status.codes.success;
-                        mongoDoc.cached = true;
-                        callback(false, mongoDoc);
-                    }
-                    else {
-                        data.status = status.codes.noData;
-                        callback(true, data);
-                    }
-                };
+                    console.log(data.status);
+                    callback(true, data);
+                }
+                else if (mongoDoc) {
+                    delete mongoDoc['_id'];
+                    mongoDoc.status = status.codes.success;
+                    mongoDoc.cached = true;
+                    callback(false, mongoDoc);
+                }
+                else {
+                    data.status = status.codes.noData;
+                    callback(true, data);
+                }
+            };
+            if (cache.get(data.reg_no).refreshed) {
                 collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
             }
             else {
@@ -78,36 +78,29 @@ exports.get = function (app, data, callback) {
                     data.semester = process.env.VELLORE_SEMESTER || 'WS';
                 }
                 else if (data.campus === 'chennai') {
-                    data.semester = process.env.CHENNAI_SEMESTER || 'WS15';
+                    data.semester = process.env.CHENNAI_SEMESTER || 'WS14';
                 }
-                var parallelTasks = {};
-                parallelTasks.attendance = function (asyncCallback) {
-                    attendance.scrapeAttendance(app, data, asyncCallback)
-                };
-
-                parallelTasks.marks = function (asyncCallback) {
-                    marks.scrapeMarks(app, data, asyncCallback)
-                };
-                parallelTasks.timetable = function (asyncCallback) {
-                    timetable.scrapeTimetable(app, data, asyncCallback)
-                };
-
-                if (data.first_time) {
-                    parallelTasks.token = function (asyncCallback) {
-                        friends.get(app, data, asyncCallback)
-                    };
-                }
-
                 var myCookie = cache.get(data.reg_no).cookie;
-
+                var parallelTasks = {
+                    attendance: function (asyncCallback) {
+                        attendance.scrapeAttendance(app, data, asyncCallback)
+                    },
+                    marks: function (asyncCallback) {
+                        marks.scrapeMarks(app, data, asyncCallback)
+                    },
+                    timetable: function (asyncCallback) {
+                        timetable.scrapeTimetable(app, data, asyncCallback)
+                    }
+                };
                 var onFinish = function (err, results) {
                     if (err || results.timetable.status.code !== 0) {
                         data.status = results.timetable.status;
                         if (log) {
                             log.log('debug', data);
                         }
+                        data.HTML_error = true;
                         console.log(data.status);
-                        callback(true, data);
+                        collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
                     }
                     else {
                         delete results.timetable.status;
@@ -166,8 +159,14 @@ exports.get = function (app, data, callback) {
                                     element.marks = elt;
                                 }
                             };
+                            var forEachTimings = function (elt, i, arr) {
+                                if (element['class_number'] === elt['class_number']) {
+                                    element.courses.push(elt);
+                                }
+                            };
                             results.attendance.forEach(forEachAttendance);
                             results.marks.forEach(forEachMarks);
+                            results.timetable.timings.forEach(forEachTimings);
                             var noData = {
                                 supported: false
                             };
@@ -187,6 +186,8 @@ exports.get = function (app, data, callback) {
                             else {
                                 data.courses = newData;
                                 data.refreshed = new Date().toJSON();
+                                data.timetable = results.timetable.timetable;
+                                data.withdrawn_courses = results.timetable.withdrawn_courses;
                                 var onUpdate = function (err) {
                                     if (err) {
                                         data.status = status.codes.mongoDown;
@@ -202,7 +203,7 @@ exports.get = function (app, data, callback) {
                                             reg_no: data.reg_no,
                                             dob: data.dob,
                                             cookie: myCookie,
-                                            refreshed: !data.first_time
+                                            refreshed: true
                                         };
                                         cache.put(data.reg_no, doc, validity * 60 * 1000);
                                         data.cached = false;
@@ -210,51 +211,17 @@ exports.get = function (app, data, callback) {
                                         callback(null, data);
                                     }
                                 };
-                                if (data.first_time) {
-                                    data.timetable = results.timetable.timetable;
-                                    data.share = results.token.share;
-                                    data.withdrawn = results.timetable.withdrawn;
-                                    collection.findAndModify({reg_no: data.reg_no}, [
-                                        ['reg_no', 'asc']
-                                    ], {
-                                        $set: {
-                                            timetable: data.timetable,
-                                            courses: data.courses,
-                                            semester: data.semester,
-                                            refreshed: data.refreshed,
-                                            withdrawn: data.withdrawn
-                                        }
-                                    }, {safe: true, new: true, upsert: true}, onUpdate);
-                                }
-                                else if (results.timetable.withdrawn) {
-                                    data.timetable = results.timetable.timetable;
-                                    data.withdrawn = results.timetable.withdrawn;
-                                    collection.findAndModify({reg_no: data.reg_no}, [
-                                        ['reg_no', 'asc']
-                                    ], {
-                                        $set: {
-                                            timetable: data.timetable,
-                                            semester: data.semester,
-                                            courses: data.courses,
-                                            refreshed: data.refreshed,
-                                            withdrawn: data.withdrawn
-                                        }
-                                    }, {safe: true, new: true, upsert: true}, onUpdate);
-                                    delete data.timetable;
-                                }
-                                else {
-                                    data.withdrawn = results.timetable.withdrawn;
-                                    collection.findAndModify({reg_no: data.reg_no}, [
-                                        ['reg_no', 'asc']
-                                    ], {
-                                        $set: {
-                                            courses: data.courses,
-                                            semester: data.semester,
-                                            refreshed: data.refreshed,
-                                            withdrawn: data.withdrawn
-                                        }
-                                    }, {safe: true, new: true, upsert: true}, onUpdate);
-                                }
+                                collection.findAndModify({reg_no: data.reg_no}, [
+                                    ['reg_no', 'asc']
+                                ], {
+                                    $set: {
+                                        timetable: data.timetable,
+                                        courses: data.courses,
+                                        semester: data.semester,
+                                        refreshed: data.refreshed,
+                                        withdrawn_courses: data.withdrawn_courses
+                                    }
+                                }, {safe: true, new: true, upsert: true}, onUpdate);
                             }
                         };
                         async.map(data.courses, forEachCourse, doneCollate);

@@ -32,9 +32,7 @@ var toISODateString = function (date) {
         return n < 10 ? '0' + n : n
     }
 
-    return date.getUTCFullYear() + '-'
-        + pad(date.getUTCMonth() + 1) + '-'
-        + pad(date.getUTCDate());
+    return date.getUTCFullYear() + '-' + pad(date.getUTCMonth() + 1) + '-' + pad(date.getUTCDate());
 };
 
 exports.scrapeAttendance = function (app, data, callback) {

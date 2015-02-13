@@ -43,23 +43,6 @@ router.get('/login', function (req, res) {
     loginAuto.get(app, data, onGet);
 });
 
-router.get('/register', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {
-        reg_no: req.query.regno.toUpperCase(),
-        dob: req.query.dob,
-        first_time: true,
-        campus: req.originalUrl.split('/')[3].toLowerCase()
-    };
-    var onGet = function (err, response) {
-        res.json(response);
-    };
-    dataAggregate.get(app, data, onGet);
-});
-
 router.get('/refresh', function (req, res) {
     var app = {
         db: req.db,
@@ -68,7 +51,6 @@ router.get('/refresh', function (req, res) {
     var data = {
         reg_no: req.query.regno.toUpperCase(),
         dob: req.query.dob,
-        first_time: false,
         campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {

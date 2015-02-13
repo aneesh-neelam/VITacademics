@@ -18,17 +18,20 @@
  */
 
 var error = {
-    success: {message: 'Successful execution', code: 0},
-    timedOut: {message: 'Session timed out', code: 11},
-    invalid: {message: 'Invalid credentials or captcha', code: 12},
-    captchaParsing: {message: 'Error parsing captcha', code: 13},
-    tokenExpired: {message: 'Token expired', code: 14},
-    noData: {message: 'Requested data is not available', code: 15},
-    toDo: {message: 'This feature is incomplete', code: 50},
-    vitDown: {message: 'VIT\'s servers may be slowed down or we may be facing a connectivity issue', code: 89},
-    mongoDown: {message: 'Our MongoDB instance may be down or we may be facing a connectivity issue', code: 97},
-    maintenance: {message: 'Our backend servers are down for maintenance', code: 98},
-    other: {message: 'An unforeseen error has occurred', code: 99}
+    success: {message: 'Successful Execution', code: 0},
+    timedOut: {message: 'Session Timed Out', code: 11},
+    invalid: {message: 'Invalid Credentials or Data Scraping Error', code: 12},
+    captchaParsing: {message: 'Error Parsing Captcha', code: 13},
+    tokenExpired: {message: 'Token Expired', code: 14},
+    noData: {message: 'Requested Data is not Available', code: 15},
+    toDo: {message: 'This Feature is Incomplete', code: 50},
+    vitDown: {message: 'VIT\'s Servers may be Slow/Down or We may be facing a Connectivity Issue', code: 89},
+    mongoDown: {message: 'Our MongoDB Instance may be Down or We may be facing a Connectivity Issue', code: 97},
+    maintenance: {
+        message: 'Our backend servers are Down for Maintenance, please contact the VITacademics Developers for more Information',
+        code: 98
+    },
+    other: {message: 'An Unforeseen/Unknown/Irrecoverable Error has Occurred', code: 99}
 };
 
 module.exports.codes = error;

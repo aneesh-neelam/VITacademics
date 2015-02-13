@@ -36,7 +36,6 @@ exports.scrapeTimetable = function (app, data, callback) {
     else if (data.campus === 'chennai') {
         timetableUri = 'http://27.251.102.132/parent/timetable.asp?sem=' + data.semester;
     }
-
     var CookieJar = unirest.jar();
     var myCookie = cache.get(data.reg_no).cookie;
     var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
@@ -44,29 +43,41 @@ exports.scrapeTimetable = function (app, data, callback) {
         if (response.error) {
             data.status = status.codes.vitDown;
             callback(true, data);
-            console.log(data.status);
         }
         else {
             var timetable = {
                 courses: [],
                 timetable: {},
-                withdrawn: false
+                withdrawn_courses: [],
+                timings: []
             };
             try {
-                var tmp = {};
-                var scraper = cheerio.load(response.body);
-                if (scraper('table table').length == 3) {
-                    timetable.withdrawn = true;
-                }
-                if (scraper('b').eq(1).text().substring(0, 2) === 'No') {
+                var baseScraper = cheerio.load(response.body);
+                var timetableScraper;
+                var withdrawnScraper;
+                var coursesScraper;
+                if (baseScraper('b').eq(1).text().substring(0, 2) === 'No') {
                     timetable.timetable = timetableResource.emptyTimetable;
+                    coursesScraper = null;
+                    withdrawnScraper = null;
+                    timetableScraper = null;
                 }
-                else {
-                    scraper = cheerio.load(scraper('table table').eq(0).html());
-                    var length = scraper('tr').length;
-                    var onEach = function (i, elem) {
+                else if (baseScraper('table table').length == 3) {
+                    coursesScraper = cheerio.load(baseScraper('table table').eq(0).html());
+                    withdrawnScraper = cheerio.load(baseScraper('table table').eq(1).html());
+                    timetableScraper = cheerio.load(baseScraper('table table').eq(2).html());
+                }
+                else if (baseScraper('table table').length == 2) {
+                    coursesScraper = cheerio.load(baseScraper('table table').eq(0).html());
+                    withdrawnScraper = null;
+                    timetableScraper = cheerio.load(baseScraper('table table').eq(1).html());
+                }
+                var tmp = {};
+                if (coursesScraper) {
+                    var length = coursesScraper('tr').length;
+                    var onEachCourse = function (i, elem) {
                         if (i > 0 && i < (length - 1)) {
-                            var htmlColumn = cheerio.load(scraper(this).html())('td');
+                            var htmlColumn = cheerio.load(coursesScraper(this).html())('td');
                             var classnbr = htmlColumn.eq(1).text();
                             var code = htmlColumn.eq(2).text();
                             var courseType = htmlColumn.eq(4).text();
@@ -120,56 +131,66 @@ exports.scrapeTimetable = function (app, data, callback) {
                             });
                         }
                     };
-                    scraper('tr').each(onEach);
-                    if (data.first_time || timetable.withdrawn) {
-                        scraper = cheerio.load(response.body);
-                        if (timetable.withdrawn) {
-                            scraper = cheerio.load(scraper('table table').eq(2).html());
+                    coursesScraper('tr').each(onEachCourse);
+                }
+                if (withdrawnScraper) {
+                    length = withdrawnScraper('tr').length;
+                    var onEachWithdrawn = function (i, elem) {
+                        if (i > 0 && i < length) {
+                            var htmlColumn = cheerio.load(withdrawnScraper(this).html())('td');
+                            timetable['withdrawn_courses'].push({
+                                class_number: htmlColumn.eq(1).text(),
+                                course_code: htmlColumn.eq(2).text(),
+                                course_title: htmlColumn.eq(3).text(),
+                                course_type: htmlColumn.eq(4).text(),
+                                ltpc: htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
+                                course_mode: htmlColumn.eq(6).text()
+                            });
                         }
-                        else {
-                            scraper = cheerio.load(scraper('table table').eq(1).html());
-                        }
-                        length = scraper('tr').length;
-                        var onEachRow = function (i, elem) {
-                            var day = [];
-                            var htmlRow = cheerio.load(scraper(this).html());
-                            if (i > 1) {
-                                var htmlColumn = htmlRow('td');
-                                length = htmlColumn.length;
-                                for (var elt = 1; elt < length; elt++) {
-                                    var text = htmlColumn.eq(elt).text().split(' ');
-                                    var sub = text[0] + text[2];
-                                    if (tmp[sub]) {
-                                        day.push(Number(tmp[sub]));
-                                    }
-                                    else {
-                                        day.push(0);
-                                    }
+                    };
+                    withdrawnScraper('tr').each(onEachWithdrawn);
+                }
+                if (timetableScraper) {
+                    length = timetableScraper('tr').length;
+                    var onEachRow = function (i, elem) {
+                        var day = [];
+                        var htmlRow = cheerio.load(timetableScraper(this).html());
+                        if (i > 1) {
+                            var htmlColumn = htmlRow('td');
+                            length = htmlColumn.length;
+                            for (var elt = 1; elt < length; elt++) {
+                                var text = htmlColumn.eq(elt).text().split(' ');
+                                var sub = text[0] + text[2];
+                                if (tmp[sub]) {
+                                    day.push(Number(tmp[sub]));
                                 }
-                                switch (i) {
-                                    case 2:
-                                        timetable.timetable.monday = day;
-                                        break;
-                                    case 3:
-                                        timetable.timetable.tuesday = day;
-                                        break;
-                                    case 4:
-                                        timetable.timetable.wednesday = day;
-                                        break;
-                                    case 5:
-                                        timetable.timetable.thursday = day;
-                                        break;
-                                    case 6:
-                                        timetable.timetable.friday = day;
-                                        break;
-                                    case 7:
-                                        timetable.timetable.saturday = day;
-                                        break;
+                                else {
+                                    day.push(0);
                                 }
                             }
-                        };
-                        scraper('tr').each(onEachRow);
-                    }
+                            switch (i) {
+                                case 2:
+                                    timetable.timetable.monday = day;
+                                    break;
+                                case 3:
+                                    timetable.timetable.tuesday = day;
+                                    break;
+                                case 4:
+                                    timetable.timetable.wednesday = day;
+                                    break;
+                                case 5:
+                                    timetable.timetable.thursday = day;
+                                    break;
+                                case 6:
+                                    timetable.timetable.friday = day;
+                                    break;
+                                case 7:
+                                    timetable.timetable.saturday = day;
+                                    break;
+                            }
+                        }
+                    };
+                    timetableScraper('tr').each(onEachRow);
                 }
                 timetable.status = status.codes.success;
                 callback(null, timetable);
