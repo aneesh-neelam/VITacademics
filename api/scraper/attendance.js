@@ -113,6 +113,7 @@ exports.scrapeAttendance = function (app, data, callback) {
                     };
                     unirest.post(attendanceDetailsUri)
                         .jar(CookieJar)
+                        .timeout(28500)
                         .form(doc.form)
                         .end(onPost);
                 };
@@ -129,5 +130,6 @@ exports.scrapeAttendance = function (app, data, callback) {
     CookieJar.add(unirest.cookie(cookieSerial), attendanceDetailsUri);
     unirest.post(attendanceUri)
         .jar(CookieJar)
+        .timeout(29000)
         .end(onRequest);
 };
