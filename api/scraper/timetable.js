@@ -172,7 +172,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                             var time = new Date();
                             time.setSeconds(0);
                             column = column - 1;
-                            if (column > 0 && column < 5 || column > 6 && column < 11) {
+                            if (column >= 0 && column <= 3 || column >= 6 && column <= 9) {
                                 if (column < 6) {
                                     time.setHours(morning_start_hour + column);
                                 }
