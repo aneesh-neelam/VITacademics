@@ -27,22 +27,6 @@ var dataAggregate = require(path.join(__dirname, '..', 'api-legacy', 'scraper', 
 var dataGrades = require(path.join(__dirname, '..', 'api-legacy', 'scraper', 'grades'));
 var friendsGenerate = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'generate'));
 var friendsShare = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'share'));
-var system = require(path.join(__dirname, '..', 'api-legacy', 'system'));
-
-
-router.get('/system', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {
-        campus: req.originalUrl.split('/')[2].toLowerCase()
-    };
-    var onGet = function (err, response) {
-        res.json(response);
-    };
-    system.get(app, data, onGet);
-});
 
 router.get('/login/manual', function (req, res) {
     var app = {
