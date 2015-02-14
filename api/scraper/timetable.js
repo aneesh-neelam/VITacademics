@@ -220,7 +220,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                     else {
                                         time.setMinutes(50);
                                     }
-                                    time.setHours(morningStartHour + column);
+                                    time.setHours(morningStartHour + column - 1);
                                 }
                             }
                             return toISOTimeString(time);
