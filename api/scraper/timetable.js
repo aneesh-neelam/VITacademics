@@ -164,7 +164,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                     var onEachRow = function (i, elem) {
                         var day = [];
                         var htmlRow = cheerio.load(timetableScraper(this).html());
-                        var getSlotTimings = function (column, course_type, timing_type_end) {
+                        var getSlotTimings = function (column, isTheory, isEndTime) {
                             var toISOTimeString = function (time) {
                                 var hours = pad(time.getHours());
                                 var minutes = pad(time.getMinutes());
@@ -176,51 +176,51 @@ exports.scrapeTimetable = function (app, data, callback) {
 
                                 return hours + ":" + minutes + ":" + seconds;
                             };
-                            var morning_start_hour = 8;
+                            var morningStartHour = 8;
                             var time = new Date();
                             time.setSeconds(0);
                             column = column - 1;
-                            if(course_type == 'Theory Only' || course_type == 'Embedded Theory'){
-                              if(timing_type_end){
-                                time.setMinutes(50);
-                              }
-                              else{
-                                time.setMinutes(0);
-                              }
-                              if(column < 12){
-                                time.setHours(morning_start_hour + column);
-                              }
-                              else{
-                                time.setHours(morning_start_hour + column - 1);
-                              }
+                            if (course_type) {
+                                if (isEndTime) {
+                                    time.setMinutes(50);
+                                }
+                                else {
+                                    time.setMinutes(0);
+                                }
+                                if (column < 12) {
+                                    time.setHours(morningStartHour + column);
+                                }
+                                else {
+                                    time.setHours(morningStartHour + column - 1);
+                                }
                             }
-                            else{
-                              if(column < 12 && (column % 6) < 4){
-                                if(timing_type_end){
-                                  time.setMinutes(50);
+                            else {
+                                if (column < 12 && (column % 6) < 4) {
+                                    if (isEndTime) {
+                                        time.setMinutes(50);
+                                    }
+                                    else {
+                                        time.setMinutes(0);
+                                    }
                                 }
-                                else{
-                                  time.setMinutes(0);
+                                else if (column >= 12) {
+                                    if (isEndTime) {
+                                        time.setMinutes(10);
+                                    }
+                                    else {
+                                        time.setMinutes(30);
+                                    }
+                                    time.setHours(morningStartHour + column - 1);
                                 }
-                              }
-                              else if(column >= 12){
-                                if(timing_type_end){
-                                  time.setMinutes(10);
+                                else {
+                                    if (isEndTime) {
+                                        time.setMinutes(30);
+                                    }
+                                    else {
+                                        time.setMinutes(50);
+                                    }
+                                    time.setHours(morningStartHour + column);
                                 }
-                                else{
-                                  time.setMinutes(30);
-                                }
-                                time.setHours(morning_start_hour + column - 1);
-                              }
-                              else{
-                                if(timing_type_end){
-                                  time.setMinutes(30);
-                                }
-                                else{
-                                  time.setMinutes(50);
-                                }
-                                time.setHours(morning_start_hour + column);
-                              }
                             }
                             return toISOTimeString(time);
                         };
@@ -256,8 +256,9 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 var text = htmlColumn.eq(elt).text().split(' ');
                                 var sub = text[0] + text[2];
                                 if (tmp[sub]) {
+                                    var course_type = (text[2] === 'TH' || text[2] === 'ETH');
                                     if (last) {
-                                        if (last.class_number === tmp[sub] && last.day === getDay(i)) {
+                                        if (last.class_number === tmp[sub] && last.day === (i - 2)) {
                                             last.end_time = getSlotTimings(elt, course_type, true);
                                         }
                                         else {

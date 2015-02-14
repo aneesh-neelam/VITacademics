@@ -1,20 +1,20 @@
 {
-  "reg_no": "11BEC0262",
-  "dob": "19091992",
+  "reg_no": "13BCE0139",
+  "dob": "16011995",
   "campus": "vellore",
-  "semester": "FS",
+  "semester": "WS",
   "courses": [
     {
-      "class_number": 5122,
-      "course_code": "CSE102",
-      "course_title": "Data Structures and Algorithms",
+      "class_number": 4792,
+      "course_code": "CSE202",
+      "course_title": "Algorithm Design and Analysis",
       "course_type": 1,
-      "ltpc": "3003",
+      "ltpc": "3104",
       "course_mode": "CBL",
       "course_option": "Regular",
-      "slot": "F1",
-      "venue": "SJT405",
-      "faculty": "MURALI S - SCSE",
+      "slot": "F1+TF1",
+      "venue": "SJT803",
+      "faculty": "ANNAPURNA JONNALAGADDA - SCSE",
       "registration_status": "Registered and Approved",
       "bill_date": null,
       "bill_number": null,
@@ -24,6 +24,11 @@
           "start_time": "09:00:00",
           "end_time": "09:50:00",
           "day": 0
+        },
+        {
+          "start_time": "12:00:00",
+          "end_time": "12:50:00",
+          "day": 1
         },
         {
           "start_time": "09:00:00",
@@ -37,421 +42,234 @@
         }
       ],
       "attendance": {
-        "registration_date": "2014-06-19T07:41:34.000Z",
-        "attended_classes": 36,
-        "total_classes": 45,
-        "attendance_percentage": 80,
+        "registration_date": "2014-12-16T09:03:50.000Z",
+        "attended_classes": 8,
+        "total_classes": 12,
+        "attendance_percentage": 67,
         "details": [
           {
             "sl": 1,
-            "date": "2014-07-10",
+            "date": "2015-01-05",
             "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 2,
-            "date": "2014-07-14",
-            "status": "Absent",
+            "date": "2015-01-06",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 3,
-            "date": "2014-07-16",
+            "date": "2015-01-07",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2014-07-17",
+            "date": "2015-01-08",
             "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 5,
-            "date": "2014-07-21",
+            "date": "2015-01-12",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 6,
-            "date": "2014-07-23",
+            "date": "2015-01-13",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 7,
-            "date": "2014-07-24",
+            "date": "2015-01-14",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 8,
-            "date": "2014-07-28",
+            "date": "2015-01-19",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 9,
-            "date": "2014-07-30",
+            "date": "2015-01-20",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 10,
-            "date": "2014-07-31",
+            "date": "2015-01-21",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 11,
-            "date": "2014-08-04",
-            "status": "Present",
+            "date": "2015-01-22",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 12,
-            "date": "2014-08-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2014-08-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2014-08-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2014-08-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2014-08-14",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2014-08-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2014-08-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2014-08-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2014-09-01",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2014-09-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2014-09-04",
+            "date": "2015-01-27",
             "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2014-09-08",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2014-09-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2014-09-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2014-09-15",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 27,
-            "date": "2014-09-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 28,
-            "date": "2014-09-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 29,
-            "date": "2014-09-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 30,
-            "date": "2014-09-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 31,
-            "date": "2014-09-25",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 32,
-            "date": "2014-09-29",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 33,
-            "date": "2014-10-01",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 34,
-            "date": "2014-10-13",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 35,
-            "date": "2014-10-15",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 36,
-            "date": "2014-10-16",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 37,
-            "date": "2014-10-27",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 38,
-            "date": "2014-10-29",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 39,
-            "date": "2014-10-30",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 40,
-            "date": "2014-11-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 41,
-            "date": "2014-11-05",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 42,
-            "date": "2014-11-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 43,
-            "date": "2014-11-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 44,
-            "date": "2014-11-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 45,
-            "date": "2014-11-13",
-            "status": "Present",
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "cat1": 28,
-        "cat1_status": "Present",
-        "cat2": 41,
-        "cat2_status": "Present",
-        "quiz1": 2,
-        "quiz1_status": "Present",
-        "quiz2": 2,
-        "quiz2_status": "Present",
-        "quiz3": 3,
-        "quiz3_status": "Present",
-        "assignment": 5,
-        "assignment_status": "Present",
+        "cat1": null,
+        "cat1_status": "",
+        "cat2": null,
+        "cat2_status": "",
+        "quiz1": null,
+        "quiz1_status": "",
+        "quiz2": null,
+        "quiz2_status": "",
+        "quiz3": null,
+        "quiz3_status": "",
+        "assignment": null,
+        "assignment_status": "",
         "marks_type": 1,
         "supported": true
       }
     },
     {
-      "class_number": 5148,
-      "course_code": "CSE102",
-      "course_title": "Data Structures and Algorithms",
-      "course_type": 2,
-      "ltpc": "0021",
-      "course_mode": "LBC",
+      "class_number": 4574,
+      "course_code": "CSE221",
+      "course_title": "Microprocessor and Interfacing",
+      "course_type": 1,
+      "ltpc": "3003",
+      "course_mode": "CBL",
       "course_option": "Regular",
-      "slot": "L5+L6",
-      "venue": "SJT317",
-      "faculty": "SAIRABANU J - SCSE",
+      "slot": "G1+TG1",
+      "venue": "SJT421",
+      "faculty": "SENTHILKUMAR R - SCSE",
       "registration_status": "Registered and Approved",
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
       "timings": [
         {
-          "start_time": "15:35:00",
-          "end_time": "15:35:00",
-          "day": 0
+          "start_time": "09:00:00",
+          "end_time": "09:50:00",
+          "day": 1
         },
         {
-          "start_time": "15:35:00",
-          "end_time": "15:35:00",
-          "day": 0
+          "start_time": "12:00:00",
+          "end_time": "12:50:00",
+          "day": 2
+        },
+        {
+          "start_time": "10:00:00",
+          "end_time": "10:50:00",
+          "day": 4
         }
       ],
       "attendance": {
-        "registration_date": "2014-06-19T07:41:34.000Z",
-        "attended_classes": 26,
-        "total_classes": 30,
-        "attendance_percentage": 87,
+        "registration_date": "2015-01-06T09:41:45.000Z",
+        "attended_classes": 14,
+        "total_classes": 16,
+        "attendance_percentage": 88,
         "details": [
           {
             "sl": 1,
-            "date": "2014-07-14",
-            "status": "Absent",
+            "date": "2015-01-06",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 2,
-            "date": "2014-07-21",
+            "date": "2015-01-07",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 3,
-            "date": "2014-07-28",
+            "date": "2015-01-09",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2014-08-04",
-            "status": "Absent",
+            "date": "2015-01-13",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 5,
-            "date": "2014-08-11",
+            "date": "2015-01-14",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 6,
-            "date": "2014-08-18",
+            "date": "2015-01-20",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 7,
-            "date": "2014-09-01",
-            "status": "Present",
+            "date": "2015-01-21",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 8,
-            "date": "2014-09-08",
+            "date": "2015-01-23",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 9,
-            "date": "2014-09-15",
+            "date": "2015-01-27",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 10,
-            "date": "2014-09-22",
+            "date": "2015-01-28",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 11,
-            "date": "2014-09-29",
+            "date": "2015-01-30",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 12,
-            "date": "2014-10-13",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 13,
-            "date": "2014-10-27",
+            "date": "2015-02-03",
             "status": "Present",
             "reason": " - "
           },
           {
+            "sl": 13,
+            "date": "2015-02-04",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
             "sl": 14,
-            "date": "2014-11-03",
+            "date": "2015-02-10",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 15,
-            "date": "2014-11-10",
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-13",
             "status": "Present",
             "reason": " - "
           }
@@ -459,299 +277,316 @@
         "supported": true
       },
       "marks": {
-        "lab_cam": 47,
-        "lab_cam_status": "Present",
+        "cat1": null,
+        "cat1_status": "",
+        "cat2": null,
+        "cat2_status": "",
+        "quiz1": null,
+        "quiz1_status": "",
+        "quiz2": null,
+        "quiz2_status": "",
+        "quiz3": null,
+        "quiz3_status": "",
+        "assignment": null,
+        "assignment_status": "",
+        "marks_type": 1,
+        "supported": true
+      }
+    },
+    {
+      "class_number": 4706,
+      "course_code": "CSE221",
+      "course_title": "Microprocessor and Interfacing",
+      "course_type": 2,
+      "ltpc": "0021",
+      "course_mode": "LBC",
+      "course_option": "Regular",
+      "slot": "L51+L52",
+      "venue": "SJT416",
+      "faculty": "BHULAKSHMI BONTHU - SCSE",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "23:00:00",
+          "end_time": "23:50:00",
+          "day": 3
+        }
+      ],
+      "attendance": {
+        "registration_date": "2015-01-06T09:41:45.000Z",
+        "attended_classes": 8,
+        "total_classes": 8,
+        "attendance_percentage": 100,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-08",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-22",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-29",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-02-12",
+            "status": "Present",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "lab_cam": null,
+        "lab_cam_status": "",
         "marks_type": 2,
         "supported": true
       }
     },
     {
-      "class_number": 4789,
-      "course_code": "ECE204",
-      "course_title": "Analog Circuit Design",
+      "class_number": 4525,
+      "course_code": "CSE222",
+      "course_title": "Operating Systems",
       "course_type": 3,
       "ltpc": "3003",
       "course_mode": "PBL",
-      "course_option": "Reregistered",
-      "slot": "G2+TG2",
-      "venue": "TT530A",
-      "faculty": "ARUN M - SENSE",
-      "registration_status": "Registered, Receipt Generated and Approved by Academics",
-      "bill_date": "2014-07-15",
-      "bill_number": 82203,
+      "course_option": "Regular",
+      "slot": "C1",
+      "venue": "SJT404",
+      "faculty": "SENTHIL J - SCSE",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
       "project_title": null,
       "timings": [
         {
-          "start_time": "15:00:00",
-          "end_time": "15:50:00",
-          "day": 1
+          "start_time": "10:00:00",
+          "end_time": "10:50:00",
+          "day": 0
         },
         {
-          "start_time": "15:35:00",
-          "end_time": "15:35:00",
+          "start_time": "08:00:00",
+          "end_time": "08:50:00",
           "day": 2
         },
         {
-          "start_time": "16:00:00",
-          "end_time": "16:50:00",
-          "day": 4
+          "start_time": "11:00:00",
+          "end_time": "11:50:00",
+          "day": 3
         }
       ],
       "attendance": {
-        "registration_date": "2014-06-19T07:39:41.000Z",
-        "attended_classes": 35,
-        "total_classes": 42,
+        "registration_date": "2014-12-16T09:02:21.000Z",
+        "attended_classes": 10,
+        "total_classes": 13,
+        "attendance_percentage": 77,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-05",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-07",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-08",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-01-12",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-01-14",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-01-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-01-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-01-22",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-01-29",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-02-02",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "marks_type": 4,
+        "details": [
+          {
+            "title": "MID SEM EXAM I",
+            "max_marks": 50,
+            "weightage": 10,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          },
+          {
+            "title": "MID SEM EXAM II",
+            "max_marks": 50,
+            "weightage": 10,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          },
+          {
+            "title": "QUIZ",
+            "max_marks": 10,
+            "weightage": 10,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          },
+          {
+            "title": "PROJECT I",
+            "max_marks": 10,
+            "weightage": 10,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          },
+          {
+            "title": "PROJECT II",
+            "max_marks": 10,
+            "weightage": 10,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          }
+        ],
+        "supported": true
+      }
+    },
+    {
+      "class_number": 4630,
+      "course_code": "CSE222",
+      "course_title": "Operating Systems",
+      "course_type": 2,
+      "ltpc": "0021",
+      "course_mode": "LBC",
+      "course_option": "Regular",
+      "slot": "L45+L46",
+      "venue": "SJT418",
+      "faculty": "LAVANYA K - SCSE",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "23:00:00",
+          "end_time": "23:50:00",
+          "day": 2
+        }
+      ],
+      "attendance": {
+        "registration_date": "2014-12-16T09:02:21.000Z",
+        "attended_classes": 10,
+        "total_classes": 12,
         "attendance_percentage": 84,
         "details": [
           {
             "sl": 1,
-            "date": "2014-07-11",
-            "status": "Absent",
+            "date": "2015-01-07",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 2,
-            "date": "2014-07-15",
-            "status": "Absent",
+            "date": "2015-01-14",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 3,
-            "date": "2014-07-16",
+            "date": "2015-01-21",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2014-07-18",
-            "status": "Absent",
+            "date": "2015-01-28",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 5,
-            "date": "2014-07-22",
-            "status": "Present",
+            "date": "2015-02-04",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 6,
-            "date": "2014-07-23",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2014-07-25",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2014-07-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2014-08-01",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2014-08-05",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2014-08-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2014-08-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2014-08-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2014-08-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2014-08-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2014-08-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2014-08-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2014-09-02",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2014-09-03",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2014-09-05",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2014-09-09",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2014-09-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2014-09-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2014-09-16",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2014-09-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2014-09-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 27,
-            "date": "2014-09-23",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 28,
-            "date": "2014-09-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 29,
-            "date": "2014-09-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 30,
-            "date": "2014-10-01",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 31,
-            "date": "2014-10-14",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 32,
-            "date": "2014-10-15",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 33,
-            "date": "2014-10-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 34,
-            "date": "2014-10-28",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 35,
-            "date": "2014-10-29",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 36,
-            "date": "2014-10-31",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 37,
-            "date": "2014-11-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 38,
-            "date": "2014-11-05",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 39,
-            "date": "2014-11-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 40,
-            "date": "2014-11-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 41,
-            "date": "2014-11-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 42,
-            "date": "2014-11-14",
+            "date": "2015-02-11",
             "status": "Present",
             "reason": " - "
           }
@@ -759,930 +594,191 @@
         "supported": true
       },
       "marks": {
-        "marks_type": 4,
-        "details": [
-          {
-            "title": "MIDTERM",
-            "max_marks": 50,
-            "weightage": 25,
-            "conducted_on": "2014-09-12",
-            "status": "Present",
-            "scored_mark": 45,
-            "scored_%": 22.5
-          },
-          {
-            "title": "PROJECT",
-            "max_marks": 100,
-            "weightage": 20,
-            "conducted_on": "2014-11-14",
-            "status": "Present",
-            "scored_mark": 80,
-            "scored_%": 16
-          },
-          {
-            "title": "QUIZ",
-            "max_marks": 5,
-            "weightage": 5,
-            "conducted_on": "2014-09-30",
-            "status": "Present",
-            "scored_mark": 3.5,
-            "scored_%": 3.5
-          }
-        ],
-        "supported": true
-      }
-    },
-    {
-      "class_number": 4687,
-      "course_code": "ECE204",
-      "course_title": "Analog Circuit Design",
-      "course_type": 2,
-      "ltpc": "0021",
-      "course_mode": "LBC",
-      "course_option": "Reregistered",
-      "slot": "L51+L52",
-      "venue": "TT422",
-      "faculty": "ARUN M - SENSE",
-      "registration_status": "Registered, Receipt Generated and Approved by Academics",
-      "bill_date": "2014-07-15",
-      "bill_number": 82203,
-      "project_title": null,
-      "timings": [
-        {
-          "start_time": "16:00:00",
-          "end_time": "16:50:00",
-          "day": 3
-        },
-        {
-          "start_time": "17:00:00",
-          "end_time": "17:50:00",
-          "day": 3
-        }
-      ],
-      "attendance": {
-        "registration_date": "2014-06-19T07:39:41.000Z",
-        "attended_classes": 26,
-        "total_classes": 30,
-        "attendance_percentage": 87,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2014-07-10",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2014-07-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2014-07-24",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2014-07-31",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2014-08-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2014-08-14",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2014-08-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2014-09-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2014-09-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2014-09-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2014-09-25",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2014-10-16",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 13,
-            "date": "2014-10-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2014-11-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2014-11-13",
-            "status": "Present",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "lab_cam": 43,
-        "lab_cam_status": "Present",
+        "lab_cam": null,
+        "lab_cam_status": "",
         "marks_type": 2,
         "supported": true
       }
     },
     {
-      "class_number": 1877,
-      "course_code": "ECE209",
-      "course_title": "Introduction to Nanoscience and Nanotechnology",
+      "class_number": 4540,
+      "course_code": "CSE324",
+      "course_title": "Database Systems",
       "course_type": 1,
       "ltpc": "3003",
       "course_mode": "CBL",
-      "course_option": "Reregistered",
-      "slot": "A2+TA2",
-      "venue": "TT531",
-      "faculty": "GEORGE JACOB - SENSE",
-      "registration_status": "Registered, Receipt Generated and Approved by Academics",
-      "bill_date": "2014-07-15",
-      "bill_number": 82203,
+      "course_option": "Regular",
+      "slot": "D1",
+      "venue": "SJT421",
+      "faculty": "SATISH C.J - SCSE",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
       "project_title": null,
       "timings": [
         {
-          "start_time": "14:00:00",
-          "end_time": "14:50:00",
-          "day": 0
-        },
-        {
-          "start_time": "17:00:00",
-          "end_time": "17:50:00",
+          "start_time": "10:00:00",
+          "end_time": "10:50:00",
           "day": 1
         },
         {
-          "start_time": "15:00:00",
-          "end_time": "15:50:00",
-          "day": 3
-        }
-      ],
-      "attendance": {
-        "registration_date": "2014-06-19T07:37:23.000Z",
-        "attended_classes": 33,
-        "total_classes": 44,
-        "attendance_percentage": 75,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2014-07-10",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2014-07-14",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2014-07-15",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2014-07-17",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2014-07-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2014-07-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2014-07-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2014-07-28",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2014-07-31",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2014-08-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2014-08-05",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2014-08-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2014-08-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2014-08-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2014-08-14",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2014-08-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2014-08-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2014-08-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2014-09-01",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2014-09-02",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2014-09-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2014-09-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2014-09-09",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2014-09-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2014-09-15",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2014-09-16",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 27,
-            "date": "2014-09-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 28,
-            "date": "2014-09-22",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 29,
-            "date": "2014-09-23",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 30,
-            "date": "2014-09-25",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 31,
-            "date": "2014-09-29",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 32,
-            "date": "2014-09-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 33,
-            "date": "2014-10-13",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 34,
-            "date": "2014-10-14",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 35,
-            "date": "2014-10-16",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 36,
-            "date": "2014-10-27",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 37,
-            "date": "2014-10-28",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 38,
-            "date": "2014-10-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 39,
-            "date": "2014-11-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 40,
-            "date": "2014-11-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 41,
-            "date": "2014-11-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 42,
-            "date": "2014-11-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 43,
-            "date": "2014-11-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 44,
-            "date": "2014-11-13",
-            "status": "Absent",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "cat1": 21,
-        "cat1_status": "Present",
-        "cat2": 27,
-        "cat2_status": "Present",
-        "quiz1": 3,
-        "quiz1_status": "Present",
-        "quiz2": 3,
-        "quiz2_status": "Present",
-        "quiz3": 3,
-        "quiz3_status": "Present",
-        "assignment": 4,
-        "assignment_status": "Present",
-        "marks_type": 1,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 1994,
-      "course_code": "ECE304",
-      "course_title": "Microcontroller and Applications",
-      "course_type": 1,
-      "ltpc": "3003",
-      "course_mode": "CBL",
-      "course_option": "Reregistered",
-      "slot": "D2",
-      "venue": "TT621",
-      "faculty": "GERARDINE IMMACULATE MARY - SENSE",
-      "registration_status": "Registered, Receipt Generated and Approved by Academics",
-      "bill_date": "2014-07-15",
-      "bill_number": 82203,
-      "project_title": null,
-      "timings": [
-        {
-          "start_time": "16:00:00",
-          "end_time": "16:50:00",
-          "day": 1
-        },
-        {
-          "start_time": "14:00:00",
-          "end_time": "14:50:00",
+          "start_time": "08:00:00",
+          "end_time": "08:50:00",
           "day": 3
         },
         {
-          "start_time": "17:00:00",
-          "end_time": "17:50:00",
+          "start_time": "11:00:00",
+          "end_time": "11:50:00",
           "day": 4
         }
       ],
       "attendance": {
-        "registration_date": "2014-06-19T07:36:30.000Z",
-        "attended_classes": 32,
-        "total_classes": 43,
-        "attendance_percentage": 75,
+        "registration_date": "2014-12-16T09:01:41.000Z",
+        "attended_classes": 11,
+        "total_classes": 12,
+        "attendance_percentage": 92,
         "details": [
           {
             "sl": 1,
-            "date": "2014-07-10",
-            "status": "Absent",
+            "date": "2015-01-06",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 2,
-            "date": "2014-07-11",
+            "date": "2015-01-08",
             "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 3,
-            "date": "2014-07-15",
-            "status": "Absent",
+            "date": "2015-01-09",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2014-07-17",
-            "status": "Absent",
+            "date": "2015-01-13",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 5,
-            "date": "2014-07-18",
+            "date": "2015-01-20",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 6,
-            "date": "2014-07-22",
+            "date": "2015-01-22",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 7,
-            "date": "2014-07-24",
+            "date": "2015-01-23",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 8,
-            "date": "2014-07-25",
+            "date": "2015-01-27",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 9,
-            "date": "2014-07-31",
+            "date": "2015-01-29",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 10,
-            "date": "2014-08-01",
+            "date": "2015-01-30",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 11,
-            "date": "2014-08-05",
+            "date": "2015-02-03",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 12,
-            "date": "2014-08-07",
+            "date": "2015-02-13",
             "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2014-08-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2014-08-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2014-08-14",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2014-08-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2014-08-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2014-08-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2014-09-02",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2014-09-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2014-09-05",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2014-09-09",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2014-09-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2014-09-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2014-09-16",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2014-09-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 27,
-            "date": "2014-09-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 28,
-            "date": "2014-09-23",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 29,
-            "date": "2014-09-25",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 30,
-            "date": "2014-09-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 31,
-            "date": "2014-10-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 32,
-            "date": "2014-10-14",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 33,
-            "date": "2014-10-16",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 34,
-            "date": "2014-10-17",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 35,
-            "date": "2014-10-28",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 36,
-            "date": "2014-10-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 37,
-            "date": "2014-10-31",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 38,
-            "date": "2014-11-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 39,
-            "date": "2014-11-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 40,
-            "date": "2014-11-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 41,
-            "date": "2014-11-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 42,
-            "date": "2014-11-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 43,
-            "date": "2014-11-14",
-            "status": "Absent",
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "cat1": 42,
-        "cat1_status": "Present",
-        "cat2": 43,
-        "cat2_status": "Present",
-        "quiz1": 3.25,
-        "quiz1_status": "Present",
-        "quiz2": 2,
-        "quiz2_status": "Present",
-        "quiz3": 4.5,
-        "quiz3_status": "Present",
-        "assignment": 3,
-        "assignment_status": "Present",
+        "cat1": null,
+        "cat1_status": "",
+        "cat2": null,
+        "cat2_status": "",
+        "quiz1": null,
+        "quiz1_status": "",
+        "quiz2": null,
+        "quiz2_status": "",
+        "quiz3": null,
+        "quiz3_status": "",
+        "assignment": null,
+        "assignment_status": "",
         "marks_type": 1,
         "supported": true
       }
     },
     {
-      "class_number": 4711,
-      "course_code": "ECE304",
-      "course_title": "Microcontroller and Applications",
+      "class_number": 5270,
+      "course_code": "CSE324",
+      "course_title": "Database Systems",
       "course_type": 2,
       "ltpc": "0021",
       "course_mode": "LBC",
-      "course_option": "Reregistered",
-      "slot": "L43+L44",
-      "venue": "TT603",
-      "faculty": "KARTHIKEYAN A - SENSE",
-      "registration_status": "Registered, Receipt Generated and Approved by Academics",
-      "bill_date": "2014-07-15",
-      "bill_number": 82203,
+      "course_option": "Regular",
+      "slot": "L49+L50",
+      "venue": "SJT319",
+      "faculty": "VENKATESAN M - SCSE",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
       "project_title": null,
       "timings": [
         {
-          "start_time": "14:00:00",
-          "end_time": "14:50:00",
-          "day": 2
-        },
-        {
-          "start_time": "15:00:00",
-          "end_time": "15:50:00",
-          "day": 2
+          "start_time": "23:00:00",
+          "end_time": "23:50:00",
+          "day": 3
         }
       ],
       "attendance": {
-        "registration_date": "2014-06-19T07:36:30.000Z",
-        "attended_classes": 26,
-        "total_classes": 30,
-        "attendance_percentage": 87,
+        "registration_date": "2014-12-16T09:01:41.000Z",
+        "attended_classes": 6,
+        "total_classes": 8,
+        "attendance_percentage": 75,
         "details": [
           {
             "sl": 1,
-            "date": "2014-07-16",
-            "status": "Absent",
+            "date": "2015-01-08",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 2,
-            "date": "2014-07-23",
+            "date": "2015-01-22",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 3,
-            "date": "2014-07-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2014-08-06",
+            "date": "2015-01-29",
             "status": "Absent",
             "reason": " - "
           },
           {
-            "sl": 5,
-            "date": "2014-08-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2014-08-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2014-09-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2014-09-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2014-09-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2014-09-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2014-10-01",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2014-10-15",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 13,
-            "date": "2014-10-29",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2014-11-05",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2014-11-12",
+            "sl": 4,
+            "date": "2015-02-12",
             "status": "Present",
             "reason": " - "
           }
@@ -1690,23 +786,23 @@
         "supported": true
       },
       "marks": {
-        "lab_cam": 45,
-        "lab_cam_status": "Present",
+        "lab_cam": null,
+        "lab_cam_status": "",
         "marks_type": 2,
         "supported": true
       }
     },
     {
-      "class_number": 1865,
-      "course_code": "ECE402",
-      "course_title": "Microwave Engineering",
-      "course_type": 3,
-      "ltpc": "3003",
-      "course_mode": "PBL",
+      "class_number": 2055,
+      "course_code": "HUM121",
+      "course_title": "Ethics and Values",
+      "course_type": 1,
+      "ltpc": "2002",
+      "course_mode": "CBL",
       "course_option": "Regular",
-      "slot": "A1+TA1",
-      "venue": "TT631",
-      "faculty": "YOGESH KUMAR CHOUKIKER - SENSE",
+      "slot": "B1",
+      "venue": "SJT522",
+      "faculty": "NILAVATHY K - SSL",
       "registration_status": "Registered and Approved",
       "bill_date": null,
       "bill_number": null,
@@ -1715,268 +811,65 @@
         {
           "start_time": "08:00:00",
           "end_time": "08:50:00",
-          "day": 0
-        },
-        {
-          "start_time": "11:00:00",
-          "end_time": "11:50:00",
           "day": 1
         },
         {
           "start_time": "09:00:00",
           "end_time": "09:50:00",
-          "day": 3
+          "day": 4
         }
       ],
       "attendance": {
-        "registration_date": "2014-06-19T07:34:56.000Z",
-        "attended_classes": 31,
-        "total_classes": 41,
-        "attendance_percentage": 76,
+        "registration_date": "2014-12-16T09:01:07.000Z",
+        "attended_classes": 4,
+        "total_classes": 8,
+        "attendance_percentage": 50,
         "details": [
           {
             "sl": 1,
-            "date": "2014-07-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2014-07-14",
+            "date": "2015-01-06",
             "status": "Absent",
             "reason": " - "
           },
           {
+            "sl": 2,
+            "date": "2015-01-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
             "sl": 3,
-            "date": "2014-07-15",
+            "date": "2015-01-13",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2014-07-17",
-            "status": "Present",
+            "date": "2015-01-20",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 5,
-            "date": "2014-07-21",
-            "status": "Present",
+            "date": "2015-01-23",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 6,
-            "date": "2014-07-22",
-            "status": "Present",
+            "date": "2015-01-27",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 7,
-            "date": "2014-07-24",
+            "date": "2015-01-30",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 8,
-            "date": "2014-07-28",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2014-07-31",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2014-08-04",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2014-08-05",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2014-08-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2014-08-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2014-08-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2014-08-14",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2014-08-18",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2014-08-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2014-08-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2014-09-01",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2014-09-02",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2014-09-04",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2014-09-08",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2014-09-09",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2014-09-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2014-09-15",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2014-09-16",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 27,
-            "date": "2014-09-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 28,
-            "date": "2014-09-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 29,
-            "date": "2014-09-23",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 30,
-            "date": "2014-09-25",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 31,
-            "date": "2014-09-29",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 32,
-            "date": "2014-09-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 33,
-            "date": "2014-10-27",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 34,
-            "date": "2014-10-28",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 35,
-            "date": "2014-10-30",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 36,
-            "date": "2014-11-03",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 37,
-            "date": "2014-11-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 38,
-            "date": "2014-11-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 39,
-            "date": "2014-11-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 40,
-            "date": "2014-11-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 41,
-            "date": "2014-11-13",
+            "date": "2015-02-03",
             "status": "Present",
             "reason": " - "
           }
@@ -1984,171 +877,77 @@
         "supported": true
       },
       "marks": {
-        "marks_type": 4,
-        "details": [
-          {
-            "title": "QUIZ 1",
-            "max_marks": 5,
-            "weightage": 5,
-            "conducted_on": "2014-11-07",
-            "status": "Present",
-            "scored_mark": 4.5,
-            "scored_%": 4.5
-          },
-          {
-            "title": "CAT 1",
-            "max_marks": 50,
-            "weightage": 15,
-            "conducted_on": "2014-08-24",
-            "status": "Present",
-            "scored_mark": 34,
-            "scored_%": 10.2
-          },
-          {
-            "title": "CAT 2",
-            "max_marks": 50,
-            "weightage": 15,
-            "conducted_on": "2014-10-05",
-            "status": "Present",
-            "scored_mark": 28,
-            "scored_%": 8.4
-          },
-          {
-            "title": "PROJECT",
-            "max_marks": 10,
-            "weightage": 10,
-            "conducted_on": "2014-11-06",
-            "status": "Present",
-            "scored_mark": 8.5,
-            "scored_%": 8.5
-          },
-          {
-            "title": "ASSIGNMENT",
-            "max_marks": 5,
-            "weightage": 5,
-            "conducted_on": "2014-11-12",
-            "status": "Absent",
-            "scored_mark": 0,
-            "scored_%": 0
-          }
-        ],
+        "cat1": null,
+        "cat1_status": "",
+        "cat2": null,
+        "cat2_status": "",
+        "quiz1": null,
+        "quiz1_status": "",
+        "quiz2": null,
+        "quiz2_status": "",
+        "quiz3": null,
+        "quiz3_status": "",
+        "assignment": null,
+        "assignment_status": "",
+        "marks_type": 1,
         "supported": true
       }
     },
     {
-      "class_number": 4174,
-      "course_code": "ECE402",
-      "course_title": "Microwave Engineering",
+      "class_number": 5510,
+      "course_code": "HUM121",
+      "course_title": "Ethics and Values",
       "course_type": 2,
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
-      "slot": "L55+L56",
-      "venue": "TT145",
-      "faculty": "BOOPALAN G - SENSE",
+      "slot": "L39+L40",
+      "venue": "SJT504",
+      "faculty": "NILAVATHY K - SSL",
       "registration_status": "Registered and Approved",
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
       "timings": [
         {
-          "start_time": "14:00:00",
-          "end_time": "14:50:00",
-          "day": 4
-        },
-        {
-          "start_time": "15:00:00",
-          "end_time": "15:50:00",
-          "day": 4
+          "start_time": "23:00:00",
+          "end_time": "23:50:00",
+          "day": 1
         }
       ],
       "attendance": {
-        "registration_date": "2014-06-19T07:34:56.000Z",
-        "attended_classes": 24,
-        "total_classes": 28,
-        "attendance_percentage": 86,
+        "registration_date": "2014-12-16T09:01:07.000Z",
+        "attended_classes": 10,
+        "total_classes": 10,
+        "attendance_percentage": 100,
         "details": [
           {
             "sl": 1,
-            "date": "2014-07-11",
-            "status": "Absent",
+            "date": "2015-01-06",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 2,
-            "date": "2014-07-18",
-            "status": "Absent",
+            "date": "2015-01-13",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 3,
-            "date": "2014-07-25",
+            "date": "2015-01-20",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2014-08-01",
+            "date": "2015-01-27",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 5,
-            "date": "2014-08-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2014-08-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2014-09-05",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2014-09-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2014-09-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2014-10-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2014-10-17",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 12,
-            "date": "2014-10-31",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2014-11-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2014-11-14",
+            "date": "2015-02-03",
             "status": "Present",
             "reason": " - "
           }
@@ -2156,23 +955,23 @@
         "supported": true
       },
       "marks": {
-        "lab_cam": 45,
-        "lab_cam_status": "Present",
+        "lab_cam": null,
+        "lab_cam_status": "",
         "marks_type": 2,
         "supported": true
       }
     },
     {
-      "class_number": 2245,
-      "course_code": "HUM122",
-      "course_title": "International Economics",
+      "class_number": 2216,
+      "course_code": "MAT202",
+      "course_title": "Linear Algebra",
       "course_type": 1,
-      "ltpc": "3003",
+      "ltpc": "3104",
       "course_mode": "CBL",
       "course_option": "Regular",
-      "slot": "E1",
-      "venue": "SJT112",
-      "faculty": "RAJA RAJESWARI G - SSL",
+      "slot": "E1+TE1",
+      "venue": "SJT409",
+      "faculty": "NALLIAH M - SAS",
       "registration_status": "Registered and Approved",
       "bill_date": null,
       "bill_number": null,
@@ -2189,312 +988,155 @@
           "day": 2
         },
         {
+          "start_time": "12:00:00",
+          "end_time": "12:50:00",
+          "day": 3
+        },
+        {
           "start_time": "08:00:00",
           "end_time": "08:50:00",
           "day": 4
         }
       ],
       "attendance": {
-        "registration_date": "2014-06-19T07:59:29.000Z",
-        "attended_classes": 33,
-        "total_classes": 44,
-        "attendance_percentage": 75,
+        "registration_date": "2014-12-16T09:04:08.000Z",
+        "attended_classes": 8,
+        "total_classes": 17,
+        "attendance_percentage": 48,
         "details": [
           {
             "sl": 1,
-            "date": "2014-07-11",
-            "status": "Present",
+            "date": "2015-01-05",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 2,
-            "date": "2014-07-14",
+            "date": "2015-01-07",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 3,
-            "date": "2014-07-16",
-            "status": "Absent",
+            "date": "2015-01-08",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2014-07-18",
+            "date": "2015-01-09",
             "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 5,
-            "date": "2014-07-21",
+            "date": "2015-01-12",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 6,
-            "date": "2014-07-23",
+            "date": "2015-01-14",
             "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 7,
-            "date": "2014-07-25",
-            "status": "Absent",
+            "date": "2015-01-19",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 8,
-            "date": "2014-07-28",
-            "status": "Present",
+            "date": "2015-01-21",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 9,
-            "date": "2014-07-30",
-            "status": "Present",
+            "date": "2015-01-22",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 10,
-            "date": "2014-08-01",
-            "status": "Present",
+            "date": "2015-01-23",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 11,
-            "date": "2014-08-04",
+            "date": "2015-01-28",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 12,
-            "date": "2014-08-06",
-            "status": "Present",
+            "date": "2015-01-29",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 13,
-            "date": "2014-08-08",
-            "status": "Present",
+            "date": "2015-01-30",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 14,
-            "date": "2014-08-11",
+            "date": "2015-02-02",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 15,
-            "date": "2014-08-13",
+            "date": "2015-02-04",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 16,
-            "date": "2014-08-18",
+            "date": "2015-02-11",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 17,
-            "date": "2014-08-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2014-08-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2014-09-01",
+            "date": "2015-02-13",
             "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2014-09-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2014-09-05",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2014-09-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2014-09-10",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2014-09-12",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2014-09-15",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2014-09-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 27,
-            "date": "2014-09-19",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 28,
-            "date": "2014-09-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 29,
-            "date": "2014-09-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 30,
-            "date": "2014-09-29",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 31,
-            "date": "2014-10-01",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 32,
-            "date": "2014-10-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 33,
-            "date": "2014-10-13",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 34,
-            "date": "2014-10-15",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 35,
-            "date": "2014-10-17",
-            "status": "On Duty",
-            "reason": "Seminar"
-          },
-          {
-            "sl": 36,
-            "date": "2014-10-27",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 37,
-            "date": "2014-10-29",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 38,
-            "date": "2014-10-31",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 39,
-            "date": "2014-11-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 40,
-            "date": "2014-11-05",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 41,
-            "date": "2014-11-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 42,
-            "date": "2014-11-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 43,
-            "date": "2014-11-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 44,
-            "date": "2014-11-14",
-            "status": "Present",
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "cat1": 20,
-        "cat1_status": "Present",
-        "cat2": 0,
-        "cat2_status": "Debarred",
-        "quiz1": 1.5,
-        "quiz1_status": "Present",
-        "quiz2": 3.5,
-        "quiz2_status": "Present",
-        "quiz3": 4,
-        "quiz3_status": "Present",
-        "assignment": 5,
-        "assignment_status": "Present",
+        "cat1": null,
+        "cat1_status": "",
+        "cat2": null,
+        "cat2_status": "",
+        "quiz1": null,
+        "quiz1_status": "",
+        "quiz2": null,
+        "quiz2_status": "",
+        "quiz3": null,
+        "quiz3_status": "",
+        "assignment": null,
+        "assignment_status": "",
         "marks_type": 1,
         "supported": true
       }
     }
   ],
-  "refreshed": "2015-02-14T10:05:27.500Z",
+  "refreshed": "2015-02-14T18:12:39.069Z",
   "timetable": {
     "monday": [
-      1865,
-      5122,
       0,
-      2245,
-      5148,
-      5148,
-      1877,
+      4792,
+      4525,
+      2216,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -2504,64 +1146,64 @@
       0
     ],
     "tuesday": [
+      2055,
+      4574,
+      4540,
+      0,
+      4792,
       0,
       0,
       0,
-      1865,
-      0,
-      0,
-      0,
-      4789,
-      1994,
-      1877,
+      5510,
+      5510,
       0,
       0,
       0,
       0
     ],
     "wednesday": [
+      4525,
+      4792,
+      2216,
       0,
-      5122,
-      2245,
-      0,
-      0,
-      0,
-      4711,
-      4711,
+      4574,
       0,
       0,
-      4789,
+      0,
+      4630,
+      4630,
+      0,
       0,
       0,
       0
     ],
     "thursday": [
+      4540,
       0,
-      1865,
-      5122,
+      4792,
+      4525,
+      2216,
       0,
-      0,
-      0,
-      1994,
-      1877,
-      4687,
-      4687,
+      5270,
+      5270,
+      4706,
+      4706,
       0,
       0,
       0,
       0
     ],
     "friday": [
-      2245,
+      2216,
+      2055,
+      4574,
+      4540,
       0,
       0,
       0,
       0,
       0,
-      4174,
-      4174,
-      4789,
-      1994,
+      0,
       0,
       0,
       0,
