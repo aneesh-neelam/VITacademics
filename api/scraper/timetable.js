@@ -202,6 +202,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                     else {
                                         time.setMinutes(0);
                                     }
+                                    time.setHours(morningStartHour + column);
                                 }
                                 else if (column >= 12) {
                                     if (isEndTime) {
