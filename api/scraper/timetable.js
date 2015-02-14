@@ -164,7 +164,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                     var onEachRow = function (i, elem) {
                         var day = [];
                         var htmlRow = cheerio.load(timetableScraper(this).html());
-                        var getSlotTimings = function (column, timing_type_end) {
+                        var getSlotTimings = function (column, course_type, timing_type_end) {
                             var toISOTimeString = function (time) {
                                 var hours = pad(time.getHours());
                                 var minutes = pad(time.getMinutes());
@@ -177,26 +177,50 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 return hours + ":" + minutes + ":" + seconds;
                             };
                             var morning_start_hour = 8;
-                            var afternoon_start_hour = 14;
                             var time = new Date();
                             time.setSeconds(0);
                             column = column - 1;
-                            if (column >= 0 && column <= 3 || column >= 6 && column <= 9) {
-                                if (column < 6) {
-                                    time.setHours(morning_start_hour + column);
-                                }
-                                else {
-                                    time.setHours(afternoon_start_hour + (column % 6));
-                                }
-                                if (timing_type_end) {
-                                    time.setMinutes(50);
-                                }
-                                else {
-                                    time.setMinutes(0);
-                                }
+                            if(course_type == 'Theory Only' || course_type == 'Embedded Theory'){
+                              if(timing_type_end){
+                                time.setMinutes(50);
+                              }
+                              else{
+                                time.setMinutes(0);
+                              }
+                              if(column < 12){
+                                time.setHours(morning_start_hour + column);
+                              }
+                              else{
+                                time.setHours(morning_start_hour + column - 1);
+                              }
                             }
-                            else {
-                                // TODO
+                            else{
+                              if(column < 12 && (column % 6) < 4){
+                                if(timing_type_end){
+                                  time.setMinutes(50);
+                                }
+                                else{
+                                  time.setMinutes(0);
+                                }
+                              }
+                              else if(column >= 12){
+                                if(timing_type_end){
+                                  time.setMinutes(10);
+                                }
+                                else{
+                                  time.setMinutes(30);
+                                }
+                                time.setHours(morning_start_hour + column - 1);
+                              }
+                              else{
+                                if(timing_type_end){
+                                  time.setMinutes(30);
+                                }
+                                else{
+                                  time.setMinutes(50);
+                                }
+                                time.setHours(morning_start_hour + column);
+                              }
                             }
                             return toISOTimeString(time);
                         };
@@ -234,14 +258,14 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 if (tmp[sub]) {
                                     if (last) {
                                         if (last.class_number === tmp[sub] && last.day === getDay(i)) {
-                                            last.end_time = getSlotTimings(elt, true);
+                                            last.end_time = getSlotTimings(elt, course_type, true);
                                         }
                                         else {
                                             timetable.timings.push(last);
                                             last = {
                                                 class_number: tmp[sub],
-                                                start_time: getSlotTimings(elt, false),
-                                                end_time: getSlotTimings(elt, true),
+                                                start_time: getSlotTimings(elt, course_type, false),
+                                                end_time: getSlotTimings(elt, course_type, true),
                                                 day: (i - 2)
                                             };
                                         }
@@ -249,8 +273,8 @@ exports.scrapeTimetable = function (app, data, callback) {
                                     else {
                                         last = {
                                             class_number: tmp[sub],
-                                            start_time: getSlotTimings(elt, false),
-                                            end_time: getSlotTimings(elt, true),
+                                            start_time: getSlotTimings(elt, course_type, false),
+                                            end_time: getSlotTimings(elt, course_type, true),
                                             day: (i - 2)
                                         };
                                     }
