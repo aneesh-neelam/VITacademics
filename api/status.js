@@ -20,7 +20,7 @@
 var error = {
     success: {message: 'Successful Execution', code: 0},
     timedOut: {message: 'Session Timed Out', code: 11},
-    invalid: {message: 'Invalid Credentials or Data Scraping Error', code: 12},
+    invalid: {message: 'Invalid Credentials or Error Parsing the Data', code: 12},
     captchaParsing: {message: 'Error Parsing Captcha', code: 13},
     tokenExpired: {message: 'Token Expired', code: 14},
     noData: {message: 'Requested Data is not Available', code: 15},

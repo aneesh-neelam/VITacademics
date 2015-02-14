@@ -21,6 +21,8 @@
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
 var cookie = require('cookie');
+var moment = require('moment');
+var momentTZ = require('moment-timezone');
 var path = require('path');
 var unirest = require('unirest');
 
@@ -78,7 +80,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                     var onEachCourse = function (i, elem) {
                         if (i > 0 && i < (length - 1)) {
                             var htmlColumn = cheerio.load(coursesScraper(this).html())('td');
-                            var classnbr = htmlColumn.eq(1).text();
+                            var classnbr = parseInt(htmlColumn.eq(1).text());
                             var code = htmlColumn.eq(2).text();
                             var courseType = htmlColumn.eq(4).text();
                             var columns = htmlColumn.length;
@@ -86,20 +88,26 @@ exports.scrapeTimetable = function (app, data, callback) {
                             var venue = null;
                             var faculty = null;
                             var registrationStatus = null;
+                            var bill;
                             var billDate = null;
+                            var billNumber = null;
                             var projectTitle = null;
                             if (columns === 13) {
                                 slot = htmlColumn.eq(8).text();
                                 venue = htmlColumn.eq(9).text();
                                 faculty = htmlColumn.eq(10).text();
                                 registrationStatus = htmlColumn.eq(11).text();
-                                billDate = htmlColumn.eq(12).text();
+                                bill = htmlColumn.eq(12).text().split(' / ');
+                                billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
+                                billNumber = parseInt(bill[0]);
                             }
                             else if (columns === 12) {
                                 projectTitle = htmlColumn.eq(8).text().split(':')[1];
-                                faculty = htmlColumn.eq(9).text().split(':')[1];
+                                faculty = htmlColumn.eq(9).text();
                                 registrationStatus = htmlColumn.eq(10).text();
-                                billDate = htmlColumn.eq(11).text();
+                                bill = htmlColumn.eq(11).text().split(' / ');
+                                billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
+                                billNumber = parseInt(bill[0]);
                             }
                             if (courseType == 'Embedded Theory') {
                                 code = code + 'ETH';
@@ -127,6 +135,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 faculty: faculty,
                                 registration_status: registrationStatus,
                                 bill_date: billDate,
+                                bill_number: billNumber,
                                 project_title: projectTitle
                             });
                         }
@@ -233,7 +242,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                                 class_number: tmp[sub],
                                                 start_time: getSlotTimings(elt, false),
                                                 end_time: getSlotTimings(elt, true),
-                                                day: getDay(i)
+                                                day: (i - 2)
                                             };
                                         }
                                     }
@@ -242,7 +251,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                             class_number: tmp[sub],
                                             start_time: getSlotTimings(elt, false),
                                             end_time: getSlotTimings(elt, true),
-                                            day: getDay(i)
+                                            day: (i - 2)
                                         };
                                     }
                                     day.push(Number(tmp[sub]));

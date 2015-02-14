@@ -22,6 +22,8 @@ var async = require('async');
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
 var cookie = require('cookie');
+var moment = require('moment');
+var momentTZ = require('moment-timezone');
 var path = require('path');
 var unirest = require('unirest');
 
@@ -59,15 +61,15 @@ exports.scrapeAttendance = function (app, data, callback) {
                     if (i > 0) {
                         var classnbr = htmlRow('input[name=classnbr]').attr('value');
                         attendance.push({
-                            class_number: classnbr,
+                            class_number: parseInt(classnbr),
                             course_code: htmlColumn.eq(1).text(),
                             course_title: htmlColumn.eq(2).text(),
                             course_type: htmlColumn.eq(3).text(),
                             slot: htmlColumn.eq(4).text(),
-                            registration_date: htmlColumn.eq(5).text(),
-                            attended_classes: htmlColumn.eq(6).text(),
-                            total_classes: htmlColumn.eq(7).text(),
-                            attendance_percentage: htmlColumn.eq(8).text(),
+                            registration_date: momentTZ.tz(htmlColumn.eq(5).text(), 'DD/MM/YYYY HH:mm:ss', 'Asia/Kolkata').utc(),
+                            attended_classes: parseInt(htmlColumn.eq(6).text()),
+                            total_classes: parseInt(htmlColumn.eq(7).text()),
+                            attendance_percentage: parseInt(htmlColumn.eq(8).text().split('%')[0]),
                             form: {
                                 semcode: htmlRow('input[name=semcode]').attr('value'),
                                 from_date: htmlRow('input[name=from_date]').attr('value'),
@@ -92,18 +94,11 @@ exports.scrapeAttendance = function (app, data, callback) {
                                 scraper = cheerio.load(scraper('table table').eq(1).html());
                                 var details = [];
                                 var onDay = function (i, elem) {
-                                    var toISODateString = function (date) {
-                                        function pad(n) {
-                                            return n < 10 ? '0' + n : n
-                                        }
-
-                                        return date.getUTCFullYear() + '-' + pad(date.getUTCMonth() + 1) + '-' + pad(date.getUTCDate());
-                                    };
                                     var htmlColumn = cheerio.load(scraper(this).html())('td');
                                     if (i > 1) {
                                         details.push({
-                                            sl: htmlColumn.eq(0).text(),
-                                            date: toISODateString(new Date(Date.parse(htmlColumn.eq(1).text()))),
+                                            sl: parseInt(htmlColumn.eq(0).text()),
+                                            date: moment(htmlColumn.eq(1).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD'),
                                             status: htmlColumn.eq(3).text(),
                                             reason: htmlColumn.eq(5).text()
                                         });
@@ -111,12 +106,11 @@ exports.scrapeAttendance = function (app, data, callback) {
                                 };
                                 scraper('tr').each(onDay);
                                 doc.details = details;
-                                asyncCallback(null, doc);
                             }
                             catch (ex) {
                                 doc.details = [];
-                                asyncCallback(false, doc);
                             }
+                            asyncCallback(null, doc);
                         }
                     };
                     unirest.post(attendanceDetailsUri)

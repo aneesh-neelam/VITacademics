@@ -154,7 +154,14 @@ exports.get = function (app, data, callback) {
                                     delete elt['course_title'];
                                     delete elt['course_type'];
                                     if (elt.details) {
-                                        elt.details = underscore.values(elt.details);
+                                        var details = [];
+                                        var forEachPBLDetails = function (detail, index, list) {
+                                            if (detail.title !== 'N/A') {
+                                                details.push(detail);
+                                            }
+                                        };
+                                        underscore.values(elt.details).forEach(forEachPBLDetails);
+                                        elt.details = details;
                                     }
                                     element.marks = elt;
                                 }

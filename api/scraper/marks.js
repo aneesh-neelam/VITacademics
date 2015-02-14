@@ -20,6 +20,7 @@
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
 var cookie = require('cookie');
+var moment = require('moment');
 var path = require('path');
 var unirest = require('unirest');
 
@@ -65,24 +66,24 @@ exports.scrapeMarks = function (app, data, callback) {
                         var htmlColumn = cheerio.load(scraper(this).html())('td');
                         if (i > 1) {
                             var length = htmlColumn.length;
-                            var classnbr = htmlColumn.eq(1).text();
+                            var classnbr = parseInt(htmlColumn.eq(1).text());
                             if (length == 18) {
                                 marks.push({
                                     class_number: classnbr,
                                     course_code: htmlColumn.eq(2).text(),
                                     course_title: htmlColumn.eq(3).text(),
                                     course_type: htmlColumn.eq(4).text(),
-                                    cat1: htmlColumn.eq(6).text(),
+                                    cat1: parseFloat(htmlColumn.eq(6).text()),
                                     cat1_status: htmlColumn.eq(5).text(),
-                                    cat2: htmlColumn.eq(8).text(),
+                                    cat2: parseFloat(htmlColumn.eq(8).text()),
                                     cat2_status: htmlColumn.eq(7).text(),
-                                    quiz1: htmlColumn.eq(10).text(),
+                                    quiz1: parseFloat(htmlColumn.eq(10).text()),
                                     quiz1_status: htmlColumn.eq(9).text(),
-                                    quiz2: htmlColumn.eq(12).text(),
+                                    quiz2: parseFloat(htmlColumn.eq(12).text()),
                                     quiz2_status: htmlColumn.eq(11).text(),
-                                    quiz3: htmlColumn.eq(14).text(),
+                                    quiz3: parseFloat(htmlColumn.eq(14).text()),
                                     quiz3_status: htmlColumn.eq(13).text(),
-                                    assignment: htmlColumn.eq(16).text(),
+                                    assignment: parseFloat(htmlColumn.eq(16).text()),
                                     assignment_status: htmlColumn.eq(15).text(),
                                     marks_type: 1
                                 });
@@ -92,8 +93,8 @@ exports.scrapeMarks = function (app, data, callback) {
                                     class_number: classnbr,
                                     course_code: htmlColumn.eq(2).text(),
                                     course_title: htmlColumn.eq(3).text(),
-                                    course_type: htmColumn.eq(4).text(),
-                                    lab_cam: htmlColumn.eq(7).text(),
+                                    course_type: htmlColumn.eq(4).text(),
+                                    lab_cam: parseFloat(htmlColumn.eq(7).text()),
                                     lab_cam_status: htmlColumn.eq(6).text(),
                                     marks_type: 2
                                 });
@@ -121,7 +122,7 @@ exports.scrapeMarks = function (app, data, callback) {
                         switch (row) {
                             case 0:
                                 pblMarks[course] = {
-                                    class_number: htmlColumn.eq(1).text(),
+                                    class_number: parseInt(htmlColumn.eq(1).text()),
                                     course_code: htmlColumn.eq(2).text(),
                                     course_title: htmlColumn.eq(3).text(),
                                     course_type: htmlColumn.eq(4).text(),
@@ -136,25 +137,25 @@ exports.scrapeMarks = function (app, data, callback) {
                                 };
                                 break;
                             case 1:
-                                pblMarks[course].details[1]['max_marks'] = htmlColumn.eq(1).text();
-                                pblMarks[course].details[2]['max_marks'] = htmlColumn.eq(2).text();
-                                pblMarks[course].details[3]['max_marks'] = htmlColumn.eq(3).text();
-                                pblMarks[course].details[4]['max_marks'] = htmlColumn.eq(4).text();
-                                pblMarks[course].details[5]['max_marks'] = htmlColumn.eq(5).text();
+                                pblMarks[course].details[1]['max_marks'] = parseFloat(htmlColumn.eq(1).text());
+                                pblMarks[course].details[2]['max_marks'] = parseFloat(htmlColumn.eq(2).text());
+                                pblMarks[course].details[3]['max_marks'] = parseFloat(htmlColumn.eq(3).text());
+                                pblMarks[course].details[4]['max_marks'] = parseFloat(htmlColumn.eq(4).text());
+                                pblMarks[course].details[5]['max_marks'] = parseFloat(htmlColumn.eq(5).text());
                                 break;
                             case 2:
-                                pblMarks[course].details[1]['weightage'] = htmlColumn.eq(1).text();
-                                pblMarks[course].details[2]['weightage'] = htmlColumn.eq(2).text();
-                                pblMarks[course].details[3]['weightage'] = htmlColumn.eq(3).text();
-                                pblMarks[course].details[4]['weightage'] = htmlColumn.eq(4).text();
-                                pblMarks[course].details[5]['weightage'] = htmlColumn.eq(5).text();
+                                pblMarks[course].details[1]['weightage'] = parseFloat(htmlColumn.eq(1).text());
+                                pblMarks[course].details[2]['weightage'] = parseFloat(htmlColumn.eq(2).text());
+                                pblMarks[course].details[3]['weightage'] = parseFloat(htmlColumn.eq(3).text());
+                                pblMarks[course].details[4]['weightage'] = parseFloat(htmlColumn.eq(4).text());
+                                pblMarks[course].details[5]['weightage'] = parseFloat(htmlColumn.eq(5).text());
                                 break;
                             case 3:
-                                pblMarks[course].details[1]['conducted_on'] = htmlColumn.eq(1).text();
-                                pblMarks[course].details[2]['conducted_on'] = htmlColumn.eq(2).text();
-                                pblMarks[course].details[3]['conducted_on'] = htmlColumn.eq(3).text();
-                                pblMarks[course].details[4]['conducted_on'] = htmlColumn.eq(4).text();
-                                pblMarks[course].details[5]['conducted_on'] = htmlColumn.eq(5).text();
+                                pblMarks[course].details[1]['conducted_on'] = moment(htmlColumn.eq(1).text(), 'DD-MMM-YYYY').isValid() ? moment(htmlColumn.eq(1).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null;
+                                pblMarks[course].details[2]['conducted_on'] = moment(htmlColumn.eq(2).text(), 'DD-MMM-YYYY').isValid() ? moment(htmlColumn.eq(2).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null;
+                                pblMarks[course].details[3]['conducted_on'] = moment(htmlColumn.eq(3).text(), 'DD-MMM-YYYY').isValid() ? moment(htmlColumn.eq(3).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null;
+                                pblMarks[course].details[4]['conducted_on'] = moment(htmlColumn.eq(4).text(), 'DD-MMM-YYYY').isValid() ? moment(htmlColumn.eq(4).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null;
+                                pblMarks[course].details[5]['conducted_on'] = moment(htmlColumn.eq(5).text(), 'DD-MMM-YYYY').isValid() ? moment(htmlColumn.eq(5).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null;
                                 break;
                             case 4:
                                 pblMarks[course].details[1]['status'] = htmlColumn.eq(1).text();
@@ -164,23 +165,23 @@ exports.scrapeMarks = function (app, data, callback) {
                                 pblMarks[course].details[5]['status'] = htmlColumn.eq(5).text();
                                 break;
                             case 5:
-                                pblMarks[course].details[1]['scored_mark'] = htmlColumn.eq(1).text();
-                                pblMarks[course].details[2]['scored_mark'] = htmlColumn.eq(2).text();
-                                pblMarks[course].details[3]['scored_mark'] = htmlColumn.eq(3).text();
-                                pblMarks[course].details[4]['scored_mark'] = htmlColumn.eq(4).text();
-                                pblMarks[course].details[5]['scored_mark'] = htmlColumn.eq(5).text();
+                                pblMarks[course].details[1]['scored_mark'] = parseFloat(htmlColumn.eq(1).text());
+                                pblMarks[course].details[2]['scored_mark'] = parseFloat(htmlColumn.eq(2).text());
+                                pblMarks[course].details[3]['scored_mark'] = parseFloat(htmlColumn.eq(3).text());
+                                pblMarks[course].details[4]['scored_mark'] = parseFloat(htmlColumn.eq(4).text());
+                                pblMarks[course].details[5]['scored_mark'] = parseFloat(htmlColumn.eq(5).text());
                                 break;
                             case 6:
-                                pblMarks[course].details[1]['scored_%'] = htmlColumn.eq(1).text();
-                                pblMarks[course].details[2]['scored_%'] = htmlColumn.eq(2).text();
-                                pblMarks[course].details[3]['scored_%'] = htmlColumn.eq(3).text();
-                                pblMarks[course].details[4]['scored_%'] = htmlColumn.eq(4).text();
-                                pblMarks[course].details[5]['scored_%'] = htmlColumn.eq(5).text();
+                                pblMarks[course].details[1]['scored_%'] = parseFloat(htmlColumn.eq(1).text());
+                                pblMarks[course].details[2]['scored_%'] = parseFloat(htmlColumn.eq(2).text());
+                                pblMarks[course].details[3]['scored_%'] = parseFloat(htmlColumn.eq(3).text());
+                                pblMarks[course].details[4]['scored_%'] = parseFloat(htmlColumn.eq(4).text());
+                                pblMarks[course].details[5]['scored_%'] = parseFloat(htmlColumn.eq(5).text());
                                 break;
                         }
                     };
                     scraperPBL('tr').each(onEachPBL);
-                    marks = marks.concat(pblMarks)
+                    marks = marks.concat(pblMarks);
                 }
                 callback(null, marks);
             }
