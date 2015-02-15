@@ -24,7 +24,6 @@ var loginManual = require(path.join(__dirname, '..', 'api-legacy', 'login', 'get
 var loginAuto = require(path.join(__dirname, '..', 'api-legacy', 'login', 'auto'));
 var loginSubmit = require(path.join(__dirname, '..', 'api-legacy', 'login', 'submit'));
 var dataAggregate = require(path.join(__dirname, '..', 'api-legacy', 'scraper', 'aggregate'));
-var dataGrades = require(path.join(__dirname, '..', 'api-legacy', 'scraper', 'grades'));
 var friendsGenerate = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'generate'));
 var friendsShare = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'share'));
 
@@ -115,22 +114,6 @@ router.get('/data/refresh', function (req, res) {
         res.json(response);
     };
     dataAggregate.get(app, data, onGet);
-});
-
-router.get('/data/grades', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {
-        reg_no: req.query.regno.toUpperCase(),
-        dob: req.query.dob,
-        campus: req.originalUrl.split('/')[2].toLowerCase()
-    };
-    var onGet = function (err, response) {
-        res.send(response);
-    };
-    dataGrades.get(app, data, onGet);
 });
 
 router.get('/friends/regenerate', function (req, res) {
