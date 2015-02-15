@@ -204,14 +204,25 @@ exports.scrapeTimetable = function (app, data, callback) {
                                     }
                                     time.setHours(morningStartHour + column);
                                 }
-                                else if (column >= 12) {
+                                else if (column == 12) {
                                     if (isEndTime) {
-                                        time.setMinutes(10);
+                                        time.setMinutes(20);
+                                        time.setHours(morningStartHour + column);
                                     }
                                     else {
                                         time.setMinutes(30);
+                                        time.setHours(morningStartHour + column - 1);
                                     }
-                                    time.setHours(morningStartHour + column - 1);
+                                }
+                                else if (column == 13) {
+                                    if(isEndTime) {
+                                        time.setMinutes(10);
+                                        time.setHours(morningStartHour + column);
+                                    }
+                                    else {
+                                        time.setMinutes(20);
+                                        time.setHours(morningStartHour + column - 1);
+                                    }
                                 }
                                 else {
                                     if (isEndTime) {
