@@ -21,23 +21,23 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "09:00:00",
-          "end_time": "09:50:00",
+          "start_time": "03:30:00Z",
+          "end_time": "04:20:00Z",
           "day": 0
         },
         {
-          "start_time": "12:00:00",
-          "end_time": "12:50:00",
+          "start_time": "06:30:00Z",
+          "end_time": "07:20:00Z",
           "day": 1
         },
         {
-          "start_time": "09:00:00",
-          "end_time": "09:50:00",
+          "start_time": "03:30:00Z",
+          "end_time": "04:20:00Z",
           "day": 2
         },
         {
-          "start_time": "10:00:00",
-          "end_time": "10:50:00",
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
           "day": 3
         }
       ],
@@ -156,18 +156,18 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "09:00:00",
-          "end_time": "09:50:00",
+          "start_time": "03:30:00Z",
+          "end_time": "04:20:00Z",
           "day": 1
         },
         {
-          "start_time": "12:00:00",
-          "end_time": "12:50:00",
+          "start_time": "06:30:00Z",
+          "end_time": "07:20:00Z",
           "day": 2
         },
         {
-          "start_time": "10:00:00",
-          "end_time": "10:50:00",
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
           "day": 4
         }
       ],
@@ -310,8 +310,8 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "23:00:00",
-          "end_time": "23:50:00",
+          "start_time": "10:30:00Z",
+          "end_time": "12:20:00Z",
           "day": 3
         }
       ],
@@ -372,18 +372,18 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "10:00:00",
-          "end_time": "10:50:00",
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
           "day": 0
         },
         {
-          "start_time": "08:00:00",
-          "end_time": "08:50:00",
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z",
           "day": 2
         },
         {
-          "start_time": "11:00:00",
-          "end_time": "11:50:00",
+          "start_time": "05:30:00Z",
+          "end_time": "06:20:00Z",
           "day": 3
         }
       ],
@@ -543,8 +543,8 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "23:00:00",
-          "end_time": "23:50:00",
+          "start_time": "10:30:00Z",
+          "end_time": "12:20:00Z",
           "day": 2
         }
       ],
@@ -617,18 +617,18 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "10:00:00",
-          "end_time": "10:50:00",
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
           "day": 1
         },
         {
-          "start_time": "08:00:00",
-          "end_time": "08:50:00",
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z",
           "day": 3
         },
         {
-          "start_time": "11:00:00",
-          "end_time": "11:50:00",
+          "start_time": "05:30:00Z",
+          "end_time": "06:20:00Z",
           "day": 4
         }
       ],
@@ -747,8 +747,8 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "23:00:00",
-          "end_time": "23:50:00",
+          "start_time": "08:30:00Z",
+          "end_time": "10:20:00Z",
           "day": 3
         }
       ],
@@ -809,13 +809,13 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "08:00:00",
-          "end_time": "08:50:00",
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z",
           "day": 1
         },
         {
-          "start_time": "09:00:00",
-          "end_time": "09:50:00",
+          "start_time": "03:30:00Z",
+          "end_time": "04:20:00Z",
           "day": 4
         }
       ],
@@ -910,8 +910,8 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "23:00:00",
-          "end_time": "23:50:00",
+          "start_time": "10:30:00Z",
+          "end_time": "12:20:00Z",
           "day": 1
         }
       ],
@@ -978,23 +978,23 @@
       "project_title": null,
       "timings": [
         {
-          "start_time": "11:00:00",
-          "end_time": "11:50:00",
+          "start_time": "05:30:00Z",
+          "end_time": "06:20:00Z",
           "day": 0
         },
         {
-          "start_time": "10:00:00",
-          "end_time": "10:50:00",
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
           "day": 2
         },
         {
-          "start_time": "12:00:00",
-          "end_time": "12:50:00",
+          "start_time": "06:30:00Z",
+          "end_time": "07:20:00Z",
           "day": 3
         },
         {
-          "start_time": "08:00:00",
-          "end_time": "08:50:00",
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z",
           "day": 4
         }
       ],
@@ -1127,105 +1127,7 @@
       }
     }
   ],
-  "refreshed": "2015-02-14T18:12:39.069Z",
-  "timetable": {
-    "monday": [
-      0,
-      4792,
-      4525,
-      2216,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "tuesday": [
-      2055,
-      4574,
-      4540,
-      0,
-      4792,
-      0,
-      0,
-      0,
-      5510,
-      5510,
-      0,
-      0,
-      0,
-      0
-    ],
-    "wednesday": [
-      4525,
-      4792,
-      2216,
-      0,
-      4574,
-      0,
-      0,
-      0,
-      4630,
-      4630,
-      0,
-      0,
-      0,
-      0
-    ],
-    "thursday": [
-      4540,
-      0,
-      4792,
-      4525,
-      2216,
-      0,
-      5270,
-      5270,
-      4706,
-      4706,
-      0,
-      0,
-      0,
-      0
-    ],
-    "friday": [
-      2216,
-      2055,
-      4574,
-      4540,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "saturday": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
+  "refreshed": "2015-02-15T18:26:22.593Z",
   "withdrawn_courses": [],
   "cached": false,
   "status": {

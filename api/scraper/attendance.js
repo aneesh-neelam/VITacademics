@@ -66,7 +66,7 @@ exports.scrapeAttendance = function (app, data, callback) {
                             course_title: htmlColumn.eq(2).text(),
                             course_type: htmlColumn.eq(3).text(),
                             slot: htmlColumn.eq(4).text(),
-                            registration_date: momentTimezone.tz(htmlColumn.eq(5).text(), 'DD/MM/YYYY HH:mm:ss', 'Asia/Kolkata').utc(),
+                            registration_date: momentTimezone.tz(htmlColumn.eq(5).text(), 'DD/MM/YYYY HH:mm:ss', 'Asia/Kolkata').utc().toJSON(),
                             attended_classes: parseInt(htmlColumn.eq(6).text()),
                             total_classes: parseInt(htmlColumn.eq(7).text()),
                             attendance_percentage: parseInt(htmlColumn.eq(8).text().split('%')[0]),

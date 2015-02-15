@@ -35,7 +35,6 @@ exports.get = function (app, data, callback) {
     var collection = app.db.collection('student');
     var keys = {
         reg_no: 1,
-        timetable: 1,
         courses: 1,
         campus: 1,
         semester: 1
@@ -50,14 +49,13 @@ exports.get = function (app, data, callback) {
             callback(true, {status: status.codes.mongoDown});
         }
         else if (doc) {
-            if (doc.timetable && doc.courses && doc.reg_no) {
+            if (doc.courses) {
                 var forEachCourse = function (elt, i, arr) {
                     delete elt['attendance'];
                     delete elt['marks'];
-                    delete elt['cbl_marks'];
-                    delete elt['lbc_marks'];
-                    delete elt['pbc_marks'];
-                    delete elt['pbl_marks'];
+                    delete elt['registration_status'];
+                    delete elt['bill_date'];
+                    delete elt['bill_number'];
                 };
                 delete doc['_id'];
                 doc.courses.forEach(forEachCourse);

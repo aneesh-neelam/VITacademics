@@ -1,233 +1,276 @@
 {
-  "reg_no": "12BEC1039",
-  "campus": "chennai",
-  "timetable": {
-    "mon": [
-      1157,
-      1119,
-      1116,
-      1123,
-      1229,
-      1229,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "tue": [
-      2229,
-      1140,
-      1130,
-      1157,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "wed": [
-      1116,
-      1119,
-      1123,
-      2229,
-      1140,
-      0,
-      1911,
-      1911,
-      0,
-      0,
-      0,
-      0
-    ],
-    "thu": [
-      1130,
-      1157,
-      1119,
-      1116,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "fri": [
-      1123,
-      2229,
-      1140,
-      1130,
-      1903,
-      1903,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
+  "reg_no": "13BCE0139",
+  "campus": "vellore",
   "courses": [
     {
-      "class_number": "1130",
-      "course_code": "ECE301",
-      "course_title": "VLSI System Design",
-      "course_type": "Theory Only",
-      "ltpc": "3003",
-      "course_mode": "PBL",
+      "class_number": 4792,
+      "course_code": "CSE202",
+      "course_title": "Algorithm Design and Analysis",
+      "course_type": 1,
+      "ltpc": "3104",
+      "course_mode": "CBL",
       "course_option": "Regular",
-      "slot": "D1",
-      "venue": "AB608",
-      "faculty": "Sakthivel S M - SENSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
+      "slot": "F1+TF1",
+      "venue": "SJT803",
+      "faculty": "ANNAPURNA JONNALAGADDA - SCSE",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "03:30:00Z",
+          "end_time": "04:20:00Z",
+          "day": 0
+        },
+        {
+          "start_time": "06:30:00Z",
+          "end_time": "07:20:00Z",
+          "day": 1
+        },
+        {
+          "start_time": "03:30:00Z",
+          "end_time": "04:20:00Z",
+          "day": 2
+        },
+        {
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
+          "day": 3
+        }
+      ]
     },
     {
-      "class_number": "1119",
-      "course_code": "ECE303",
-      "course_title": "Digital Signal Processing",
-      "course_type": "Embedded Theory",
+      "class_number": 4574,
+      "course_code": "CSE221",
+      "course_title": "Microprocessor and Interfacing",
+      "course_type": 1,
       "ltpc": "3003",
-      "course_mode": "PBL",
+      "course_mode": "CBL",
       "course_option": "Regular",
-      "slot": "F1",
-      "venue": "AB609",
-      "faculty": "Prakash R - SENSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
+      "slot": "G1+TG1",
+      "venue": "SJT421",
+      "faculty": "SENTHILKUMAR R - SCSE",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "03:30:00Z",
+          "end_time": "04:20:00Z",
+          "day": 1
+        },
+        {
+          "start_time": "06:30:00Z",
+          "end_time": "07:20:00Z",
+          "day": 2
+        },
+        {
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
+          "day": 4
+        }
+      ]
     },
     {
-      "class_number": "1911",
-      "course_code": "ECE303",
-      "course_title": "Digital Signal Processing",
-      "course_type": "Embedded Lab",
+      "class_number": 4706,
+      "course_code": "CSE221",
+      "course_title": "Microprocessor and Interfacing",
+      "course_type": 2,
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
-      "slot": "L43+L44",
-      "venue": "AB707",
-      "faculty": "Prakash R - SENSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
+      "slot": "L51+L52",
+      "venue": "SJT416",
+      "faculty": "BHULAKSHMI BONTHU - SCSE",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "10:30:00Z",
+          "end_time": "12:20:00Z",
+          "day": 3
+        }
+      ]
     },
     {
-      "class_number": "1116",
-      "course_code": "ECE305",
-      "course_title": "Digital Communication",
-      "course_type": "Embedded Theory",
+      "class_number": 4525,
+      "course_code": "CSE222",
+      "course_title": "Operating Systems",
+      "course_type": 3,
       "ltpc": "3003",
       "course_mode": "PBL",
       "course_option": "Regular",
       "slot": "C1",
-      "venue": "AB609",
-      "faculty": "Ramesh R - SENSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
+      "venue": "SJT404",
+      "faculty": "SENTHIL J - SCSE",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
+          "day": 0
+        },
+        {
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z",
+          "day": 2
+        },
+        {
+          "start_time": "05:30:00Z",
+          "end_time": "06:20:00Z",
+          "day": 3
+        }
+      ]
     },
     {
-      "class_number": "1903",
-      "course_code": "ECE305",
-      "course_title": "Digital Communication",
-      "course_type": "Embedded Lab",
+      "class_number": 4630,
+      "course_code": "CSE222",
+      "course_title": "Operating Systems",
+      "course_type": 2,
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
-      "slot": "L29+L30",
-      "venue": "AB505",
-      "faculty": "Ralph Samuel Thangaraj - SENSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
+      "slot": "L45+L46",
+      "venue": "SJT418",
+      "faculty": "LAVANYA K - SCSE",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "10:30:00Z",
+          "end_time": "12:20:00Z",
+          "day": 2
+        }
+      ]
     },
     {
-      "class_number": "1123",
-      "course_code": "ECE306",
-      "course_title": "Antennas and Wave Propagation",
-      "course_type": "Theory Only",
+      "class_number": 4540,
+      "course_code": "CSE324",
+      "course_title": "Database Systems",
+      "course_type": 1,
       "ltpc": "3003",
-      "course_mode": "PBL",
+      "course_mode": "CBL",
       "course_option": "Regular",
-      "slot": "E1",
-      "venue": "AB608",
-      "faculty": "CHITRA K - SENSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
+      "slot": "D1",
+      "venue": "SJT421",
+      "faculty": "SATISH C.J - SCSE",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
+          "day": 1
+        },
+        {
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z",
+          "day": 3
+        },
+        {
+          "start_time": "05:30:00Z",
+          "end_time": "06:20:00Z",
+          "day": 4
+        }
+      ]
     },
     {
-      "class_number": "1140",
-      "course_code": "ECE406",
-      "course_title": "Embedded System Design",
-      "course_type": "Theory Only",
-      "ltpc": "3003",
-      "course_mode": "PBL",
-      "course_option": "Regular",
-      "slot": "G1+TG1",
-      "venue": "AB608",
-      "faculty": "Anita Angeline - SENSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
-    },
-    {
-      "class_number": "1157",
-      "course_code": "EEE226",
-      "course_title": "Control Systems",
-      "course_type": "Embedded Theory",
-      "ltpc": "3003",
-      "course_mode": "PBL",
-      "course_option": "Regular",
-      "slot": "A1+TA1",
-      "venue": "AB609",
-      "faculty": "Nithya Venkatesan - SELECT",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
-    },
-    {
-      "class_number": "1229",
-      "course_code": "EEE226",
-      "course_title": "Control Systems",
-      "course_type": "Embedded Lab",
+      "class_number": 5270,
+      "course_code": "CSE324",
+      "course_title": "Database Systems",
+      "course_type": 2,
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
-      "slot": "L5+L6",
-      "venue": "AB306",
-      "faculty": "DR. R. CHENDUR KUMARAN - SELECT",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
+      "slot": "L49+L50",
+      "venue": "SJT319",
+      "faculty": "VENKATESAN M - SCSE",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "08:30:00Z",
+          "end_time": "10:20:00Z",
+          "day": 3
+        }
+      ]
     },
     {
-      "class_number": "2229",
-      "course_code": "MGT310",
-      "course_title": "Organizational Behaviour",
-      "course_type": "Theory Only",
-      "ltpc": "3003",
-      "course_mode": "PBL",
+      "class_number": 2055,
+      "course_code": "HUM121",
+      "course_title": "Ethics and Values",
+      "course_type": 1,
+      "ltpc": "2002",
+      "course_mode": "CBL",
       "course_option": "Regular",
-      "slot": "B1+TB1",
-      "venue": "AB211",
-      "faculty": "ARCHANA SRIVATSAVA - VITBS",
-      "registration_status": "Registered and Approved",
-      "bill_date": " / ",
-      "project_title": null
+      "slot": "B1",
+      "venue": "SJT522",
+      "faculty": "NILAVATHY K - SSL",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z",
+          "day": 1
+        },
+        {
+          "start_time": "03:30:00Z",
+          "end_time": "04:20:00Z",
+          "day": 4
+        }
+      ]
+    },
+    {
+      "class_number": 5510,
+      "course_code": "HUM121",
+      "course_title": "Ethics and Values",
+      "course_type": 2,
+      "ltpc": "0021",
+      "course_mode": "LBC",
+      "course_option": "Regular",
+      "slot": "L39+L40",
+      "venue": "SJT504",
+      "faculty": "NILAVATHY K - SSL",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "10:30:00Z",
+          "end_time": "12:20:00Z",
+          "day": 1
+        }
+      ]
+    },
+    {
+      "class_number": 2216,
+      "course_code": "MAT202",
+      "course_title": "Linear Algebra",
+      "course_type": 1,
+      "ltpc": "3104",
+      "course_mode": "CBL",
+      "course_option": "Regular",
+      "slot": "E1+TE1",
+      "venue": "SJT409",
+      "faculty": "NALLIAH M - SAS",
+      "project_title": null,
+      "timings": [
+        {
+          "start_time": "05:30:00Z",
+          "end_time": "06:20:00Z",
+          "day": 0
+        },
+        {
+          "start_time": "04:30:00Z",
+          "end_time": "05:20:00Z",
+          "day": 2
+        },
+        {
+          "start_time": "06:30:00Z",
+          "end_time": "07:20:00Z",
+          "day": 3
+        },
+        {
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z",
+          "day": 4
+        }
+      ]
     }
   ],
-  "semester": "FS14",
+  "semester": "WS",
   "status": {
-    "message": "Successful execution",
+    "message": "Successful Execution",
     "code": 0
   }
 }

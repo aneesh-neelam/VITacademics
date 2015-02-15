@@ -47,7 +47,6 @@ exports.get = function (app, data, callback) {
                 semester: 1,
                 courses: 1,
                 withdrawn_courses: 1,
-                timetable: 1,
                 refreshed: 1
             };
             var onFetch = function (err, mongoDoc) {
@@ -195,7 +194,6 @@ exports.get = function (app, data, callback) {
                             else {
                                 data.courses = newData;
                                 data.refreshed = new Date().toJSON();
-                                data.timetable = results.timetable.timetable;
                                 data.withdrawn_courses = results.timetable.withdrawn_courses;
                                 var onUpdate = function (err) {
                                     if (err) {
@@ -224,7 +222,6 @@ exports.get = function (app, data, callback) {
                                     ['reg_no', 'asc']
                                 ], {
                                     $set: {
-                                        timetable: data.timetable,
                                         courses: data.courses,
                                         semester: data.semester,
                                         refreshed: data.refreshed,

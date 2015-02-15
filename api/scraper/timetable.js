@@ -49,7 +49,6 @@ exports.scrapeTimetable = function (app, data, callback) {
         else {
             var timetable = {
                 courses: [],
-                timetable: {},
                 withdrawn_courses: [],
                 timings: []
             };
@@ -162,7 +161,6 @@ exports.scrapeTimetable = function (app, data, callback) {
                 if (timetableScraper) {
                     length = timetableScraper('tr').length;
                     var onEachRow = function (i, elem) {
-                        var day = [];
                         var htmlRow = cheerio.load(timetableScraper(this).html());
                         var getSlotTimings = function (column, isTheory, isEndTime) {
                             var morningStartHour = 8;
@@ -204,7 +202,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                     }
                                 }
                                 else if (column == 13) {
-                                    if(isEndTime) {
+                                    if (isEndTime) {
                                         time.setMinutes(10);
                                         time.setHours(morningStartHour + column);
                                     }
@@ -229,30 +227,6 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 }
                             }
                             return (momentTimezone.tz(time, "Asia/Kolkata").utc().format('HH:mm:ss') + 'Z');
-                        };
-                        var getDay = function (row) {
-                            var weekday = '';
-                            switch (row) {
-                                case 2:
-                                    weekday = 'monday';
-                                    break;
-                                case 3:
-                                    weekday = 'tuesday';
-                                    break;
-                                case 4:
-                                    weekday = 'wednesday';
-                                    break;
-                                case 5:
-                                    weekday = 'thursday';
-                                    break;
-                                case 6:
-                                    weekday = 'friday';
-                                    break;
-                                case 7:
-                                    weekday = 'saturday';
-                                    break;
-                            }
-                            return weekday;
                         };
                         if (i > 1) {
                             var htmlColumn = htmlRow('td');
@@ -285,17 +259,14 @@ exports.scrapeTimetable = function (app, data, callback) {
                                             day: (i - 2)
                                         };
                                     }
-                                    day.push(Number(tmp[sub]));
                                 }
                                 else {
                                     if (last) {
                                         timetable.timings.push(last);
                                         last = null;
                                     }
-                                    day.push(0);
                                 }
                             }
-                            timetable.timetable[getDay(i)] = day;
                         }
                     };
                     timetableScraper('tr').each(onEachRow);
