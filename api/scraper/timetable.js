@@ -22,7 +22,7 @@ var cache = require('memory-cache');
 var cheerio = require('cheerio');
 var cookie = require('cookie');
 var moment = require('moment');
-var momentTZ = require('moment-timezone');
+var momentTimezone = require('moment-timezone');
 var path = require('path');
 var unirest = require('unirest');
 
@@ -165,22 +165,11 @@ exports.scrapeTimetable = function (app, data, callback) {
                         var day = [];
                         var htmlRow = cheerio.load(timetableScraper(this).html());
                         var getSlotTimings = function (column, isTheory, isEndTime) {
-                            var toISOTimeString = function (time) {
-                                var hours = pad(time.getHours());
-                                var minutes = pad(time.getMinutes());
-                                var seconds = pad(time.getSeconds());
-
-                                function pad(n) {
-                                    return n < 10 ? '0' + n : n
-                                }
-
-                                return hours + ":" + minutes + ":" + seconds;
-                            };
                             var morningStartHour = 8;
                             var time = new Date();
                             time.setSeconds(0);
                             column = column - 1;
-                            if (course_type) {
+                            if (isTheory) {
                                 if (isEndTime) {
                                     time.setMinutes(50);
                                 }
@@ -239,7 +228,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                     }
                                 }
                             }
-                            return toISOTimeString(time);
+                            return (momentTimezone.tz(time, "Asia/Kolkata").utc().format('HH:mm:ss') + 'Z');
                         };
                         var getDay = function (row) {
                             var weekday = '';
@@ -305,10 +294,6 @@ exports.scrapeTimetable = function (app, data, callback) {
                                     }
                                     day.push(0);
                                 }
-                            }
-                            if (last) {
-                                timetable.timings.push(last);
-                                last = null;
                             }
                             timetable.timetable[getDay(i)] = day;
                         }
