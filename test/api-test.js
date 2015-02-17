@@ -18,8 +18,66 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var assert = require('assert');
 var path = require('path');
+var app = require(path.join(__dirname, '..', 'app'));
+var codes = require(path.join(__dirname, '..','/api/status')).codes;
+var should = require('chai').should(),
+    supertest = require('supertest'),
+    api = supertest(app);
 
-// TODO tests
-console.log('Hello!');
+var users = require(path.join(__dirname, '.', 'test-users-cred')).users;
+
+for(var i = 0 ; i<users.length ; i++) {
+    var user = users[i];
+    describe('Testing User: '+user.describe, function() {
+
+        it('Checking if auto-login is successful', function (done) {
+            api.get('/api/v2/'+user.campus+'/login')
+                .query({'regno': user.reg_no, 'dob': user.dob})
+                .expect(200)
+                .end(function(err, res) {
+                    should.not.exist(err);
+                    res.body.should.have.property('reg_no', user.regno);
+                    res.body.should.have.property('dob', user.dob);
+                    res.body.should.have.property('campus', user.campus);
+                    res.body.should.have.property('status').with.deep.equal(codes.success);
+                    done();
+                });
+        });
+
+        it('Checking if refresh is successful', function (done) {
+            api.get('/api/v2/'+user.campus+'/refresh')
+                .query({'regno': user.reg_no, 'dob': user.dob})
+                .expect(200)
+                .end(function(err, res) {
+                    should.not.exist(err);
+                    res.body.should.have.property('reg_no', user.regno);
+                    res.body.should.have.property('dob', user.dob);
+                    res.body.should.have.property('campus', user.campus);
+                    res.body.should.have.property('status').with.deep.equal(codes.success);
+                    done();
+                });
+        });
+
+        it('Checking if token creation is successful', function (done) {
+            api.get('/api/v2/'+user.campus+'/token')
+                .query({'regno': user.reg_no, 'dob': user.dob})
+                .expect(200)
+                .end(function(err, res) {
+                    should.not.exist(err);
+                    res.body.should.have.property('reg_no', user.regno);
+                    res.body.should.have.property('dob', user.dob);
+                    res.body.should.have.property('campus', user.campus);
+                    res.body.should.have.property('status').with.deep.equal(codes.success);
+                    res.body.status.should.deep.equal(codes.success);
+
+                    res.body.should.have.property('share').with.property('token').with.length(6);
+                    done();
+                });
+        });
+
+
+    });
+}
+
+
