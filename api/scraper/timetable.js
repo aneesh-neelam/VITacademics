@@ -214,20 +214,20 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 else {
                                     if (isEndTime) {
                                         time.setHours(morningStartHour + column);
-                                        if((column % 6) === 5 ) {
-                                          time.setMinutes(30);
+                                        if ((column % 6) === 5) {
+                                            time.setMinutes(30);
                                         }
                                         else {
-                                          time.setMinutes(40);
+                                            time.setMinutes(40);
                                         }
                                     }
                                     else {
                                         time.setHours(morningStartHour + column - 1);
-                                        if((column % 6) === 4) {
-                                          time.setMinutes(50);
+                                        if ((column % 6) === 4) {
+                                            time.setMinutes(50);
                                         }
                                         else {
-                                          time.setMinutes(40);
+                                            time.setMinutes(40);
                                         }
                                     }
                                 }

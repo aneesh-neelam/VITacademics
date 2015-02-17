@@ -1,8 +1,8 @@
-#!/usr/bin/env node
-
 /*
  *  VITacademics
  *  Copyright (C) 2015  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,17 +20,29 @@
 
 var users = [
     {
-        describe: 'Only final year project - Vellore',
+        describe: 'B.Tech CSE 4th Year - Project Only - Vellore',
         reg_no: '11BCE0354',
         dob: '28011993',
         campus: 'vellore'
     },
     {
-        describe: '27 credits - Vellore',
+        describe: 'B.Tech ECE 4th Year - Courses only - Vellore',
         reg_no: '11BEC0262',
         dob: '19091992',
         campus: 'vellore'
-    }
+    },
+    {
+        describe: 'B.Tech CSE 2nd Year - Courses only - Vellore',
+        reg_no: '13BCE0139',
+        dob: '16011995',
+        campus: 'vellore'
+    },
+    {
+        describe: 'B.Tech CSE 4th Year - One Course + Project - Vellore',
+        reg_no: '11BCE0260',
+        dob: '20101993',
+        campus: 'vellore'
+    },
 ];
 
 module.exports.users = users;
