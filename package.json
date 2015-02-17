@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.13.34",
+  "version": "0.13.35",
   "description": "VITacademics Backend and Web App",
   "homepage": "https://vitacademics-dev.herokuapp.com/",
   "bugs": {
@@ -11,7 +11,7 @@
   "main": "bin/www",
   "scripts": {
     "postinstall": "bower install",
-    "start": "node bin/www",
+    "start": "node --max_old_space_size=512 bin/www",
     "test": "mocha test --timeout 30000"
   },
   "contributors": [
@@ -79,7 +79,7 @@
     }
   ],
   "engines": {
-    "node": "0.10.x"
+    "iojs": "stable"
   },
   "devDependencies": {
     "chai": "^2.0.0",
