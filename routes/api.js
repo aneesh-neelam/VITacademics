@@ -27,14 +27,14 @@ var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'gene
 var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
 
 
-router.get('/login', function (req, res) {
+router.post('/login', function (req, res) {
     var app = {
         db: req.db,
         queue: req.queue
     };
     var data = {
-        reg_no: req.query.regno.toUpperCase(),
-        dob: req.query.dob,
+        reg_no: req.body.regno.toUpperCase(),
+        dob: req.body.dob,
         campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
@@ -43,14 +43,14 @@ router.get('/login', function (req, res) {
     loginAuto.get(app, data, onGet);
 });
 
-router.get('/refresh', function (req, res) {
+router.post('/refresh', function (req, res) {
     var app = {
         db: req.db,
         queue: req.queue
     };
     var data = {
-        reg_no: req.query.regno.toUpperCase(),
-        dob: req.query.dob,
+        reg_no: req.body.regno.toUpperCase(),
+        dob: req.body.dob,
         campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
@@ -59,14 +59,14 @@ router.get('/refresh', function (req, res) {
     dataAggregate.get(app, data, onGet);
 });
 
-router.get('/grades', function (req, res) {
+router.post('/grades', function (req, res) {
     var app = {
         db: req.db,
         queue: req.queue
     };
     var data = {
-        reg_no: req.query.regno.toUpperCase(),
-        dob: req.query.dob,
+        reg_no: req.body.regno.toUpperCase(),
+        dob: req.body.dob,
         campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
@@ -75,14 +75,14 @@ router.get('/grades', function (req, res) {
     dataGrades.get(app, data, onGet);
 });
 
-router.get('/token', function (req, res) {
+router.post('/token', function (req, res) {
     var app = {
         db: req.db,
         queue: req.queue
     };
     var data = {
-        reg_no: req.query.regno.toUpperCase(),
-        dob: req.query.dob,
+        reg_no: req.body.regno.toUpperCase(),
+        dob: req.body.dob,
         campus: req.originalUrl.split('/')[3].toLowerCase()
     };
     var onGet = function (err, response) {
@@ -91,18 +91,18 @@ router.get('/token', function (req, res) {
     friendsGenerate.get(app, data, onGet);
 });
 
-router.get('/share', function (req, res) {
+router.post('/share', function (req, res) {
     var token;
     var reg_no;
-    if (req.query.token) token = req.query.token.toUpperCase();
-    if (req.query.regno) reg_no = req.query.regno.toUpperCase();
+    if (req.body.token) token = req.body.token.toUpperCase();
+    if (req.body.regno) reg_no = req.body.regno.toUpperCase();
     var app = {
         db: req.db,
         queue: req.queue
     };
     var data = {
         reg_no: reg_no,
-        dob: req.query.dob,
+        dob: req.body.dob,
         token: token,
         campus: req.originalUrl.split('/')[3].toLowerCase()
     };

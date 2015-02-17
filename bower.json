@@ -1,12 +1,12 @@
 {
   "name": "VITacademics",
-  "version": "0.13.31",
+  "version": "0.13.32",
   "description": "VITacademics Backend and Web App",
   "bugs": {
     "url": "https://github.com/aneesh-neelam/VITacademics/issues",
     "email": "neelam.aneesh@gmail.com"
   },
-  "homepage": "http://vitacademics-dev.herokuapp.com/",
+  "homepage": "https://vitacademics-dev.herokuapp.com/",
   "authors": [
     "Aneesh Neelam <neelam.aneesh@gmail.com>",
     "Karthik Balakrishnan <karthikb351@gmail.com>",
