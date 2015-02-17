@@ -12,7 +12,7 @@
   "scripts": {
     "postinstall": "bower install",
     "start": "node bin/www",
-    "test": "mocha test"
+    "test": "mocha test --timeout 30000"
   },
   "contributors": [
     {
@@ -82,6 +82,8 @@
     "node": "0.10.x"
   },
   "devDependencies": {
-    "mocha": "~2.1.0"
+    "chai": "^2.0.0",
+    "mocha": "~2.1.0",
+    "supertest": "^0.15.0"
   }
 }
