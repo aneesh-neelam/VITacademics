@@ -34,5 +34,6 @@ exports.config = {
     license_key: license,
     logging: {
         level: 'info'
-    }
+    },
+    capture_params : true
 };
