@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var async = require('async');
 var path = require('path');
 
 var log;
@@ -30,13 +31,22 @@ var status = require(path.join(__dirname, 'status'));
 
 
 exports.get = function (app, data, callback) {
-    var collection = app.db.collection('system');
-    var keys = {
-        android: 1,
-        ios: 1,
-        messages: 1
+    var clientCollection = app.db.collection('client');
+    var messageCollection = app.db.collection('message');
+    var parallelTasks = {
+        client: function (asyncCallback) {
+            var keys = {
+                android: 1,
+                ios: 1,
+                windows: 1
+            };
+            clientCollection.findOne({}, keys, asyncCallback);
+        },
+        message: function (asyncCallback) {
+            messageCollection.find({}, {limit: 10, sort: ['_id', ['desc']}).toArray(asyncCallback);
+        }
     };
-    var onFetch = function (err, doc) {
+    var onFetch = function (err, results) {
         if (err) {
             data.status = status.codes.mongoDown;
             if (log) {
@@ -45,10 +55,11 @@ exports.get = function (app, data, callback) {
             console.log(data.status);
             callback(true, data);
         }
-        else if (doc) {
-            data.android = doc.android;
-            data.ios = doc.ios;
-            data.messages = doc.messages;
+        else if (results.client && results.messages) {
+            data.android = results.client.android;
+            data.ios = results.client.ios;
+            data.windows = results.client.windows;
+            data.messages = results.messages;
             data.status = status.codes.success;
             callback(false, data);
         }
@@ -61,5 +72,5 @@ exports.get = function (app, data, callback) {
             callback(true, data);
         }
     };
-    collection.findOne({}, keys, onFetch);
+    async.parallel(parallelTasks, onFetch);
 };
