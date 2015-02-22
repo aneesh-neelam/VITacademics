@@ -35,5 +35,5 @@ exports.config = {
     logging: {
         level: 'info'
     },
-    capture_params : true
+    capture_params: true
 };

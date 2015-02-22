@@ -43,7 +43,7 @@ exports.get = function (app, data, callback) {
             clientCollection.findOne({}, keys, asyncCallback);
         },
         message: function (asyncCallback) {
-            messageCollection.find({}, {limit: 10, sort: ['_id', ['desc']}).toArray(asyncCallback);
+            messageCollection.find({}, {limit: 10, sort: [['datefield', 'asc']]}).toArray(asyncCallback);
         }
     };
     var onFetch = function (err, results) {
