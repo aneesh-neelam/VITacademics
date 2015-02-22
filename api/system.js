@@ -43,7 +43,7 @@ exports.get = function (app, data, callback) {
             clientCollection.findOne({}, keys, asyncCallback);
         },
         message: function (asyncCallback) {
-            messageCollection.find({}, {limit: 10, sort: [['datefield', 'asc']]}).toArray(asyncCallback);
+            messageCollection.find({}, {limit: 10, sort: [['_id', 'desc']]}).toArray(asyncCallback);
         }
     };
     var onFetch = function (err, results) {
@@ -55,11 +55,11 @@ exports.get = function (app, data, callback) {
             console.log(data.status);
             callback(true, data);
         }
-        else if (results.client && results.messages) {
+        else if (results.client && results.message) {
             data.android = results.client.android;
             data.ios = results.client.ios;
             data.windows = results.client.windows;
-            data.messages = results.messages;
+            data.messages = results.message;
             data.status = status.codes.success;
             callback(false, data);
         }
