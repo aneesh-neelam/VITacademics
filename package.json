@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.13.40",
+  "version": "0.13.41",
   "description": "VITacademics Backend and Web App",
   "homepage": "https://vitacademics-dev.herokuapp.com/",
   "bugs": {
@@ -51,20 +51,20 @@
     "cheerio": "~0.18.0",
     "cookie": "~0.1.2",
     "cookie-parser": "~1.3.4",
-    "ejs": "~2.2.4",
-    "express": "~4.11.2",
+    "ejs": "~2.3.1",
+    "express": "~4.12.0",
     "express-mongo-db": "^1.0.0",
     "jackrabbit": "^3.0.8",
-    "memory-cache": "~0.0.5",
+    "memory-cache": "~0.1.0",
     "moment": "^2.9.0",
     "moment-timezone": "^0.3.0",
-    "mongodb": "~1.4.31",
+    "mongodb": "~1.4.32",
     "morgan": "~1.5.1",
-    "newrelic": "~1.16.4",
+    "newrelic": "~1.17.0",
     "node-ga": "~0.1.1",
     "node-logentries": "~0.1.4",
     "serve-favicon": "2.2.0",
-    "underscore": "~1.8.1",
+    "underscore": "~1.8.2",
     "unirest": "~0.4.0"
   },
   "repository": {
@@ -82,7 +82,7 @@
     "iojs": "stable"
   },
   "devDependencies": {
-    "chai": "^2.0.0",
+    "chai": "^2.1.0",
     "mocha": "~2.1.0",
     "supertest": "^0.15.0"
   }

@@ -13,15 +13,15 @@ Check out the [Project Wiki](https://github.com/aneesh-neelam/VITacademics/wiki)
 
 For the API Documentation, check out the [JSON API Page](https://github.com/aneesh-neelam/VITacademics/wiki/JSON-API)
 
-Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics/issues) 
+Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics/issues)
 
 #### Instructions for Installation:
-###### Install Node.js (> 0.10)
+###### Install Node.js/io.js (Latest Stable Release)
 ###### Install all dependencies
     $ npm install
 ###### Run the server locally
     $ npm start
-    
+
 #### External Requirements:
-* A MongoDB instance
-* A RabbitMQ instance
+* MongoDB
+* RabbitMQ
