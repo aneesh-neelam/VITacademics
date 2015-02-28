@@ -162,70 +162,64 @@ exports.scrapeTimetable = function (app, data, callback) {
                         var htmlRow = cheerio.load(timetableScraper(this).html());
                         var getSlotTimings = function (column, isTheory, isEndTime) {
                             var morningStartHour = 8;
-                            var time = new Date();
+                            momentTimezone.tz.setDefault("Asia/Kolkata");
+                            var time = new momentTimezone();
                             time.setSeconds(0);
                             column = column - 1;
                             if (isTheory) {
                                 if (isEndTime) {
-                                    time.setMinutes(50);
+                                    time.set({minute: 50});
                                 }
                                 else {
-                                    time.setMinutes(0);
+                                    time.set({minute: 0});
                                 }
                                 if (column < 12) {
-                                    time.setHours(morningStartHour + column);
+                                    time.set({hour: morningStartHour + column});
                                 }
                                 else {
-                                    time.setHours(morningStartHour + column - 1);
+                                    time.set({hour: morningStartHour + column - 1});
                                 }
                             }
                             else {
                                 if (column < 12 && (column % 6) < 4) {
                                     if (isEndTime) {
-                                        time.setMinutes(50);
+                                        time.set({hour: morningStartHour + column, minute: 50});
                                     }
                                     else {
-                                        time.setMinutes(0);
+                                        time.set({hour: morningStartHour + column, minute: 0});
                                     }
-                                    time.setHours(morningStartHour + column);
                                 }
                                 else if (column == 12) {
                                     if (isEndTime) {
-                                        time.setMinutes(20);
-                                        time.setHours(morningStartHour + column);
+                                        time.set({hour: morningStartHour + column, minute: 20});
                                     }
                                     else {
-                                        time.setMinutes(30);
-                                        time.setHours(morningStartHour + column - 1);
+                                        time.set({hour: morningStartHour + column - 1, minute: 30});
                                     }
                                 }
                                 else if (column == 13) {
                                     if (isEndTime) {
-                                        time.setMinutes(10);
-                                        time.setHours(morningStartHour + column);
+                                        time.set({hour: morningStartHour + column, minute: 10});
                                     }
                                     else {
-                                        time.setMinutes(20);
-                                        time.setHours(morningStartHour + column - 1);
+                                        time.set({hour: morningStartHour + column - 1, minute: 20});
                                     }
                                 }
                                 else {
                                     if (isEndTime) {
-                                        time.setHours(morningStartHour + column);
                                         if ((column % 6) === 5) {
-                                            time.setMinutes(30);
+                                            time.set({hour: morningStartHour + column, minute: 30});
                                         }
                                         else {
-                                            time.setMinutes(40);
+                                            time.set({hour: morningStartHour + column, minute: 40});
                                         }
                                     }
                                     else {
-                                        time.setHours(morningStartHour + column - 1);
                                         if ((column % 6) === 4) {
-                                            time.setMinutes(50);
+                                            time.set({hour: morningStartHour + column - 1, minute: 50});
                                         }
                                         else {
-                                            time.setMinutes(40);
+                                            time.set({hour: morningStartHour + column - 1, minute: 40});
                                         }
                                     }
                                 }
