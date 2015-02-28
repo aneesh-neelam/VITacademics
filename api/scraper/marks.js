@@ -19,7 +19,6 @@
 
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
-var cookie = require('cookie');
 var moment = require('moment');
 var path = require('path');
 var unirest = require('unirest');
@@ -36,8 +35,7 @@ exports.scrapeMarks = function (app, data, callback) {
         marksUri = 'http://27.251.102.132/parent/marks.asp?sem=' + data.semester;
     }
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(data.reg_no).cookie;
-    var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
+    var cookieSerial = cache.get(data.reg_no).cookie;
     var onRequest = function (response) {
         if (response.error) {
             callback(false, [
@@ -196,6 +194,6 @@ exports.scrapeMarks = function (app, data, callback) {
     CookieJar.add(unirest.cookie(cookieSerial), marksUri);
     unirest.post(marksUri)
         .jar(CookieJar)
-        .timeout(29000)
+        .timeout(28000)
         .end(onRequest);
 };

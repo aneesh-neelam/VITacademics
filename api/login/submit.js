@@ -18,7 +18,6 @@
 
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
-var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
@@ -36,8 +35,7 @@ var status = require(path.join(__dirname, '..', 'status'));
 exports.get = function (app, data, callback) {
     if (cache.get(data.reg_no) !== null) {
         var CookieJar = unirest.jar();
-        var myCookie = cache.get(data.reg_no).cookie;
-        var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
+        var cookieSerial = cache.get(data.reg_no).cookie;
         var submitUri;
         if (data.campus === 'vellore') {
             submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
@@ -57,28 +55,17 @@ exports.get = function (app, data, callback) {
                 callback(true, data);
             }
             else {
-                var login = false;
                 try {
                     var scraper = cheerio.load(response.body);
-                    scraper = cheerio.load(scraper('table').eq(1).html());
-                    var onEach = function (i, elem) {
-                        if (new RegExp(data.reg_no).test(scraper(this).text())) {
-                            login = true;
-                            return false;
-                        }
-                    };
-                    scraper('font').each(onEach);
-                }
-                catch (ex) {
-                    login = false;
-                }
-                finally {
-                    if (login) {
+                    var htmlTable = cheerio.load(scraper('table').eq(1).html());
+                    var text = htmlTable('td font').eq(0).text();
+                    text = text.split(' - ')[0].replace(/[^a-zA-Z0-9]/g, '');
+                    if (text === data.reg_no) {
                         var validity = 3; // In Minutes
                         var doc = {
                             reg_no: data.reg_no,
                             dob: data.dob,
-                            cookie: myCookie
+                            cookie: cookieSerial
                         };
                         cache.put(data.reg_no, doc, validity * 60 * 1000);
                         var onUpdate = function (err) {
@@ -106,8 +93,13 @@ exports.get = function (app, data, callback) {
                     }
                     else {
                         data.status = status.codes.invalid;
+                        console.log(JSON.stringify(data));
                         callback(null, data);
                     }
+                }
+                catch (ex) {
+                    data.status = status.codes.invalid;
+                    callback(null, data);
                 }
             }
         };
@@ -118,7 +110,7 @@ exports.get = function (app, data, callback) {
                 'wdpswd': data.dob,
                 'vrfcd': data.captcha
             })
-            .timeout(29000)
+            .timeout(28000)
             .end(onPost);
     }
     else {

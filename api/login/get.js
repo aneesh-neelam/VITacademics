@@ -45,25 +45,16 @@ exports.get = function (app, data, callback) {
             if (log) {
                 log.log('debug', data);
             }
-            console.log(data.status);
+            console.log(JSON.stringify(data));
             callback(true, data);
         }
         else {
             var validity = 2; // In Minutes
-            var myCookie = [];
-            var onEach = function (key) {
-                var regEx = new RegExp('ASPSESSION');
-                if (regEx.test(key)) {
-                    myCookie[0] = key;
-                    myCookie[1] = response.cookies[key];
-                    return false;
-                }
-                return true;
-            };
-            Object.keys(response.cookies).forEach(onEach);
+            var key = Object.keys(response.cookies)[0];
+            var cookieSerial = key + "=" + response.cookies[key];
             var doc = {
                 reg_no: data.reg_no,
-                cookie: myCookie
+                cookie: cookieSerial
             };
             cache.put(data.reg_no, doc, validity * 60 * 1000);
             callback(null, response.body);
@@ -71,6 +62,6 @@ exports.get = function (app, data, callback) {
     };
     unirest.get(captchaUri)
         .encoding(null)
-        .timeout(29000)
+        .timeout(26000)
         .end(onRequest);
 };

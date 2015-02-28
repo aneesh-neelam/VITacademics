@@ -20,7 +20,6 @@
 
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
-var cookie = require('cookie');
 var moment = require('moment');
 var momentTimezone = require('moment-timezone');
 var path = require('path');
@@ -39,8 +38,7 @@ exports.scrapeTimetable = function (app, data, callback) {
         timetableUri = 'http://27.251.102.132/parent/timetable.asp?sem=' + data.semester;
     }
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(data.reg_no).cookie;
-    var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
+    var cookieSerial = cache.get(data.reg_no).cookie;
     var onRequest = function (response) {
         if (response.error) {
             data.status = status.codes.vitDown;
@@ -102,7 +100,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                             }
                             else if (columns === 12) {
                                 projectTitle = htmlColumn.eq(8).text().split(':')[1];
-                                faculty = htmlColumn.eq(9).text();
+                                faculty = htmlColumn.eq(9).text().split(':')[1];
                                 registrationStatus = htmlColumn.eq(10).text();
                                 bill = htmlColumn.eq(11).text().split(' / ');
                                 billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
@@ -289,6 +287,6 @@ exports.scrapeTimetable = function (app, data, callback) {
     CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
     unirest.post(timetableUri)
         .jar(CookieJar)
-        .timeout(29000)
+        .timeout(28000)
         .end(onRequest);
 };

@@ -21,7 +21,6 @@
 var async = require('async');
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
-var cookie = require('cookie');
 var moment = require('moment');
 var momentTimezone = require('moment-timezone');
 var path = require('path');
@@ -42,8 +41,7 @@ exports.scrapeAttendance = function (app, data, callback) {
         attendanceDetailsUri = 'http://27.251.102.132/parent/attn_report_details.asp';
     }
     var CookieJar = unirest.jar();
-    var myCookie = cache.get(data.reg_no).cookie;
-    var cookieSerial = cookie.serialize(myCookie[0], myCookie[1]);
+    var cookieSerial = cache.get(data.reg_no).cookie;
     var onRequest = function (response) {
         if (response.error) {
             callback(false, [
@@ -116,7 +114,7 @@ exports.scrapeAttendance = function (app, data, callback) {
                     unirest.post(attendanceDetailsUri)
                         .jar(CookieJar)
                         .form(doc.form)
-                        .timeout(28500)
+                        .timeout(27000)
                         .end(onPost);
                 };
                 async.map(attendance, doDetails, callback);
@@ -132,6 +130,6 @@ exports.scrapeAttendance = function (app, data, callback) {
     CookieJar.add(unirest.cookie(cookieSerial), attendanceDetailsUri);
     unirest.post(attendanceUri)
         .jar(CookieJar)
-        .timeout(29000)
+        .timeout(28500)
         .end(onRequest);
 };

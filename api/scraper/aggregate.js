@@ -55,7 +55,7 @@ exports.get = function (app, data, callback) {
                     if (log) {
                         log.log('debug', data);
                     }
-                    console.log(data.status);
+                    console.log(JSON.stringify(data));
                     callback(true, data);
                 }
                 else if (mongoDoc) {
@@ -79,7 +79,7 @@ exports.get = function (app, data, callback) {
                 else if (data.campus === 'chennai') {
                     data.semester = process.env.CHENNAI_SEMESTER || 'WS14';
                 }
-                var myCookie = cache.get(data.reg_no).cookie;
+                var cookieSerial = cache.get(data.reg_no).cookie;
                 var parallelTasks = {
                     attendance: function (asyncCallback) {
                         attendance.scrapeAttendance(app, data, asyncCallback)
@@ -98,7 +98,7 @@ exports.get = function (app, data, callback) {
                             log.log('debug', data);
                         }
                         data.HTML_error = true;
-                        console.log(data.status);
+                        console.log(JSON.stringify(data));
                         collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
                     }
                     else {
@@ -201,7 +201,7 @@ exports.get = function (app, data, callback) {
                                         if (log) {
                                             log.log('debug', data);
                                         }
-                                        console.log(data.status);
+                                        console.log(JSON.stringify(data));
                                         callback(true, data);
                                     }
                                     else {
@@ -209,7 +209,7 @@ exports.get = function (app, data, callback) {
                                         var doc = {
                                             reg_no: data.reg_no,
                                             dob: data.dob,
-                                            cookie: myCookie,
+                                            cookie: cookieSerial,
                                             refreshed: true
                                         };
                                         cache.put(data.reg_no, doc, validity * 60 * 1000);

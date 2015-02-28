@@ -45,7 +45,7 @@ exports.get = function (app, data, callback) {
             if (log) {
                 log.log('debug', data);
             }
-            console.log(data.status);
+            console.log(JSON.stringify(data));
             callback(true, {status: status.codes.mongoDown});
         }
         else if (doc) {
