@@ -4,7 +4,7 @@ VITacademics
 [![Dependency Status](https://david-dm.org/aneesh-neelam/VITacademics.svg)](https://david-dm.org/aneesh-neelam/VITacademics)
 [![devDependency Status](https://david-dm.org/aneesh-neelam/VITacademics/dev-status.svg)](https://david-dm.org/aneesh-neelam/VITacademics#info=devDependencies)
 
-[![Build Status](https://semaphoreapp.com/api/v1/projects/d25d5145-bbfe-46cd-8b93-32ec54c63140/337627/badge.png)](https://semaphoreapp.com/aneesh-neelam/vitacademics)
+[![Build Status](https://semaphoreapp.com/api/v1/projects/d25d5145-bbfe-46cd-8b93-32ec54c63140/361960/badge.png)](https://semaphoreapp.com/aneesh-neelam/vitacademics)
 [![Stories in Ready](https://badge.waffle.io/aneesh-neelam/VITacademics.png?label=ready&title=Ready)](https://waffle.io/aneesh-neelam/VITacademics)
 
 The VITacademics Backend and Web App
