@@ -23,11 +23,8 @@ coverage
 build/Release
 
 # Dependency directory
-# Bower Components
-# Commenting this out is preferred by some people, see
-# https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
+# Commenting this out is preferred by some people, see "https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git"
 node_modules/
-public/bower_components/
 
 # Users Environment Variables
 .lock-wscript
