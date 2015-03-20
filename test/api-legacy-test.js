@@ -1,7 +1,6 @@
 /*
  *  VITacademics
- *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
- *  Copyright (C) 2015  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,6 +23,7 @@ var supertest = require('supertest');
 var app = require(path.join(__dirname, '..', 'app'));
 var codes = require(path.join(__dirname, '..', 'api-legacy', 'status')).codes;
 var users = require(path.join(__dirname, '.', 'credentials')).users;
+var captcha = require(path.join(__dirname, '..', 'api-legacy', 'login', 'captcha-parser'));
 
 var api = supertest(app);
 
@@ -31,33 +31,20 @@ for (var i = 0; i < users.length; i++) {
     var user = users[i];
     describe('Testing User: ' + user.describe, function () {
         it('Checking if Captcha image is returned successfully', function (done) {
-            api.post('/api/' + user.campus + '/login/manual')
-                .send({'regno': user.reg_no})
+            api.get('/api/' + user.campus + '/login/manual')
+                .query({'regno': user.reg_no})
                 .expect(200)
                 .end(function (err, res) {
                     should.not.exist(err);
-                    //TODO - check property if image received
-                    done();
-                });
-        });
-
-        it('Checking if manual-login through API is successful', function (done) {
-            api.post('/api/' + user.campus + '/login/manual')
-                .send({'regno': user.reg_no, 'dob': user.dob, 'captcha':/*TODO - captcha*/})
-                .expect(200)
-                .end(function (err, res) {
-                    should.not.exist(err);
-                    res.body.should.have.property('reg_no', user.regno);
-                    res.body.should.have.property('dob', user.dob);
-                    res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
+                    var parsedCaptcha = captcha.parseBuffer(res.body);
+                    parsedCaptcha.should.have.length(6);
                     done();
                 });
         });
 
         it('Checking if auto-login is successful', function (done) {
-            api.post('/api/' + user.campus + '/login/auto')
-                .send({'regno': user.reg_no, 'dob': user.dob})
+            api.get('/api/' + user.campus + '/login/auto')
+                .query({'regno': user.reg_no, 'dob': user.dob})
                 .expect(200)
                 .end(function (err, res) {
                     should.not.exist(err);
@@ -70,8 +57,8 @@ for (var i = 0; i < users.length; i++) {
         });
 
         it('Checking if first data fetch is successful', function (done) {
-            api.post('/api/' + user.campus + '/data/first')
-                .send({'regno': user.reg_no, 'dob': user.dob})
+            api.get('/api/' + user.campus + '/data/first')
+                .query({'regno': user.reg_no, 'dob': user.dob})
                 .expect(200)
                 .end(function (err, res) {
                     should.not.exist(err);
@@ -85,8 +72,8 @@ for (var i = 0; i < users.length; i++) {
         });
 
         it('Checking if data refresh is successful', function (done) {
-            api.post('/api/' + user.campus + '/data/refresh')
-                .send({'regno': user.reg_no, 'dob': user.dob})
+            api.get('/api/' + user.campus + '/data/refresh')
+                .query({'regno': user.reg_no, 'dob': user.dob})
                 .expect(200)
                 .end(function (err, res) {
                     should.not.exist(err);
@@ -99,8 +86,8 @@ for (var i = 0; i < users.length; i++) {
         });
 
         it('Checking if token generation is successful', function (done) {
-            api.post('/api/' + user.campus + '/friends/regenerate')
-                .send({'regno': user.reg_no, 'dob': user.dob})
+            api.get('/api/' + user.campus + '/friends/regenerate')
+                .query({'regno': user.reg_no, 'dob': user.dob})
                 .expect(200)
                 .end(function (err, res) {
                     should.not.exist(err);
@@ -114,13 +101,12 @@ for (var i = 0; i < users.length; i++) {
         });
 
         it('Checking if sharing of timetable is successful', function (done) {
-            api.post('/api/' + user.campus + '/friends/share')
-                .send({'regno': user.reg_no, 'dob': user.dob})
+            api.get('/api/' + user.campus + '/friends/share')
+                .query({'regno': user.reg_no, 'dob': user.dob})
                 .expect(200)
                 .end(function (err, res) {
                     should.not.exist(err);
                     res.body.should.have.property('reg_no', user.regno);
-                    res.body.should.have.property('dob', user.dob);
                     res.body.should.have.property('campus', user.campus);
                     res.body.should.have.property('status').with.deep.equal(codes.success);
                     done();
