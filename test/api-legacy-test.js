@@ -29,7 +29,7 @@ var api = supertest(app);
 
 for (var i = 0; i < users.length; i++) {
     var user = users[i];
-    describe('Testing User: ' + user.describe, function () {
+    describe('Testing API-Legacy for User: ' + user.describe, function () {
         it('Checking if Captcha image is returned successfully', function (done) {
             api.get('/api/' + user.campus + '/login/manual')
                 .query({'regno': user.reg_no})
