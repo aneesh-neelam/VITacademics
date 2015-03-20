@@ -65,6 +65,11 @@ for (var i = 0; i < users.length; i++) {
                     res.body.should.have.property('reg_no', user.regno);
                     res.body.should.have.property('dob', user.dob);
                     res.body.should.have.property('campus', user.campus);
+                    res.body.should.have.property('semester');
+                    res.body.should.have.property('courses');
+                    res.body.should.have.property('cached');
+                    res.body.should.have.property('refreshed');
+                    res.body.should.have.property('timetable');
                     res.body.should.have.property('status').with.deep.equal(codes.success);
                     res.body.should.have.property('share').with.property('token').with.length(6);
                     done();
@@ -80,6 +85,10 @@ for (var i = 0; i < users.length; i++) {
                     res.body.should.have.property('reg_no', user.regno);
                     res.body.should.have.property('dob', user.dob);
                     res.body.should.have.property('campus', user.campus);
+                    res.body.should.have.property('semester');
+                    res.body.should.have.property('courses');
+                    res.body.should.have.property('cached');
+                    res.body.should.have.property('refreshed');
                     res.body.should.have.property('status').with.deep.equal(codes.success);
                     done();
                 });
@@ -108,6 +117,9 @@ for (var i = 0; i < users.length; i++) {
                     should.not.exist(err);
                     res.body.should.have.property('reg_no', user.regno);
                     res.body.should.have.property('campus', user.campus);
+                    res.body.should.have.property('semester');
+                    res.body.should.have.property('courses');
+                    res.body.should.have.property('timetable');
                     res.body.should.have.property('status').with.deep.equal(codes.success);
                     done();
                 });
