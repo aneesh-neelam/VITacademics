@@ -31,7 +31,7 @@ var api = supertest(app);
 
 for (var i = 0; i < users.length; i++) {
     var user = users[i];
-    describe('Testing User: ' + user.describe, function () {
+    describe('Testing API-v2 for User: ' + user.describe, function () {
 
         it('Checking if auto-login is successful', function (done) {
             api.post('/api/v2/' + user.campus + '/login')
@@ -42,7 +42,7 @@ for (var i = 0; i < users.length; i++) {
                     res.body.should.have.property('reg_no', user.regno);
                     res.body.should.have.property('dob', user.dob);
                     res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
+                    res.body.status.should.deep.equal(codes.success);
                     done();
                 });
         });
@@ -56,7 +56,12 @@ for (var i = 0; i < users.length; i++) {
                     res.body.should.have.property('reg_no', user.regno);
                     res.body.should.have.property('dob', user.dob);
                     res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
+                    res.body.should.have.property('semester');
+                    res.body.should.have.property('courses');
+                    res.body.should.have.property('cached');
+                    res.body.should.have.property('refreshed');
+                    res.body.should.have.property('withdrawn_courses');
+                    res.body.status.should.deep.equal(codes.success);
                     done();
                 });
         });
@@ -70,9 +75,23 @@ for (var i = 0; i < users.length; i++) {
                     res.body.should.have.property('reg_no', user.regno);
                     res.body.should.have.property('dob', user.dob);
                     res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
-                    res.body.status.should.deep.equal(codes.success);
                     res.body.should.have.property('share').with.property('token').with.length(6);
+                    res.body.status.should.deep.equal(codes.success);
+                    done();
+                });
+        });
+
+        it('Checking if share using credentials is successful', function (done) {
+            api.post('/api/v2/' + user.campus + '/share')
+                .send({'regno': user.reg_no, 'dob': user.dob})
+                .expect(200)
+                .end(function (err, res) {
+                    should.not.exist(err);
+                    res.body.should.have.property('reg_no', user.regno);
+                    res.body.should.have.property('campus', user.campus);
+                    res.body.should.have.property('semester');
+                    res.body.should.have.property('courses');
+                    res.body.status.should.deep.equal(codes.success);
                     done();
                 });
         });

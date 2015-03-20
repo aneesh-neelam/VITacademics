@@ -38,7 +38,7 @@ var users = [
         campus: 'vellore'
     },
     {
-        describe: 'B.Tech CSE 4th Year - One Course + Project - Vellore',
+        describe: 'B.Tech CSE 4th Year - Project + 1 Course Withdrawl - Vellore',
         reg_no: '11BCE0260',
         dob: '20101993',
         campus: 'vellore'
