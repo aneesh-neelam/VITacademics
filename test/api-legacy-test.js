@@ -21,16 +21,18 @@ var should = require('chai').should();
 var supertest = require('supertest');
 
 var app = require(path.join(__dirname, '..', 'app'));
+var captcha = require(path.join(__dirname, '..', 'api-legacy', 'login', 'captcha-parser'));
 var codes = require(path.join(__dirname, '..', 'api-legacy', 'status')).codes;
 var users = require(path.join(__dirname, '.', 'credentials')).users;
-var captcha = require(path.join(__dirname, '..', 'api-legacy', 'login', 'captcha-parser'));
 
 var api = supertest(app);
 
-for (var i = 0; i < users.length; i++) {
+for (var i = 0; i < users.length; ++i) {
     var user = users[i];
+
     describe('Testing API-Legacy for User: ' + user.describe, function () {
-        it('Checking if Captcha image is returned successfully', function (done) {
+
+        it('Checking if getting captcha image is successful', function (done) {
             api.get('/api/' + user.campus + '/login/manual')
                 .query({'regno': user.reg_no})
                 .expect(200)
@@ -109,7 +111,7 @@ for (var i = 0; i < users.length; i++) {
                 });
         });
 
-        it('Checking if sharing of timetable is successful', function (done) {
+        it('Checking if share using credentials is successful', function (done) {
             api.get('/api/' + user.campus + '/friends/share')
                 .query({'regno': user.reg_no, 'dob': user.dob})
                 .expect(200)

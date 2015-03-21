@@ -2,8 +2,8 @@
 
 /*
  *  VITacademics
- *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2015  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -29,8 +29,9 @@ var users = require(path.join(__dirname, '.', 'credentials')).users;
 
 var api = supertest(app);
 
-for (var i = 0; i < users.length; i++) {
+for (var i = 0; i < users.length; ++i) {
     var user = users[i];
+
     describe('Testing API-v2 for User: ' + user.describe, function () {
 
         it('Checking if auto-login is successful', function (done) {
@@ -66,7 +67,7 @@ for (var i = 0; i < users.length; i++) {
                 });
         });
 
-        it('Checking if token creation is successful', function (done) {
+        it('Checking if token generation is successful', function (done) {
             api.post('/api/v2/' + user.campus + '/token')
                 .send({'regno': user.reg_no, 'dob': user.dob})
                 .expect(200)
