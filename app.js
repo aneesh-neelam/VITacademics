@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var express = require('express');
@@ -31,15 +33,15 @@ var underscore = require('underscore');
 
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
-    newrelic = require('newrelic');
+  newrelic = require('newrelic');
 }
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-    var logentries = require('node-logentries');
-    log = logentries.logger({
-        token: process.env.LOGENTRIES_TOKEN
-    });
+  var logentries = require('node-logentries');
+  log = logentries.logger({
+    token: process.env.LOGENTRIES_TOKEN
+  });
 }
 
 var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
@@ -69,29 +71,29 @@ app.use(cookieParser(secret, {signed: true}));
 
 // MongoDB
 var mongodbOptions = {
-    hosts: [{
-        host: process.env.MONGODB_HOST || '127.0.0.1',
-        port: process.env.MONGODB_PORT || '27017'
-    }],
-    database: process.env.MONGODB_DATABASE || 'VITacademics',
-    username: process.env.MONGODB_USERNAME,
-    password: process.env.MONGODB_PASSWORD,
-    options: {
-        db: {
-            native_parser: true,
-            recordQueryStats: true,
-            retryMiliSeconds: 500,
-            numberOfRetries: 10
-        },
-        server: {
-            socketOptions: {
-                keepAlive: 1,
-                connectTimeoutMS: 10000
-            },
-            auto_reconnect: true,
-            poolSize: 50
-        }
+  hosts: [{
+    host: process.env.MONGODB_HOST || '127.0.0.1',
+    port: process.env.MONGODB_PORT || '27017'
+  }],
+  database: process.env.MONGODB_DATABASE || 'VITacademics',
+  username: process.env.MONGODB_USERNAME,
+  password: process.env.MONGODB_PASSWORD,
+  options: {
+    db: {
+      native_parser: true,
+      recordQueryStats: true,
+      retryMiliSeconds: 500,
+      numberOfRetries: 10
+    },
+    server: {
+      socketOptions: {
+        keepAlive: 1,
+        connectTimeoutMS: 10000
+      },
+      auto_reconnect: true,
+      poolSize: 50
     }
+  }
 };
 app.use(mongodb(require('mongodb'), mongodbOptions));
 
@@ -99,19 +101,19 @@ app.use(mongodb(require('mongodb'), mongodbOptions));
 var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
 var queue = jackrabbit(amqpUri);
 queue.queues = {
-    main: 'VITacademics',
-    mobile: 'mobile'
+  main: 'VITacademics',
+  mobile: 'mobile'
 };
 queue.on('connected', function () {
-    var forEachQueue = function (elt, i, arr) {
-        queue.create(elt, {prefetch: 0}, function () {
-        });
-    };
-    underscore.values(queue.queues).forEach(forEachQueue);
+  var forEachQueue = function (elt, i, arr) {
+    queue.create(elt, {prefetch: 0}, function () {
+    });
+  };
+  underscore.values(queue.queues).forEach(forEachQueue);
 });
 app.use(function (req, res, next) {
-    req.queue = queue;
-    next();
+  req.queue = queue;
+  next();
 });
 
 // View Engine
@@ -120,20 +122,20 @@ app.set('view engine', 'ejs');
 
 // New Relic in Template
 if (newrelic) {
-    app.locals.newrelic = newrelic;
+  app.locals.newrelic = newrelic;
 }
 
 // Google Analytics
 var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
 app.use(ga(googleAnalyticsToken, {
-    safe: true
+  safe: true
 }));
 
 // Allow Cross-Origin Resource Eharing
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 // Routes
@@ -147,40 +149,40 @@ app.use('/api/chennai', apiRoutesLegacy);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // Error handlers
 // Development error handler, will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        if (log) {
-            log.log('debug', {Error: err, Message: err.message});
-        }
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            status: err.status,
-            stack: err.stack,
-            googleAnalyticsToken: googleAnalyticsToken
-        });
+  app.use(function (err, req, res, next) {
+    if (log) {
+      log.log('debug', {Error: err, Message: err.message});
+    }
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      status: err.status,
+      stack: err.stack,
+      googleAnalyticsToken: googleAnalyticsToken
     });
+  });
 }
 
 // Production error handler, no stacktraces leaked to user
 app.use(function (err, req, res, next) {
-    if (log) {
-        log.log('debug', {Error: err, Message: err.message});
-    }
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        status: err.status,
-        stack: '',
-        googleAnalyticsToken: googleAnalyticsToken
-    });
+  if (log) {
+    log.log('debug', {Error: err, Message: err.message});
+  }
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    status: err.status,
+    stack: '',
+    googleAnalyticsToken: googleAnalyticsToken
+  });
 });
 
 module.exports = app;

@@ -16,33 +16,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 
 
 router.get('/', function (req, res) {
-    var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-    res.render('index', {googleAnalyticsToken: googleAnalyticsToken});
+  var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
+  res.render('index', {googleAnalyticsToken: googleAnalyticsToken});
 });
 
 router.get('/status', function (req, res) {
-    var port = process.env.PORT || 3000;
-    var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-    var status = {
-        host: process.env.HOST || 'localhost',
-        hostname: process.env.HOSTNAME || 'http://localhost:' + port + '/',
-        engine: process.version,
-        platform: process.platform,
-        arch: process.arch,
-        serverStatus: 'OK',
-        lastUpdated: '21st March 2015',
-        googleAnalyticsToken: googleAnalyticsToken
-    };
-    res.render('status', status);
+  var port = process.env.PORT || 3000;
+  var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
+  var status = {
+    host: process.env.HOST || 'localhost',
+    hostname: process.env.HOSTNAME || 'http://localhost:' + port + '/',
+    engine: process.version,
+    platform: process.platform,
+    arch: process.arch,
+    serverStatus: 'OK',
+    lastUpdated: '22nd March 2015',
+    googleAnalyticsToken: googleAnalyticsToken
+  };
+  res.render('status', status);
 });
 
 router.get('/api', function (req, res) {
-    res.redirect('https://github.com/aneesh-neelam/VITacademics/wiki');
+  res.redirect('https://github.com/aneesh-neelam/VITacademics/wiki');
 });
 
 module.exports = router;

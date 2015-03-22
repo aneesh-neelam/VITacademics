@@ -16,6 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var router = express.Router();
@@ -28,88 +30,88 @@ var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share')
 
 
 router.post('/login', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {
-        reg_no: req.body.regno.toUpperCase(),
-        dob: req.body.dob,
-        campus: req.originalUrl.split('/')[3].toLowerCase()
-    };
-    var onGet = function (err, response) {
-        res.json(response);
-    };
-    loginAuto.get(app, data, onGet);
+  var app = {
+    db: req.db,
+    queue: req.queue
+  };
+  var data = {
+    reg_no: req.body.regno.toUpperCase(),
+    dob: req.body.dob,
+    campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  var onGet = function (err, response) {
+    res.json(response);
+  };
+  loginAuto.get(app, data, onGet);
 });
 
 router.post('/refresh', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {
-        reg_no: req.body.regno.toUpperCase(),
-        dob: req.body.dob,
-        campus: req.originalUrl.split('/')[3].toLowerCase()
-    };
-    var onGet = function (err, response) {
-        res.json(response);
-    };
-    dataAggregate.get(app, data, onGet);
+  var app = {
+    db: req.db,
+    queue: req.queue
+  };
+  var data = {
+    reg_no: req.body.regno.toUpperCase(),
+    dob: req.body.dob,
+    campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  var onGet = function (err, response) {
+    res.json(response);
+  };
+  dataAggregate.get(app, data, onGet);
 });
 
 router.post('/grades', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {
-        reg_no: req.body.regno.toUpperCase(),
-        dob: req.body.dob,
-        campus: req.originalUrl.split('/')[3].toLowerCase()
-    };
-    var onGet = function (err, response) {
-        res.send(response);
-    };
-    dataGrades.get(app, data, onGet);
+  var app = {
+    db: req.db,
+    queue: req.queue
+  };
+  var data = {
+    reg_no: req.body.regno.toUpperCase(),
+    dob: req.body.dob,
+    campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  var onGet = function (err, response) {
+    res.send(response);
+  };
+  dataGrades.get(app, data, onGet);
 });
 
 router.post('/token', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {
-        reg_no: req.body.regno.toUpperCase(),
-        dob: req.body.dob,
-        campus: req.originalUrl.split('/')[3].toLowerCase()
-    };
-    var onGet = function (err, response) {
-        res.json(response);
-    };
-    friendsGenerate.get(app, data, onGet);
+  var app = {
+    db: req.db,
+    queue: req.queue
+  };
+  var data = {
+    reg_no: req.body.regno.toUpperCase(),
+    dob: req.body.dob,
+    campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  var onGet = function (err, response) {
+    res.json(response);
+  };
+  friendsGenerate.get(app, data, onGet);
 });
 
 router.post('/share', function (req, res) {
-    var token;
-    var reg_no;
-    if (req.body.token) token = req.body.token.toUpperCase();
-    if (req.body.regno) reg_no = req.body.regno.toUpperCase();
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {
-        reg_no: reg_no,
-        dob: req.body.dob,
-        token: token,
-        campus: req.originalUrl.split('/')[3].toLowerCase()
-    };
-    var onGet = function (err, response) {
-        res.json(response);
-    };
-    friendsShare.get(app, data, onGet);
+  var token;
+  var reg_no;
+  if (req.body.token) token = req.body.token.toUpperCase();
+  if (req.body.regno) reg_no = req.body.regno.toUpperCase();
+  var app = {
+    db: req.db,
+    queue: req.queue
+  };
+  var data = {
+    reg_no: reg_no,
+    dob: req.body.dob,
+    token: token,
+    campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  var onGet = function (err, response) {
+    res.json(response);
+  };
+  friendsShare.get(app, data, onGet);
 });
 
 module.exports = router;

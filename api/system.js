@@ -16,61 +16,63 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var async = require('async');
 var path = require('path');
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-    var logentries = require('node-logentries');
-    log = logentries.logger({
-        token: process.env.LOGENTRIES_TOKEN
-    });
+  var logentries = require('node-logentries');
+  log = logentries.logger({
+    token: process.env.LOGENTRIES_TOKEN
+  });
 }
 
 var status = require(path.join(__dirname, 'status'));
 
 
 exports.get = function (app, data, callback) {
-    var clientCollection = app.db.collection('client');
-    var messageCollection = app.db.collection('message');
-    var parallelTasks = {
-        client: function (asyncCallback) {
-            var keys = {
-                android: 1,
-                ios: 1,
-                windows: 1
-            };
-            clientCollection.findOne({}, keys, asyncCallback);
-        },
-        message: function (asyncCallback) {
-            messageCollection.find({}, {limit: 10, sort: [['_id', 'desc']]}).toArray(asyncCallback);
-        }
-    };
-    var onFetch = function (err, results) {
-        if (err) {
-            data.status = status.codes.mongoDown;
-            if (log) {
-                log.log('debug', data);
-            }
-            console.log(data.status);
-            callback(true, data);
-        }
-        else if (results.client && results.message) {
-            data.android = results.client.android;
-            data.ios = results.client.ios;
-            data.windows = results.client.windows;
-            data.messages = results.message;
-            data.status = status.codes.success;
-            callback(false, data);
-        }
-        else {
-            data.status = status.codes.noData;
-            if (log) {
-                log.log('debug', data);
-            }
-            console.log(data.status);
-            callback(true, data);
-        }
-    };
-    async.parallel(parallelTasks, onFetch);
+  var clientCollection = app.db.collection('client');
+  var messageCollection = app.db.collection('message');
+  var parallelTasks = {
+    client: function (asyncCallback) {
+      var keys = {
+        android: 1,
+        ios: 1,
+        windows: 1
+      };
+      clientCollection.findOne({}, keys, asyncCallback);
+    },
+    message: function (asyncCallback) {
+      messageCollection.find({}, {limit: 10, sort: [['_id', 'desc']]}).toArray(asyncCallback);
+    }
+  };
+  var onFetch = function (err, results) {
+    if (err) {
+      data.status = status.codes.mongoDown;
+      if (log) {
+        log.log('debug', data);
+      }
+      console.log(data.status);
+      callback(true, data);
+    }
+    else if (results.client && results.message) {
+      data.android = results.client.android;
+      data.ios = results.client.ios;
+      data.windows = results.client.windows;
+      data.messages = results.message;
+      data.status = status.codes.success;
+      callback(false, data);
+    }
+    else {
+      data.status = status.codes.noData;
+      if (log) {
+        log.log('debug', data);
+      }
+      console.log(data.status);
+      callback(true, data);
+    }
+  };
+  async.parallel(parallelTasks, onFetch);
 };

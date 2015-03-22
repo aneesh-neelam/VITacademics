@@ -16,6 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var router = express.Router();
@@ -24,15 +26,15 @@ var system = require(path.join(__dirname, '..', 'api', 'system'));
 
 
 router.get('/', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {};
-    var onGet = function (err, response) {
-        res.json(response);
-    };
-    system.get(app, data, onGet);
+  var app = {
+    db: req.db,
+    queue: req.queue
+  };
+  var data = {};
+  var onGet = function (err, response) {
+    res.json(response);
+  };
+  system.get(app, data, onGet);
 });
 
 module.exports = router;

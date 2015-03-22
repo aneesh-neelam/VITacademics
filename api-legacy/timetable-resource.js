@@ -16,30 +16,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var emptyDay = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
 ];
 
 var timetable = {
-    mon: emptyDay,
-    tue: emptyDay,
-    wed: emptyDay,
-    thu: emptyDay,
-    fri: emptyDay,
-    sat: emptyDay
+  mon: emptyDay,
+  tue: emptyDay,
+  wed: emptyDay,
+  thu: emptyDay,
+  fri: emptyDay,
+  sat: emptyDay
 };
 
 module.exports.emptyTimetable = timetable;

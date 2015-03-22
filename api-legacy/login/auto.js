@@ -17,16 +17,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var path = require('path');
 
 var captchaParser = require(path.join(__dirname, 'captcha-parser'));
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-    var logentries = require('node-logentries');
-    log = logentries.logger({
-        token: process.env.LOGENTRIES_TOKEN
-    });
+  var logentries = require('node-logentries');
+  log = logentries.logger({
+    token: process.env.LOGENTRIES_TOKEN
+  });
 }
 
 var login = require(path.join(__dirname, 'get'));
@@ -35,24 +37,24 @@ var submit = require(path.join(__dirname, 'submit'));
 
 
 exports.get = function (app, data, callback) {
-    var parseCaptcha = function (err, captchaImage) {
-        if (err) {
-            callback(true, captchaImage);
+  var parseCaptcha = function (err, captchaImage) {
+    if (err) {
+      callback(true, captchaImage);
+    }
+    else {
+      try {
+        data.captcha = captchaParser.parseBuffer(captchaImage);
+      }
+      catch (ex) {
+        data.status = status.captchaParsing;
+        if (log) {
+          log.log('debug', data);
         }
-        else {
-            try {
-                data.captcha = captchaParser.parseBuffer(captchaImage);
-            }
-            catch (ex) {
-                data.status = status.captchaParsing;
-                if (log) {
-                    log.log('debug', data);
-                }
-                console.log(data.status);
-                callback(true, data);
-            }
-            submit.get(app, data, callback);
-        }
-    };
-    login.get(app, data, parseCaptcha);
+        console.log(data.status);
+        callback(true, data);
+      }
+      submit.get(app, data, callback);
+    }
+  };
+  login.get(app, data, parseCaptcha);
 };

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
  *  VITacademics
  *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
@@ -16,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var path = require('path');
 var should = require('chai').should();
 var supertest = require('supertest');
@@ -28,103 +32,103 @@ var users = require(path.join(__dirname, '.', 'credentials')).users;
 var api = supertest(app);
 
 for (var i = 0; i < users.length; ++i) {
-    var user = users[i];
+  var user = users[i];
 
-    describe('Testing API-Legacy for User: ' + user.describe, function () {
+  describe('Testing API-Legacy for User: ' + user.describe, function () {
 
-        it('Checking if getting captcha image is successful', function (done) {
-            api.get('/api/' + user.campus + '/login/manual')
-                .query({'regno': user.reg_no})
-                .expect(200)
-                .end(function (err, res) {
-                    should.not.exist(err);
-                    var parsedCaptcha = captcha.parseBuffer(res.body);
-                    parsedCaptcha.should.have.length(6);
-                    done();
-                });
-        });
-
-        it('Checking if auto-login is successful', function (done) {
-            api.get('/api/' + user.campus + '/login/auto')
-                .query({'regno': user.reg_no, 'dob': user.dob})
-                .expect(200)
-                .end(function (err, res) {
-                    should.not.exist(err);
-                    res.body.should.have.property('reg_no', user.regno);
-                    res.body.should.have.property('dob', user.dob);
-                    res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
-                    done();
-                });
-        });
-
-        it('Checking if first data fetch is successful', function (done) {
-            api.get('/api/' + user.campus + '/data/first')
-                .query({'regno': user.reg_no, 'dob': user.dob})
-                .expect(200)
-                .end(function (err, res) {
-                    should.not.exist(err);
-                    res.body.should.have.property('reg_no', user.regno);
-                    res.body.should.have.property('dob', user.dob);
-                    res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('semester');
-                    res.body.should.have.property('courses');
-                    res.body.should.have.property('cached');
-                    res.body.should.have.property('refreshed');
-                    res.body.should.have.property('timetable');
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
-                    res.body.should.have.property('share').with.property('token').with.length(6);
-                    done();
-                });
-        });
-
-        it('Checking if data refresh is successful', function (done) {
-            api.get('/api/' + user.campus + '/data/refresh')
-                .query({'regno': user.reg_no, 'dob': user.dob})
-                .expect(200)
-                .end(function (err, res) {
-                    should.not.exist(err);
-                    res.body.should.have.property('reg_no', user.regno);
-                    res.body.should.have.property('dob', user.dob);
-                    res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('semester');
-                    res.body.should.have.property('courses');
-                    res.body.should.have.property('cached');
-                    res.body.should.have.property('refreshed');
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
-                    done();
-                });
-        });
-
-        it('Checking if token generation is successful', function (done) {
-            api.get('/api/' + user.campus + '/friends/regenerate')
-                .query({'regno': user.reg_no, 'dob': user.dob})
-                .expect(200)
-                .end(function (err, res) {
-                    should.not.exist(err);
-                    res.body.should.have.property('reg_no', user.regno);
-                    res.body.should.have.property('dob', user.dob);
-                    res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
-                    res.body.should.have.property('share').with.property('token').with.length(6);
-                    done();
-                });
-        });
-
-        it('Checking if share using credentials is successful', function (done) {
-            api.get('/api/' + user.campus + '/friends/share')
-                .query({'regno': user.reg_no, 'dob': user.dob})
-                .expect(200)
-                .end(function (err, res) {
-                    should.not.exist(err);
-                    res.body.should.have.property('reg_no', user.regno);
-                    res.body.should.have.property('campus', user.campus);
-                    res.body.should.have.property('semester');
-                    res.body.should.have.property('courses');
-                    res.body.should.have.property('timetable');
-                    res.body.should.have.property('status').with.deep.equal(codes.success);
-                    done();
-                });
+    it('Checking if getting captcha image is successful', function (done) {
+      api.get('/api/' + user.campus + '/login/manual')
+        .query({'regno': user.reg_no})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          var parsedCaptcha = captcha.parseBuffer(res.body);
+          parsedCaptcha.should.have.length(6);
+          done();
         });
     });
+
+    it('Checking if auto-login is successful', function (done) {
+      api.get('/api/' + user.campus + '/login/auto')
+        .query({'regno': user.reg_no, 'dob': user.dob})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('dob', user.dob);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('status').with.deep.equal(codes.success);
+          done();
+        });
+    });
+
+    it('Checking if first data fetch is successful', function (done) {
+      api.get('/api/' + user.campus + '/data/first')
+        .query({'regno': user.reg_no, 'dob': user.dob})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('dob', user.dob);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('semester');
+          res.body.should.have.property('courses');
+          res.body.should.have.property('cached');
+          res.body.should.have.property('refreshed');
+          res.body.should.have.property('timetable');
+          res.body.should.have.property('status').with.deep.equal(codes.success);
+          res.body.should.have.property('share').with.property('token').with.length(6);
+          done();
+        });
+    });
+
+    it('Checking if data refresh is successful', function (done) {
+      api.get('/api/' + user.campus + '/data/refresh')
+        .query({'regno': user.reg_no, 'dob': user.dob})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('dob', user.dob);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('semester');
+          res.body.should.have.property('courses');
+          res.body.should.have.property('cached');
+          res.body.should.have.property('refreshed');
+          res.body.should.have.property('status').with.deep.equal(codes.success);
+          done();
+        });
+    });
+
+    it('Checking if token generation is successful', function (done) {
+      api.get('/api/' + user.campus + '/friends/regenerate')
+        .query({'regno': user.reg_no, 'dob': user.dob})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('dob', user.dob);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('status').with.deep.equal(codes.success);
+          res.body.should.have.property('share').with.property('token').with.length(6);
+          done();
+        });
+    });
+
+    it('Checking if share using credentials is successful', function (done) {
+      api.get('/api/' + user.campus + '/friends/share')
+        .query({'regno': user.reg_no, 'dob': user.dob})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('semester');
+          res.body.should.have.property('courses');
+          res.body.should.have.property('timetable');
+          res.body.should.have.property('status').with.deep.equal(codes.success);
+          done();
+        });
+    });
+  });
 }

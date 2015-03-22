@@ -16,24 +16,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-    var logentries = require('node-logentries');
-    log = logentries.logger({
-        token: process.env.LOGENTRIES_TOKEN
-    });
+  var logentries = require('node-logentries');
+  log = logentries.logger({
+    token: process.env.LOGENTRIES_TOKEN
+  });
 }
 
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
-    var app_name = process.env.NEWRELIC_APP_NAME;
-    var license = process.env.NEWRELIC_LICENSE;
+  var app_name = process.env.NEWRELIC_APP_NAME;
+  var license = process.env.NEWRELIC_LICENSE;
 }
 
 exports.config = {
-    app_name: [app_name],
-    license_key: license,
-    logging: {
-        level: 'info'
-    },
-    capture_params: true
+  app_name: [app_name],
+  license_key: license,
+  logging: {
+    level: 'info'
+  },
+  capture_params: true
 };

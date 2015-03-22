@@ -16,6 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var cache = require('memory-cache');
 var cheerio = require('cheerio');
 var cookie = require('cookie');
@@ -26,6 +28,6 @@ var status = require(path.join(__dirname, '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
-    data.status = status.codes.toDo;
-    callback(false, data);
+  data.status = status.codes.toDo;
+  callback(false, data);
 };

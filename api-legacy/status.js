@@ -17,18 +17,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var error = {
-    success: {message: 'Successful execution', code: 0},
-    timedOut: {message: 'Session timed out', code: 11},
-    invalid: {message: 'Invalid credentials or captcha', code: 12},
-    captchaParsing: {message: 'Error parsing captcha', code: 13},
-    tokenExpired: {message: 'Token expired', code: 14},
-    noData: {message: 'Requested data is not available', code: 15},
-    toDo: {message: 'This feature is incomplete', code: 50},
-    vitDown: {message: 'VIT\'s servers may be slowed down or we may be facing a connectivity issue', code: 89},
-    mongoDown: {message: 'Our MongoDB instance may be down or we may be facing a connectivity issue', code: 97},
-    outage: {message: 'Our backend servers may be down or you may be facing a connectivity issue', code: 98},
-    other: {message: 'An unforeseen error has occurred', code: 99}
+  success: {message: 'Successful execution', code: 0},
+  timedOut: {message: 'Session timed out', code: 11},
+  invalid: {message: 'Invalid credentials or captcha', code: 12},
+  captchaParsing: {message: 'Error parsing captcha', code: 13},
+  tokenExpired: {message: 'Token expired', code: 14},
+  noData: {message: 'Requested data is not available', code: 15},
+  toDo: {message: 'This feature is incomplete', code: 50},
+  vitDown: {message: 'VIT\'s servers may be slowed down or we may be facing a connectivity issue', code: 89},
+  mongoDown: {message: 'Our MongoDB instance may be down or we may be facing a connectivity issue', code: 97},
+  outage: {message: 'Our backend servers may be down or you may be facing a connectivity issue', code: 98},
+  other: {message: 'An unforeseen error has occurred', code: 99}
 };
 
 module.exports.codes = error;

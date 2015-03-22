@@ -16,52 +16,54 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 var cache = require('memory-cache');
 var path = require('path');
 var unirest = require('unirest');
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-    var logentries = require('node-logentries');
-    log = logentries.logger({
-        token: process.env.LOGENTRIES_TOKEN
-    });
+  var logentries = require('node-logentries');
+  log = logentries.logger({
+    token: process.env.LOGENTRIES_TOKEN
+  });
 }
 
 var status = require(path.join(__dirname, '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
-    var captchaUri;
-    if (data.campus === 'vellore') {
-        captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
+  var captchaUri;
+  if (data.campus === 'vellore') {
+    captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
+  }
+  else if (data.campus === 'chennai') {
+    captchaUri = 'http://27.251.102.132/parent/captcha.asp';
+  }
+  var onRequest = function (response) {
+    if (response.error) {
+      data.status = status.codes.vitDown;
+      if (log) {
+        log.log('debug', data);
+      }
+      console.log(JSON.stringify(data));
+      callback(true, data);
     }
-    else if (data.campus === 'chennai') {
-        captchaUri = 'http://27.251.102.132/parent/captcha.asp';
+    else {
+      var validity = 2; // In Minutes
+      var key = Object.keys(response.cookies)[0];
+      var cookieSerial = key + "=" + response.cookies[key];
+      var doc = {
+        reg_no: data.reg_no,
+        cookie: cookieSerial
+      };
+      cache.put(data.reg_no, doc, validity * 60 * 1000);
+      callback(null, response.body);
     }
-    var onRequest = function (response) {
-        if (response.error) {
-            data.status = status.codes.vitDown;
-            if (log) {
-                log.log('debug', data);
-            }
-            console.log(JSON.stringify(data));
-            callback(true, data);
-        }
-        else {
-            var validity = 2; // In Minutes
-            var key = Object.keys(response.cookies)[0];
-            var cookieSerial = key + "=" + response.cookies[key];
-            var doc = {
-                reg_no: data.reg_no,
-                cookie: cookieSerial
-            };
-            cache.put(data.reg_no, doc, validity * 60 * 1000);
-            callback(null, response.body);
-        }
-    };
-    unirest.get(captchaUri)
-        .encoding(null)
-        .timeout(26000)
-        .end(onRequest);
+  };
+  unirest.get(captchaUri)
+    .encoding(null)
+    .timeout(26000)
+    .end(onRequest);
 };
