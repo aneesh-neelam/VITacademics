@@ -44,7 +44,7 @@ var users = [
     reg_no: '11BCE0260',
     dob: '20101993',
     campus: 'vellore'
-  },
+  }
 ];
 
 module.exports.users = users;

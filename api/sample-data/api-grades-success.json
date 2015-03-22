@@ -2,7 +2,7 @@
   "reg_no": "11BCE0260",
   "dob": "20101993",
   "campus": "vellore",
-  "courses": [
+  "grades": [
     {
       "course_code": "CHY101",
       "course_title": "Engineering Chemistry",
@@ -574,9 +574,6 @@
       "option": "NIL"
     }
   ],
-  "credits_registered": 163,
-  "credits_earned": 163,
-  "cgpa": 8.35,
   "grade_summary": {
     "s": 12,
     "a": 14,
@@ -587,8 +584,13 @@
     "f": 0,
     "n": 0
   },
+  "credits_registered": 163,
+  "credits_earned": 163,
+  "cgpa": 8.35,
+  "grades_refreshed": "2015-03-22T11:20:38.636Z",
   "status": {
     "message": "Successful Execution",
     "code": 0
-  }
+  },
+  "cached": true
 }
