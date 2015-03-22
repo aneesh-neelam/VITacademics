@@ -31,8 +31,7 @@ var users = require(path.join(__dirname, '.', 'credentials')).users;
 
 var api = supertest(app);
 
-for (var i = 0; i < users.length; ++i) {
-  var user = users[i];
+var onEach = function (user, i, arr) {
 
   describe('Testing API-v2 for User: ' + user.describe, function () {
 
@@ -50,7 +49,7 @@ for (var i = 0; i < users.length; ++i) {
         });
     });
 
-    it('Checking if refresh is successful', function (done) {
+    it('Checking if fetching/refreshing current semester details is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/refresh')
         .send({'regno': user.reg_no, 'dob': user.dob})
         .expect(200)
@@ -64,6 +63,27 @@ for (var i = 0; i < users.length; ++i) {
           res.body.should.have.property('cached');
           res.body.should.have.property('refreshed');
           res.body.should.have.property('withdrawn_courses');
+          res.body.status.should.deep.equal(codes.success);
+          done();
+        });
+    });
+
+    it('Checking if fetching grades is successful', function (done) {
+      api.post('/api/v2/' + user.campus + '/grades')
+        .send({'regno': user.reg_no, 'dob': user.dob})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('dob', user.dob);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('grades');
+          res.body.should.have.property('credits_registered');
+          res.body.should.have.property('credits_earned');
+          res.body.should.have.property('cgpa');
+          res.body.should.have.property('grade_summary');
+          res.body.should.have.property('cached');
+          res.body.should.have.property('grades_refreshed');
           res.body.status.should.deep.equal(codes.success);
           done();
         });
@@ -99,4 +119,6 @@ for (var i = 0; i < users.length; ++i) {
         });
     });
   });
-}
+};
+
+users.forEach(onEach);

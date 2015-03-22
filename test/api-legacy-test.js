@@ -31,8 +31,7 @@ var users = require(path.join(__dirname, '.', 'credentials')).users;
 
 var api = supertest(app);
 
-for (var i = 0; i < users.length; ++i) {
-  var user = users[i];
+var onEach = function (user, i, arr) {
 
   describe('Testing API-Legacy for User: ' + user.describe, function () {
 
@@ -131,4 +130,6 @@ for (var i = 0; i < users.length; ++i) {
         });
     });
   });
-}
+};
+
+users.forEach(onEach);
