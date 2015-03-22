@@ -28,6 +28,7 @@ var logger = require('morgan');
 var mongodb = require('express-mongo-db');
 var path = require('path');
 var underscore = require('underscore');
+router = express.Router();
 
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
@@ -43,10 +44,19 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
+apiRoutes(router);
+
 var apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
+apiSystemRoutes(router);
+
 var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
+apiRoutesLegacy(router);
+
 var txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
+txtwebRoutes(router);
+
 var webRoutes = require(path.join(__dirname, 'routes', 'web'));
+webRoutes(router);
 
 var app = express();
 
@@ -137,13 +147,13 @@ app.use(function (req, res, next) {
 });
 
 // Routes
-app.use('/', webRoutes);
-app.use('/api/txtweb', txtwebRoutes);
-app.use('/api/v2/system', apiSystemRoutes);
-app.use('/api/v2/vellore', apiRoutes);
-app.use('/api/v2/chennai', apiRoutes);
-app.use('/api/vellore', apiRoutesLegacy);
-app.use('/api/chennai', apiRoutesLegacy);
+app.use('/', router);
+app.use('/api/txtweb', router);
+app.use('/api/v2/system', router);
+app.use('/api/v2/vellore', router);
+app.use('/api/v2/chennai', router);
+app.use('/api/vellore', router);
+app.use('/api/chennai', router);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {

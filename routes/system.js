@@ -18,21 +18,19 @@
 
 var express = require('express');
 var path = require('path');
-var router = express.Router();
 
 var system = require(path.join(__dirname, '..', 'api', 'system'));
 
-
-router.get('/', function (req, res) {
-    var app = {
-        db: req.db,
-        queue: req.queue
-    };
-    var data = {};
-    var onGet = function (err, response) {
-        res.json(response);
-    };
-    system.get(app, data, onGet);
-});
-
-module.exports = router;
+module.exports=function(router){
+  router.get('/', function (req, res) {
+      var app = {
+          db: req.db,
+          queue: req.queue
+      };
+      var data = {};
+      var onGet = function (err, response) {
+          res.json(response);
+      };
+      system.get(app, data, onGet);
+  });
+}
