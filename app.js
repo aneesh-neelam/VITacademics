@@ -147,13 +147,13 @@ app.use(function (req, res, next) {
 });
 
 // Routes
-app.use('/', webRoutes);
-app.use('/api/txtweb', txtwebRoutes);
-app.use('/api/v2/system', apiSystemRoutes);
-app.use('/api/v2/vellore', apiRoutes);
-app.use('/api/v2/chennai', apiRoutes);
-app.use('/api/vellore', apiRoutesLegacy);
-app.use('/api/chennai', apiRoutesLegacy);
+app.use('/', router);
+app.use('/api/txtweb', router);
+app.use('/api/v2/system', router);
+app.use('/api/v2/vellore', router);
+app.use('/api/v2/chennai', router);
+app.use('/api/vellore', router);
+app.use('/api/chennai', router);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
