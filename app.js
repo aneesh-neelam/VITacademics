@@ -28,6 +28,7 @@ var logger = require('morgan');
 var mongodb = require('express-mongo-db');
 var path = require('path');
 var underscore = require('underscore');
+router = express.Router();
 
 var newrelic;
 if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
@@ -43,10 +44,19 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
+apiRoutes(router);
+
 var apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
+apiSystemRoutes(router);
+
 var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
+apiRoutesLegacy(router);
+
 var txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
+txtwebRoutes(router);
+
 var webRoutes = require(path.join(__dirname, 'routes', 'web'));
+webRoutes(router);
 
 var app = express();
 

@@ -18,48 +18,47 @@
 
 var express = require('express');
 var path = require('path');
-var router = express.Router();
 
 var api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
 
-router.get('/', function (req, res) {
-    var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-    var txtWebAppKey = process.env.TXTWEB_APP_KEY || 'randomkey';
-    if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
-        var app = {
-            db: req.db,
-            queue: req.queue
-        };
-        var data = {
-            message: req.query['txtweb-message'],
-            mobile: req.query['txtweb-mobile']
-        };
-        var onGet = function (err, messages) {
-            res.render('txtweb', {
-                googleAnalyticsToken: googleAnalyticsToken,
-                messages: messages,
-                instructions: false,
-                txtWebAppKey: txtWebAppKey
-            });
-        };
-        api_txtweb.parseMessage(app, data, onGet);
-    }
-    else {
-        var messages = [
-            'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
-            'Get Course Details:  @vitacademics course [CourseCode]',
-            'Get Today\'s Classes: @vitacademics today',
-            'Get Attendance: @vitacademics attendance',
-            'Get Marks: @vitacademics marks',
-            'Help - @vitacademics help'
-        ];
-        res.render('txtweb', {
-            googleAnalyticsToken: googleAnalyticsToken,
-            messages: messages,
-            instructions: true,
-            txtWebAppKey: txtWebAppKey
-        });
-    }
-});
-
-module.exports = router;
+module.exports=function(router){
+  router.get('/', function (req, res) {
+      var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
+      var txtWebAppKey = process.env.TXTWEB_APP_KEY || 'randomkey';
+      if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
+          var app = {
+              db: req.db,
+              queue: req.queue
+          };
+          var data = {
+              message: req.query['txtweb-message'],
+              mobile: req.query['txtweb-mobile']
+          };
+          var onGet = function (err, messages) {
+              res.render('txtweb', {
+                  googleAnalyticsToken: googleAnalyticsToken,
+                  messages: messages,
+                  instructions: false,
+                  txtWebAppKey: txtWebAppKey
+              });
+          };
+          api_txtweb.parseMessage(app, data, onGet);
+      }
+      else {
+          var messages = [
+              'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
+              'Get Course Details:  @vitacademics course [CourseCode]',
+              'Get Today\'s Classes: @vitacademics today',
+              'Get Attendance: @vitacademics attendance',
+              'Get Marks: @vitacademics marks',
+              'Help - @vitacademics help'
+          ];
+          res.render('txtweb', {
+              googleAnalyticsToken: googleAnalyticsToken,
+              messages: messages,
+              instructions: true,
+              txtWebAppKey: txtWebAppKey
+          });
+      }
+  });
+}
