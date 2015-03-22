@@ -1,6 +1,7 @@
 /*
  *  VITacademics
  *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015  Kishore Narendran <kishore.narendran09@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,6 +22,7 @@ var cheerio = require('cheerio');
 var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
+var moment = require('moment');
 
 var status = require(path.join(__dirname, '..', 'status'));
 
@@ -38,25 +40,27 @@ exports.get = function (app, data, callback) {
       var onRequest = function (response) {
           if (response.error) {
               data.status = status.codes.vitDown;
+              console.log(JSON.stringify(data));
               callback(true, data);
           }
           else {
               var baseScraper = cheerio.load(response.body);
               var coursesLength = baseScraper('table #hist tr').length;
-              courses = [];
-              for(var i = 0; i < coursesLength; i++) {
-                var attrsLength = baseScraper('table #hist tr').eq(i).children('td').length;
-                var attrs = baseScraper('table #hist tr').eq(i).children('td');
+              var courses = [];
+              baseScraper('table #hist tr').each(function(i, elem) {
+                var attrs = baseScraper(this).children('td');
                 var course = {'course_code': attrs.eq(1).text(),
                               'course_title': attrs.eq(2).text(),
                               'course_type': attrs.eq(3).text(),
-                              'credits': attrs.eq(4).text(),
+                              'credits': parseInt(attrs.eq(4).text()),
                               'grade': attrs.eq(5).text(),
-                              'exam_held': attrs.eq(6).text(),
-                              'result_date': attrs.eq(7).text(),
+                              'exam_held': moment(attrs.eq(6).text()).format('YYYY-MM'),
+                              'result_date': ((attrs.eq(7).text() != "") ? (moment(attrs.eq(7).text()).format('YYYY-MM-DD')): null),
                               'option': attrs.eq(8).text()};
-                courses.push(course);
-              }
+                if(course.course_code != "Course Code") {
+                  courses.push(course);
+                }
+              });
 
               //Scraping the credit information
               var creditsTable = baseScraper('table table').eq(2).children('tr').eq(1);
