@@ -1,3 +1,6 @@
+# WebStorm
+.idea/
+
 # Logs
 logs
 *.log
@@ -20,9 +23,8 @@ coverage
 build/Release
 
 # Dependency directory
-# Commenting this out is preferred by some people, see
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
-node_modules
+# Commenting this out is preferred by some people, see "https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git"
+node_modules/
 
 # Users Environment Variables
 .lock-wscript
