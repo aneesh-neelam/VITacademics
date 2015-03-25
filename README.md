@@ -2,7 +2,7 @@
 
 The background worker for the VITacademics HTTP API Server
 
-Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics-Worker/issues)
+Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics-Worker/issues). 
 
 ## Instructions for Installation:
 ### Install Node.js/io.js (Latest Stable Release)

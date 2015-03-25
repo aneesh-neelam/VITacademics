@@ -1,9 +1,10 @@
 {
   "name": "VITacademics-Worker",
   "version": "0.1.0",
+  "homepage": "https://vitacademics-rel.herokuapp.com",
   "description": "The worker process for VITacademics",
   "bugs": {
-    "url": "https://github.com/aneesh-neelam/VITacademics/issues",
+    "url": "https://github.com/aneesh-neelam/VITacademics-Worker/issues",
     "email": "neelam.aneesh@gmail.com"
   },
   "private": true,
@@ -15,9 +16,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/aneesh-neelam/VITacademics-Worker.git"
-  },
-  "bugs": {
-    "url": "https://github.com/aneesh-neelam/VITacademics-Worker/issues"
   },
   "contributors": [
     {
