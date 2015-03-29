@@ -146,7 +146,13 @@ exports.get = function (app, data, callback) {
               if(!(examHeldCollection.indexOf(examHeld) > -1)) {
                 examHeldCollection.push(examHeld);
               }
-              semesterWiseGrades[examHeld] = [];
+              if(semesterWiseGrades[examHeld] != null){
+                semesterWiseGrades[examHeld].push({'credits': parseInt(attrs.eq(4).text()), 'grade': attrs.eq(5).text()});
+              }
+              else {
+                semesterWiseGrades[examHeld] = [];
+                semesterWiseGrades[examHeld].push({'credits': parseInt(attrs.eq(4).text()), 'grade': attrs.eq(5).text()});
+              }
             };
             baseScraper('table #hist tr').each(onEach);
 
@@ -154,14 +160,6 @@ exports.get = function (app, data, callback) {
             examHeldCollection.shift();
             data.grades.shift();
             delete semesterWiseGrades["Invalid date"];
-
-            //Pushing necessary credits and grade information to evaluate the semester wise GPA
-            for(var i = 0; i < data.grades.length; i++) {
-              var course = data.grades[i];
-              var semesterGrades = semesterWiseGrades[course.exam_held];
-              semesterGrades.push({'credits': course.credits, 'grade': course.grade});
-              semesterWiseGrades[course.exam_held] = semesterGrades;
-            }
 
             //Calculating the semester wise GPA
             for(var i = 0; i < examHeldCollection.length; i++) {
