@@ -8,7 +8,7 @@
       "class_number": 4792,
       "course_code": "CSE202",
       "course_title": "Algorithm Design and Analysis",
-      "course_type": 1,
+      "subject_type": "Theory Only",
       "ltpc": "3104",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -19,6 +19,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 1,
       "timings": [
         {
           "start_time": "03:30:00Z",
@@ -43,9 +44,9 @@
       ],
       "attendance": {
         "registration_date": "2014-12-16T09:03:50.000Z",
-        "attended_classes": 8,
-        "total_classes": 12,
-        "attendance_percentage": 67,
+        "attended_classes": 28,
+        "total_classes": 35,
+        "attendance_percentage": 80,
         "details": [
           {
             "sl": 1,
@@ -118,13 +119,151 @@
             "date": "2015-01-27",
             "status": "Absent",
             "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-01-29",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-02-02",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-03",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-02-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-02-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-02-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-02-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-02-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-02-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 28,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 29,
+            "date": "2015-02-26",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 30,
+            "date": "2015-03-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 31,
+            "date": "2015-03-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 32,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 33,
+            "date": "2015-03-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 34,
+            "date": "2015-03-16",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 35,
+            "date": "2015-03-18",
+            "status": "Absent",
+            "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "cat1": null,
-        "cat1_status": "",
+        "cat1": 44,
+        "cat1_status": "Present",
         "cat2": null,
         "cat2_status": "",
         "quiz1": null,
@@ -143,7 +282,7 @@
       "class_number": 4574,
       "course_code": "CSE221",
       "course_title": "Microprocessor and Interfacing",
-      "course_type": 1,
+      "subject_type": "Embedded Theory",
       "ltpc": "3003",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -154,6 +293,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 1,
       "timings": [
         {
           "start_time": "03:30:00Z",
@@ -173,9 +313,9 @@
       ],
       "attendance": {
         "registration_date": "2015-01-06T09:41:45.000Z",
-        "attended_classes": 14,
-        "total_classes": 16,
-        "attendance_percentage": 88,
+        "attended_classes": 25,
+        "total_classes": 29,
+        "attendance_percentage": 87,
         "details": [
           {
             "sl": 1,
@@ -272,13 +412,91 @@
             "date": "2015-02-13",
             "status": "Present",
             "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-02-25",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-02-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-03-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-03-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-03-17",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-03-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 28,
+            "date": "2015-03-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 29,
+            "date": "2015-03-27",
+            "status": "Present",
+            "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "cat1": null,
-        "cat1_status": "",
+        "cat1": 31,
+        "cat1_status": "Present",
         "cat2": null,
         "cat2_status": "",
         "quiz1": null,
@@ -297,7 +515,7 @@
       "class_number": 4706,
       "course_code": "CSE221",
       "course_title": "Microprocessor and Interfacing",
-      "course_type": 2,
+      "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
@@ -308,6 +526,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 2,
       "timings": [
         {
           "start_time": "10:30:00Z",
@@ -317,9 +536,9 @@
       ],
       "attendance": {
         "registration_date": "2015-01-06T09:41:45.000Z",
-        "attended_classes": 8,
-        "total_classes": 8,
-        "attendance_percentage": 100,
+        "attended_classes": 16,
+        "total_classes": 18,
+        "attendance_percentage": 89,
         "details": [
           {
             "sl": 1,
@@ -344,6 +563,36 @@
             "date": "2015-02-12",
             "status": "Present",
             "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-02-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-02-26",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-03-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-03-19",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-03-26",
+            "status": "Present",
+            "reason": " - "
           }
         ],
         "supported": true
@@ -359,7 +608,7 @@
       "class_number": 4525,
       "course_code": "CSE222",
       "course_title": "Operating Systems",
-      "course_type": 3,
+      "subject_type": "Embedded Theory",
       "ltpc": "3003",
       "course_mode": "PBL",
       "course_option": "Regular",
@@ -370,6 +619,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 3,
       "timings": [
         {
           "start_time": "04:30:00Z",
@@ -389,9 +639,9 @@
       ],
       "attendance": {
         "registration_date": "2014-12-16T09:02:21.000Z",
-        "attended_classes": 10,
-        "total_classes": 13,
-        "attendance_percentage": 77,
+        "attended_classes": 23,
+        "total_classes": 27,
+        "attendance_percentage": 86,
         "details": [
           {
             "sl": 1,
@@ -470,6 +720,90 @@
             "date": "2015-02-11",
             "status": "Present",
             "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-02-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-02-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-02-26",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-03-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-03-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-03-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-03-19",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-03-25",
+            "status": "Present",
+            "reason": " - "
           }
         ],
         "supported": true
@@ -530,7 +864,7 @@
       "class_number": 4630,
       "course_code": "CSE222",
       "course_title": "Operating Systems",
-      "course_type": 2,
+      "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
@@ -541,6 +875,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 2,
       "timings": [
         {
           "start_time": "10:30:00Z",
@@ -550,9 +885,9 @@
       ],
       "attendance": {
         "registration_date": "2014-12-16T09:02:21.000Z",
-        "attended_classes": 10,
-        "total_classes": 12,
-        "attendance_percentage": 84,
+        "attended_classes": 18,
+        "total_classes": 22,
+        "attendance_percentage": 82,
         "details": [
           {
             "sl": 1,
@@ -589,6 +924,36 @@
             "date": "2015-02-11",
             "status": "Present",
             "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-03-18",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-03-25",
+            "status": "Present",
+            "reason": " - "
           }
         ],
         "supported": true
@@ -604,7 +969,7 @@
       "class_number": 4540,
       "course_code": "CSE324",
       "course_title": "Database Systems",
-      "course_type": 1,
+      "subject_type": "Embedded Theory",
       "ltpc": "3003",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -615,6 +980,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 1,
       "timings": [
         {
           "start_time": "04:30:00Z",
@@ -634,9 +1000,9 @@
       ],
       "attendance": {
         "registration_date": "2014-12-16T09:01:41.000Z",
-        "attended_classes": 11,
-        "total_classes": 12,
-        "attendance_percentage": 92,
+        "attended_classes": 22,
+        "total_classes": 26,
+        "attendance_percentage": 85,
         "details": [
           {
             "sl": 1,
@@ -706,16 +1072,100 @@
           },
           {
             "sl": 12,
+            "date": "2015-02-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-02-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
             "date": "2015-02-13",
             "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-02-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-26",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-03-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-03-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-03-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-03-17",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-03-19",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-03-20",
+            "status": "Absent",
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "cat1": null,
-        "cat1_status": "",
+        "cat1": 46,
+        "cat1_status": "Present",
         "cat2": null,
         "cat2_status": "",
         "quiz1": null,
@@ -734,7 +1184,7 @@
       "class_number": 5270,
       "course_code": "CSE324",
       "course_title": "Database Systems",
-      "course_type": 2,
+      "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
@@ -745,6 +1195,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 2,
       "timings": [
         {
           "start_time": "08:30:00Z",
@@ -754,9 +1205,9 @@
       ],
       "attendance": {
         "registration_date": "2014-12-16T09:01:41.000Z",
-        "attended_classes": 6,
-        "total_classes": 8,
-        "attendance_percentage": 75,
+        "attended_classes": 14,
+        "total_classes": 16,
+        "attendance_percentage": 88,
         "details": [
           {
             "sl": 1,
@@ -781,6 +1232,30 @@
             "date": "2015-02-12",
             "status": "Present",
             "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-02-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-02-26",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-03-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-03-26",
+            "status": "Present",
+            "reason": " - "
           }
         ],
         "supported": true
@@ -796,7 +1271,7 @@
       "class_number": 2055,
       "course_code": "HUM121",
       "course_title": "Ethics and Values",
-      "course_type": 1,
+      "subject_type": "Embedded Theory",
       "ltpc": "2002",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -807,6 +1282,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 1,
       "timings": [
         {
           "start_time": "02:30:00Z",
@@ -821,9 +1297,9 @@
       ],
       "attendance": {
         "registration_date": "2014-12-16T09:01:07.000Z",
-        "attended_classes": 4,
-        "total_classes": 8,
-        "attendance_percentage": 50,
+        "attended_classes": 9,
+        "total_classes": 20,
+        "attendance_percentage": 45,
         "details": [
           {
             "sl": 1,
@@ -872,13 +1348,85 @@
             "date": "2015-02-03",
             "status": "Present",
             "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-02-10",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-02-13",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-02-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-02-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-02-24",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-02-27",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-03-10",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-03-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-03-17",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-03-20",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-03-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-03-27",
+            "status": "Present",
+            "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "cat1": null,
-        "cat1_status": "",
+        "cat1": 43,
+        "cat1_status": "Present",
         "cat2": null,
         "cat2_status": "",
         "quiz1": null,
@@ -897,7 +1445,7 @@
       "class_number": 5510,
       "course_code": "HUM121",
       "course_title": "Ethics and Values",
-      "course_type": 2,
+      "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
@@ -908,6 +1456,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 2,
       "timings": [
         {
           "start_time": "10:30:00Z",
@@ -917,9 +1466,9 @@
       ],
       "attendance": {
         "registration_date": "2014-12-16T09:01:07.000Z",
-        "attended_classes": 10,
-        "total_classes": 10,
-        "attendance_percentage": 100,
+        "attended_classes": 14,
+        "total_classes": 22,
+        "attendance_percentage": 64,
         "details": [
           {
             "sl": 1,
@@ -950,6 +1499,42 @@
             "date": "2015-02-03",
             "status": "Present",
             "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-02-10",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-02-17",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-02-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-03-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-03-17",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-03-24",
+            "status": "Absent",
+            "reason": " - "
           }
         ],
         "supported": true
@@ -965,7 +1550,7 @@
       "class_number": 2216,
       "course_code": "MAT202",
       "course_title": "Linear Algebra",
-      "course_type": 1,
+      "subject_type": "Theory Only",
       "ltpc": "3104",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -976,6 +1561,7 @@
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
+      "course_type": 1,
       "timings": [
         {
           "start_time": "05:30:00Z",
@@ -1000,9 +1586,9 @@
       ],
       "attendance": {
         "registration_date": "2014-12-16T09:04:08.000Z",
-        "attended_classes": 8,
-        "total_classes": 17,
-        "attendance_percentage": 48,
+        "attended_classes": 17,
+        "total_classes": 39,
+        "attendance_percentage": 44,
         "details": [
           {
             "sl": 1,
@@ -1102,20 +1688,152 @@
           },
           {
             "sl": 17,
+            "date": "2015-02-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
             "date": "2015-02-13",
             "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-02-19",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-02-20",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-02-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-02-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-02-25",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-02-26",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-02-27",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 28,
+            "date": "2015-03-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 29,
+            "date": "2015-03-11",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 30,
+            "date": "2015-03-12",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 31,
+            "date": "2015-03-13",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 32,
+            "date": "2015-03-16",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 33,
+            "date": "2015-03-18",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 34,
+            "date": "2015-03-19",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 35,
+            "date": "2015-03-20",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 36,
+            "date": "2015-03-23",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 37,
+            "date": "2015-03-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 38,
+            "date": "2015-03-26",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 39,
+            "date": "2015-03-27",
+            "status": "Present",
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "cat1": null,
-        "cat1_status": "",
+        "cat1": 43,
+        "cat1_status": "Present",
         "cat2": null,
         "cat2_status": "",
-        "quiz1": null,
-        "quiz1_status": "",
+        "quiz1": 5,
+        "quiz1_status": "Present",
         "quiz2": null,
         "quiz2_status": "",
         "quiz3": null,
@@ -1127,7 +1845,7 @@
       }
     }
   ],
-  "refreshed": "2015-02-15T18:26:22.593Z",
+  "refreshed": "2015-03-29T17:24:46.696Z",
   "withdrawn_courses": [],
   "cached": false,
   "status": {
