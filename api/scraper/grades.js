@@ -37,31 +37,31 @@ if (process.env.LOGENTRIES_TOKEN) {
 var status = require(path.join(__dirname, '..', 'status'));
 
 function gradeValue(grade) {
-    switch(grade) {
-      case 'S':
-        return 10;
+  switch (grade) {
+    case 'S':
+      return 10;
 
-      case 'A':
-        return 9;
+    case 'A':
+      return 9;
 
-      case 'B':
-        return 8;
+    case 'B':
+      return 8;
 
-      case 'C':
-        return 7;
+    case 'C':
+      return 7;
 
-      case 'D':
-        return 6;
+    case 'D':
+      return 6;
 
-      case 'E':
-        return 5;
+    case 'E':
+      return 5;
 
-      case 'F':
-        return 0;
+    case 'F':
+      return 0;
 
-      case 'N':
-        return 0;
-    }
+    case 'N':
+      return 0;
+  }
 }
 
 exports.get = function (app, data, callback) {
@@ -143,15 +143,21 @@ exports.get = function (app, data, callback) {
                 'option': attrs.eq(8).text()
               });
               var examHeld = moment(attrs.eq(6).text()).format('YYYY-MM');
-              if(!(examHeldCollection.indexOf(examHeld) > -1)) {
+              if (!(examHeldCollection.indexOf(examHeld) > -1)) {
                 examHeldCollection.push(examHeld);
               }
-              if(semesterWiseGrades[examHeld] != null){
-                semesterWiseGrades[examHeld].push({'credits': parseInt(attrs.eq(4).text()), 'grade': attrs.eq(5).text()});
+              if (semesterWiseGrades[examHeld] != null) {
+                semesterWiseGrades[examHeld].push({
+                  'credits': parseInt(attrs.eq(4).text()),
+                  'grade': attrs.eq(5).text()
+                });
               }
               else {
                 semesterWiseGrades[examHeld] = [];
-                semesterWiseGrades[examHeld].push({'credits': parseInt(attrs.eq(4).text()), 'grade': attrs.eq(5).text()});
+                semesterWiseGrades[examHeld].push({
+                  'credits': parseInt(attrs.eq(4).text()),
+                  'grade': attrs.eq(5).text()
+                });
               }
             };
             baseScraper('table #hist tr').each(onEach);
@@ -162,18 +168,18 @@ exports.get = function (app, data, callback) {
             delete semesterWiseGrades["Invalid date"];
 
             //Calculating the semester wise GPA
-            for(var i = 0; i < examHeldCollection.length; i++) {
+            for (var i = 0; i < examHeldCollection.length; i++) {
               var semesterWiseGrade = semesterWiseGrades[examHeldCollection[i]];
               var gpa = 0;
               var credits = 0;
-              for(var j = 0; j < semesterWiseGrade.length; j++) {
+              for (var j = 0; j < semesterWiseGrade.length; j++) {
                 var course = semesterWiseGrade[j];
-                if(course['grade'] != 'W' && course['grade'] != 'U') {
+                if (course['grade'] != 'W' && course['grade'] != 'U') {
                   gpa += (course['credits'] * gradeValue(course['grade']));
                   credits += course['credits']
                 }
               }
-              semesterWiseGrades[examHeldCollection[i]] = parseFloat((gpa/credits).toFixed(2));
+              semesterWiseGrades[examHeldCollection[i]] = parseFloat((gpa / credits).toFixed(2));
             }
             data.semester_wise_gpa = semesterWiseGrades;
 
