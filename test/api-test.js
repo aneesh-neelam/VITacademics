@@ -35,7 +35,7 @@ var onEach = function (user, i, arr) {
 
   describe('Testing API-v2 for User: ' + user.describe, function () {
 
-    it('Checking if auto-login is successful', function (done) {
+    it('Checking if login is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/login')
         .send({'regno': user.reg_no, 'dob': user.dob})
         .expect(200)
@@ -81,6 +81,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('credits_registered');
           res.body.should.have.property('credits_earned');
           res.body.should.have.property('cgpa');
+          res.body.should.have.property('semester_wise');
           res.body.should.have.property('grade_summary');
           res.body.should.have.property('cached');
           res.body.should.have.property('grades_refreshed');

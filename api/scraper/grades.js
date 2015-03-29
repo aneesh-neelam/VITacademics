@@ -36,34 +36,6 @@ if (process.env.LOGENTRIES_TOKEN) {
 
 var status = require(path.join(__dirname, '..', 'status'));
 
-function gradeValue(grade) {
-  switch (grade) {
-    case 'S':
-      return 10;
-
-    case 'A':
-      return 9;
-
-    case 'B':
-      return 8;
-
-    case 'C':
-      return 7;
-
-    case 'D':
-      return 6;
-
-    case 'E':
-      return 5;
-
-    case 'F':
-      return 0;
-
-    case 'N':
-      return 0;
-  }
-}
-
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
     if (cache.get(data.reg_no).dob === data.dob) {
@@ -77,6 +49,7 @@ exports.get = function (app, data, callback) {
         credits_registered: 1,
         credits_earned: 1,
         cgpa: 1,
+        semester_wise: 1,
         grades_refreshed: 1
       };
 
@@ -126,64 +99,70 @@ exports.get = function (app, data, callback) {
             collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
           }
           else {
+            var gradeValue = function (grade) {
+              switch (grade) {
+                case 'S':
+                  return 10.00;
+
+                case 'A':
+                  return 9.00;
+
+                case 'B':
+                  return 8.00;
+
+                case 'C':
+                  return 7.00;
+
+                case 'D':
+                  return 6.00;
+
+                case 'E':
+                  return 5.00;
+
+                case 'F':
+                  return 0.00;
+
+                case 'N':
+                  return 0.00;
+              }
+            };
             var baseScraper = cheerio.load(response.body);
             data.grades = [];
-            var examHeldCollection = [];
-            var semesterWiseGrades = {};
+            data.semester_wise = {};
             var onEach = function (i, elem) {
-              var attrs = baseScraper(this).children('td');
-              data.grades.push({
-                'course_code': attrs.eq(1).text(),
-                'course_title': attrs.eq(2).text(),
-                'course_type': attrs.eq(3).text(),
-                'credits': parseInt(attrs.eq(4).text()),
-                'grade': attrs.eq(5).text(),
-                'exam_held': moment(attrs.eq(6).text(), 'MMM-YYYY').format('YYYY-MM'),
-                'result_date': moment(attrs.eq(7).text(), 'DD-MMM-YYYY').isValid() ? moment(attrs.eq(7).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null,
-                'option': attrs.eq(8).text()
-              });
-              var examHeld = moment(attrs.eq(6).text()).format('YYYY-MM');
-              if (!(examHeldCollection.indexOf(examHeld) > -1)) {
-                examHeldCollection.push(examHeld);
-              }
-              if (semesterWiseGrades[examHeld] != null) {
-                semesterWiseGrades[examHeld].push({
-                  'credits': parseInt(attrs.eq(4).text()),
-                  'grade': attrs.eq(5).text()
+              if (i > 0) {
+                var attrs = baseScraper(this).children('td');
+                var exam_held = moment(attrs.eq(6).text(), 'MMM-YYYY').format('YYYY-MM');
+                var grade = attrs.eq(5).text();
+                var credits = parseInt(attrs.eq(4).text());
+                data.grades.push({
+                  'course_code': attrs.eq(1).text(),
+                  'course_title': attrs.eq(2).text(),
+                  'course_type': attrs.eq(3).text(),
+                  'credits': credits,
+                  'grade': grade,
+                  'exam_held': exam_held,
+                  'result_date': moment(attrs.eq(7).text(), 'DD-MMM-YYYY').isValid() ? moment(attrs.eq(7).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null,
+                  'option': attrs.eq(8).text()
                 });
-              }
-              else {
-                semesterWiseGrades[examHeld] = [];
-                semesterWiseGrades[examHeld].push({
-                  'credits': parseInt(attrs.eq(4).text()),
-                  'grade': attrs.eq(5).text()
-                });
+                if (gradeValue(grade)) {
+                  if (data.semester_wise[exam_held]) {
+                    var prev_credits = data.semester_wise[exam_held].credits;
+                    data.semester_wise[exam_held].credits = prev_credits + credits;
+                    data.semester_wise[exam_held].gpa = (((data.semester_wise[exam_held].gpa * prev_credits) + (gradeValue(grade) * credits)) / data.semester_wise[exam_held].credits).toFixed(2);
+                  }
+                  else {
+                    data.semester_wise[exam_held] = {
+                      credits: credits,
+                      gpa: gradeValue(grade)
+                    };
+                  }
+                }
               }
             };
             baseScraper('table #hist tr').each(onEach);
 
-            //Removing the column headers from the data
-            examHeldCollection.shift();
-            data.grades.shift();
-            delete semesterWiseGrades["Invalid date"];
-
-            //Calculating the semester wise GPA
-            for (var i = 0; i < examHeldCollection.length; i++) {
-              var semesterWiseGrade = semesterWiseGrades[examHeldCollection[i]];
-              var gpa = 0;
-              var credits = 0;
-              for (var j = 0; j < semesterWiseGrade.length; j++) {
-                var course = semesterWiseGrade[j];
-                if (course['grade'] != 'W' && course['grade'] != 'U') {
-                  gpa += (course['credits'] * gradeValue(course['grade']));
-                  credits += course['credits']
-                }
-              }
-              semesterWiseGrades[examHeldCollection[i]] = parseFloat((gpa / credits).toFixed(2));
-            }
-            data.semester_wise_gpa = semesterWiseGrades;
-
-            // Scraping the credit information
+            // Scraping the credit summary
             var creditsTable = baseScraper('table table').eq(2).children('tr').eq(1);
             data.credits_registered = parseInt(creditsTable.children('td').eq(0).text());
             data.credits_earned = parseInt(creditsTable.children('td').eq(1).text());
@@ -237,7 +216,7 @@ exports.get = function (app, data, callback) {
                 credits_registered: data.credits_registered,
                 credits_earned: data.credits_earned,
                 cgpa: data.cgpa,
-                semester_wise_cgpa: data.semester_wise_gpa,
+                semester_wise: data.semester_wise,
                 grades_refreshed: data.grades_refreshed
               }
             }, {safe: true, new: true, upsert: true}, onUpdate);
