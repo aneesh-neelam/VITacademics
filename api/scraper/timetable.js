@@ -123,7 +123,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 class_number: classnbr,
                                 course_code: htmlColumn.eq(2).text(),
                                 course_title: htmlColumn.eq(3).text(),
-                                course_type: courseType,
+                                subject_type: courseType,
                                 ltpc: htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
                                 course_mode: htmlColumn.eq(6).text(),
                                 course_option: htmlColumn.eq(7).text(),
@@ -148,7 +148,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                                 class_number: htmlColumn.eq(1).text(),
                                 course_code: htmlColumn.eq(2).text(),
                                 course_title: htmlColumn.eq(3).text(),
-                                course_type: htmlColumn.eq(4).text(),
+                                subject_type: htmlColumn.eq(4).text(),
                                 ltpc: htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
                                 course_mode: htmlColumn.eq(6).text()
                             });
