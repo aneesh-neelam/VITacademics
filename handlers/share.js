@@ -17,3 +17,9 @@
  */
 
 'use strict';
+
+var handler = function (app, elt) {
+
+};
+
+module.exports = handler;
