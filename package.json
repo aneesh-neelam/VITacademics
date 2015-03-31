@@ -57,6 +57,10 @@
   "engines": {
     "iojs": "stable"
   },
-  "dependencies": {},
+  "dependencies": {
+    "jackrabbit": "^3.0.8",
+    "mongodb": "^2.0.25",
+    "underscore": "^1.8.2"
+  },
   "devDependencies": {}
 }
