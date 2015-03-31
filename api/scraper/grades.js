@@ -102,28 +102,40 @@ exports.get = function (app, data, callback) {
             var gradeValue = function (grade) {
               switch (grade) {
                 case 'S':
-                  return 10.00;
+                  return 10.0;
+                  break;
 
                 case 'A':
-                  return 9.00;
+                  return 9.0;
+                  break;
 
                 case 'B':
-                  return 8.00;
+                  return 8.0;
+                  break;
 
                 case 'C':
-                  return 7.00;
+                  return 7.0;
+                  break;
 
                 case 'D':
-                  return 6.00;
+                  return 6.0;
+                  break;
 
                 case 'E':
-                  return 5.00;
+                  return 5.0;
+                  break;
 
                 case 'F':
-                  return 0.00;
+                  return 0.0;
+                  break;
 
-                case 'N':
-                  return 0.00;
+                case 'P':
+                  return true;
+                  break;
+
+                default:
+                  return null;
+                  break;
               }
             };
             var baseScraper = cheerio.load(response.body);
@@ -145,11 +157,21 @@ exports.get = function (app, data, callback) {
                   'result_date': moment(attrs.eq(7).text(), 'DD-MMM-YYYY').isValid() ? moment(attrs.eq(7).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null,
                   'option': attrs.eq(8).text()
                 });
-                if (gradeValue(grade)) {
+                if (gradeValue(grade) === true) {
                   if (data.semester_wise[exam_held]) {
-                    var prev_credits = data.semester_wise[exam_held].credits;
-                    data.semester_wise[exam_held].credits = prev_credits + credits;
-                    data.semester_wise[exam_held].gpa = (((data.semester_wise[exam_held].gpa * prev_credits) + (gradeValue(grade) * credits)) / data.semester_wise[exam_held].credits).toFixed(2);
+                    data.semester_wise[exam_held].credits = data.semester_wise[exam_held].credits + credits;
+                  }
+                  else {
+                    data.semester_wise[exam_held] = {
+                      credits: credits,
+                      gpa: 0.0
+                    };
+                  }
+                }
+                else if (gradeValue(grade)) {
+                  if (data.semester_wise[exam_held]) {
+                    data.semester_wise[exam_held].gpa = (((data.semester_wise[exam_held].gpa * data.semester_wise[exam_held].credits) + (gradeValue(grade) * credits)) / (data.semester_wise[exam_held].credits + credits)).toFixed(2);
+                    data.semester_wise[exam_held].credits = data.semester_wise[exam_held].credits + credits;
                   }
                   else {
                     data.semester_wise[exam_held] = {
