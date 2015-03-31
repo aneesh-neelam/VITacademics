@@ -1,6 +1,6 @@
 {
   "name": "VITacademics-Worker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://vitacademics-rel.herokuapp.com",
   "description": "The worker process for VITacademics",
   "bugs": {

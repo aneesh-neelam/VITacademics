@@ -23,9 +23,9 @@ var mongoClient = require ('mongodb');
 var path = require ('path');
 var underscore = require ('underscore');
 
-var handleMain = path (__dirname, 'handler', 'main');
-var handleMobile = path (__dirname, 'handler', 'mobile');
-var handleShare = path (__dirname, 'handler', 'share');
+var handleMain = require(path.join(__dirname, 'handler', 'main'));
+var handleMobile = require(path.join(__dirname, 'handler', 'mobile'));
+var handleShare = require(path.join(__dirname, 'handler', 'share'));
 
 var amqpURI = process.env.AMQP_URI || 'amqp://localhost';
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/VITacademics';
@@ -38,9 +38,9 @@ var app = {
 var onConnect = function (err, db) {
     app.db = db;
 }
-mongoClient.connect(mongoURI, OnConnect);
+mongoClient.connect(mongoURI, onConnect);
 
-queue = jackrabbit(amqpURI);
+var queue = jackrabbit(amqpURI);
 queue.queues = {
   main: 'VITacademics',
   mobile: 'mobile',

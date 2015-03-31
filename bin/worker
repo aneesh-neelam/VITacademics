@@ -20,4 +20,11 @@
 
 'use strict';
 
-console.log('Incomplete. \nPlease contribute to https://github.com/aneesh-neelam/VITacademics-Worker.git');
+var path = require ('path');
+
+var config = {
+
+};
+console.log(JSON.stringify(config));
+
+require (path.join(__dirname, '..', 'app'));
