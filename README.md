@@ -1,6 +1,6 @@
 # VITacademics-Worker
 
-The background worker for the VITacademics HTTP API Server
+The background worker for the VITacademics API Server
 
 Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics-Worker/issues). 
 
