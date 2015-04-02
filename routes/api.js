@@ -31,7 +31,7 @@ var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share')
 
 router.post('/login', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -47,7 +47,7 @@ router.post('/login', function (req, res) {
 
 router.post('/refresh', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -63,7 +63,7 @@ router.post('/refresh', function (req, res) {
 
 router.post('/grades', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -79,7 +79,7 @@ router.post('/grades', function (req, res) {
 
 router.post('/token', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -102,7 +102,7 @@ router.post('/share', function (req, res) {
   if (req.body.receiver === 'VITacademics Developer/Tester') receiver = req.body.receiver;
   else if (req.body.receiver) receiver = req.body.receiver.toUpperCase();
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {

@@ -31,7 +31,7 @@ var friendsShare = require(path.join(__dirname, '..', 'api-legacy', 'friends', '
 
 router.get('/login/manual', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -53,7 +53,7 @@ router.get('/login/manual', function (req, res) {
 
 router.get('/login/submit', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -70,7 +70,7 @@ router.get('/login/submit', function (req, res) {
 
 router.get('/login/auto', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -86,7 +86,7 @@ router.get('/login/auto', function (req, res) {
 
 router.get('/data/first', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -103,7 +103,7 @@ router.get('/data/first', function (req, res) {
 
 router.get('/data/refresh', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -120,7 +120,7 @@ router.get('/data/refresh', function (req, res) {
 
 router.get('/friends/regenerate', function (req, res) {
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
@@ -140,7 +140,7 @@ router.get('/friends/share', function (req, res) {
   if (req.query.token) token = req.query.token.toUpperCase();
   if (req.query.regno) reg_no = req.query.regno.toUpperCase();
   var app = {
-    db: req.db,
+    db: req.dbs[0],
     queue: req.queue
   };
   var data = {
