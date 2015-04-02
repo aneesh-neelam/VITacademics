@@ -33,7 +33,7 @@ var getPixelMapFromBuffer = function (bitmapBuffer) {
   var pixelMap = [];
   var subArray = [];
   var row = 0;
-  for (var i = bitmapBuffer.length - (25 * 132), r = 0; i < bitmapBuffer.length; ++i, ++r) {
+  for (let i = bitmapBuffer.length - (25 * 132), r = 0; i < bitmapBuffer.length; ++i, ++r) {
     if (Math.floor(r / 132) !== row) {
       row = Math.floor(r / 132);
       pixelMap.push(subArray);
@@ -54,8 +54,8 @@ var getCaptcha = function (img) {
     var flag = 1;
     var breakflag = 0;
     var count = 0;
-    for (var x = 0; x < mask.length; ++x) {
-      for (var y = 0; y < mask[0].length; ++y) {
+    for (let x = 0; x < mask.length; ++x) {
+      for (let y = 0; y < mask[0].length; ++y) {
         try {
           if (mask[x][y] == '1') {
             if (pix[rx + x][ry + y] == '1') {
@@ -86,7 +86,7 @@ var getCaptcha = function (img) {
 
   var skip = function (start, end, y) {
     var flag = 0;
-    for (var i = 0; i < start.length; ++i) {
+    for (let i = 0; i < start.length; ++i) {
       if (y >= start[i] && y <= end[i]) {
         flag = 1;
         break;
@@ -96,11 +96,11 @@ var getCaptcha = function (img) {
   };
 
   var sort = function (sorter, captcha) {
-    for (var i = 0; i < sorter.length; ++i) {
+    for (let i = 0; i < sorter.length; ++i) {
       var less = sorter[i];
       var swap = 0;
       var ls = i;
-      for (var k = i; k < sorter.length; k++) {
+      for (let k = i; k < sorter.length; k++) {
         if (sorter[k] < less) {
           less = sorter[k];
           ls = k;
@@ -159,7 +159,7 @@ var getCaptcha = function (img) {
   }
   sort(sorter, captcha);
   var res = '';
-  for (var i = 0; i < captcha.length; ++i) {
+  for (let i = 0; i < captcha.length; ++i) {
     res = res + captcha[i];
   }
   return res;
