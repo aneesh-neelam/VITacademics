@@ -123,7 +123,7 @@ exports.scrapeAttendance = function (app, data, callback) {
       }
       catch (ex) {
         callback(false, [
-          status.invalid
+          status.dataParsing
         ]);
       }
     }

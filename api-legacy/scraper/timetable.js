@@ -177,7 +177,7 @@ exports.scrapeTimetable = function (app, data, callback) {
         callback(null, timetable);
       }
       catch (ex) {
-        data.status = status.invalid;
+        data.status = status.dataParsing;
         callback(true, data);
       }
     }

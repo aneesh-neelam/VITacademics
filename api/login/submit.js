@@ -100,7 +100,7 @@ exports.get = function (app, data, callback) {
           }
         }
         catch (ex) {
-          data.status = status.invalid;
+          data.status = status.dataParsing;
           callback(null, data);
         }
       }

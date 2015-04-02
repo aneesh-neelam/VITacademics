@@ -186,7 +186,7 @@ exports.scrapeMarks = function (app, data, callback) {
         callback(null, marks);
       }
       catch (ex) {
-        data.status = status.invalid;
+        data.status = status.dataParsing;
         callback(false, [
           data
         ]);
