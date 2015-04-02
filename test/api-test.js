@@ -126,5 +126,20 @@ describe('Waiting for Express.js Configuration to complete', function () {
   before(function (done) {
     setTimeout(done, 10000);
   });
+
+  it('Checking if System Endpoint is successful', function (done) {
+    api.get('/api/v2/system')
+      .expect(200)
+      .end(function (err, res) {
+        should.not.exist(err);
+        res.body.should.have.property('android');
+        res.body.should.have.property('ios');
+        res.body.should.have.property('windows');
+        res.body.should.have.property('messages');
+        res.body.status.should.deep.equal(codes.success);
+        done();
+      });
+  });
+
   users.forEach(onEach);
 });
