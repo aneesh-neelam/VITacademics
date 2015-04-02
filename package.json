@@ -1,8 +1,8 @@
 {
   "name": "VITacademics",
-  "version": "0.17.0",
+  "version": "0.16.0",
   "description": "VITacademics API Server",
-  "homepage": "https://vitacademics-dev.herokuapp.com/",
+  "homepage": "https://vitacademics-rel.herokuapp.com/",
   "bugs": {
     "url": "https://github.com/aneesh-neelam/VITacademics/issues",
     "email": "neelam.aneesh@gmail.com"
