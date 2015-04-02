@@ -1,6 +1,5 @@
 /*
  *  VITacademics
- *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2015  Kunal Nagpal <kunagpal@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -19,13 +18,12 @@
 
 'use strict';
 
-module.exports = function(year) {
-    var date = new Date;
-    var arrayIndex = date.getFullYear() - 2000 - year;
-    var month = date.getMonth();
-    if(month >= 1 && month <= 6)
-    {
-        --arrayIndex;
-    }
-    return arrayIndex;
+module.exports = function (year) {
+  var date = new Date;
+  var arrayIndex = date.getFullYear() - 2000 - year;
+  var month = date.getMonth();
+  if (month >= 1 && month <= 6) {
+    arrayIndex = arrayIndex - 1;
+  }
+  return arrayIndex;
 };
