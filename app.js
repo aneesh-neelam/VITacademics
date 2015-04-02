@@ -101,9 +101,9 @@ app.use(mongodb(require('mongodb'), mongodbOptions));
 var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
 var queue = jackrabbit(amqpUri);
 queue.queues = {
-  main: 'VITacademics',
-  mobile: 'mobile',
-  share: 'share'
+  main: 'Main',
+  mobile: 'Mobile',
+  share: 'Share'
 };
 queue.on('connected', function () {
   var forEachQueue = function (elt, i, arr) {
