@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.15.42",
+  "version": "0.15.50",
   "description": "VITacademics API Server",
   "homepage": "https://vitacademics-dev.herokuapp.com/",
   "bugs": {
@@ -65,7 +65,7 @@
     "node-ga": "0.1.1",
     "node-logentries": "0.1.4",
     "serve-favicon": "2.2.0",
-    "underscore": "1.8.2",
+    "underscore": "1.8.3",
     "unirest": "0.4.0"
   },
   "repository": {
