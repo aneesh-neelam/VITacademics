@@ -25,18 +25,18 @@ var router = express.Router();
 var api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
 
 router.get('/', function (req, res) {
-  var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-  var txtWebAppKey = process.env.TXTWEB_APP_KEY || 'randomkey';
+  let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
+  let txtWebAppKey = process.env.TXTWEB_APP_KEY || 'randomkey';
   if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
-    var app = {
-      db: req.db,
+    let app = {
+      dbs: req.dbs,
       queue: req.queue
     };
-    var data = {
+    let data = {
       message: req.query['txtweb-message'],
       mobile: req.query['txtweb-mobile']
     };
-    var onGet = function (err, messages) {
+    let onGet = function (err, messages) {
       res.render('txtweb', {
         googleAnalyticsToken: googleAnalyticsToken,
         messages: messages,
@@ -47,7 +47,7 @@ router.get('/', function (req, res) {
     api_txtweb.parseMessage(app, data, onGet);
   }
   else {
-    var messages = [
+    let messages = [
       'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
       'Get Course Details:  @vitacademics course [CourseCode]',
       'Get Today\'s Classes: @vitacademics today',

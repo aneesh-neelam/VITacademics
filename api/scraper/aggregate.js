@@ -34,7 +34,7 @@ if (process.env.LOGENTRIES_TOKEN) {
 var attendance = require(path.join(__dirname, 'attendance'));
 var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
 var marks = require(path.join(__dirname, 'marks'));
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var timetable = require(path.join(__dirname, 'timetable'));
 
 
@@ -53,7 +53,7 @@ exports.get = function (app, data, callback) {
       };
       var onFetch = function (err, mongoDoc) {
         if (err) {
-          data.status = status.codes.mongoDown;
+          data.status = status.mongoDown;
           if (log) {
             log.log('debug', data);
           }
@@ -62,12 +62,12 @@ exports.get = function (app, data, callback) {
         }
         else if (mongoDoc) {
           delete mongoDoc['_id'];
-          mongoDoc.status = status.codes.success;
+          mongoDoc.status = status.success;
           mongoDoc.cached = true;
           callback(false, mongoDoc);
         }
         else {
-          data.status = status.codes.noData;
+          data.status = status.noData;
           callback(true, data);
         }
       };
@@ -191,7 +191,7 @@ exports.get = function (app, data, callback) {
             };
             var doneCollate = function (err, newData) {
               if (err) {
-                callback(true, status.codes.other);
+                callback(true, status.other);
               }
               else {
                 data.courses = newData;
@@ -199,7 +199,7 @@ exports.get = function (app, data, callback) {
                 data.withdrawn_courses = results.timetable.withdrawn_courses;
                 var onUpdate = function (err) {
                   if (err) {
-                    data.status = status.codes.mongoDown;
+                    data.status = status.mongoDown;
                     if (log) {
                       log.log('debug', data);
                     }
@@ -216,7 +216,7 @@ exports.get = function (app, data, callback) {
                     };
                     cache.put(data.reg_no, doc, validity * 60 * 1000);
                     data.cached = false;
-                    data.status = status.codes.success;
+                    data.status = status.success;
                     callback(null, data);
                   }
                 };
@@ -239,12 +239,12 @@ exports.get = function (app, data, callback) {
       }
     }
     else {
-      data.status = status.codes.invalid;
+      data.status = status.invalid;
       callback(true, data);
     }
   }
   else {
-    data.status = status.codes.timedOut;
+    data.status = status.timedOut;
     callback(true, data);
   }
 };

@@ -38,21 +38,23 @@ if (process.env.LOGENTRIES_TOKEN) {
 var app = require(path.join(__dirname, '..', 'app'));
 
 var onBind = function () {
-    var config = {
+    let config = {
         port: process.env.PORT || 3000,
-        MongoDB_Host: process.env.MONGODB_HOST || 'localhost',
-        MongoDB_Port: process.env.MONGODB_PORT || '27017',
-        MongoDB_Database: process.env.MONGODB_DATABASE || 'VITacademics',
-        MongoDB_Username: process.env.MONGODB_USERNAME || '',
-        MongoDB_Password: process.env.MONGODB_PASSWORD || '',
-        amqpUri: process.env.AMQP_URI || 'amqp://localhost',
+        mongoDb_Uri_0: process.env.MONGODB_URI_0 || 'mongodb://localhost:27017/VITacademics',
+        mongoDb_Uri_1: process.env.MONGODB_URI_1 || 'mongodb://localhost:27017/VITacademics',
+        mongoDb_Uri_2: process.env.MONGODB_URI_2 || 'mongodb://localhost:27017/VITacademics',
+        mongoDb_Uri_3: process.env.MONGODB_URI_3 || 'mongodb://localhost:27017/VITacademics',
+        mongoDb_Uri_4: process.env.MONGODB_URI_4 || 'mongodb://localhost:27017/VITacademics',
+        amqp_Uri: process.env.AMQP_URI || 'amqp://localhost',
         Application: process.env.HOSTNAME || 'localhost',
+        Logentries: process.env.LOGENTRIES_TOKEN ? true : false,
         NewRelic: process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE ? true : false
     };
+
     if (log) {
         log.log('info', config);
     }
-    console.log('Node.js Express Server started, Config: ' + JSON.stringify(config));
+    console.log('Express,js Server started, Config: ' + JSON.stringify(config));
 };
 
 app.listen(process.env.PORT || 3000, onBind);

@@ -32,7 +32,7 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 var login = require(path.join(__dirname, 'get'));
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var submit = require(path.join(__dirname, 'submit'));
 
 

@@ -3,6 +3,7 @@
  *  Copyright (C) 2015  Karthik Balakrishnan <karthikb351@gmail.com>
  *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
+ *  Copyright (C) 2015  Kunal Nagpal <kunagpal@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,19 +21,17 @@
 
 'use strict';
 
+/*
+ * DISCLAIMER
+ *
+ * The following credentials have been included for testing purposes only.
+ *
+ * Should you have an objection to such use of your details,
+ * please open an issue here: https://github.com/aneesh-neelam/VITacademics/issues.
+ *
+ */
+
 var users = [
-  {
-    describe: 'B.Tech CSE 4th Year - Project Only - Vellore',
-    reg_no: '11BCE0354',
-    dob: '28011993',
-    campus: 'vellore'
-  },
-  {
-    describe: 'B.Tech ECE 4th Year - Courses only - Vellore',
-    reg_no: '11BEC0262',
-    dob: '19091992',
-    campus: 'vellore'
-  },
   {
     describe: 'B.Tech CSE 2nd Year - Courses only - Vellore',
     reg_no: '13BCE0139',
@@ -43,6 +42,18 @@ var users = [
     describe: 'B.Tech CSE 4th Year - Project + 1 Course Withdrawl - Vellore',
     reg_no: '11BCE0260',
     dob: '20101993',
+    campus: 'vellore'
+  },
+  {
+    describe: 'B.Tech ECE 2nd Year - Courses Only - Vellore',
+    reg_no: '13BEC0547',
+    dob: '10011995',
+    campus: 'vellore'
+  },
+  {
+    describe: 'Research Scholar - Vellore',
+    reg_no: '14PHI0007',
+    dob: '05041990',
     campus: 'vellore'
   }
 ];

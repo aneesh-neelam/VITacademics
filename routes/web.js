@@ -23,21 +23,21 @@ var router = express.Router();
 
 
 router.get('/', function (req, res) {
-  var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
+  let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
   res.render('index', {googleAnalyticsToken: googleAnalyticsToken});
 });
 
 router.get('/status', function (req, res) {
-  var port = process.env.PORT || 3000;
-  var googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-  var status = {
+  let port = process.env.PORT || 3000;
+  let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
+  let status = {
     host: process.env.HOST || 'localhost',
     hostname: process.env.HOSTNAME || 'http://localhost:' + port + '/',
     engine: process.version,
     platform: process.platform,
     arch: process.arch,
     serverStatus: 'OK',
-    lastUpdated: '1st April 2015',
+    lastUpdated: '3rd April 2015',
     googleAnalyticsToken: googleAnalyticsToken
   };
   res.render('status', status);

@@ -26,7 +26,7 @@ var should = require('chai').should();
 var supertest = require('supertest');
 
 var app = require(path.join(__dirname, '..', 'app'));
-var codes = require(path.join(__dirname, '..', 'api', 'status')).codes;
+var status = require(path.join(__dirname, '..', 'status'));
 var users = require(path.join(__dirname, '.', 'credentials')).users;
 
 var api = supertest(app);
@@ -37,21 +37,21 @@ var onEach = function (user, i, arr) {
 
     it('Checking if login is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/login')
-        .send({'regno': user.reg_no, 'dob': user.dob})
+        .send({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
           res.body.should.have.property('reg_no', user.regno);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
 
     it('Checking if fetching/refreshing current semester details is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/refresh')
-        .send({'regno': user.reg_no, 'dob': user.dob})
+        .send({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -63,14 +63,14 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('cached');
           res.body.should.have.property('refreshed');
           res.body.should.have.property('withdrawn_courses');
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
 
     it('Checking if fetching grades is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/grades')
-        .send({'regno': user.reg_no, 'dob': user.dob})
+        .send({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -85,14 +85,14 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('grade_summary');
           res.body.should.have.property('cached');
           res.body.should.have.property('grades_refreshed');
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
 
     it('Checking if token generation is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/token')
-        .send({'regno': user.reg_no, 'dob': user.dob})
+        .send({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -100,14 +100,14 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('share').with.property('token').with.length(6);
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
 
     it('Checking if share using credentials is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/share')
-        .send({'regno': user.reg_no, 'dob': user.dob})
+        .send({regno: user.reg_no, dob: user.dob, receiver: 'VITacademics Developer/Tester'})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -115,11 +115,31 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('semester');
           res.body.should.have.property('courses');
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
   });
 };
 
-users.forEach(onEach);
+describe('Waiting for Express.js Configuration to complete', function () {
+  before(function (done) {
+    setTimeout(done, 10000);
+  });
+
+  it('Checking if System Endpoint is successful', function (done) {
+    api.get('/api/v2/system')
+      .expect(200)
+      .end(function (err, res) {
+        should.not.exist(err);
+        res.body.should.have.property('android');
+        res.body.should.have.property('ios');
+        res.body.should.have.property('windows');
+        res.body.should.have.property('messages');
+        res.body.status.should.deep.equal(status.success);
+        done();
+      });
+  });
+
+  users.forEach(onEach);
+});

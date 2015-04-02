@@ -30,11 +30,11 @@ if (process.env.LOGENTRIES_TOKEN) {
 }
 
 
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
-  var collection = app.db.collection('student');
+  var collection = app.db.collection('student_legacy');
   var keys = {
     reg_no: 1,
     timetable: 1,
@@ -44,12 +44,12 @@ exports.get = function (app, data, callback) {
   };
   var onFetch = function (err, doc) {
     if (err) {
-      data.status = status.codes.mongoDown;
+      data.status = status.mongoDown;
       if (log) {
         log.log('debug', data);
       }
       console.log(data.status);
-      callback(true, {status: status.codes.mongoDown});
+      callback(true, {status: status.mongoDown});
     }
     else if (doc) {
       if (doc.timetable && doc.courses && doc.reg_no) {
@@ -63,7 +63,7 @@ exports.get = function (app, data, callback) {
         };
         delete doc['_id'];
         doc.courses.forEach(forEachCourse);
-        doc.status = status.codes.success;
+        doc.status = status.success;
 
         /* Android App Compatibility Mode */
         doc.data = {
@@ -79,12 +79,12 @@ exports.get = function (app, data, callback) {
         callback(false, doc);
       }
       else {
-        data.status = status.codes.noData;
+        data.status = status.noData;
         callback(false, data);
       }
     }
     else {
-      data.status = status.codes.noData;
+      data.status = status.noData;
       callback(false, data);
     }
   };
@@ -93,7 +93,7 @@ exports.get = function (app, data, callback) {
       collection.findOne({reg_no: cache.get(data.token), campus: data.campus}, keys, onFetch);
     }
     else {
-      data.status = status.codes.tokenExpired;
+      data.status = status.tokenExpired;
       callback(false, data);
     }
   }

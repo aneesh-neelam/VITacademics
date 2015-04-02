@@ -26,7 +26,7 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeAttendance = function (app, data, callback) {
@@ -46,7 +46,7 @@ exports.scrapeAttendance = function (app, data, callback) {
   var onRequest = function (response) {
     if (response.error) {
       callback(false, [
-        status.codes.vitDown
+        status.vitDown
       ]);
     }
     else {
@@ -83,7 +83,7 @@ exports.scrapeAttendance = function (app, data, callback) {
           var onPost = function (response) {
             if (response.error) {
               asyncCallback(false, [
-                status.codes.vitDown
+                status.vitDown
               ]);
             }
             else {
@@ -123,7 +123,7 @@ exports.scrapeAttendance = function (app, data, callback) {
       }
       catch (ex) {
         callback(false, [
-          status.codes.invalid
+          status.dataParsing
         ]);
       }
     }

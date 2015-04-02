@@ -1,6 +1,6 @@
 /*
  *  VITacademics
- *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015  Kunal Nagpal <kunagpal@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,23 +18,15 @@
 
 'use strict';
 
-var express = require('express');
-var path = require('path');
-var router = express.Router();
+var choose = function (year) {
+  let date = new Date;
+  let arrayIndex = date.getFullYear() - 2000 - year;
+  let month = date.getMonth();
+  if (month >= 0 && month <= 6) {
+    arrayIndex = arrayIndex - 1;
+  }
+  arrayIndex = (arrayIndex < 4) ? arrayIndex : 4;
+  return arrayIndex;
+};
 
-var system = require(path.join(__dirname, '..', 'api', 'system'));
-
-
-router.get('/', function (req, res) {
-  let app = {
-    db: req.dbs[4],
-    queue: req.queue
-  };
-  let data = {};
-  let onGet = function (err, response) {
-    res.json(response);
-  };
-  system.get(app, data, onGet);
-});
-
-module.exports = router;
+module.exports.choose = choose;
