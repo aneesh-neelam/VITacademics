@@ -29,7 +29,7 @@ router.get('/', function (req, res) {
   let txtWebAppKey = process.env.TXTWEB_APP_KEY || 'randomkey';
   if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
     let app = {
-      db: req.db,
+      dbs: req.dbs,
       queue: req.queue
     };
     let data = {

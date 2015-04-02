@@ -27,7 +27,7 @@ var system = require(path.join(__dirname, '..', 'api', 'system'));
 
 router.get('/', function (req, res) {
   let app = {
-    db: req.db,
+    db: req.db[4],
     queue: req.queue
   };
   let data = {};

@@ -29,14 +29,17 @@ var dataAggregate = require(path.join(__dirname, '..', 'api-legacy', 'scraper', 
 var friendsGenerate = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'generate'));
 var friendsShare = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'share'));
 
+var dbIndex = require(path.join(__dirname, '..', 'db'));
+
 router.get('/login/manual', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.query.regno.toUpperCase(),
     campus: req.originalUrl.split('/')[2].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGetCaptcha = function (err, response) {
     if (err) {
@@ -52,15 +55,16 @@ router.get('/login/manual', function (req, res) {
 });
 
 router.get('/login/submit', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.query.regno.toUpperCase(),
     dob: req.query.dob,
     captcha: req.query.captcha.toUpperCase(),
     campus: req.originalUrl.split('/')[2].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);
@@ -69,14 +73,15 @@ router.get('/login/submit', function (req, res) {
 });
 
 router.get('/login/auto', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.query.regno.toUpperCase(),
     dob: req.query.dob,
     campus: req.originalUrl.split('/')[2].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[0],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);
@@ -85,15 +90,16 @@ router.get('/login/auto', function (req, res) {
 });
 
 router.get('/data/first', function (req, res) {
-  let app = {
+    let data = {
+      reg_no: req.query.regno.toUpperCase(),
+      dob: req.query.dob,
+      first_time: true,
+      campus: req.originalUrl.split('/')[2].toLowerCase()
+    };
+    let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+    let app = {
     db: req.dbs[0],
     queue: req.queue
-  };
-  let data = {
-    reg_no: req.query.regno.toUpperCase(),
-    dob: req.query.dob,
-    first_time: true,
-    campus: req.originalUrl.split('/')[2].toLowerCase()
   };
   let onGet = function (err, response) {
     res.json(response);
@@ -102,15 +108,16 @@ router.get('/data/first', function (req, res) {
 });
 
 router.get('/data/refresh', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.query.regno.toUpperCase(),
     dob: req.query.dob,
     first_time: false,
     campus: req.originalUrl.split('/')[2].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);
@@ -119,14 +126,15 @@ router.get('/data/refresh', function (req, res) {
 });
 
 router.get('/friends/regenerate', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.query.regno.toUpperCase(),
     dob: req.query.dob,
     campus: req.originalUrl.split('/')[2].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);
@@ -139,15 +147,16 @@ router.get('/friends/share', function (req, res) {
   let reg_no;
   if (req.query.token) token = req.query.token.toUpperCase();
   if (req.query.regno) reg_no = req.query.regno.toUpperCase();
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: reg_no,
     dob: req.query.dob,
     token: token,
     campus: req.originalUrl.split('/')[2].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);

@@ -28,16 +28,18 @@ var dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'))
 var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
 var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
 
+var dbIndex = require(path.join(__dirname, '..', 'db'));
 
 router.post('/login', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);
@@ -46,14 +48,15 @@ router.post('/login', function (req, res) {
 });
 
 router.post('/refresh', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);
@@ -62,14 +65,15 @@ router.post('/refresh', function (req, res) {
 });
 
 router.post('/grades', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.send(response);
@@ -78,14 +82,15 @@ router.post('/grades', function (req, res) {
 });
 
 router.post('/token', function (req, res) {
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);
@@ -101,16 +106,17 @@ router.post('/share', function (req, res) {
   if (req.body.regno) reg_no = req.body.regno.toUpperCase();
   if (req.body.receiver === 'VITacademics Developer/Tester') receiver = req.body.receiver;
   else if (req.body.receiver) receiver = req.body.receiver.toUpperCase();
-  let app = {
-    db: req.dbs[0],
-    queue: req.queue
-  };
   let data = {
     reg_no: reg_no,
     dob: req.body.dob,
     token: token,
     receiver: receiver,
     campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
   };
   let onGet = function (err, response) {
     res.json(response);
