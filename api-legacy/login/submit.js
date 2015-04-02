@@ -97,7 +97,7 @@ exports.get = function (app, data, callback) {
                 callback(null, data);
               }
             };
-            var collection = app.db.collection('student');
+            var collection = app.db.collection('student_legacy');
             collection.findAndModify({reg_no: data.reg_no}, [
               ['reg_no', 'asc']
             ], {$set: {dob: data.dob, campus: data.campus}}, {
