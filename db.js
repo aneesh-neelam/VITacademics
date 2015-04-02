@@ -22,7 +22,7 @@ module.exports = function (year) {
   var date = new Date;
   var arrayIndex = date.getFullYear() - 2000 - year;
   var month = date.getMonth();
-  if (month >= 1 && month <= 6) {
+  if (month >= 0 && month <= 6) {
     arrayIndex = arrayIndex - 1;
   }
   return arrayIndex;
