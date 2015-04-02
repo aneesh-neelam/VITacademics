@@ -37,7 +37,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if getting captcha image is successful', function (done) {
       api.get('/api/' + user.campus + '/login/manual')
-        .query({'regno': user.reg_no})
+        .query({regno: user.reg_no})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -49,7 +49,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if auto-login is successful', function (done) {
       api.get('/api/' + user.campus + '/login/auto')
-        .query({'regno': user.reg_no, 'dob': user.dob})
+        .query({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -63,7 +63,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if first data fetch is successful', function (done) {
       api.get('/api/' + user.campus + '/data/first')
-        .query({'regno': user.reg_no, 'dob': user.dob})
+        .query({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -83,7 +83,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if data refresh is successful', function (done) {
       api.get('/api/' + user.campus + '/data/refresh')
-        .query({'regno': user.reg_no, 'dob': user.dob})
+        .query({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -101,7 +101,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if token generation is successful', function (done) {
       api.get('/api/' + user.campus + '/friends/regenerate')
-        .query({'regno': user.reg_no, 'dob': user.dob})
+        .query({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -116,7 +116,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if share using credentials is successful', function (done) {
       api.get('/api/' + user.campus + '/friends/share')
-        .query({'regno': user.reg_no, 'dob': user.dob})
+        .query({regno: user.reg_no, dob: user.dob})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);

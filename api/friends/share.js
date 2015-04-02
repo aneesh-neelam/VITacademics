@@ -62,6 +62,7 @@ exports.get = function (app, data, callback) {
         delete doc['_id'];
         doc.courses.forEach(forEachCourse);
         doc.status = status.codes.success;
+        app.queue.publish(queue.queues.share, {receiver: data.receiver, owner: doc.reg_no});
         callback(false, doc);
       }
       else {

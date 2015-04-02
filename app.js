@@ -102,7 +102,8 @@ var amqpUri = process.env.AMQP_URI || 'amqp://localhost';
 var queue = jackrabbit(amqpUri);
 queue.queues = {
   main: 'VITacademics',
-  mobile: 'mobile'
+  mobile: 'mobile',
+  share: 'share'
 };
 queue.on('connected', function () {
   var forEachQueue = function (elt, i, arr) {

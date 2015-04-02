@@ -96,8 +96,11 @@ router.post('/token', function (req, res) {
 router.post('/share', function (req, res) {
   var token;
   var reg_no;
+  var receiver;
   if (req.body.token) token = req.body.token.toUpperCase();
   if (req.body.regno) reg_no = req.body.regno.toUpperCase();
+  if (req.body.receiver === 'VITacademics Developer/Tester') receiver = req.body.receiver;
+  else if (req.body.receiver) receiver = req.body.receiver.toUpperCase();
   var app = {
     db: req.db,
     queue: req.queue
@@ -106,6 +109,7 @@ router.post('/share', function (req, res) {
     reg_no: reg_no,
     dob: req.body.dob,
     token: token,
+    receiver: receiver,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   var onGet = function (err, response) {
