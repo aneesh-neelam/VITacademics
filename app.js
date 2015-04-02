@@ -1,5 +1,6 @@
 /*
  *  VITacademics - Worker
+ *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -18,10 +19,10 @@
 
 'use strict';
 
-var jackrabbit = require ('jackrabbit');
-var mongoClient = require ('mongodb');
-var path = require ('path');
-var underscore = require ('underscore');
+var jackrabbit = require('jackrabbit');
+var mongoClient = require('mongodb');
+var path = require('path');
+var underscore = require('underscore');
 
 var handleMain = require(path.join(__dirname, 'handlers', 'main'));
 var handleMobile = require(path.join(__dirname, 'handlers', 'mobile'));
@@ -42,9 +43,9 @@ mongoClient.connect(mongoURI, onConnect);
 
 var queue = jackrabbit(amqpURI);
 queue.queues = {
-  main: 'VITacademics',
-  mobile: 'mobile',
-  share: 'share'
+  main: 'Main',
+  mobile: 'Mobile',
+  share: 'Share'
 };
 queue.on('connected', function () {
   app.queue = queue;
@@ -61,7 +62,7 @@ queue.on('connected', function () {
             handleShare(app);
             break;
           default:
-            console.log('Unsupported Queue. ');
+            console.log('Unsupported Queue: ' + elt);
             break;
         }
       };

@@ -1,5 +1,6 @@
 /*
  *  VITacademics - Worker
+ *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -18,9 +19,14 @@
 
 'use strict';
 
+var path = require('path');
+
+var status = require(path.join(__dirname, '..', 'status'));
+
 var handler = function (app) {
   var onJob = function (job, ack) {
-    console.log('(Feature Incomplete) ' + job);
+    job.status = status.toDo;
+    console.log(JSON.stringify(job));
     ack();
   };
   app.queue.handle(app.queue.queues.share, onJob);
