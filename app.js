@@ -37,7 +37,7 @@ var app = {
 
 var onConnect = function (err, db) {
     app.db = db;
-}
+};
 mongoClient.connect(mongoURI, onConnect);
 
 var queue = jackrabbit(amqpURI);
@@ -50,16 +50,21 @@ queue.on('connected', function () {
   app.queue = queue;
   var forEachQueue = function (elt, i, arr) {
       var onReady = function () {
-          if (elt === 'VITacademics') {
-              handleMain(app, elt);
-          }
-          else if (elt === 'mobile') {
-              handleMobile(app, elt);
-          }
-          else {
-              handleShare(app, elt);
-          }
-      }
+        switch (elt) {
+          case queue.queues.main:
+            handleMain(app);
+            break;
+          case queue.queues.mobile:
+            handleMobile(app);
+            break;
+          case queue.queues.share:
+            handleShare(app);
+            break;
+          default:
+            console.log('Unsupported Queue. ');
+            break;
+        }
+      };
       queue.create(elt, {prefetch: 500}, onReady);
   };
   underscore.values(queue.queues).forEach(forEachQueue);

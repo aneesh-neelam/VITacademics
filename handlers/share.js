@@ -18,8 +18,12 @@
 
 'use strict';
 
-var handler = function (app, elt) {
-
+var handler = function (app) {
+  var onJob = function (job, ack) {
+    console.log('(Feature Incomplete) ' + job);
+    ack();
+  };
+  app.queue.handle(app.queue.queues.share, onJob);
 };
 
 module.exports = handler;
