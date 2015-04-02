@@ -18,13 +18,15 @@
 
 'use strict';
 
-module.exports = function (year) {
-  var date = new Date;
-  var arrayIndex = date.getFullYear() - 2000 - year;
-  var month = date.getMonth();
+var choose = function (year) {
+  let date = new Date;
+  let arrayIndex = date.getFullYear() - 2000 - year;
+  let month = date.getMonth();
   if (month >= 0 && month <= 6) {
     arrayIndex = arrayIndex - 1;
   }
   arrayIndex = (arrayIndex < 4) ? arrayIndex : 4;
   return arrayIndex;
 };
+
+module.exports.choose = choose;
