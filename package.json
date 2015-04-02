@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.15.25",
+  "version": "0.15.27",
   "description": "VITacademics API Server",
   "homepage": "https://vitacademics-dev.herokuapp.com/",
   "bugs": {
@@ -37,6 +37,10 @@
     {
       "name": "Sreeram Boyapati",
       "email": "sreeram.boyapati2011@gmail.com"
+    },
+    {
+      "name": "Kunal Nagpal",
+      "email": "kunagpal@gmail.com"
     },
     {
       "name": "Ayush Agarwal",

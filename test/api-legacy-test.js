@@ -20,6 +20,7 @@
 
 'use strict';
 
+var async = require('async');
 var path = require('path');
 var should = require('chai').should();
 var supertest = require('supertest');
@@ -132,4 +133,9 @@ var onEach = function (user, i, arr) {
   });
 };
 
-users.forEach(onEach);
+describe('Waiting for Express.js Configuration to complete', function () {
+  before(function (done) {
+    setTimeout(done, 10000);
+  });
+  users.forEach(onEach);
+});
