@@ -30,7 +30,7 @@ if (process.env.LOGENTRIES_TOKEN) {
   });
 }
 
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var resource = require(path.join(__dirname, '..', 'token-resource'));
 
 
@@ -49,7 +49,7 @@ exports.get = function (app, data, callback) {
   var collection = app.db.collection('student_legacy');
   var onFetch = function (err, doc) {
     if (err) {
-      data.status = status.codes.mongoDown;
+      data.status = status.mongoDown;
       if (log) {
         log.log('debug', data);
       }
@@ -63,13 +63,13 @@ exports.get = function (app, data, callback) {
           validity: validity,
           issued: new Date().toJSON()
         };
-        data.status = status.codes.success;
+        data.status = status.success;
         callback(err, data);
       };
       generate(data.reg_no, validity, onGeneration);
     }
     else {
-      data.status = status.codes.invalid;
+      data.status = status.invalid;
       callback(false, data);
     }
   };

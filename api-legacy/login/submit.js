@@ -32,7 +32,7 @@ if (process.env.LOGENTRIES_TOKEN) {
   });
 }
 
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
@@ -51,7 +51,7 @@ exports.get = function (app, data, callback) {
     var onPost = function (response) {
       delete data['captcha'];
       if (response.error) {
-        data.status = status.codes.vitDown;
+        data.status = status.vitDown;
         if (log) {
           log.log('debug', data);
         }
@@ -85,7 +85,7 @@ exports.get = function (app, data, callback) {
             cache.put(data.reg_no, doc, validity * 60 * 1000);
             var onUpdate = function (err) {
               if (err) {
-                data.status = status.codes.mongoDown;
+                data.status = status.mongoDown;
                 if (log) {
                   log.log('debug', data);
                 }
@@ -93,7 +93,7 @@ exports.get = function (app, data, callback) {
                 callback(true, data);
               }
               else {
-                data.status = status.codes.success;
+                data.status = status.success;
                 callback(null, data);
               }
             };
@@ -107,7 +107,7 @@ exports.get = function (app, data, callback) {
             }, onUpdate);
           }
           else {
-            data.status = status.codes.invalid;
+            data.status = status.invalid;
             callback(null, data);
           }
         }
@@ -124,7 +124,7 @@ exports.get = function (app, data, callback) {
       .end(onPost);
   }
   else {
-    data.status = status.codes.timedOut;
+    data.status = status.timedOut;
     callback(null, data);
   }
 };

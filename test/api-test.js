@@ -26,7 +26,7 @@ var should = require('chai').should();
 var supertest = require('supertest');
 
 var app = require(path.join(__dirname, '..', 'app'));
-var codes = require(path.join(__dirname, '..', 'api', 'status')).codes;
+var status = require(path.join(__dirname, '..', 'status'));
 var users = require(path.join(__dirname, '.', 'credentials')).users;
 
 var api = supertest(app);
@@ -44,7 +44,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('reg_no', user.regno);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
@@ -63,7 +63,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('cached');
           res.body.should.have.property('refreshed');
           res.body.should.have.property('withdrawn_courses');
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
@@ -85,7 +85,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('grade_summary');
           res.body.should.have.property('cached');
           res.body.should.have.property('grades_refreshed');
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
@@ -100,7 +100,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('share').with.property('token').with.length(6);
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
@@ -115,7 +115,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('semester');
           res.body.should.have.property('courses');
-          res.body.status.should.deep.equal(codes.success);
+          res.body.status.should.deep.equal(status.success);
           done();
         });
     });
@@ -136,7 +136,7 @@ describe('Waiting for Express.js Configuration to complete', function () {
         res.body.should.have.property('ios');
         res.body.should.have.property('windows');
         res.body.should.have.property('messages');
-        res.body.status.should.deep.equal(codes.success);
+        res.body.status.should.deep.equal(status.success);
         done();
       });
   });

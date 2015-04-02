@@ -29,14 +29,14 @@ var dataAggregate = require(path.join(__dirname, '..', 'api-legacy', 'scraper', 
 var friendsGenerate = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'generate'));
 var friendsShare = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'share'));
 
-var dbIndex = require(path.join(__dirname, '..', 'db'));
+var db = require(path.join(__dirname, '..', 'db'));
 
 router.get('/login/manual', function (req, res) {
   let data = {
     reg_no: req.query.regno.toUpperCase(),
     campus: req.originalUrl.split('/')[2].toLowerCase()
   };
-  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -61,7 +61,7 @@ router.get('/login/submit', function (req, res) {
     captcha: req.query.captcha.toUpperCase(),
     campus: req.originalUrl.split('/')[2].toLowerCase()
   };
-  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -78,7 +78,7 @@ router.get('/login/auto', function (req, res) {
     dob: req.query.dob,
     campus: req.originalUrl.split('/')[2].toLowerCase()
   };
-  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
   let app = {
     db: req.dbs[0],
     queue: req.queue
@@ -96,7 +96,7 @@ router.get('/data/first', function (req, res) {
       first_time: true,
       campus: req.originalUrl.split('/')[2].toLowerCase()
     };
-    let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+    let year = db.choose(parseInt(data.reg_no.slice(0,2)));
     let app = {
     db: req.dbs[0],
     queue: req.queue
@@ -114,7 +114,7 @@ router.get('/data/refresh', function (req, res) {
     first_time: false,
     campus: req.originalUrl.split('/')[2].toLowerCase()
   };
-  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -131,7 +131,7 @@ router.get('/friends/regenerate', function (req, res) {
     dob: req.query.dob,
     campus: req.originalUrl.split('/')[2].toLowerCase()
   };
-  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -153,7 +153,7 @@ router.get('/friends/share', function (req, res) {
     token: token,
     campus: req.originalUrl.split('/')[2].toLowerCase()
   };
-  let year = dbIndex(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue

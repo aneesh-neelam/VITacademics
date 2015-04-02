@@ -29,7 +29,7 @@ if (process.env.LOGENTRIES_TOKEN) {
   });
 }
 
-var status = require(path.join(__dirname, 'status'));
+var status = require(path.join(__dirname, '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
@@ -50,7 +50,7 @@ exports.get = function (app, data, callback) {
   };
   var onFetch = function (err, results) {
     if (err) {
-      data.status = status.codes.mongoDown;
+      data.status = status.mongoDown;
       if (log) {
         log.log('debug', data);
       }
@@ -62,11 +62,11 @@ exports.get = function (app, data, callback) {
       data.ios = results.client.ios;
       data.windows = results.client.windows;
       data.messages = results.message;
-      data.status = status.codes.success;
+      data.status = status.success;
       callback(false, data);
     }
     else {
-      data.status = status.codes.noData;
+      data.status = status.noData;
       if (log) {
         log.log('debug', data);
       }

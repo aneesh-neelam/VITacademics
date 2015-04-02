@@ -25,7 +25,7 @@ var cookie = require('cookie');
 var path = require('path');
 var unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeMarks = function (app, data, callback) {
@@ -42,7 +42,7 @@ exports.scrapeMarks = function (app, data, callback) {
   var onRequest = function (response) {
     if (response.error) {
       callback(false, [
-        status.codes.vitDown
+        status.vitDown
       ]);
     }
     else {
@@ -183,7 +183,7 @@ exports.scrapeMarks = function (app, data, callback) {
         callback(null, marks);
       }
       catch (ex) {
-        data.status = status.codes.invalid;
+        data.status = status.dataParsing;
         callback(false, [
           data
         ]);

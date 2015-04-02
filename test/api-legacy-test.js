@@ -27,7 +27,7 @@ var supertest = require('supertest');
 
 var app = require(path.join(__dirname, '..', 'app'));
 var captcha = require(path.join(__dirname, '..', 'api-legacy', 'login', 'captcha-parser'));
-var codes = require(path.join(__dirname, '..', 'api-legacy', 'status')).codes;
+var status = require(path.join(__dirname, '..', 'status'));
 var users = require(path.join(__dirname, '.', 'credentials')).users;
 
 var api = supertest(app);
@@ -57,7 +57,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('reg_no', user.regno);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
-          res.body.should.have.property('status').with.deep.equal(codes.success);
+          res.body.should.have.property('status').with.deep.equal(status.success);
           done();
         });
     });
@@ -76,7 +76,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('cached');
           res.body.should.have.property('refreshed');
           res.body.should.have.property('timetable');
-          res.body.should.have.property('status').with.deep.equal(codes.success);
+          res.body.should.have.property('status').with.deep.equal(status.success);
           res.body.should.have.property('share').with.property('token').with.length(6);
           done();
         });
@@ -95,7 +95,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('courses');
           res.body.should.have.property('cached');
           res.body.should.have.property('refreshed');
-          res.body.should.have.property('status').with.deep.equal(codes.success);
+          res.body.should.have.property('status').with.deep.equal(status.success);
           done();
         });
     });
@@ -109,7 +109,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('reg_no', user.regno);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
-          res.body.should.have.property('status').with.deep.equal(codes.success);
+          res.body.should.have.property('status').with.deep.equal(status.success);
           res.body.should.have.property('share').with.property('token').with.length(6);
           done();
         });
@@ -126,7 +126,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('semester');
           res.body.should.have.property('courses');
           res.body.should.have.property('timetable');
-          res.body.should.have.property('status').with.deep.equal(codes.success);
+          res.body.should.have.property('status').with.deep.equal(status.success);
           done();
         });
     });
