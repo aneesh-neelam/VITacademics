@@ -9,14 +9,14 @@ VITacademics
 
 The VITacademics API Server
 
-Check out the [Project Wiki](https://github.com/aneesh-neelam/VITacademics/wiki) for more information. 
+Check out the [Project Wiki](https://github.com/aneesh-neelam/VITacademics/wiki) for more information.
 
-For the API Documentation, check out the [JSON API Page](https://github.com/aneesh-neelam/VITacademics/wiki/JSON-API). 
+For the API Documentation, check out the [JSON API Page](https://github.com/aneesh-neelam/VITacademics/wiki/JSON-API).
 
-Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics/issues). 
+Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacademics/issues).
 
 #### Instructions for Installation:
-###### Install Node.js/io.js (Latest Stable Release)
+###### Install [io.js](https://iojs.org/en/index.html) (Latest Stable Release)
 ###### Install all dependencies
     $ npm install
 ###### Run the server locally
@@ -25,4 +25,3 @@ Please report any bugs or issues [here](https://github.com/aneesh-neelam/VITacad
 #### External Requirements:
 * MongoDB
 * RabbitMQ
-
