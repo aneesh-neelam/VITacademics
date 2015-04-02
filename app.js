@@ -45,8 +45,6 @@ if (process.env.LOGENTRIES_TOKEN) {
   });
 }
 
-var status = require(path.join(__dirname, 'api', 'status'));
-
 var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
 var apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
 var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));

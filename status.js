@@ -39,7 +39,7 @@ var status = {
     message: 'Requested data is not available', code: 15
   },
   dataParsing: {
-    message: 'Invalid credentials or error parsing data', code: 16
+    message: 'Error parsing data or invalid credentials', code: 16
   },
   toDo: {
     message: 'This feature is incomplete', code: 50
