@@ -27,7 +27,7 @@ var supertest = require('supertest');
 
 var app = require(path.join(__dirname, '..', 'app'));
 var captcha = require(path.join(__dirname, '..', 'api-legacy', 'login', 'captcha-parser'));
-var codes = require(path.join(__dirname, '..', 'api-legacy', 'status')).codes;
+var codes = require(path.join(__dirname, '..', 'status'));
 var users = require(path.join(__dirname, '.', 'credentials')).users;
 
 var api = supertest(app);

@@ -26,7 +26,7 @@ var should = require('chai').should();
 var supertest = require('supertest');
 
 var app = require(path.join(__dirname, '..', 'app'));
-var codes = require(path.join(__dirname, '..', 'api', 'status')).codes;
+var codes = require(path.join(__dirname, '..', 'status'));
 var users = require(path.join(__dirname, '.', 'credentials')).users;
 
 var api = supertest(app);
