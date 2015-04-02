@@ -27,7 +27,7 @@ var momentTimezone = require('moment-timezone');
 var path = require('path');
 var unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 var timetableResource = require(path.join(__dirname, '..', 'timetable-resource'));
 
 
@@ -43,7 +43,7 @@ exports.scrapeTimetable = function (app, data, callback) {
   var cookieSerial = cache.get(data.reg_no).cookie;
   var onRequest = function (response) {
     if (response.error) {
-      data.status = status.codes.vitDown;
+      data.status = status.vitDown;
       callback(true, data);
     }
     else {
@@ -270,11 +270,11 @@ exports.scrapeTimetable = function (app, data, callback) {
           };
           timetableScraper('tr').each(onEachRow);
         }
-        timetable.status = status.codes.success;
+        timetable.status = status.success;
         callback(null, timetable);
       }
       catch (ex) {
-        data.status = status.codes.invalid;
+        data.status = status.invalid;
         callback(true, data);
       }
     }

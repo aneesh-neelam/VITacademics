@@ -30,7 +30,7 @@ if (process.env.LOGENTRIES_TOKEN) {
 
 var api_login = require(path.join(__dirname, 'login', 'auto'));
 var api_aggregate = require(path.join(__dirname, 'scraper', 'aggregate'));
-var status = require(path.join(__dirname, 'status'));
+var status = require(path.join(__dirname, '..', 'status'));
 
 
 var parseMessage = function (app, data, callback) {

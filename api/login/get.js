@@ -30,7 +30,7 @@ if (process.env.LOGENTRIES_TOKEN) {
   });
 }
 
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
@@ -43,7 +43,7 @@ exports.get = function (app, data, callback) {
   }
   var onRequest = function (response) {
     if (response.error) {
-      data.status = status.codes.vitDown;
+      data.status = status.vitDown;
       if (log) {
         log.log('debug', data);
       }

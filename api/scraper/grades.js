@@ -34,7 +34,7 @@ if (process.env.LOGENTRIES_TOKEN) {
   });
 }
 
-var status = require(path.join(__dirname, '..', 'status'));
+var status = require(path.join(__dirname, '..', '..', 'status'));
 
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
@@ -55,7 +55,7 @@ exports.get = function (app, data, callback) {
 
       var onFetch = function (err, mongoDoc) {
         if (err) {
-          data.status = status.codes.mongoDown;
+          data.status = status.mongoDown;
           if (log) {
             log.log('debug', data);
           }
@@ -64,12 +64,12 @@ exports.get = function (app, data, callback) {
         }
         else if (mongoDoc) {
           delete mongoDoc['_id'];
-          mongoDoc.status = status.codes.success;
+          mongoDoc.status = status.success;
           mongoDoc.cached = true;
           callback(false, mongoDoc);
         }
         else {
-          data.status = status.codes.noData;
+          data.status = status.noData;
           callback(true, data);
         }
       };
@@ -91,7 +91,7 @@ exports.get = function (app, data, callback) {
 
         var onRequest = function (response) {
           if (response.error) {
-            data.status = status.codes.vitDown;
+            data.status = status.vitDown;
             if (log) {
               log.log('debug', data);
             }
@@ -208,7 +208,7 @@ exports.get = function (app, data, callback) {
 
             var onUpdate = function (err) {
               if (err) {
-                data.status = status.codes.mongoDown;
+                data.status = status.mongoDown;
                 if (log) {
                   log.log('debug', data);
                 }
@@ -216,7 +216,7 @@ exports.get = function (app, data, callback) {
                 callback(true, data);
               }
               else {
-                data.status = status.codes.success;
+                data.status = status.success;
                 var validity = 3; // In Minutes
                 var doc = {
                   reg_no: data.reg_no,
@@ -253,12 +253,12 @@ exports.get = function (app, data, callback) {
       }
     }
     else {
-      data.status = status.codes.invalid;
+      data.status = status.invalid;
       callback(true, data);
     }
   }
   else {
-    data.status = status.codes.timedOut;
+    data.status = status.timedOut;
     callback(null, data);
   }
 };
