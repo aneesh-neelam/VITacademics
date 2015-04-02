@@ -26,12 +26,12 @@ var system = require(path.join(__dirname, '..', 'api', 'system'));
 
 
 router.get('/', function (req, res) {
-  var app = {
-    db: req.db,
+  let app = {
+    db: req.db[4],
     queue: req.queue
   };
-  var data = {};
-  var onGet = function (err, response) {
+  let data = {};
+  let onGet = function (err, response) {
     res.json(response);
   };
   system.get(app, data, onGet);

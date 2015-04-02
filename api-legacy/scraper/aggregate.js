@@ -41,7 +41,7 @@ var timetable = require(path.join(__dirname, 'timetable'));
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
     if (cache.get(data.reg_no).dob === data.dob) {
-      var collection = app.db.collection('student');
+      var collection = app.db.collection('student_legacy');
       if (cache.get(data.reg_no).refreshed && !(data.first_time)) {
         var keys = {
           reg_no: 1,

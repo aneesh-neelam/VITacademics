@@ -34,7 +34,7 @@ var status = require(path.join(__dirname, '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
-  var collection = app.db.collection('student');
+  var collection = app.db.collection('student_legacy');
   var keys = {
     reg_no: 1,
     timetable: 1,

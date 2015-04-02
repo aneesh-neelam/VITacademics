@@ -46,7 +46,7 @@ var generate = function (regNo, validity, callback) {
 };
 
 exports.get = function (app, data, callback) {
-  var collection = app.db.collection('student');
+  var collection = app.db.collection('student_legacy');
   var onFetch = function (err, doc) {
     if (err) {
       data.status = status.codes.mongoDown;
