@@ -80,7 +80,7 @@ router.get('/login/auto', function (req, res) {
   };
   let year = db.choose(parseInt(data.reg_no.slice(0,2)));
   let app = {
-    db: req.dbs[0],
+    db: req.dbs[year],
     queue: req.queue
   };
   let onGet = function (err, response) {
@@ -98,7 +98,7 @@ router.get('/data/first', function (req, res) {
     };
     let year = db.choose(parseInt(data.reg_no.slice(0,2)));
     let app = {
-    db: req.dbs[0],
+      db: req.dbs[year],
     queue: req.queue
   };
   let onGet = function (err, response) {
