@@ -3,6 +3,7 @@
  *  Copyright (C) 2015  Karthik Balakrishnan <karthikb351@gmail.com>
  *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
+ *  Copyright (C) 2015  Kunal Nagpal <kunagpal@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -19,6 +20,16 @@
  */
 
 'use strict';
+
+/*
+ * DISCLAIMER
+ *
+ * The following credentials have been included for testing purposes only.
+ *
+ * Should you have an objection to such use of your details,
+ * please open an issue here: https://github.com/aneesh-neelam/VITacademics/issues.
+ *
+ */
 
 var users = [
   {
