@@ -25,5 +25,6 @@ module.exports = function (year) {
   if (month >= 0 && month <= 6) {
     arrayIndex = arrayIndex - 1;
   }
+  arrayIndex = (arrayIndex > 4) ? arrayIndex : 4;
   return arrayIndex;
 };
