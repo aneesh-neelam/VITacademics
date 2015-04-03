@@ -21,40 +21,53 @@
 
 var status = {
   success: {
-    message: 'Successful execution', code: 0
+    message: 'Successful execution',
+    code: 0
   },
   timedOut: {
-    message: 'Session timed out', code: 11
+    message: 'Session timed out',
+    code: 11
   },
   invalid: {
-    message: 'Invalid credentials', code: 12
+    message: 'Invalid credentials',
+    code: 12
   },
   captchaParsing: {
-    message: 'Error parsing captcha', code: 13
+    message: 'Error parsing captcha',
+    code: 13
   },
   tokenExpired: {
-    message: 'Token expired', code: 14
+    message: 'Token expired',
+    code: 14
   },
   noData: {
-    message: 'Requested data is not available', code: 15
+    message: 'Requested data is not available',
+    code: 15
   },
   dataParsing: {
-    message: 'Error parsing data or invalid credentials', code: 16
+    message: 'Error parsing data or invalid credentials',
+    code: 16
   },
   toDo: {
-    message: 'This feature is incomplete', code: 50
+    message: 'This feature is incomplete',
+    code: 50
   },
   vitDown: {
-    message: 'VIT\'s Servers may be slow/down or we may be facing a connectivity Issue', code: 89
+    message: 'VIT\'s Servers may be slow/down or we may be facing a connectivity Issue',
+    code: 89
   },
   mongoDown: {
-    message: 'Our MongoDB instances may be Down or We may be facing a connectivity Issue', code: 97
+    message: 'Our MongoDB instances may be Down or We may be facing a connectivity Issue',
+    code: 97
   },
   maintenance: {
     message: 'Our API servers are down for maintenance, please contact the VITacademics developers for more Information',
     code: 98
   },
-  other: {message: 'An Unforeseen/Unknown/Irrecoverable Error has Occurred', code: 99}
+  other: {
+    message: 'An Unforeseen/Unknown/Irrecoverable Error has Occurred',
+    code: 99
+  }
 };
 
 module.exports = status;
