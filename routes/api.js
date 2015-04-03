@@ -36,7 +36,7 @@ router.post('/login', function (req, res) {
     dob: req.body.dob,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -53,7 +53,7 @@ router.post('/refresh', function (req, res) {
     dob: req.body.dob,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -70,7 +70,7 @@ router.post('/grades', function (req, res) {
     dob: req.body.dob,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -87,7 +87,7 @@ router.post('/token', function (req, res) {
     dob: req.body.dob,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -113,7 +113,7 @@ router.post('/share', function (req, res) {
     receiver: receiver,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0,2)));
+  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue

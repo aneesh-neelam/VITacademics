@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.16.0",
+  "version": "0.16.2",
   "description": "VITacademics API Server",
   "homepage": "https://vitacademics-rel.herokuapp.com/",
   "bugs": {
@@ -61,7 +61,7 @@
     "moment-timezone": "0.3.1",
     "mongodb": "2.0.25",
     "morgan": "1.5.2",
-    "newrelic": "1.18.0",
+    "newrelic": "1.18.1",
     "node-ga": "0.1.1",
     "node-logentries": "0.1.4",
     "serve-favicon": "2.2.0",
