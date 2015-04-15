@@ -20,20 +20,22 @@
 
 var express = require('express');
 var path = require('path');
-var router = express.Router();
 
 var api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
+
+var router = express.Router();
 
 router.get('/', function (req, res) {
   let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
   let txtWebAppKey = process.env.TXTWEB_APP_KEY || 'randomkey';
   if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
+    let args = req.query['txtweb-message'].toUpperCase().split(' ');
     let app = {
       dbs: req.dbs,
       queue: req.queue
     };
     let data = {
-      message: req.query['txtweb-message'],
+      args: args,
       mobile: req.query['txtweb-mobile']
     };
     let onGet = function (err, messages) {

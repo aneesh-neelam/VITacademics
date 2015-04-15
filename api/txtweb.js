@@ -22,7 +22,7 @@ var path = require('path');
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-  var logentries = require('node-logentries');
+  let logentries = require('node-logentries');
   log = logentries.logger({
     token: process.env.LOGENTRIES_TOKEN
   });
@@ -30,11 +30,12 @@ if (process.env.LOGENTRIES_TOKEN) {
 
 var api_login = require(path.join(__dirname, 'login', 'auto'));
 var api_aggregate = require(path.join(__dirname, 'scraper', 'aggregate'));
+var api_grades = require(path.join(__dirname, 'scraper', 'grades'));
 var status = require(path.join(__dirname, '..', 'status'));
 
 
 var parseMessage = function (app, data, callback) {
-  var reply = [
+  let reply = [
     'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
     'Get Course Details:  @vitacademics course [CourseCode]',
     'Get Today\'s Classes: @vitacademics today',
@@ -42,27 +43,27 @@ var parseMessage = function (app, data, callback) {
     'Get Marks: @vitacademics marks',
     'Help - @vitacademics help'
   ];
-  var args = data.message.toUpperCase().split(' ');
-  if (args[0] === 'REGISTER') {
+  if (data.args[0] === 'REGISTER') {
     // TODO
     reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
-  else if (args[0] === 'COURSE') {
+  else if (data.args[0] === 'COURSE') {
     // TODO
     reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
-  else if (args[0] === 'TODAY') {
+  else if (data.args[0] === 'TODAY') {
     // TODO
     reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
-  else if (args[0] === 'ATTENDANCE') {
+  else if (data.args[0] === 'ATTENDANCE') {
     // TODO
     reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
-  else if (args[0] === 'MARKS') {
+  else if (data.args[0] === 'MARKS') {
     // TODO
     reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
+  log.log('debug', {log: 'Incomplete feature TxtWeb used', args: data.args, mobile: data.mobile});
   callback(false, reply);
 };
 
