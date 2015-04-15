@@ -171,7 +171,7 @@ exports.get = function (app, data, callback) {
                   }
                   else if (gradeValue(grade)) {
                     if (data.semester_wise[exam_held]) {
-                      data.semester_wise[exam_held].gpa = (((data.semester_wise[exam_held].gpa * data.semester_wise[exam_held].credits) + (gradeValue(grade) * credits)) / (data.semester_wise[exam_held].credits + credits)).toFixed(2);
+                      data.semester_wise[exam_held].gpa = Math.round((data.semester_wise[exam_held].gpa * data.semester_wise[exam_held].credits + gradeValue(grade) * credits) / (data.semester_wise[exam_held].credits + credits) * 1e2) / 1e2;
                       data.semester_wise[exam_held].credits = data.semester_wise[exam_held].credits + credits;
                     }
                     else {
