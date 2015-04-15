@@ -1,7 +1,7 @@
 {
   "name": "VITacademics",
-  "version": "0.17.2",
-  "description": "VITacademics API Server",
+  "version": "0.98.3",
+  "description": "VITacademics API Server and Web App",
   "homepage": "https://vitacademics-dev.herokuapp.com/",
   "bugs": {
     "url": "https://github.com/aneesh-neelam/VITacademics/issues",
@@ -56,12 +56,12 @@
     "ejs": "2.3.1",
     "express": "4.12.3",
     "jackrabbit": "3.0.8",
-    "memory-cache": "0.1.1",
-    "moment": "2.9.0",
+    "memory-cache": "0.1.2",
+    "moment": "2.10.2",
     "moment-timezone": "0.3.1",
-    "mongodb": "2.0.25",
+    "mongodb": "2.0.27",
     "morgan": "1.5.2",
-    "newrelic": "1.18.1",
+    "newrelic": "1.18.2",
     "node-ga": "0.1.1",
     "node-logentries": "0.1.4",
     "serve-favicon": "2.2.0",
@@ -84,7 +84,7 @@
   },
   "devDependencies": {
     "chai": "2.2.0",
-    "mocha": "2.2.1",
+    "mocha": "2.2.4",
     "supertest": "0.15.0"
   }
 }

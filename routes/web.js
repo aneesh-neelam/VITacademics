@@ -19,8 +19,8 @@
 'use strict';
 
 var express = require('express');
-var router = express.Router();
 
+var router = express.Router();
 
 router.get('/', function (req, res) {
   let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
@@ -37,7 +37,7 @@ router.get('/status', function (req, res) {
     platform: process.platform,
     arch: process.arch,
     serverStatus: 'OK',
-    lastUpdated: '3rd April 2015',
+    lastUpdated: '15th April 2015',
     googleAnalyticsToken: googleAnalyticsToken
   };
   res.render('status', status);
