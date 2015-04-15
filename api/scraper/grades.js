@@ -25,6 +25,7 @@ var cookie = require('cookie');
 var moment = require('moment');
 var path = require('path');
 var unirest = require('unirest');
+var underscore = require('underscore');
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
@@ -141,7 +142,9 @@ exports.get = function (app, data, callback) {
             data.grades = [];
             data.semester_wise = {};
             try {
+              // Scraping Grades
               var baseScraper = cheerio.load(response.body);
+              var gradesScraper = cheerio.load(baseScraper('table table').eq(1).html());
               var onEach = function (i, elem) {
                 if (i > 0) {
                   var attrs = baseScraper(this).children('td');
@@ -158,12 +161,15 @@ exports.get = function (app, data, callback) {
                     'result_date': moment(attrs.eq(7).text(), 'DD-MMM-YYYY').isValid() ? moment(attrs.eq(7).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD') : null,
                     'option': attrs.eq(8).text()
                   });
+
+                  // Computing Semester-Wise GPA
                   if (gradeValue(grade) === true) {
                     if (data.semester_wise[exam_held]) {
                       data.semester_wise[exam_held].credits = data.semester_wise[exam_held].credits + credits;
                     }
                     else {
                       data.semester_wise[exam_held] = {
+                        exam_held: exam_held,
                         credits: credits,
                         gpa: 0.0
                       };
@@ -176,6 +182,7 @@ exports.get = function (app, data, callback) {
                     }
                     else {
                       data.semester_wise[exam_held] = {
+                        exam_held: exam_held,
                         credits: credits,
                         gpa: gradeValue(grade)
                       };
@@ -183,7 +190,10 @@ exports.get = function (app, data, callback) {
                   }
                 }
               };
-              baseScraper('table #hist tr').each(onEach);
+              gradesScraper('tr').each(onEach);
+
+              // Convert semester-wise object to array
+              data.semester_wise = underscore.values(data.semester_wise);
 
               // Scraping the credit summary
               var creditsTable = baseScraper('table table').eq(2).children('tr').eq(1);
@@ -207,6 +217,7 @@ exports.get = function (app, data, callback) {
             catch (ex) {
               data.credits_registered = 0;
               data.credits_earned = 0;
+              data.semester_wise = [];
               data.grade_summary = {
                 s: 0,
                 a: 0,

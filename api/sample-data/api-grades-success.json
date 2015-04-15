@@ -574,36 +574,43 @@
       "option": "NIL"
     }
   ],
-  "semester_wise": {
-    "2012-05": {
+  "semester_wise": [
+    {
+      "exam_held": "2012-05",
       "credits": 26,
       "gpa": 7.73
     },
-    "2011-11": {
+    {
+      "exam_held": "2011-11",
       "credits": 21,
       "gpa": 8.43
     },
-    "2013-05": {
+    {
+      "exam_held": "2013-05",
       "credits": 24,
       "gpa": 8.83
     },
-    "2012-11": {
+    {
+      "exam_held": "2012-11",
       "credits": 24,
       "gpa": 7.95
     },
-    "2013-11": {
+    {
+      "exam_held": "2013-11",
       "credits": 24,
       "gpa": 8.84
     },
-    "2014-05": {
+    {
+      "exam_held": "2014-05",
       "credits": 26,
       "gpa": 8.66
     },
-    "2014-11": {
+    {
+      "exam_held": "2014-11",
       "credits": 18,
       "gpa": 7.95
     }
-  },
+  ],
   "credits_registered": 163,
   "credits_earned": 163,
   "cgpa": 8.35,
@@ -617,7 +624,7 @@
     "f": 0,
     "n": 0
   },
-  "grades_refreshed": "2015-04-15T07:39:32.356Z",
+  "grades_refreshed": "2015-04-15T07:50:10.239Z",
   "cached": false,
   "status": {
     "message": "Successful execution",
