@@ -25,7 +25,7 @@ var captchaParser = require(path.join(__dirname, 'captcha-parser'));
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-  var logentries = require('node-logentries');
+  let logentries = require('node-logentries');
   log = logentries.logger({
     token: process.env.LOGENTRIES_TOKEN
   });
