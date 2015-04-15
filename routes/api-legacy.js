@@ -18,10 +18,11 @@
 
 'use strict';
 
+var cache = require('memory-cache');
 var express = require('express');
 var path = require('path');
-var router = express.Router();
 
+var db = require(path.join(__dirname, '..', 'db'));
 var loginManual = require(path.join(__dirname, '..', 'api-legacy', 'login', 'get'));
 var loginAuto = require(path.join(__dirname, '..', 'api-legacy', 'login', 'auto'));
 var loginSubmit = require(path.join(__dirname, '..', 'api-legacy', 'login', 'submit'));
@@ -29,7 +30,7 @@ var dataAggregate = require(path.join(__dirname, '..', 'api-legacy', 'scraper', 
 var friendsGenerate = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'generate'));
 var friendsShare = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'share'));
 
-var db = require(path.join(__dirname, '..', 'db'));
+var router = express.Router();
 
 router.get('/login/manual', function (req, res) {
   let data = {
@@ -145,15 +146,23 @@ router.get('/friends/regenerate', function (req, res) {
 router.get('/friends/share', function (req, res) {
   let token;
   let reg_no;
-  if (req.query.token) token = req.query.token.toUpperCase();
-  if (req.query.regno) reg_no = req.query.regno.toUpperCase();
+  let year;
+  if (req.query.token) {
+    token = req.query.token.toUpperCase();
+    reg_no = cache.get(token);
+    if (reg_no) year = db.choose(parseInt(reg_no.slice(0, 2)));
+    else year = 0;
+  }
+  else if (req.query.regno) {
+    reg_no = req.query.regno.toUpperCase();
+    year = db.choose(parseInt(reg_no.slice(0, 2)));
+  }
   let data = {
     reg_no: reg_no,
     dob: req.query.dob,
     token: token,
     campus: req.originalUrl.split('/')[2].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue

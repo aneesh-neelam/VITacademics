@@ -18,17 +18,18 @@
 
 'use strict';
 
+var cache = require('memory-cache');
 var express = require('express');
 var path = require('path');
-var router = express.Router();
 
+var db = require(path.join(__dirname, '..', 'db'));
 var loginAuto = require(path.join(__dirname, '..', 'api', 'login', 'auto'));
 var dataAggregate = require(path.join(__dirname, '..', 'api', 'scraper', 'aggregate'));
 var dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'));
 var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
 var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
 
-var db = require(path.join(__dirname, '..', 'db'));
+var router = express.Router();
 
 router.post('/login', function (req, res) {
   let data = {
@@ -102,10 +103,19 @@ router.post('/share', function (req, res) {
   let token;
   let reg_no;
   let receiver;
-  if (req.body.token) token = req.body.token.toUpperCase();
-  if (req.body.regno) reg_no = req.body.regno.toUpperCase();
+  let year;
+  if (req.body.token) {
+    token = req.body.token.toUpperCase();
+    reg_no = cache.get(token);
+    if (reg_no) year = db.choose(parseInt(reg_no.slice(0, 2)));
+    else year = 0;
+  }
+  else if (req.body.regno) {
+    reg_no = req.body.regno.toUpperCase();
+    year = db.choose(parseInt(reg_no.slice(0, 2)));
+  }
   if (req.body.receiver === 'VITacademics Developer/Tester') receiver = req.body.receiver;
-  else if (req.body.receiver) receiver = req.body.receiver.toUpperCase();
+  else receiver = req.body.receiver.toUpperCase();
   let data = {
     reg_no: reg_no,
     dob: req.body.dob,
@@ -113,7 +123,6 @@ router.post('/share', function (req, res) {
     receiver: receiver,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue

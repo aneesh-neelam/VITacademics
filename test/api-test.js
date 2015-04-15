@@ -90,6 +90,7 @@ var onEach = function (user, i, arr) {
         });
     });
 
+    let token;
     it('Checking if token generation is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/token')
         .send({regno: user.reg_no, dob: user.dob})
@@ -100,6 +101,22 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('share').with.property('token').with.length(6);
+          res.body.status.should.deep.equal(status.success);
+          token = res.body.share.token;
+          done();
+        });
+    });
+
+    it('Checking if share using token is successful', function (done) {
+      api.post('/api/v2/' + user.campus + '/share')
+        .send({token: token, receiver: 'VITacademics Developer/Tester'})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('semester');
+          res.body.should.have.property('courses');
           res.body.status.should.deep.equal(status.success);
           done();
         });

@@ -100,6 +100,7 @@ var onEach = function (user, i, arr) {
         });
     });
 
+    let token;
     it('Checking if token generation is successful', function (done) {
       api.get('/api/' + user.campus + '/friends/regenerate')
         .query({regno: user.reg_no, dob: user.dob})
@@ -111,6 +112,23 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('status').with.deep.equal(status.success);
           res.body.should.have.property('share').with.property('token').with.length(6);
+          token = res.body.share.token;
+          done();
+        });
+    });
+
+    it('Checking if share using token is successful', function (done) {
+      api.get('/api/' + user.campus + '/friends/share')
+        .query({token: token})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('semester');
+          res.body.should.have.property('courses');
+          res.body.should.have.property('timetable');
+          res.body.should.have.property('status').with.deep.equal(status.success);
           done();
         });
     });
