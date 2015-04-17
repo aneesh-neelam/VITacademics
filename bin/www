@@ -29,7 +29,7 @@ if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-    var logentries = require('node-logentries');
+    let logentries = require('node-logentries');
     log = logentries.logger({
         token: process.env.LOGENTRIES_TOKEN
     });
@@ -45,6 +45,7 @@ var onBind = function () {
         mongoDb_Uri_2: process.env.MONGODB_URI_2 || 'mongodb://localhost:27017/VITacademics',
         mongoDb_Uri_3: process.env.MONGODB_URI_3 || 'mongodb://localhost:27017/VITacademics',
         mongoDb_Uri_4: process.env.MONGODB_URI_4 || 'mongodb://localhost:27017/VITacademics',
+        mongoDb_Uri_common: process.env.MONGODB_URI || 'mongodb://localhost:27017/VITacademics',
         amqp_Uri: process.env.AMQP_URI || 'amqp://localhost',
         Application: process.env.HOSTNAME || 'localhost',
         Logentries: process.env.LOGENTRIES_TOKEN ? true : false,

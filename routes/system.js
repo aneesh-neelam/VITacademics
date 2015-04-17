@@ -20,14 +20,14 @@
 
 var express = require('express');
 var path = require('path');
-var router = express.Router();
 
 var system = require(path.join(__dirname, '..', 'api', 'system'));
 
+var router = express.Router();
 
 router.get('/', function (req, res) {
   let app = {
-    db: req.dbs[4],
+    db: req.dbs[5],
     queue: req.queue
   };
   let data = {};

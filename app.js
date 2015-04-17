@@ -39,7 +39,7 @@ if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
 
 var log;
 if (process.env.LOGENTRIES_TOKEN) {
-  var logentries = require('node-logentries');
+  let logentries = require('node-logentries');
   log = logentries.logger({
     token: process.env.LOGENTRIES_TOKEN
   });
@@ -103,7 +103,8 @@ async.waterfall([
       process.env.MONGODB_URI_1 || 'mongodb://localhost:27017/VITacademics',
       process.env.MONGODB_URI_2 || 'mongodb://localhost:27017/VITacademics',
       process.env.MONGODB_URI_3 || 'mongodb://localhost:27017/VITacademics',
-      process.env.MONGODB_URI_4 || 'mongodb://localhost:27017/VITacademics'
+      process.env.MONGODB_URI_4 || 'mongodb://localhost:27017/VITacademics',
+      process.env.MONGODB_URI || 'mongodb://localhost:27017/VITacademics'
     ];
 
     var forEachMongoDB = function (mongoURI, asyncCallback) {
