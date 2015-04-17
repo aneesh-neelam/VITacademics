@@ -29,7 +29,7 @@ var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeMarks = function (app, data, callback) {
-  var marksUri;
+  let marksUri;
   if (data.campus === 'vellore') {
     marksUri = 'https://academics.vit.ac.in/parent/marks.asp?sem=' + data.semester;
   }
@@ -37,7 +37,7 @@ exports.scrapeMarks = function (app, data, callback) {
     marksUri = 'http://27.251.102.132/parent/marks.asp?sem=' + data.semester;
   }
   var CookieJar = unirest.jar();
-  var cookieSerial = cache.get(data.reg_no).cookie;
+  let cookieSerial = cache.get(data.reg_no).cookie;
   var onRequest = function (response) {
     if (response.error) {
       callback(false, [
@@ -45,12 +45,12 @@ exports.scrapeMarks = function (app, data, callback) {
       ]);
     }
     else {
-      var marks = [];
+      let marks = [];
       try {
         var scraper = cheerio.load(response.body);
-        var PBL = false;
-        var scraperPBL;
-        var CBL = true;
+        let PBL = false;
+        var scraperPBL = null;
+        let CBL = true;
         if (scraper('table table').length > 1) {
           PBL = true;
           scraperPBL = cheerio.load(scraper('table table').eq(1).html());
@@ -65,8 +65,8 @@ exports.scrapeMarks = function (app, data, callback) {
           var onEach = function (i, elem) {
             var htmlColumn = cheerio.load(scraper(this).html())('td');
             if (i > 1) {
-              var length = htmlColumn.length;
-              var classnbr = parseInt(htmlColumn.eq(1).text());
+              let length = htmlColumn.length;
+              let classnbr = parseInt(htmlColumn.eq(1).text());
               if (length == 18) {
                 marks.push({
                   class_number: classnbr,
@@ -113,12 +113,12 @@ exports.scrapeMarks = function (app, data, callback) {
           scraper('tr').each(onEach);
         }
         if (PBL) {
-          var pblMarks = [];
+          let pblMarks = [];
           var onEachPBL = function (i, elem) {
             var htmlColumn = cheerio.load(scraper(this).html())('td');
-            var j = i - 1;
-            var course = Math.floor(j / 7);
-            var row = j % 7;
+            let j = i - 1;
+            let course = Math.floor(j / 7);
+            let row = j % 7;
             switch (row) {
               case 0:
                 pblMarks[course] = {

@@ -34,7 +34,7 @@ var status = require(path.join(__dirname, '..', '..', 'status'));
 
 exports.get = function (app, data, callback) {
   var collection = app.db.collection('student');
-  var keys = {
+  let keys = {
     reg_no: 1,
     courses: 1,
     campus: 1,
@@ -52,13 +52,13 @@ exports.get = function (app, data, callback) {
     else if (doc) {
       if (doc.courses) {
         var forEachCourse = function (elt, i, arr) {
-          delete elt['attendance'];
-          delete elt['marks'];
-          delete elt['registration_status'];
-          delete elt['bill_date'];
-          delete elt['bill_number'];
+          delete elt.attendance;
+          delete elt.marks;
+          delete elt.registration_status;
+          delete elt.bill_date;
+          delete elt.bill_number;
         };
-        delete doc['_id'];
+        delete doc._id;
         doc.courses.forEach(forEachCourse);
         doc.status = status.success;
         app.queue.publish(app.queue.queues.share, {receiver: data.receiver, owner: doc.reg_no});

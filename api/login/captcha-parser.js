@@ -25,14 +25,14 @@ var captchaResource = require(path.join(__dirname, 'captcha-resource'));
 
 
 var parseBuffer = function (bitmapBuffer) {
-  var pixelMap = getPixelMapFromBuffer(bitmapBuffer);
+  let pixelMap = getPixelMapFromBuffer(bitmapBuffer);
   return getCaptcha(pixelMap);
 };
 
 var getPixelMapFromBuffer = function (bitmapBuffer) {
-  var pixelMap = [];
-  var subArray = [];
-  var row = 0;
+  let pixelMap = [];
+  let subArray = [];
+  let row = 0;
   for (let i = bitmapBuffer.length - (25 * 132), r = 0; i < bitmapBuffer.length; ++i, ++r) {
     if (Math.floor(r / 132) !== row) {
       row = Math.floor(r / 132);
@@ -47,13 +47,13 @@ var getPixelMapFromBuffer = function (bitmapBuffer) {
 };
 
 var getCaptcha = function (img) {
-  var order = captchaResource.keyOrder;
-  var keys = captchaResource.keyMask;
+  let order = captchaResource.keyOrder;
+  let keys = captchaResource.keyMask;
 
   var matchImg = function (rx, ry, pix, mask) {
-    var flag = 1;
-    var breakflag = 0;
-    var count = 0;
+    let flag = 1;
+    let breakflag = 0;
+    let count = 0;
     for (let x = 0; x < mask.length; ++x) {
       for (let y = 0; y < mask[0].length; ++y) {
         try {
@@ -85,7 +85,7 @@ var getCaptcha = function (img) {
   };
 
   var skip = function (start, end, y) {
-    var flag = 0;
+    let flag = 0;
     for (let i = 0; i < start.length; ++i) {
       if (y >= start[i] && y <= end[i]) {
         flag = 1;
@@ -97,9 +97,9 @@ var getCaptcha = function (img) {
 
   var sort = function (sorter, captcha) {
     for (let i = 0; i < sorter.length; ++i) {
-      var less = sorter[i];
-      var swap = 0;
-      var ls = i;
+      let less = sorter[i];
+      let swap = 0;
+      let ls = i;
       for (let k = i; k < sorter.length; k++) {
         if (sorter[k] < less) {
           less = sorter[k];
@@ -108,18 +108,18 @@ var getCaptcha = function (img) {
         }
       }
       if (swap) {
-        var temps = sorter[i];
+        let temps = sorter[i];
         sorter[i] = sorter[ls];
         sorter[ls] = temps;
-        var tempc = captcha[i];
+        let tempc = captcha[i];
         captcha[i] = captcha[ls];
         captcha[ls] = tempc;
       }
     }
   };
 
-  var temp = 0;
-  var x, y;
+  let temp = 0;
+  let x, y;
   for (x = 0; x < 25; ++x) {
     for (y = 0; y < 132; ++y) {
       temp = img[x][y];
@@ -131,15 +131,15 @@ var getCaptcha = function (img) {
 
     }
   }
-  var yoff = 2;
-  var xoff = 2;
-  var skipstart = [];
-  var skipend = [];
-  var sorter = [];
-  var captcha = [];
-  for (var l = 0; l < 36; ++l) {
-    var mask = keys[order[l]];
-    var f = 0;
+  let yoff = 2;
+  let xoff = 2;
+  let skipstart = [];
+  let skipend = [];
+  let sorter = [];
+  let captcha = [];
+  for (let l = 0; l < 36; ++l) {
+    let mask = keys[order[l]];
+    let f = 0;
     for (x = xoff; x < 25; ++x) {
       for (y = yoff; y < 132; ++y) {
         if (!(skip(skipstart, skipend, y))) {
@@ -158,7 +158,7 @@ var getCaptcha = function (img) {
     }
   }
   sort(sorter, captcha);
-  var res = '';
+  let res = '';
   for (let i = 0; i < captcha.length; ++i) {
     res = res + captcha[i];
   }

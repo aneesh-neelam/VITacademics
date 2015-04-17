@@ -79,7 +79,7 @@ exports.get = function (app, data, callback) {
         collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
       }
       else {
-        var gradesUri;
+        let gradesUri;
         if (data.campus === 'vellore') {
           gradesUri = 'https://academics.vit.ac.in/parent/student_history.asp';
         }
@@ -88,7 +88,7 @@ exports.get = function (app, data, callback) {
         }
 
         var CookieJar = unirest.jar();
-        var cookieSerial = cache.get(data.reg_no).cookie;
+        let cookieSerial = cache.get(data.reg_no).cookie;
 
         var onRequest = function (response) {
           if (response.error) {
@@ -148,9 +148,9 @@ exports.get = function (app, data, callback) {
               var onEach = function (i, elem) {
                 if (i > 0) {
                   var attrs = baseScraper(this).children('td');
-                  var exam_held = moment(attrs.eq(6).text(), 'MMM-YYYY').format('YYYY-MM');
-                  var grade = attrs.eq(5).text();
-                  var credits = parseInt(attrs.eq(4).text());
+                  let exam_held = moment(attrs.eq(6).text(), 'MMM-YYYY').format('YYYY-MM');
+                  let grade = attrs.eq(5).text();
+                  let credits = parseInt(attrs.eq(4).text());
                   data.grades.push({
                     'course_code': attrs.eq(1).text(),
                     'course_title': attrs.eq(2).text(),
@@ -244,8 +244,8 @@ exports.get = function (app, data, callback) {
                 }
                 else {
                   data.status = status.success;
-                  var validity = 3; // In Minutes
-                  var doc = {
+                  let validity = 3; // In Minutes
+                  let doc = {
                     reg_no: data.reg_no,
                     dob: data.dob,
                     cookie: cookieSerial,

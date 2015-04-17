@@ -35,9 +35,9 @@ var status = require(path.join(__dirname, '..', 'status'));
 exports.get = function (app, data, callback) {
   var clientCollection = app.db.collection('client');
   var messageCollection = app.db.collection('message');
-  var parallelTasks = {
+  let parallelTasks = {
     client: function (asyncCallback) {
-      var keys = {
+      let keys = {
         android: 1,
         ios: 1,
         windows: 1

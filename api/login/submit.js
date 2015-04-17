@@ -37,8 +37,8 @@ var status = require(path.join(__dirname, '..', '..', 'status'));
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
     var CookieJar = unirest.jar();
-    var cookieSerial = cache.get(data.reg_no).cookie;
-    var submitUri;
+    let cookieSerial = cache.get(data.reg_no).cookie;
+    let submitUri;
     if (data.campus === 'vellore') {
       submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
     }
@@ -60,11 +60,11 @@ exports.get = function (app, data, callback) {
         try {
           var scraper = cheerio.load(response.body);
           var htmlTable = cheerio.load(scraper('table').eq(1).html());
-          var text = htmlTable('td font').eq(0).text();
+          let text = htmlTable('td font').eq(0).text();
           text = text.split(' - ')[0].replace(/[^a-zA-Z0-9]/g, '');
           if (text === data.reg_no) {
-            var validity = 3; // In Minutes
-            var doc = {
+            let validity = 3; // In Minutes
+            let doc = {
               reg_no: data.reg_no,
               dob: data.dob,
               cookie: cookieSerial

@@ -34,7 +34,7 @@ var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
-  var captchaUri;
+  let captchaUri;
   if (data.campus === 'vellore') {
     captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
   }
@@ -51,10 +51,10 @@ exports.get = function (app, data, callback) {
       callback(true, data);
     }
     else {
-      var validity = 2; // In Minutes
-      var key = Object.keys(response.cookies)[0];
-      var cookieSerial = key + "=" + response.cookies[key];
-      var doc = {
+      let validity = 2; // In Minutes
+      let key = Object.keys(response.cookies)[0];
+      let cookieSerial = key + "=" + response.cookies[key];
+      let doc = {
         reg_no: data.reg_no,
         cookie: cookieSerial
       };

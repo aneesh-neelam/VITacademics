@@ -32,8 +32,8 @@ var status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeAttendance = function (app, data, callback) {
-  var attendanceUri;
-  var attendanceDetailsUri;
+  let attendanceUri;
+  let attendanceDetailsUri;
   if (data.campus === 'vellore') {
     attendanceUri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;
     attendanceDetailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
@@ -43,7 +43,7 @@ exports.scrapeAttendance = function (app, data, callback) {
     attendanceDetailsUri = 'http://27.251.102.132/parent/attn_report_details.asp';
   }
   var CookieJar = unirest.jar();
-  var cookieSerial = cache.get(data.reg_no).cookie;
+  let cookieSerial = cache.get(data.reg_no).cookie;
   var onRequest = function (response) {
     if (response.error) {
       callback(false, [
@@ -51,7 +51,7 @@ exports.scrapeAttendance = function (app, data, callback) {
       ]);
     }
     else {
-      var attendance = [];
+      let attendance = [];
       try {
         var scraper = cheerio.load(response.body);
         scraper = cheerio.load(scraper('table table').eq(1).html());
@@ -59,7 +59,7 @@ exports.scrapeAttendance = function (app, data, callback) {
           var htmlRow = cheerio.load(scraper(this).html());
           var htmlColumn = htmlRow('td');
           if (i > 0) {
-            var classnbr = htmlRow('input[name=classnbr]').attr('value');
+            let classnbr = htmlRow('input[name=classnbr]').attr('value');
             attendance.push({
               class_number: parseInt(classnbr),
               course_code: htmlColumn.eq(1).text(),
@@ -92,7 +92,7 @@ exports.scrapeAttendance = function (app, data, callback) {
               try {
                 var scraper = cheerio.load(response.body);
                 scraper = cheerio.load(scraper('table table').eq(1).html());
-                var details = [];
+                let details = [];
                 var onDay = function (i, elem) {
                   var htmlColumn = cheerio.load(scraper(this).html())('td');
                   if (i > 1) {

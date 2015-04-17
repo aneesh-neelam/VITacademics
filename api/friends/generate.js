@@ -35,7 +35,7 @@ var resource = require(path.join(__dirname, '..', 'token-resource'));
 
 
 var generate = function (regNo, validity, callback) {
-  var token;
+  let token;
   do
   {
     token = underscore.sample(resource.resources, 6).join('');
@@ -56,7 +56,7 @@ exports.get = function (app, data, callback) {
       callback(true, data);
     }
     if (doc) {
-      var validity = 24; // In Hours
+      let validity = 24; // In Hours
       var onGeneration = function (err, token) {
         data.share = {
           token: token,

@@ -42,7 +42,7 @@ exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
     if (cache.get(data.reg_no).dob === data.dob) {
       var collection = app.db.collection('student');
-      var keys = {
+      let keys = {
         reg_no: 1,
         dob: 1,
         campus: 1,
@@ -81,8 +81,8 @@ exports.get = function (app, data, callback) {
         else if (data.campus === 'chennai') {
           data.semester = process.env.CHENNAI_SEMESTER || 'WS14';
         }
-        var cookieSerial = cache.get(data.reg_no).cookie;
-        var parallelTasks = {
+        let cookieSerial = cache.get(data.reg_no).cookie;
+        let parallelTasks = {
           attendance: function (asyncCallback) {
             attendance.scrapeAttendance(app, data, asyncCallback)
           },
@@ -107,8 +107,9 @@ exports.get = function (app, data, callback) {
             delete results.timetable.status;
             data.courses = results.timetable.courses;
             var forEachCourse = function (element, asyncCallback) {
-              var foundAttendance = false;
-              var foundMarks = false;
+              let foundAttendance = false;
+              let foundMarks = false;
+              element.timings = [];
               switch (element.course_mode.toUpperCase()) {
                 case 'CBL':
                   element.course_type = 1;
@@ -135,27 +136,27 @@ exports.get = function (app, data, callback) {
                   break;
               }
               var forEachAttendance = function (elt, i, arr) {
-                if (element['class_number'] === elt['class_number']) {
+                if (element.class_number === elt.class_number) {
                   foundAttendance = true;
                   elt.supported = true;
-                  delete elt['class_number'];
-                  delete elt['course_code'];
-                  delete elt['course_title'];
-                  delete elt['course_type'];
-                  delete elt['slot'];
+                  delete elt.class_number;
+                  delete elt.course_code;
+                  delete elt.course_title;
+                  delete elt.course_type;
+                  delete elt.slot;
                   element.attendance = elt;
                 }
               };
               var forEachMarks = function (elt, i, arr) {
-                if (element['class_number'] === elt['class_number']) {
+                if (element.class_number === elt.class_number) {
                   foundMarks = true;
                   elt.supported = true;
-                  delete elt['class_number'];
-                  delete elt['course_code'];
-                  delete elt['course_title'];
-                  delete elt['course_type'];
+                  delete elt.class_number;
+                  delete elt.course_code;
+                  delete elt.course_title;
+                  delete elt.course_type;
                   if (elt.details) {
-                    var details = [];
+                    let details = [];
                     var forEachPBLDetails = function (detail, index, list) {
                       if (detail.title !== 'N/A') {
                         details.push(detail);
@@ -167,17 +168,16 @@ exports.get = function (app, data, callback) {
                   element.marks = elt;
                 }
               };
-              element.timings = [];
               var forEachTimings = function (elt, i, arr) {
-                if (element['class_number'] === elt['class_number']) {
-                  delete elt['class_number'];
+                if (element.class_number === elt.class_number) {
+                  delete elt.class_number;
                   element.timings.push(elt);
                 }
               };
               results.attendance.forEach(forEachAttendance);
               results.marks.forEach(forEachMarks);
               results.timetable.timings.forEach(forEachTimings);
-              var noData = {
+              let noData = {
                 supported: false
               };
               if (!foundAttendance) {
@@ -207,8 +207,8 @@ exports.get = function (app, data, callback) {
                     callback(true, data);
                   }
                   else {
-                    var validity = 3; // In Minutes
-                    var doc = {
+                    let validity = 3; // In Minutes
+                    let doc = {
                       reg_no: data.reg_no,
                       dob: data.dob,
                       cookie: cookieSerial,
