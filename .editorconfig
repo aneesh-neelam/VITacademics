@@ -4,20 +4,10 @@
 root = true
 
 # Unix-style newlines with a newline ending every file
-[*.{js,html,css,txt,json,md}]
+[*.{js,jade,html,css,txt,json,md,ejs}]
 charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-# JavaScript Files
-[*.js]
-charset = utf-8
-indent_style = space
-indent_size = 2
-
-# JSON Files
-[*.json]
-charset = utf-8
 indent_style = space
 indent_size = 2
