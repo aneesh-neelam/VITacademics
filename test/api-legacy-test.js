@@ -151,9 +151,15 @@ var onEach = function (user, i, arr) {
   });
 };
 
+/*
+ * Deactivated tests for API Legacy
+ */
+
+/*
 describe('Waiting for Express.js Configuration to complete', function () {
   before(function (done) {
     setTimeout(done, 10000);
   });
   users.forEach(onEach);
 });
+*/

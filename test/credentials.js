@@ -55,6 +55,12 @@ var users = [
     reg_no: '14PHI0007',
     dob: '05041990',
     campus: 'vellore'
+  },
+  {
+    describe: 'Master\'s Student - Chennai',
+    reg_no: '14MMT1019',
+    dob: '19061993',
+    campus: 'chennai'
   }
 ];
 
