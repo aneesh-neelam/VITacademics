@@ -1,57 +1,52 @@
 {
-  "reg_no": "13BCE0139",
-  "dob": "16011995",
-  "campus": "vellore",
-  "semester": "WS",
+  "reg_no": "14MMT1019",
+  "dob": "19061993",
+  "campus": "chennai",
+  "semester": "WS14",
   "courses": [
     {
-      "class_number": 4792,
-      "course_code": "CSE202",
-      "course_title": "Algorithm Design and Analysis",
-      "subject_type": "Theory Only",
-      "ltpc": "3104",
-      "course_mode": "CBL",
+      "class_number": 1149,
+      "course_code": "EEE504",
+      "course_title": "Power Electronics and Drives",
+      "subject_type": "Embedded Theory",
+      "ltpc": "3003",
+      "course_mode": "RBL",
       "course_option": "Regular",
-      "slot": "F1+TF1",
-      "venue": "SJT803",
-      "faculty": "ANNAPURNA JONNALAGADDA - SCSE",
+      "slot": "A1+TA1",
+      "venue": "AB701",
+      "faculty": "KANIMOZHI G - SELECT",
       "registration_status": "Registered and Approved",
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
-      "course_type": 1,
       "timings": [
         {
-          "start_time": "03:30:00Z",
-          "end_time": "04:20:00Z",
-          "day": 0
+          "day": 0,
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z"
         },
         {
-          "start_time": "06:30:00Z",
-          "end_time": "07:20:00Z",
-          "day": 1
+          "day": 1,
+          "start_time": "05:15:00Z",
+          "end_time": "06:05:00Z"
         },
         {
-          "start_time": "03:30:00Z",
-          "end_time": "04:20:00Z",
-          "day": 2
-        },
-        {
-          "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 3
+          "day": 3,
+          "start_time": "03:25:00Z",
+          "end_time": "04:15:00Z"
         }
       ],
+      "course_type": 4,
       "attendance": {
-        "registration_date": "2014-12-16T09:03:50.000Z",
-        "attended_classes": 28,
-        "total_classes": 35,
-        "attendance_percentage": 80,
+        "registration_date": "2014-12-19T05:00:25.000Z",
+        "attended_classes": 31,
+        "total_classes": 34,
+        "attendance_percentage": 92,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-05",
-            "status": "Absent",
+            "status": "Present",
             "reason": " - "
           },
           {
@@ -62,746 +57,193 @@
           },
           {
             "sl": 3,
-            "date": "2015-01-07",
+            "date": "2015-01-08",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2015-01-08",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
             "date": "2015-01-12",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 6,
+            "sl": 5,
             "date": "2015-01-13",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 7,
-            "date": "2015-01-14",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
+            "sl": 6,
             "date": "2015-01-19",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 9,
+            "sl": 7,
             "date": "2015-01-20",
             "status": "Present",
             "reason": " - "
           },
           {
+            "sl": 8,
+            "date": "2015-01-22",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-01-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
             "sl": 10,
-            "date": "2015-01-21",
+            "date": "2015-01-29",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 11,
-            "date": "2015-01-22",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2015-01-27",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2015-01-28",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2015-01-29",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
             "date": "2015-02-02",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 16,
+            "sl": 12,
             "date": "2015-02-03",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 17,
-            "date": "2015-02-04",
+            "sl": 13,
+            "date": "2015-02-05",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 18,
+            "sl": 14,
+            "date": "2015-02-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
             "date": "2015-02-10",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 19,
-            "date": "2015-02-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
+            "sl": 16,
             "date": "2015-02-12",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 21,
+            "sl": 17,
             "date": "2015-02-16",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 22,
+            "sl": 18,
             "date": "2015-02-17",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 23,
-            "date": "2015-02-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
+            "sl": 19,
             "date": "2015-02-19",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 25,
-            "date": "2015-02-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
+            "sl": 20,
             "date": "2015-02-23",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 27,
+            "sl": 21,
             "date": "2015-02-24",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 28,
-            "date": "2015-02-25",
+            "sl": 22,
+            "date": "2015-02-26",
             "status": "Present",
             "reason": " - "
           },
           {
+            "sl": 23,
+            "date": "2015-03-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-03-10",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-03-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-03-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-03-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 28,
+            "date": "2015-03-19",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
             "sl": 29,
-            "date": "2015-02-26",
+            "date": "2015-03-23",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 30,
-            "date": "2015-03-09",
+            "date": "2015-03-24",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 31,
-            "date": "2015-03-10",
-            "status": "Present",
+            "date": "2015-03-26",
+            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 32,
-            "date": "2015-03-11",
+            "date": "2015-03-30",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 33,
-            "date": "2015-03-12",
+            "date": "2015-03-31",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 34,
-            "date": "2015-03-16",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 35,
-            "date": "2015-03-18",
-            "status": "Absent",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "cat1": 44,
-        "cat1_status": "Present",
-        "cat2": null,
-        "cat2_status": "",
-        "quiz1": null,
-        "quiz1_status": "",
-        "quiz2": null,
-        "quiz2_status": "",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
-        "marks_type": 1,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 4574,
-      "course_code": "CSE221",
-      "course_title": "Microprocessor and Interfacing",
-      "subject_type": "Embedded Theory",
-      "ltpc": "3003",
-      "course_mode": "CBL",
-      "course_option": "Regular",
-      "slot": "G1+TG1",
-      "venue": "SJT421",
-      "faculty": "SENTHILKUMAR R - SCSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": null,
-      "bill_number": null,
-      "project_title": null,
-      "course_type": 1,
-      "timings": [
-        {
-          "start_time": "03:30:00Z",
-          "end_time": "04:20:00Z",
-          "day": 1
-        },
-        {
-          "start_time": "06:30:00Z",
-          "end_time": "07:20:00Z",
-          "day": 2
-        },
-        {
-          "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 4
-        }
-      ],
-      "attendance": {
-        "registration_date": "2015-01-06T09:41:45.000Z",
-        "attended_classes": 25,
-        "total_classes": 29,
-        "attendance_percentage": 87,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2015-01-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2015-01-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2015-01-09",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2015-01-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2015-01-14",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2015-01-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2015-01-21",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2015-01-23",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2015-01-27",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2015-01-28",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2015-01-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2015-02-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2015-02-04",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2015-02-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2015-02-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2015-02-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2015-02-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2015-02-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2015-02-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2015-02-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2015-02-25",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2015-02-27",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2015-03-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2015-03-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2015-03-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2015-03-17",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 27,
-            "date": "2015-03-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 28,
-            "date": "2015-03-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 29,
-            "date": "2015-03-27",
-            "status": "Present",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "cat1": 31,
-        "cat1_status": "Present",
-        "cat2": null,
-        "cat2_status": "",
-        "quiz1": null,
-        "quiz1_status": "",
-        "quiz2": null,
-        "quiz2_status": "",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
-        "marks_type": 1,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 4706,
-      "course_code": "CSE221",
-      "course_title": "Microprocessor and Interfacing",
-      "subject_type": "Embedded Lab",
-      "ltpc": "0021",
-      "course_mode": "LBC",
-      "course_option": "Regular",
-      "slot": "L51+L52",
-      "venue": "SJT416",
-      "faculty": "BHULAKSHMI BONTHU - SCSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": null,
-      "bill_number": null,
-      "project_title": null,
-      "course_type": 2,
-      "timings": [
-        {
-          "start_time": "10:30:00Z",
-          "end_time": "12:20:00Z",
-          "day": 3
-        }
-      ],
-      "attendance": {
-        "registration_date": "2015-01-06T09:41:45.000Z",
-        "attended_classes": 16,
-        "total_classes": 18,
-        "attendance_percentage": 89,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2015-01-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2015-01-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2015-01-29",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2015-02-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2015-02-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2015-02-26",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2015-03-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2015-03-19",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2015-03-26",
-            "status": "Present",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "lab_cam": null,
-        "lab_cam_status": "",
-        "marks_type": 2,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 4525,
-      "course_code": "CSE222",
-      "course_title": "Operating Systems",
-      "subject_type": "Embedded Theory",
-      "ltpc": "3003",
-      "course_mode": "PBL",
-      "course_option": "Regular",
-      "slot": "C1",
-      "venue": "SJT404",
-      "faculty": "SENTHIL J - SCSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": null,
-      "bill_number": null,
-      "project_title": null,
-      "course_type": 3,
-      "timings": [
-        {
-          "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 0
-        },
-        {
-          "start_time": "02:30:00Z",
-          "end_time": "03:20:00Z",
-          "day": 2
-        },
-        {
-          "start_time": "05:30:00Z",
-          "end_time": "06:20:00Z",
-          "day": 3
-        }
-      ],
-      "attendance": {
-        "registration_date": "2014-12-16T09:02:21.000Z",
-        "attended_classes": 23,
-        "total_classes": 27,
-        "attendance_percentage": 86,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2015-01-05",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2015-01-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2015-01-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2015-01-12",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2015-01-14",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2015-01-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2015-01-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2015-01-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2015-01-28",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2015-01-29",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2015-02-02",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2015-02-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2015-02-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2015-02-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2015-02-16",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2015-02-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2015-02-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2015-02-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2015-02-23",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2015-02-25",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2015-02-26",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2015-03-09",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2015-03-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2015-03-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2015-03-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2015-03-19",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 27,
-            "date": "2015-03-25",
+            "date": "2015-04-16",
             "status": "Present",
             "reason": " - "
           }
@@ -812,45 +254,18 @@
         "marks_type": 4,
         "details": [
           {
-            "title": "MID SEM EXAM I",
+            "title": "MIDTERM",
             "max_marks": 50,
-            "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
+            "weightage": 30,
+            "conducted_on": "2015-02-28",
+            "status": "Present",
+            "scored_mark": 36,
+            "scored_%": 21.6
           },
           {
-            "title": "MID SEM EXAM II",
-            "max_marks": 50,
-            "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
-          },
-          {
-            "title": "QUIZ",
-            "max_marks": 10,
-            "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
-          },
-          {
-            "title": "PROJECT I",
-            "max_marks": 10,
-            "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
-          },
-          {
-            "title": "PROJECT II",
-            "max_marks": 10,
-            "weightage": 10,
+            "title": "PROJECT",
+            "max_marks": 25,
+            "weightage": 25,
             "conducted_on": null,
             "status": "",
             "scored_mark": null,
@@ -861,966 +276,539 @@
       }
     },
     {
-      "class_number": 4630,
-      "course_code": "CSE222",
-      "course_title": "Operating Systems",
+      "class_number": 1448,
+      "course_code": "EEE504",
+      "course_title": "Power Electronics and Drives",
       "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
-      "slot": "L45+L46",
-      "venue": "SJT418",
-      "faculty": "LAVANYA K - SCSE",
+      "slot": "L37+L38",
+      "venue": "AB603",
+      "faculty": "KANIMOZHI G - SELECT",
       "registration_status": "Registered and Approved",
       "bill_date": null,
       "bill_number": null,
       "project_title": null,
-      "course_type": 2,
       "timings": [
         {
-          "start_time": "10:30:00Z",
-          "end_time": "12:20:00Z",
-          "day": 2
+          "day": 1,
+          "start_time": "08:35:00Z",
+          "end_time": "10:15:00Z"
         }
       ],
+      "course_type": 2,
       "attendance": {
-        "registration_date": "2014-12-16T09:02:21.000Z",
-        "attended_classes": 18,
-        "total_classes": 22,
-        "attendance_percentage": 82,
+        "registration_date": "2014-12-19T05:00:25.000Z",
+        "attended_classes": 24,
+        "total_classes": 24,
+        "attendance_percentage": 100,
         "details": [
           {
             "sl": 1,
-            "date": "2015-01-07",
+            "date": "2015-01-06",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 2,
-            "date": "2015-01-14",
+            "date": "2015-01-13",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 3,
-            "date": "2015-01-21",
+            "date": "2015-01-20",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 4,
-            "date": "2015-01-28",
+            "date": "2015-01-27",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 5,
-            "date": "2015-02-04",
-            "status": "Absent",
+            "date": "2015-02-03",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 6,
-            "date": "2015-02-11",
+            "date": "2015-02-10",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 7,
-            "date": "2015-02-18",
+            "date": "2015-02-17",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 8,
-            "date": "2015-02-25",
+            "date": "2015-02-24",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 9,
+            "date": "2015-03-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-03-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-03-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-03-31",
+            "status": "Present",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "lab_cam": null,
+        "lab_cam_status": "",
+        "marks_type": 2,
+        "supported": true
+      }
+    },
+    {
+      "class_number": 1151,
+      "course_code": "EEE505",
+      "course_title": "Digital Control Systems",
+      "subject_type": "Theory Only",
+      "ltpc": "3003",
+      "course_mode": "RBL",
+      "course_option": "Regular",
+      "slot": "B1+TB1",
+      "venue": "AB701",
+      "faculty": "SUBBULEKSHMI D - SELECT",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "day": 1,
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z"
+        },
+        {
+          "day": 2,
+          "start_time": "05:15:00Z",
+          "end_time": "06:05:00Z"
+        },
+        {
+          "day": 4,
+          "start_time": "03:25:00Z",
+          "end_time": "04:15:00Z"
+        }
+      ],
+      "course_type": 4,
+      "attendance": {
+        "registration_date": "2014-12-19T05:03:28.000Z",
+        "attended_classes": 33,
+        "total_classes": 35,
+        "attendance_percentage": 95,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-06",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-07",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-01-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-01-14",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-01-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-01-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-01-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-01-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-01-30",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-02-03",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-02-06",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-02-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-02-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-02-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-03-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
             "date": "2015-03-11",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 10,
-            "date": "2015-03-18",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2015-03-25",
-            "status": "Present",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "lab_cam": null,
-        "lab_cam_status": "",
-        "marks_type": 2,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 4540,
-      "course_code": "CSE324",
-      "course_title": "Database Systems",
-      "subject_type": "Embedded Theory",
-      "ltpc": "3003",
-      "course_mode": "CBL",
-      "course_option": "Regular",
-      "slot": "D1",
-      "venue": "SJT421",
-      "faculty": "SATISH C.J - SCSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": null,
-      "bill_number": null,
-      "project_title": null,
-      "course_type": 1,
-      "timings": [
-        {
-          "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 1
-        },
-        {
-          "start_time": "02:30:00Z",
-          "end_time": "03:20:00Z",
-          "day": 3
-        },
-        {
-          "start_time": "05:30:00Z",
-          "end_time": "06:20:00Z",
-          "day": 4
-        }
-      ],
-      "attendance": {
-        "registration_date": "2014-12-16T09:01:41.000Z",
-        "attended_classes": 22,
-        "total_classes": 26,
-        "attendance_percentage": 85,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2015-01-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2015-01-08",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2015-01-09",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2015-01-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2015-01-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2015-01-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2015-01-23",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2015-01-27",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2015-01-29",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2015-01-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2015-02-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2015-02-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2015-02-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2015-02-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2015-02-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2015-02-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2015-02-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2015-02-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2015-02-26",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2015-02-27",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2015-03-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2015-03-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
+            "sl": 26,
             "date": "2015-03-13",
             "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2015-03-17",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2015-03-19",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2015-03-20",
-            "status": "Absent",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "cat1": 46,
-        "cat1_status": "Present",
-        "cat2": null,
-        "cat2_status": "",
-        "quiz1": null,
-        "quiz1_status": "",
-        "quiz2": null,
-        "quiz2_status": "",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
-        "marks_type": 1,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 5270,
-      "course_code": "CSE324",
-      "course_title": "Database Systems",
-      "subject_type": "Embedded Lab",
-      "ltpc": "0021",
-      "course_mode": "LBC",
-      "course_option": "Regular",
-      "slot": "L49+L50",
-      "venue": "SJT319",
-      "faculty": "VENKATESAN M - SCSE",
-      "registration_status": "Registered and Approved",
-      "bill_date": null,
-      "bill_number": null,
-      "project_title": null,
-      "course_type": 2,
-      "timings": [
-        {
-          "start_time": "08:30:00Z",
-          "end_time": "10:20:00Z",
-          "day": 3
-        }
-      ],
-      "attendance": {
-        "registration_date": "2014-12-16T09:01:41.000Z",
-        "attended_classes": 14,
-        "total_classes": 16,
-        "attendance_percentage": 88,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2015-01-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2015-01-22",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2015-01-29",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2015-02-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2015-02-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2015-02-26",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2015-03-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2015-03-26",
-            "status": "Present",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "lab_cam": null,
-        "lab_cam_status": "",
-        "marks_type": 2,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 2055,
-      "course_code": "HUM121",
-      "course_title": "Ethics and Values",
-      "subject_type": "Embedded Theory",
-      "ltpc": "2002",
-      "course_mode": "CBL",
-      "course_option": "Regular",
-      "slot": "B1",
-      "venue": "SJT522",
-      "faculty": "NILAVATHY K - SSL",
-      "registration_status": "Registered and Approved",
-      "bill_date": null,
-      "bill_number": null,
-      "project_title": null,
-      "course_type": 1,
-      "timings": [
-        {
-          "start_time": "02:30:00Z",
-          "end_time": "03:20:00Z",
-          "day": 1
-        },
-        {
-          "start_time": "03:30:00Z",
-          "end_time": "04:20:00Z",
-          "day": 4
-        }
-      ],
-      "attendance": {
-        "registration_date": "2014-12-16T09:01:07.000Z",
-        "attended_classes": 9,
-        "total_classes": 20,
-        "attendance_percentage": 45,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2015-01-06",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2015-01-09",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2015-01-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2015-01-20",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2015-01-23",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2015-01-27",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2015-01-30",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2015-02-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2015-02-10",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2015-02-13",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2015-02-17",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2015-02-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2015-02-24",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2015-02-27",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2015-03-10",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2015-03-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2015-03-17",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2015-03-20",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2015-03-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2015-03-27",
-            "status": "Present",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "cat1": 43,
-        "cat1_status": "Present",
-        "cat2": null,
-        "cat2_status": "",
-        "quiz1": null,
-        "quiz1_status": "",
-        "quiz2": null,
-        "quiz2_status": "",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
-        "marks_type": 1,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 5510,
-      "course_code": "HUM121",
-      "course_title": "Ethics and Values",
-      "subject_type": "Embedded Lab",
-      "ltpc": "0021",
-      "course_mode": "LBC",
-      "course_option": "Regular",
-      "slot": "L39+L40",
-      "venue": "SJT504",
-      "faculty": "NILAVATHY K - SSL",
-      "registration_status": "Registered and Approved",
-      "bill_date": null,
-      "bill_number": null,
-      "project_title": null,
-      "course_type": 2,
-      "timings": [
-        {
-          "start_time": "10:30:00Z",
-          "end_time": "12:20:00Z",
-          "day": 1
-        }
-      ],
-      "attendance": {
-        "registration_date": "2014-12-16T09:01:07.000Z",
-        "attended_classes": 14,
-        "total_classes": 22,
-        "attendance_percentage": 64,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2015-01-06",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2015-01-13",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2015-01-20",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2015-01-27",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2015-02-03",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2015-02-10",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2015-02-17",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2015-02-24",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2015-03-10",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2015-03-17",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2015-03-24",
-            "status": "Absent",
-            "reason": " - "
-          }
-        ],
-        "supported": true
-      },
-      "marks": {
-        "lab_cam": null,
-        "lab_cam_status": "",
-        "marks_type": 2,
-        "supported": true
-      }
-    },
-    {
-      "class_number": 2216,
-      "course_code": "MAT202",
-      "course_title": "Linear Algebra",
-      "subject_type": "Theory Only",
-      "ltpc": "3104",
-      "course_mode": "CBL",
-      "course_option": "Regular",
-      "slot": "E1+TE1",
-      "venue": "SJT409",
-      "faculty": "NALLIAH M - SAS",
-      "registration_status": "Registered and Approved",
-      "bill_date": null,
-      "bill_number": null,
-      "project_title": null,
-      "course_type": 1,
-      "timings": [
-        {
-          "start_time": "05:30:00Z",
-          "end_time": "06:20:00Z",
-          "day": 0
-        },
-        {
-          "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 2
-        },
-        {
-          "start_time": "06:30:00Z",
-          "end_time": "07:20:00Z",
-          "day": 3
-        },
-        {
-          "start_time": "02:30:00Z",
-          "end_time": "03:20:00Z",
-          "day": 4
-        }
-      ],
-      "attendance": {
-        "registration_date": "2014-12-16T09:04:08.000Z",
-        "attended_classes": 17,
-        "total_classes": 39,
-        "attendance_percentage": 44,
-        "details": [
-          {
-            "sl": 1,
-            "date": "2015-01-05",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 2,
-            "date": "2015-01-07",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 3,
-            "date": "2015-01-08",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 4,
-            "date": "2015-01-09",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 5,
-            "date": "2015-01-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 6,
-            "date": "2015-01-14",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 7,
-            "date": "2015-01-19",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 8,
-            "date": "2015-01-21",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 9,
-            "date": "2015-01-22",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 10,
-            "date": "2015-01-23",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 11,
-            "date": "2015-01-28",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 12,
-            "date": "2015-01-29",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 13,
-            "date": "2015-01-30",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 14,
-            "date": "2015-02-02",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 15,
-            "date": "2015-02-04",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 16,
-            "date": "2015-02-11",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 17,
-            "date": "2015-02-12",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 18,
-            "date": "2015-02-13",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 19,
-            "date": "2015-02-16",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 20,
-            "date": "2015-02-18",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 21,
-            "date": "2015-02-19",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 22,
-            "date": "2015-02-20",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 23,
-            "date": "2015-02-21",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 24,
-            "date": "2015-02-23",
-            "status": "Present",
-            "reason": " - "
-          },
-          {
-            "sl": 25,
-            "date": "2015-02-25",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 26,
-            "date": "2015-02-26",
-            "status": "Absent",
             "reason": " - "
           },
           {
             "sl": 27,
-            "date": "2015-02-27",
-            "status": "Absent",
+            "date": "2015-03-17",
+            "status": "Present",
             "reason": " - "
           },
           {
             "sl": 28,
-            "date": "2015-03-09",
+            "date": "2015-03-18",
             "status": "Present",
             "reason": " - "
           },
           {
             "sl": 29,
-            "date": "2015-03-11",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 30,
-            "date": "2015-03-12",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 31,
-            "date": "2015-03-13",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 32,
-            "date": "2015-03-16",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 33,
-            "date": "2015-03-18",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 34,
-            "date": "2015-03-19",
-            "status": "Absent",
-            "reason": " - "
-          },
-          {
-            "sl": 35,
             "date": "2015-03-20",
             "status": "Absent",
             "reason": " - "
           },
           {
-            "sl": 36,
-            "date": "2015-03-23",
-            "status": "Absent",
+            "sl": 30,
+            "date": "2015-03-24",
+            "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 37,
+            "sl": 31,
             "date": "2015-03-25",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 38,
-            "date": "2015-03-26",
+            "sl": 32,
+            "date": "2015-03-27",
             "status": "Present",
             "reason": " - "
           },
           {
-            "sl": 39,
-            "date": "2015-03-27",
+            "sl": 33,
+            "date": "2015-03-31",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 34,
+            "date": "2015-04-01",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 35,
+            "date": "2015-04-15",
+            "status": "Absent",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "marks_type": 4,
+        "details": [
+          {
+            "title": "MIDTERM",
+            "max_marks": 50,
+            "weightage": 30,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          },
+          {
+            "title": "PROJECT",
+            "max_marks": 25,
+            "weightage": 25,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          }
+        ],
+        "supported": true
+      }
+    },
+    {
+      "class_number": 2290,
+      "course_code": "JAP101",
+      "course_title": "Basic Japanese",
+      "subject_type": "Theory Only",
+      "ltpc": "2002",
+      "course_mode": "CBL",
+      "course_option": "Regular",
+      "slot": "TG1+L18",
+      "venue": "AB702",
+      "faculty": "RAVI MEDHANKAR - SSL",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "day": 2,
+          "start_time": "06:10:00Z",
+          "end_time": "07:50:00Z"
+        }
+      ],
+      "course_type": 1,
+      "attendance": {
+        "registration_date": "2015-01-14T10:02:04.000Z",
+        "attended_classes": 20,
+        "total_classes": 20,
+        "attendance_percentage": 100,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-03-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-03-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-03-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-03-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-04-15",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-04-15",
             "status": "Present",
             "reason": " - "
           }
@@ -1828,12 +816,12 @@
         "supported": true
       },
       "marks": {
-        "cat1": 43,
+        "cat1": 42,
         "cat1_status": "Present",
         "cat2": null,
         "cat2_status": "",
-        "quiz1": 5,
-        "quiz1_status": "Present",
+        "quiz1": null,
+        "quiz1_status": "",
         "quiz2": null,
         "quiz2_status": "",
         "quiz3": null,
@@ -1843,13 +831,1258 @@
         "marks_type": 1,
         "supported": true
       }
+    },
+    {
+      "class_number": 1288,
+      "course_code": "MEE528",
+      "course_title": "Fluid Power Systems and Factory Automation",
+      "subject_type": "Embedded Theory",
+      "ltpc": "3003",
+      "course_mode": "RBL",
+      "course_option": "Regular",
+      "slot": "D1",
+      "venue": "AB702",
+      "faculty": "Sugumaran V - SMBS",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "day": 1,
+          "start_time": "04:20:00Z",
+          "end_time": "05:10:00Z"
+        },
+        {
+          "day": 3,
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z"
+        },
+        {
+          "day": 4,
+          "start_time": "05:15:00Z",
+          "end_time": "06:05:00Z"
+        }
+      ],
+      "course_type": 4,
+      "attendance": {
+        "registration_date": "2014-12-19T05:01:18.000Z",
+        "attended_classes": 29,
+        "total_classes": 34,
+        "attendance_percentage": 86,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-06",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-08",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-01-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-01-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-01-22",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-01-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-01-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-01-29",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-01-30",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-02-03",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-02-05",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-02-06",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-02-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-02-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-13",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-02-26",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-02-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-03-10",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-03-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-03-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-03-17",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-03-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 28,
+            "date": "2015-03-20",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 29,
+            "date": "2015-03-24",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 30,
+            "date": "2015-03-26",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 31,
+            "date": "2015-03-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 32,
+            "date": "2015-03-31",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 33,
+            "date": "2015-04-16",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 34,
+            "date": "2015-04-17",
+            "status": "Present",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "marks_type": 4,
+        "details": [
+          {
+            "title": "MIDTERM",
+            "max_marks": 50,
+            "weightage": 30,
+            "conducted_on": "2015-03-03",
+            "status": "Present",
+            "scored_mark": 25,
+            "scored_%": 15
+          },
+          {
+            "title": "PROJECT",
+            "max_marks": 25,
+            "weightage": 25,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          }
+        ],
+        "supported": true
+      }
+    },
+    {
+      "class_number": 1525,
+      "course_code": "MEE528",
+      "course_title": "Fluid Power Systems and Factory Automation",
+      "subject_type": "Embedded Lab",
+      "ltpc": "0021",
+      "course_mode": "LBC",
+      "course_option": "Regular",
+      "slot": "L43+L44",
+      "venue": "AB707A",
+      "faculty": "Sugumaran V - SMBS",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "day": 2,
+          "start_time": "08:35:00Z",
+          "end_time": "10:15:00Z"
+        }
+      ],
+      "course_type": 2,
+      "attendance": {
+        "registration_date": "2014-12-19T05:01:18.000Z",
+        "attended_classes": 26,
+        "total_classes": 26,
+        "attendance_percentage": 100,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-07",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-14",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-03-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-03-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-04-01",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-04-15",
+            "status": "Present",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "lab_cam": null,
+        "lab_cam_status": "",
+        "marks_type": 2,
+        "supported": true
+      }
+    },
+    {
+      "class_number": 1290,
+      "course_code": "MEE533",
+      "course_title": "Robot Dynamics and Analysis",
+      "subject_type": "Embedded Theory",
+      "ltpc": "2103",
+      "course_mode": "RBL",
+      "course_option": "Regular",
+      "slot": "E1",
+      "venue": "AB702",
+      "faculty": "Arockia Selvakumar - SMBS",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "day": 0,
+          "start_time": "05:15:00Z",
+          "end_time": "06:05:00Z"
+        },
+        {
+          "day": 2,
+          "start_time": "04:20:00Z",
+          "end_time": "05:10:00Z"
+        },
+        {
+          "day": 4,
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z"
+        }
+      ],
+      "course_type": 4,
+      "attendance": {
+        "registration_date": "2014-12-19T05:00:46.000Z",
+        "attended_classes": 32,
+        "total_classes": 35,
+        "attendance_percentage": 92,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-05",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-07",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-01-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-01-14",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-01-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-01-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-01-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-01-30",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-02-02",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-02-06",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-02-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-20",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-02-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-03-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-03-13",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-03-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-03-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 28,
+            "date": "2015-03-20",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 29,
+            "date": "2015-03-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 30,
+            "date": "2015-03-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 31,
+            "date": "2015-03-27",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 32,
+            "date": "2015-03-30",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 33,
+            "date": "2015-04-01",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 34,
+            "date": "2015-04-15",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 35,
+            "date": "2015-04-17",
+            "status": "Absent",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "marks_type": 4,
+        "details": [
+          {
+            "title": "MIDTERM",
+            "max_marks": 50,
+            "weightage": 30,
+            "conducted_on": "2015-03-04",
+            "status": "Present",
+            "scored_mark": 37,
+            "scored_%": 22.2
+          },
+          {
+            "title": "PROJECT",
+            "max_marks": 25,
+            "weightage": 25,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          }
+        ],
+        "supported": true
+      }
+    },
+    {
+      "class_number": 1529,
+      "course_code": "MEE533",
+      "course_title": "Robot Dynamics and Analysis",
+      "subject_type": "Embedded Lab",
+      "ltpc": "0021",
+      "course_mode": "LBC",
+      "course_option": "Regular",
+      "slot": "L31+L32",
+      "venue": "AB707C",
+      "faculty": "Arockia Selvakumar - SMBS",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "day": 0,
+          "start_time": "08:35:00Z",
+          "end_time": "10:15:00Z"
+        }
+      ],
+      "course_type": 2,
+      "attendance": {
+        "registration_date": "2014-12-19T05:00:46.000Z",
+        "attended_classes": 20,
+        "total_classes": 22,
+        "attendance_percentage": 91,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-05",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-02-02",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-02-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-02-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-02-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-03-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-03-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-03-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-03-30",
+            "status": "Absent",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "lab_cam": null,
+        "lab_cam_status": "",
+        "marks_type": 2,
+        "supported": true
+      }
+    },
+    {
+      "class_number": 1295,
+      "course_code": "MEE534",
+      "course_title": "Machine Vision System",
+      "subject_type": "Theory Only",
+      "ltpc": "3003",
+      "course_mode": "RBL",
+      "course_option": "Regular",
+      "slot": "F1",
+      "venue": "AB702",
+      "faculty": "Sridhar V G - SMBS",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "day": 0,
+          "start_time": "03:25:00Z",
+          "end_time": "04:15:00Z"
+        },
+        {
+          "day": 2,
+          "start_time": "03:25:00Z",
+          "end_time": "04:15:00Z"
+        },
+        {
+          "day": 3,
+          "start_time": "04:20:00Z",
+          "end_time": "05:10:00Z"
+        }
+      ],
+      "course_type": 4,
+      "attendance": {
+        "registration_date": "2014-12-19T05:01:49.000Z",
+        "attended_classes": 20,
+        "total_classes": 20,
+        "attendance_percentage": 100,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-05",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-07",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-08",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-01-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-01-14",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-01-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-01-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-01-22",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-01-29",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-02-02",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-02-05",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-02-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-23",
+            "status": "Present",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "marks_type": 4,
+        "details": [
+          {
+            "title": "MIDTERM",
+            "max_marks": 50,
+            "weightage": 30,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          },
+          {
+            "title": "PROJECT",
+            "max_marks": 25,
+            "weightage": 25,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          }
+        ],
+        "supported": true
+      }
+    },
+    {
+      "class_number": 1292,
+      "course_code": "MEE536",
+      "course_title": "Micro Electro-mechanical Systems",
+      "subject_type": "Theory Only",
+      "ltpc": "3003",
+      "course_mode": "RBL",
+      "course_option": "Regular",
+      "slot": "C1",
+      "venue": "AB702",
+      "faculty": "Pratibha Nalini R - SMBS",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [
+        {
+          "day": 0,
+          "start_time": "04:20:00Z",
+          "end_time": "05:10:00Z"
+        },
+        {
+          "day": 2,
+          "start_time": "02:30:00Z",
+          "end_time": "03:20:00Z"
+        },
+        {
+          "day": 3,
+          "start_time": "05:15:00Z",
+          "end_time": "06:05:00Z"
+        }
+      ],
+      "course_type": 4,
+      "attendance": {
+        "registration_date": "2014-12-19T05:01:32.000Z",
+        "attended_classes": 31,
+        "total_classes": 33,
+        "attendance_percentage": 94,
+        "details": [
+          {
+            "sl": 1,
+            "date": "2015-01-05",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 2,
+            "date": "2015-01-07",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 3,
+            "date": "2015-01-08",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 4,
+            "date": "2015-01-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 5,
+            "date": "2015-01-14",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 6,
+            "date": "2015-01-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 7,
+            "date": "2015-01-21",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 8,
+            "date": "2015-01-22",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 9,
+            "date": "2015-01-28",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-01-29",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-02-02",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-02-04",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-02-05",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-02-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-02-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-02-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 17,
+            "date": "2015-02-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 18,
+            "date": "2015-02-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 19,
+            "date": "2015-02-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 20,
+            "date": "2015-02-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 21,
+            "date": "2015-02-25",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-02-26",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-03-09",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-03-11",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-03-12",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-03-16",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-03-18",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 28,
+            "date": "2015-03-19",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 29,
+            "date": "2015-03-23",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 30,
+            "date": "2015-03-25",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 31,
+            "date": "2015-03-26",
+            "status": "Absent",
+            "reason": " - "
+          },
+          {
+            "sl": 32,
+            "date": "2015-03-30",
+            "status": "Present",
+            "reason": " - "
+          },
+          {
+            "sl": 33,
+            "date": "2015-04-01",
+            "status": "Present",
+            "reason": " - "
+          }
+        ],
+        "supported": true
+      },
+      "marks": {
+        "marks_type": 4,
+        "details": [
+          {
+            "title": "MIDTERM",
+            "max_marks": 50,
+            "weightage": 30,
+            "conducted_on": "2015-03-02",
+            "status": "Present",
+            "scored_mark": 31,
+            "scored_%": 18.6
+          },
+          {
+            "title": "PROJECT",
+            "max_marks": 25,
+            "weightage": 25,
+            "conducted_on": null,
+            "status": "",
+            "scored_mark": null,
+            "scored_%": null
+          }
+        ],
+        "supported": true
+      }
+    },
+    {
+      "class_number": 2298,
+      "course_code": "SET502",
+      "course_title": "Science, Engineering and Technology Project - II",
+      "subject_type": "Project",
+      "ltpc": "0002",
+      "course_mode": "PBC",
+      "course_option": "Regular",
+      "slot": "NIL",
+      "venue": "NIL",
+      "faculty": "Sridhar V G - SMBS",
+      "registration_status": "Registered and Approved",
+      "bill_date": null,
+      "bill_number": null,
+      "project_title": null,
+      "timings": [],
+      "course_type": 6,
+      "marks": {
+        "marks_type": 3,
+        "supported": true
+      },
+      "attendance": {"supported": false}
     }
   ],
-  "refreshed": "2015-03-29T17:24:46.696Z",
+  "refreshed": "2015-04-17T11:49:30.479Z",
   "withdrawn_courses": [],
   "cached": false,
   "status": {
-    "message": "Successful Execution",
+    "message": "Successful execution",
     "code": 0
   }
 }
