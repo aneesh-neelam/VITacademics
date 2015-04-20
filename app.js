@@ -47,9 +47,13 @@ if (process.env.LOGENTRIES_TOKEN) {
 
 var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
 var apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
-var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
 var txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
 var webRoutes = require(path.join(__dirname, 'routes', 'web'));
+
+/*
+ *  API Legacy is now deprecated
+ */
+var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
 
 var app = express();
 
@@ -174,6 +178,10 @@ async.waterfall([
     app.use('/api/v2/system', apiSystemRoutes);
     app.use('/api/v2/vellore', apiRoutes);
     app.use('/api/v2/chennai', apiRoutes);
+
+    /*
+     *  API Legacy is now deprecated
+     */
     app.use('/api/vellore', apiRoutesLegacy);
     app.use('/api/chennai', apiRoutesLegacy);
 

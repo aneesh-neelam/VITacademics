@@ -18,159 +18,60 @@
 
 'use strict';
 
-var cache = require('memory-cache');
 var express = require('express');
 var path = require('path');
 
-var db = require(path.join(__dirname, '..', 'db'));
-var loginManual = require(path.join(__dirname, '..', 'api-legacy', 'login', 'get'));
-var loginAuto = require(path.join(__dirname, '..', 'api-legacy', 'login', 'auto'));
-var loginSubmit = require(path.join(__dirname, '..', 'api-legacy', 'login', 'submit'));
-var dataAggregate = require(path.join(__dirname, '..', 'api-legacy', 'scraper', 'aggregate'));
-var friendsGenerate = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'generate'));
-var friendsShare = require(path.join(__dirname, '..', 'api-legacy', 'friends', 'share'));
+var status = require(path.join(__dirname, '..', 'status'));
 
 var router = express.Router();
 
 router.get('/login/manual', function (req, res) {
   let data = {
-    reg_no: req.query.regno.toUpperCase(),
-    campus: req.originalUrl.split('/')[2].toLowerCase()
+    status: status.deprecated
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
-    db: req.dbs[year],
-    queue: req.queue
-  };
-  let onGetCaptcha = function (err, response) {
-    if (err) {
-      res.send(response);
-    }
-    else {
-      res.writeHead(200, {'Content-Type': 'image/bmp'});
-      res.write(response);
-      res.end();
-    }
-  };
-  loginManual.get(app, data, onGetCaptcha);
+  res.json(data);
 });
 
 router.get('/login/submit', function (req, res) {
   let data = {
-    reg_no: req.query.regno.toUpperCase(),
-    dob: req.query.dob,
-    captcha: req.query.captcha.toUpperCase(),
-    campus: req.originalUrl.split('/')[2].toLowerCase()
+    status: status.deprecated
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
-    db: req.dbs[year],
-    queue: req.queue
-  };
-  let onGet = function (err, response) {
-    res.json(response);
-  };
-  loginSubmit.get(app, data, onGet);
+  res.json(data);
 });
 
 router.get('/login/auto', function (req, res) {
   let data = {
-    reg_no: req.query.regno.toUpperCase(),
-    dob: req.query.dob,
-    campus: req.originalUrl.split('/')[2].toLowerCase()
+    status: status.deprecated
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
-    db: req.dbs[year],
-    queue: req.queue
-  };
-  let onGet = function (err, response) {
-    res.json(response);
-  };
-  loginAuto.get(app, data, onGet);
+  res.json(data);
 });
 
 router.get('/data/first', function (req, res) {
   let data = {
-    reg_no: req.query.regno.toUpperCase(),
-    dob: req.query.dob,
-    first_time: true,
-    campus: req.originalUrl.split('/')[2].toLowerCase()
+    status: status.deprecated
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
-    db: req.dbs[year],
-    queue: req.queue
-  };
-  let onGet = function (err, response) {
-    res.json(response);
-  };
-  dataAggregate.get(app, data, onGet);
+  res.json(data);
 });
 
 router.get('/data/refresh', function (req, res) {
   let data = {
-    reg_no: req.query.regno.toUpperCase(),
-    dob: req.query.dob,
-    first_time: false,
-    campus: req.originalUrl.split('/')[2].toLowerCase()
+    status: status.deprecated
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
-    db: req.dbs[year],
-    queue: req.queue
-  };
-  let onGet = function (err, response) {
-    res.json(response);
-  };
-  dataAggregate.get(app, data, onGet);
+  res.json(data);
 });
 
 router.get('/friends/regenerate', function (req, res) {
   let data = {
-    reg_no: req.query.regno.toUpperCase(),
-    dob: req.query.dob,
-    campus: req.originalUrl.split('/')[2].toLowerCase()
+    status: status.deprecated
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
-    db: req.dbs[year],
-    queue: req.queue
-  };
-  let onGet = function (err, response) {
-    res.json(response);
-  };
-  friendsGenerate.get(app, data, onGet);
+  res.json(data);
 });
 
 router.get('/friends/share', function (req, res) {
-  let token;
-  let reg_no;
-  let year;
-  if (req.query.token) {
-    token = req.query.token.toUpperCase();
-    reg_no = cache.get(token);
-    if (reg_no) year = db.choose(parseInt(reg_no.slice(0, 2)));
-    else year = 0;
-  }
-  else if (req.query.regno) {
-    reg_no = req.query.regno.toUpperCase();
-    year = db.choose(parseInt(reg_no.slice(0, 2)));
-  }
   let data = {
-    reg_no: reg_no,
-    dob: req.query.dob,
-    token: token,
-    campus: req.originalUrl.split('/')[2].toLowerCase()
+    status: status.deprecated
   };
-  let app = {
-    db: req.dbs[year],
-    queue: req.queue
-  };
-  let onGet = function (err, response) {
-    res.json(response);
-  };
-  friendsShare.get(app, data, onGet);
+  res.json(data);
 });
 
 module.exports = router;

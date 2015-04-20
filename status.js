@@ -52,6 +52,10 @@ var status = {
     message: 'This feature is incomplete',
     code: 50
   },
+  deprecated: {
+    message: 'This feature or endpoint has been deprecated, please check the latest API documentation',
+    code: 60
+  },
   vitDown: {
     message: 'VIT\'s Servers may be slow/down or we may be facing a connectivity Issue',
     code: 89
@@ -61,11 +65,11 @@ var status = {
     code: 97
   },
   maintenance: {
-    message: 'Our API servers are down for maintenance, please contact the VITacademics developers for more Information',
+    message: 'Our API servers are down for maintenance, please contact the VITacademics developers for more information',
     code: 98
   },
   other: {
-    message: 'An Unforeseen/Unknown/Irrecoverable Error has Occurred',
+    message: 'An unforeseen/unknown/irrecoverable Error has Occurred',
     code: 99
   }
 };

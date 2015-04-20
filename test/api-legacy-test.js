@@ -26,7 +26,6 @@ var should = require('chai').should();
 var supertest = require('supertest');
 
 var app = require(path.join(__dirname, '..', 'app'));
-var captcha = require(path.join(__dirname, '..', 'api-legacy', 'login', 'captcha-parser'));
 var status = require(path.join(__dirname, '..', 'status'));
 var users = require(path.join(__dirname, '.', 'credentials')).users;
 
@@ -42,8 +41,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          var parsedCaptcha = captcha.parseBuffer(res.body);
-          parsedCaptcha.should.have.length(6);
+          res.body.should.have.property('status').with.deep.equal(status.deprecated);
           done();
         });
     });
@@ -54,10 +52,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
-          res.body.should.have.property('dob', user.dob);
-          res.body.should.have.property('campus', user.campus);
-          res.body.should.have.property('status').with.deep.equal(status.success);
+          res.body.should.have.property('status').with.deep.equal(status.deprecated);
           done();
         });
     });
@@ -68,16 +63,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
-          res.body.should.have.property('dob', user.dob);
-          res.body.should.have.property('campus', user.campus);
-          res.body.should.have.property('semester');
-          res.body.should.have.property('courses');
-          res.body.should.have.property('cached');
-          res.body.should.have.property('refreshed');
-          res.body.should.have.property('timetable');
-          res.body.should.have.property('status').with.deep.equal(status.success);
-          res.body.should.have.property('share').with.property('token').with.length(6);
+          res.body.should.have.property('status').with.deep.equal(status.deprecated);
           done();
         });
     });
@@ -88,14 +74,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
-          res.body.should.have.property('dob', user.dob);
-          res.body.should.have.property('campus', user.campus);
-          res.body.should.have.property('semester');
-          res.body.should.have.property('courses');
-          res.body.should.have.property('cached');
-          res.body.should.have.property('refreshed');
-          res.body.should.have.property('status').with.deep.equal(status.success);
+          res.body.should.have.property('status').with.deep.equal(status.deprecated);
           done();
         });
     });
@@ -107,12 +86,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
-          res.body.should.have.property('dob', user.dob);
-          res.body.should.have.property('campus', user.campus);
-          res.body.should.have.property('status').with.deep.equal(status.success);
-          res.body.should.have.property('share').with.property('token').with.length(6);
-          token = res.body.share.token;
+          res.body.should.have.property('status').with.deep.equal(status.deprecated);
           done();
         });
     });
@@ -123,12 +97,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
-          res.body.should.have.property('campus', user.campus);
-          res.body.should.have.property('semester');
-          res.body.should.have.property('courses');
-          res.body.should.have.property('timetable');
-          res.body.should.have.property('status').with.deep.equal(status.success);
+          res.body.should.have.property('status').with.deep.equal(status.deprecated);
           done();
         });
     });
@@ -139,27 +108,16 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
-          res.body.should.have.property('campus', user.campus);
-          res.body.should.have.property('semester');
-          res.body.should.have.property('courses');
-          res.body.should.have.property('timetable');
-          res.body.should.have.property('status').with.deep.equal(status.success);
+          res.body.should.have.property('status').with.deep.equal(status.deprecated);
           done();
         });
     });
   });
 };
 
-/*
- * Deactivated tests for API Legacy
- */
-
-/*
 describe('Waiting for Express.js Configuration to complete', function () {
   before(function (done) {
     setTimeout(done, 10000);
   });
   users.forEach(onEach);
 });
-*/
