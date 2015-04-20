@@ -53,7 +53,7 @@ var status = {
     code: 50
   },
   deprecated: {
-    message: 'This feature or endpoint has been deprecated, please check the latest API documentation',
+    message: 'This feature or endpoint has been deprecated, please contact the VITacademics developers for more information',
     code: 60
   },
   vitDown: {
