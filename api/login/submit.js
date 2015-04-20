@@ -67,6 +67,7 @@ exports.get = function (app, data, callback) {
             let doc = {
               reg_no: data.reg_no,
               dob: data.dob,
+              mobile: data.mobile,
               cookie: cookieSerial
             };
             cache.put(data.reg_no, doc, validity * 60 * 1000);
@@ -87,7 +88,7 @@ exports.get = function (app, data, callback) {
             var collection = app.db.collection('student');
             collection.findAndModify({reg_no: data.reg_no}, [
               ['reg_no', 'asc']
-            ], {$set: {dob: data.dob, campus: data.campus}}, {
+            ], {$set: {dob: data.dob, mobile: data.mobile, campus: data.campus}}, {
               safe: true,
               new: true,
               upsert: true
@@ -108,9 +109,10 @@ exports.get = function (app, data, callback) {
     unirest.post(submitUri)
       .jar(CookieJar)
       .form({
-        'wdregno': data.reg_no,
-        'wdpswd': data.dob,
-        'vrfcd': data.captcha
+        wdregno: data.reg_no,
+        wdpswd: data.dob,
+        wdmobno: data.mobile,
+        vrfcd: data.captcha
       })
       .timeout(28000)
       .end(onPost);

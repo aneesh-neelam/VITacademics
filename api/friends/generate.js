@@ -73,5 +73,5 @@ exports.get = function (app, data, callback) {
       callback(false, data);
     }
   };
-  collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, onFetch);
+  collection.findOne({reg_no: data.reg_no, dob: data.dob, mobile: data.mobile, campus: data.campus}, onFetch);
 };

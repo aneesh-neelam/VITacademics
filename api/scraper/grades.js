@@ -39,7 +39,8 @@ var status = require(path.join(__dirname, '..', '..', 'status'));
 
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
-    if (cache.get(data.reg_no).dob === data.dob) {
+    let cacheDoc = cache.get(data.reg_no);
+    if (cacheDoc.dob === data.dob && cacheDoc.mobile === data.mobile) {
       var collection = app.db.collection('student');
       var keys = {
         reg_no: 1,
@@ -248,6 +249,7 @@ exports.get = function (app, data, callback) {
                   let doc = {
                     reg_no: data.reg_no,
                     dob: data.dob,
+                    mobile: data.mobile,
                     cookie: cookieSerial,
                     grades_refreshed: true
                   };

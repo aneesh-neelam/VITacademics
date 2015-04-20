@@ -84,6 +84,6 @@ exports.get = function (app, data, callback) {
     }
   }
   else {
-    collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
+    collection.findOne({reg_no: data.reg_no, dob: data.dob, mobile: data.mobile, campus: data.campus}, keys, onFetch);
   }
 };

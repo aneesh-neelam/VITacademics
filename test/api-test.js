@@ -37,7 +37,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if login is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/login')
-        .send({regno: user.reg_no, dob: user.dob})
+        .send({regno: user.reg_no, dob: user.dob, mobile: user.mobile})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -51,7 +51,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if fetching/refreshing current semester details is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/refresh')
-        .send({regno: user.reg_no, dob: user.dob})
+        .send({regno: user.reg_no, dob: user.dob, mobile: user.mobile})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -70,7 +70,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if fetching grades is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/grades')
-        .send({regno: user.reg_no, dob: user.dob})
+        .send({regno: user.reg_no, dob: user.dob, mobile: user.mobile})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -93,7 +93,7 @@ var onEach = function (user, i, arr) {
     let token;
     it('Checking if token generation is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/token')
-        .send({regno: user.reg_no, dob: user.dob})
+        .send({regno: user.reg_no, dob: user.dob, mobile: user.mobile})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
@@ -124,7 +124,7 @@ var onEach = function (user, i, arr) {
 
     it('Checking if share using credentials is successful', function (done) {
       api.post('/api/v2/' + user.campus + '/share')
-        .send({regno: user.reg_no, dob: user.dob, receiver: 'VITacademics Developer/Tester'})
+        .send({regno: user.reg_no, dob: user.dob, mobile: user.mobile, receiver: 'VITacademics Developer/Tester'})
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
