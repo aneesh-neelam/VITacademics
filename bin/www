@@ -55,7 +55,7 @@ var onBind = function () {
     if (log) {
         log.log('info', config);
     }
-    console.log('Express,js Server started, Config: ' + JSON.stringify(config));
+    console.log('VITacademics server started, Config: ' + JSON.stringify(config));
 };
 
 app.listen(process.env.PORT || 3000, onBind);
