@@ -20,6 +20,8 @@
 
 var express = require('express');
 
+var status = require(path.join(__dirname, '..', 'status'));
+
 var router = express.Router();
 
 router.get('/', function (req, res) {
@@ -27,20 +29,8 @@ router.get('/', function (req, res) {
   res.render('index', {googleAnalyticsToken: googleAnalyticsToken});
 });
 
-router.get('/status', function (req, res) {
-  let port = process.env.PORT || 3000;
-  let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-  let status = {
-    host: process.env.HOST || 'localhost',
-    hostname: process.env.HOSTNAME || 'http://localhost:' + port + '/',
-    engine: process.version,
-    platform: process.platform,
-    arch: process.arch,
-    serverStatus: 'OK',
-    lastUpdated: '21st April 2015',
-    googleAnalyticsToken: googleAnalyticsToken
-  };
-  res.render('status', status);
+router.get('/web', function (req, res) {
+  res.send(status.toDo.message);
 });
 
 router.get('/api', function (req, res) {
