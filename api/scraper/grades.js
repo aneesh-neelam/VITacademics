@@ -45,6 +45,7 @@ exports.get = function (app, data, callback) {
       var keys = {
         reg_no: 1,
         dob: 1,
+        mobile: 1,
         campus: 1,
         grades: 1,
         grade_summary: 1,

@@ -44,7 +44,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('reg_no', user.regno);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
-          if (user.mobile) res.body.should.have.property('mobile', user.mobile);
+          res.body.should.have.property('mobile', user.mobile);
           res.body.status.should.deep.equal(status.success);
           done();
         });
@@ -59,10 +59,11 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('reg_no', user.regno);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
-          if (user.mobile) res.body.should.have.property('mobile', user.mobile);
+          res.body.should.have.property('mobile', user.mobile);
           res.body.should.have.property('semester');
           res.body.should.have.property('courses');
           res.body.should.have.property('cached');
+          res.body.cached.should.equal(false);
           res.body.should.have.property('refreshed');
           res.body.should.have.property('withdrawn_courses');
           res.body.status.should.deep.equal(status.success);
@@ -79,7 +80,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('reg_no', user.regno);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
-          if (user.mobile) res.body.should.have.property('mobile', user.mobile);
+          res.body.should.have.property('mobile', user.mobile);
           res.body.should.have.property('grades');
           res.body.should.have.property('credits_registered');
           res.body.should.have.property('credits_earned');
@@ -87,6 +88,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('semester_wise');
           res.body.should.have.property('grade_summary');
           res.body.should.have.property('cached');
+          res.body.cached.should.equal(false);
           res.body.should.have.property('grades_refreshed');
           res.body.status.should.deep.equal(status.success);
           done();
@@ -103,7 +105,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('reg_no', user.regno);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
-          if (user.mobile) res.body.should.have.property('mobile', user.mobile);
+          res.body.should.have.property('mobile', user.mobile);
           res.body.should.have.property('share').with.property('token').with.length(6);
           res.body.status.should.deep.equal(status.success);
           token = res.body.share.token;

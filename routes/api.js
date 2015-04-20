@@ -35,7 +35,7 @@ router.post('/login', function (req, res) {
   let data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
-    mobile: req.body.mobile,
+    mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
@@ -53,7 +53,7 @@ router.post('/refresh', function (req, res) {
   let data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
-    mobile: req.body.mobile,
+    mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
@@ -71,7 +71,7 @@ router.post('/grades', function (req, res) {
   let data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
-    mobile: req.body.mobile,
+    mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
@@ -89,7 +89,7 @@ router.post('/token', function (req, res) {
   let data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
-    mobile: req.body.mobile,
+    mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
@@ -123,7 +123,7 @@ router.post('/share', function (req, res) {
   let data = {
     reg_no: reg_no,
     dob: req.body.dob,
-    mobile: req.body.mobile,
+    mobile: req.body.mobile || null,
     token: token,
     receiver: receiver,
     campus: req.originalUrl.split('/')[3].toLowerCase()

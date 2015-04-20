@@ -33,35 +33,24 @@
 
 var users = [
   {
-    describe: 'B.Tech CSE 4th Year - Project + 1 Course Withdrawl - Vellore',
+    describe: 'B.Tech CSE 4th Year Student - Vellore',
     reg_no: '11BCE0260',
     dob: '20101993',
     mobile: '9440668991',
     campus: 'vellore'
   },
-
-  /*
-   *  Disabled due to lack of proper credentials (Parent's Mobile required for Vellore Campus)
-   *
-   *  {
-   *  describe: 'B.Tech ECE 2nd Year - Courses Only - Vellore',
-   *  reg_no: '13BEC0547',
-   *  dob: '10011995',
-   *  campus: 'vellore'
-   *  },
-   *  {
-   *  describe: 'Research Scholar - Vellore',
-   *  reg_no: '14PHI0007',
-   *  dob: '05041990',
-   *  campus: 'vellore'
-   *  },
-   *
-   */
-
+  {
+    describe: 'B.Tech CSE 2nd Year Student - Vellore',
+    reg_no: '13BCE0139',
+    dob: '16011995',
+    mobile: '9830051893',
+    campus: 'vellore'
+  },
   {
     describe: 'Master\'s Student - Chennai',
     reg_no: '14MMT1019',
     dob: '19061993',
+    mobile: null,
     campus: 'chennai'
   }
 ];
