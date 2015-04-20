@@ -1,7 +1,8 @@
 {
-  "reg_no": "11BCE0260",
+  "reg_no": "13BCE0139",
+  "dob": "16011995",
+  "mobile": "9830051893",
   "campus": "vellore",
-  "dob": "20101993",
   "status": {
     "message": "Successful execution",
     "code": 0

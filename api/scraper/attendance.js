@@ -99,6 +99,7 @@ exports.scrapeAttendance = function (app, data, callback) {
                     details.push({
                       sl: parseInt(htmlColumn.eq(0).text()),
                       date: moment(htmlColumn.eq(1).text(), 'DD-MMM-YYYY').format('YYYY-MM-DD'),
+                      slot: htmlColumn.eq(2).text(),
                       status: htmlColumn.eq(3).text(),
                       reason: htmlColumn.eq(5).text()
                     });

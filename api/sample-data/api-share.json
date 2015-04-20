@@ -6,7 +6,7 @@
       "class_number": 4792,
       "course_code": "CSE202",
       "course_title": "Algorithm Design and Analysis",
-      "course_type": 1,
+      "subject_type": "Theory Only",
       "ltpc": "3104",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -16,32 +16,33 @@
       "project_title": null,
       "timings": [
         {
+          "day": 0,
           "start_time": "03:30:00Z",
-          "end_time": "04:20:00Z",
-          "day": 0
+          "end_time": "04:20:00Z"
         },
         {
+          "day": 1,
           "start_time": "06:30:00Z",
-          "end_time": "07:20:00Z",
-          "day": 1
+          "end_time": "07:20:00Z"
         },
         {
+          "day": 2,
           "start_time": "03:30:00Z",
-          "end_time": "04:20:00Z",
-          "day": 2
+          "end_time": "04:20:00Z"
         },
         {
+          "day": 3,
           "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 3
+          "end_time": "05:20:00Z"
         }
-      ]
+      ],
+      "course_type": 1
     },
     {
       "class_number": 4574,
       "course_code": "CSE221",
       "course_title": "Microprocessor and Interfacing",
-      "course_type": 1,
+      "subject_type": "Embedded Theory",
       "ltpc": "3003",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -51,27 +52,28 @@
       "project_title": null,
       "timings": [
         {
+          "day": 1,
           "start_time": "03:30:00Z",
-          "end_time": "04:20:00Z",
-          "day": 1
+          "end_time": "04:20:00Z"
         },
         {
+          "day": 2,
           "start_time": "06:30:00Z",
-          "end_time": "07:20:00Z",
-          "day": 2
+          "end_time": "07:20:00Z"
         },
         {
+          "day": 4,
           "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 4
+          "end_time": "05:20:00Z"
         }
-      ]
+      ],
+      "course_type": 1
     },
     {
       "class_number": 4706,
       "course_code": "CSE221",
       "course_title": "Microprocessor and Interfacing",
-      "course_type": 2,
+      "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
@@ -81,17 +83,18 @@
       "project_title": null,
       "timings": [
         {
+          "day": 3,
           "start_time": "10:30:00Z",
-          "end_time": "12:20:00Z",
-          "day": 3
+          "end_time": "12:20:00Z"
         }
-      ]
+      ],
+      "course_type": 2
     },
     {
       "class_number": 4525,
       "course_code": "CSE222",
       "course_title": "Operating Systems",
-      "course_type": 3,
+      "subject_type": "Embedded Theory",
       "ltpc": "3003",
       "course_mode": "PBL",
       "course_option": "Regular",
@@ -101,27 +104,28 @@
       "project_title": null,
       "timings": [
         {
+          "day": 0,
           "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 0
+          "end_time": "05:20:00Z"
         },
         {
+          "day": 2,
           "start_time": "02:30:00Z",
-          "end_time": "03:20:00Z",
-          "day": 2
+          "end_time": "03:20:00Z"
         },
         {
+          "day": 3,
           "start_time": "05:30:00Z",
-          "end_time": "06:20:00Z",
-          "day": 3
+          "end_time": "06:20:00Z"
         }
-      ]
+      ],
+      "course_type": 3
     },
     {
       "class_number": 4630,
       "course_code": "CSE222",
       "course_title": "Operating Systems",
-      "course_type": 2,
+      "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
@@ -131,17 +135,18 @@
       "project_title": null,
       "timings": [
         {
+          "day": 2,
           "start_time": "10:30:00Z",
-          "end_time": "12:20:00Z",
-          "day": 2
+          "end_time": "12:20:00Z"
         }
-      ]
+      ],
+      "course_type": 2
     },
     {
       "class_number": 4540,
       "course_code": "CSE324",
       "course_title": "Database Systems",
-      "course_type": 1,
+      "subject_type": "Embedded Theory",
       "ltpc": "3003",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -151,27 +156,28 @@
       "project_title": null,
       "timings": [
         {
+          "day": 1,
           "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 1
+          "end_time": "05:20:00Z"
         },
         {
+          "day": 3,
           "start_time": "02:30:00Z",
-          "end_time": "03:20:00Z",
-          "day": 3
+          "end_time": "03:20:00Z"
         },
         {
+          "day": 4,
           "start_time": "05:30:00Z",
-          "end_time": "06:20:00Z",
-          "day": 4
+          "end_time": "06:20:00Z"
         }
-      ]
+      ],
+      "course_type": 1
     },
     {
       "class_number": 5270,
       "course_code": "CSE324",
       "course_title": "Database Systems",
-      "course_type": 2,
+      "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
@@ -181,17 +187,18 @@
       "project_title": null,
       "timings": [
         {
+          "day": 3,
           "start_time": "08:30:00Z",
-          "end_time": "10:20:00Z",
-          "day": 3
+          "end_time": "10:20:00Z"
         }
-      ]
+      ],
+      "course_type": 2
     },
     {
       "class_number": 2055,
       "course_code": "HUM121",
       "course_title": "Ethics and Values",
-      "course_type": 1,
+      "subject_type": "Embedded Theory",
       "ltpc": "2002",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -201,22 +208,23 @@
       "project_title": null,
       "timings": [
         {
+          "day": 1,
           "start_time": "02:30:00Z",
-          "end_time": "03:20:00Z",
-          "day": 1
+          "end_time": "03:20:00Z"
         },
         {
+          "day": 4,
           "start_time": "03:30:00Z",
-          "end_time": "04:20:00Z",
-          "day": 4
+          "end_time": "04:20:00Z"
         }
-      ]
+      ],
+      "course_type": 1
     },
     {
       "class_number": 5510,
       "course_code": "HUM121",
       "course_title": "Ethics and Values",
-      "course_type": 2,
+      "subject_type": "Embedded Lab",
       "ltpc": "0021",
       "course_mode": "LBC",
       "course_option": "Regular",
@@ -226,17 +234,18 @@
       "project_title": null,
       "timings": [
         {
+          "day": 1,
           "start_time": "10:30:00Z",
-          "end_time": "12:20:00Z",
-          "day": 1
+          "end_time": "12:20:00Z"
         }
-      ]
+      ],
+      "course_type": 2
     },
     {
       "class_number": 2216,
       "course_code": "MAT202",
       "course_title": "Linear Algebra",
-      "course_type": 1,
+      "subject_type": "Theory Only",
       "ltpc": "3104",
       "course_mode": "CBL",
       "course_option": "Regular",
@@ -246,31 +255,32 @@
       "project_title": null,
       "timings": [
         {
+          "day": 0,
           "start_time": "05:30:00Z",
-          "end_time": "06:20:00Z",
-          "day": 0
+          "end_time": "06:20:00Z"
         },
         {
+          "day": 2,
           "start_time": "04:30:00Z",
-          "end_time": "05:20:00Z",
-          "day": 2
+          "end_time": "05:20:00Z"
         },
         {
+          "day": 3,
           "start_time": "06:30:00Z",
-          "end_time": "07:20:00Z",
-          "day": 3
+          "end_time": "07:20:00Z"
         },
         {
+          "day": 4,
           "start_time": "02:30:00Z",
-          "end_time": "03:20:00Z",
-          "day": 4
+          "end_time": "03:20:00Z"
         }
-      ]
+      ],
+      "course_type": 1
     }
   ],
   "semester": "WS",
   "status": {
-    "message": "Successful Execution",
+    "message": "Successful execution",
     "code": 0
   }
 }
