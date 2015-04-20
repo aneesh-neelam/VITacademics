@@ -43,10 +43,12 @@ h4 {
 
 .btn-primary {
     margin-top: 15% !important;
+    background-color: rgba(0,0,0,0.9) !important;
+    border: none !important;
 }
 
 .logo {
-    width: 80%;
+    width: 80% !important;
 }
 
 .footer {
@@ -54,22 +56,6 @@ h4 {
     margin-bottom: 0;
     bottom: 0;
     padding-bottom: 0;
-}
-
-section {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-}
-
-.nav-justified li a {
-    color: black;
-}
-
-.nav-justified li a:hover {
-    text-decoration: underline;
-    background: transparent;
-    color: black;
 }
 
 #box {
@@ -82,6 +68,21 @@ section {
     padding: 1%;
 }
 
+#downloads a img{
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
 hr {
     width: 100%;
+}
+
+.nav-justified li a img{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.muted{
+    margin-left: auto;
+    margin-right: auto;
 }

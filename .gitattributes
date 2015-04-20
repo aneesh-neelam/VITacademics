@@ -20,11 +20,11 @@
 *.inc text
 *.md text
 .htaccess text
+*.svg text
 
 # These files are binary and should be left untouched
 # (binary is a macro for -text -diff)
 *.png binary
-*.svg binary
 *.jpg binary
 *.jpeg binary
 *.gif binary
