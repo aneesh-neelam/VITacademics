@@ -49,7 +49,7 @@ var status = {
     code: 16
   },
   toDo: {
-    message: 'This feature is incomplete',
+    message: 'This feature is incomplete, please help us by contributing to its development',
     code: 50
   },
   deprecated: {

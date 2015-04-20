@@ -1,0 +1,36 @@
+extends layout
+
+append head
+  title= 'VITacademics'
+
+append content
+  include header
+
+  .container
+    .row
+      .col-xs-12.col-sm-offset-1.col-sm-10.col-md-offset-3.col-md-6
+        h1(class='text-center') VITacademics
+    .row
+      .col-xs-12.col-sm-offset-1.col-sm-10.col-md-offset-3.col-md-6
+        h4(class='text-center') Academic Metrics
+
+    .row#box
+      .col-xs-12.col-sm-offset-1.col-sm-10.col-md-offset-3.col-md-6
+        .col-xs-offset-1.col-xs-12.col-sm-offset-1.col-sm-4.text-center
+          img(src='/images/logo.png',alt='logo',class='logo img-responsive')
+        .col-xs-12.col-sm-5.text-center
+          button(class='btn-primary btn-lg', href='#') Login to Web App
+    .row#downloads
+      .col-xs-12.col-sm-offset-1.col-sm-11.text-center
+        .col-xs-12.col-sm-offset-1.col-sm-3
+          a(href='https://play.google.com/store/apps/details?id=com.karthikb351.vitinfo2&hl=en')
+            img(src='https://developer.android.com/images/brand/en_generic_rgb_wo_45.png',alt='Play Store')
+
+        .col-xs-12.col-sm-3
+          a(href='https://itunes.apple.com/in/app/vitacademics/id727796987?mt=8')
+            img(src='/images/apple.svg',alt='App Store')
+
+        .col-xs-12.col-sm-3
+          a(href='http://www.windowsphone.com/en-us/store/app/vitacademics-8-1/d6a9e028-4cc2-46ea-9f1b-84c02f4ae408')
+            img(src='/images/windows.png',alt='Windows Store')
+  include footer
