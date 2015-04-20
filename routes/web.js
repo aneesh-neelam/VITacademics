@@ -19,6 +19,7 @@
 'use strict';
 
 var express = require('express');
+var path = require('path');
 
 var status = require(path.join(__dirname, '..', 'status'));
 
