@@ -1,0 +1,36 @@
+extends layout
+
+append head
+    title= 'VITacademics'
+
+append content
+    include header
+
+    .container
+        .row
+            div(class='col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6')
+                h1(class='text-center') VITacademics
+        .row
+            div(class='col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6')
+                h4(class='text-center') Academic Metrics
+
+        .row#box
+            div(class='col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6')
+                .col-xs-offset-1.col-xs-4.text-center
+                    img(src='/images/logo.png',alt='logo',class='logo img-responsive')
+                .col-xs-5.text-center
+                    button(class='btn-primary btn-lg', href='#') Login to Web App
+        .row#downloads
+            .col-xs-offset-1.col-sm-offset-1.text-center
+                div(class='col-xs-12 col-sm-offset-1 col-sm-3')
+                    a(href='#')
+                        img(src='https://developer.android.com/images/brand/en_generic_rgb_wo_45.png',alt='Play Store')
+
+                div(class='col-xs-12 col-sm-3')
+                    a(href='#')
+                        img(src='/images/Download_on_the_App_Store_Badge_US-UK_135x40.svg',alt='App Store')
+
+                div(class='col-xs-12 col-sm-3')
+                    a(href='#')
+                        img(src='/images/WindowsStore_badge_en_English_Black_small_154x40.png',alt='Windows Store')
+    include footer

@@ -74,7 +74,7 @@ async.waterfall([
 
     // View Engine
     app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'ejs');
+    app.set('view engine', 'jade');
 
     // New Relic in Template
     if (newrelic) {

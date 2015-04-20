@@ -1,0 +1,87 @@
+/*
+    VITacademics
+    Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+* {
+    font-family: sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+h1 {
+    font-weight: bolder;
+    font-size: 3.75em;
+}
+
+h4 {
+    font-size: 1.6em;
+}
+
+.navbar-header {
+    font-weight: bold;
+    margin-left: 17% !important;
+}
+
+.navbar-right {
+    margin-right: 17% !important;
+}
+
+.btn-primary {
+    margin-top: 15% !important;
+}
+
+.logo {
+    width: 80%;
+}
+
+.footer {
+    top: 100%;
+    margin-bottom: 0;
+    bottom: 0;
+    padding-bottom: 0;
+}
+
+section {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
+
+.nav-justified li a {
+    color: black;
+}
+
+.nav-justified li a:hover {
+    text-decoration: underline;
+    background: transparent;
+    color: black;
+}
+
+#box {
+    margin-top: 5%;
+    padding: 1%;
+}
+
+#downloads {
+    margin-top: 5%;
+    padding: 1%;
+}
+
+hr {
+    width: 100%;
+}

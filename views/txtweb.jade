@@ -1,0 +1,23 @@
+extends layout
+
+append head
+    title= 'SMS | VITacademics'
+    meta(name='txtweb-appkey', content=txtWebAppKey)
+
+append content
+    if (instructions)
+        include header
+        .container
+            .row
+                .col-xs-12
+                    h3 Send SMS to 51115:
+            .row
+                .col-xs-12
+                    for message in messages
+                        = message
+                        br
+        include footer
+    else
+        for message in messages
+            = message
+            br
