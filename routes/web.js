@@ -30,6 +30,11 @@ router.get('/', function (req, res) {
   res.render('index', {googleAnalyticsToken: googleAnalyticsToken});
 });
 
+// Will be removed later
+router.get('/status', function (req, res) {
+  res.send("Fuck you Siddharth, why don't you curl my ass! ");
+});
+
 router.get('/web', function (req, res) {
   res.send(status.toDo.message);
 });
