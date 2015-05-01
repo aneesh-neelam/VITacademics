@@ -192,7 +192,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                 let sub = text[0] + text[2];
                 if (tmp[sub]) {
                   let slotType = (text[2] === 'TH' || text[2] === 'ETH') ? 'theory' : 'lab';
-                  if (last) {
+                  if (last && slotType === 'lab') {
                     if (last.class_number === tmp[sub] && last.day === (i - 2)) {
                       last.end_time = slotTimings[slotType][elt].end_time ? slotTimings[slotType][elt].end_time : slotTimings['lab'][elt].end_time;
                     }
