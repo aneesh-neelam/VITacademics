@@ -32,7 +32,7 @@ router.get('/', function (req, res) {
 
 // Will be removed later
 router.get('/status', function (req, res) {
-  res.send("Fuck you Siddharth, why don't you curl my ass! ");
+  res.send(status.deprecated.message);
 });
 
 router.get('/web', function (req, res) {
