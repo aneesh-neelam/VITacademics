@@ -192,17 +192,17 @@ exports.scrapeTimetable = function (app, data, callback) {
                 let sub = text[0] + text[2];
                 if (tmp[sub]) {
                   let slotType = (text[2] === 'TH' || text[2] === 'ETH') ? 'theory' : 'lab';
-                  if (last && slotType === 'lab') {
-                    if (last.class_number === tmp[sub] && last.day === (i - 2)) {
-                      last.end_time = slotTimings[slotType][elt].end_time ? slotTimings[slotType][elt].end_time : slotTimings['lab'][elt].end_time;
+                  if (last) {
+                    if (last.class_number === tmp[sub] && last.day === (i - 2) && slotType === 'lab') {
+                      last.end_time = slotTimings[slotType][elt].end_time || slotTimings['theory'][elt].end_time || slotTimings['lab'][elt].end_time;
                     }
                     else {
                       timetable.timings.push(last);
                       last = {
                         class_number: tmp[sub],
                         day: i - 2,
-                        start_time: slotTimings[slotType][elt].start_time,
-                        end_time: slotTimings[slotType][elt].end_time
+                        start_time: slotTimings[slotType][elt].start_time || slotTimings['theory'][elt].start_time || slotTimings['lab'][elt].start_time,
+                        end_time: slotTimings[slotType][elt].end_time || slotTimings['theory'][elt].end_time || slotTimings['lab'][elt].end_time
                       };
                     }
                   }
@@ -210,8 +210,8 @@ exports.scrapeTimetable = function (app, data, callback) {
                     last = {
                       class_number: tmp[sub],
                       day: i - 2,
-                      start_time: slotTimings[slotType][elt].start_time,
-                      end_time: slotTimings[slotType][elt].end_time
+                      start_time: slotTimings[slotType][elt].start_time || slotTimings['theory'][elt].start_time || slotTimings['lab'][elt].start_time,
+                        end_time: slotTimings[slotType][elt].end_time || slotTimings['theory'][elt].end_time || slotTimings['lab'][elt].end_time
                     };
                   }
                 }
