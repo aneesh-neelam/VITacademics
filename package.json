@@ -1,6 +1,6 @@
 {
   "name": "VITacademics",
-  "version": "0.98.44",
+  "version": "0.98.48",
   "description": "VITacademics API Server and Web App",
   "homepage": "https://vitacademics-dev.herokuapp.com/",
   "bugs": {
@@ -59,9 +59,9 @@
     "memory-cache": "0.1.2",
     "moment": "2.10.2",
     "moment-timezone": "0.3.1",
-    "mongodb": "2.0.27",
+    "mongodb": "2.0.28",
     "morgan": "1.5.2",
-    "newrelic": "1.18.3",
+    "newrelic": "1.18.4",
     "node-ga": "0.1.1",
     "node-logentries": "0.1.4",
     "serve-favicon": "2.2.0",
@@ -83,7 +83,7 @@
     "iojs": "stable"
   },
   "devDependencies": {
-    "chai": "2.2.0",
+    "chai": "2.3.0",
     "mocha": "2.2.4",
     "supertest": "0.15.0"
   }
