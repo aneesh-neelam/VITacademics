@@ -1,6 +1,9 @@
 # WebStorm
 .idea/
 
+# Visual Studio Code
+.settings/
+
 # Logs
 logs
 *.log
