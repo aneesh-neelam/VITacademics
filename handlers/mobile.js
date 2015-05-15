@@ -1,6 +1,7 @@
 /*
- *  VITacademics
+ *  VITacademics - Worker
  *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,23 +19,17 @@
 
 'use strict';
 
-var log;
-if (process.env.LOGENTRIES_TOKEN) {
-  let logentries = require('node-logentries');
-  log = logentries.logger({
-    token: process.env.LOGENTRIES_TOKEN
-  });
-}
+var path = require('path');
 
-if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
-  var app_name = process.env.NEWRELIC_APP_NAME;
-  var license = process.env.NEWRELIC_LICENSE;
-}
+var status = require(path.join(__dirname, '..', 'status'));
 
-exports.config = {
-  app_name: [app_name],
-  license_key: license,
-  logging: {
-    level: 'info'
-  }
+var handler = function (app) {
+  var onJob = function (job, ack) {
+    job.status = status.toDo;
+    console.log(JSON.stringify(job));
+    ack();
+  };
+  app.queue.handle(app.queue.queues.mobile, onJob);
 };
+
+module.exports = handler;
