@@ -30,11 +30,6 @@ router.get('/', function (req, res) {
   res.render('index', {googleAnalyticsToken: googleAnalyticsToken});
 });
 
-// Will be removed later
-router.get('/status', function (req, res) {
-  res.send(status.deprecated.message);
-});
-
 router.get('/web', function (req, res) {
   res.send(status.toDo.message);
 });

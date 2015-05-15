@@ -1,7 +1,7 @@
-#!/usr/bin/env node
+#!/usr/bin/env iojs
 
 /*
- *  VITacademics - Worker
+ *  VITacademics
  *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -27,4 +27,4 @@ var config = {
 };
 console.log(JSON.stringify(config));
 
-require (path.join(__dirname, '..', 'app'));
+require(path.join(__dirname, '..', 'background'));
