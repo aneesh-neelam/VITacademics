@@ -20,7 +20,6 @@
 
 'use strict';
 
-var async = require('async');
 var path = require('path');
 var should = require('chai').should();
 var supertest = require('supertest');

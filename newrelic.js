@@ -18,17 +18,13 @@
 
 'use strict';
 
-var log;
-if (process.env.LOGENTRIES_TOKEN) {
-  let logentries = require('node-logentries');
-  log = logentries.logger({
-    token: process.env.LOGENTRIES_TOKEN
-  });
-}
+var path = require(path);
 
-if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
-  var app_name = process.env.NEWRELIC_APP_NAME;
-  var license = process.env.NEWRELIC_LICENSE;
+var config = require(path.join(__dirname, 'config'));
+
+if (config.newRelicEnabled) {
+  var app_name = config.newRelicAppName;
+  var license = config.newRelicLicense;
 }
 
 exports.config = {

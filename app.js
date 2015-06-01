@@ -32,16 +32,18 @@ var mongoClient = require('mongodb').MongoClient;
 var path = require('path');
 var underscore = require('underscore');
 
+var config = require(path.join(__dirname, 'config'));
+
 var newrelic;
-if (process.env.NEWRELIC_APP_NAME && process.env.NEWRELIC_LICENSE) {
+if (config.newRelicEnabled) {
   newrelic = require('newrelic');
 }
 
-var log;
-if (process.env.LOGENTRIES_TOKEN) {
-  let logentries = require('node-logentries');
-  log = logentries.logger({
-    token: process.env.LOGENTRIES_TOKEN
+var logentries;
+if (config.logentriesEnabled) {
+  let LogentriesClient = require('logentries-client');
+  logentries = new LogentriesClient({
+    token: config.logentriesToken
   });
 }
 
@@ -59,8 +61,7 @@ var app = express();
 
 async.waterfall([
   function (callback) {
-    let loggerLevel = process.env.LOGGER_LEVEL || 'dev';
-    app.use(logger(loggerLevel));
+    app.use(logger(config.expressLogLevel));
 
     app.set('title', 'VITacademics');
 
@@ -73,8 +74,7 @@ async.waterfall([
     app.use(bodyParser.urlencoded({extended: true}));
 
     // Cookie Parser
-    let secret = process.env.SECRET_KEY || 'randomsecretstring';
-    app.use(cookieParser(secret, {signed: true}));
+    app.use(cookieParser(config.expressSecretKey, {signed: true}));
 
     // View Engine
     app.set('views', path.join(__dirname, 'views'));
@@ -86,8 +86,7 @@ async.waterfall([
     }
 
     // Google Analytics
-    let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-    app.use(ga(googleAnalyticsToken, {
+    app.use(ga(config.googleAnalyticsToken, {
       safe: true
     }));
 
@@ -102,15 +101,6 @@ async.waterfall([
   },
   function (callback) {
     // MongoDB
-    let mongoList = [
-      process.env.MONGODB_URI_0 || 'mongodb://localhost:27017/VITacademics',
-      process.env.MONGODB_URI_1 || 'mongodb://localhost:27017/VITacademics',
-      process.env.MONGODB_URI_2 || 'mongodb://localhost:27017/VITacademics',
-      process.env.MONGODB_URI_3 || 'mongodb://localhost:27017/VITacademics',
-      process.env.MONGODB_URI_4 || 'mongodb://localhost:27017/VITacademics',
-      process.env.MONGODB_URI || 'mongodb://localhost:27017/VITacademics'
-    ];
-
     var forEachMongoDB = function (mongoURI, asyncCallback) {
       let mongodbOptions = {
         db: {
@@ -140,13 +130,11 @@ async.waterfall([
       callback(err)
     };
 
-    async.map(mongoList, forEachMongoDB, allMongoDB);
+    async.map(config.mongoDb, forEachMongoDB, allMongoDB);
   },
   function (callback) {
     // RabbitMQ
-    let amqpUri = process.env.AMQP_URI || 'amqp://localhost';
-
-    var queue = jackrabbit(amqpUri);
+    var queue = jackrabbit(config.amqp_Uri);
 
     queue.queues = {
       main: 'Main',
@@ -194,7 +182,6 @@ async.waterfall([
 
     // Error handlers
     // Development error handler, will print stacktrace
-    let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
     if (app.get('env') === 'development') {
       app.use(function (err, req, res, next) {
         if (log) {
@@ -205,7 +192,7 @@ async.waterfall([
           message: err.message,
           status: err.status,
           stack: err.stack,
-          googleAnalyticsToken: googleAnalyticsToken
+          googleAnalyticsToken: config.googleAnalyticsToken
         });
       });
     }
@@ -220,7 +207,7 @@ async.waterfall([
         message: err.message,
         status: err.status,
         stack: '',
-        googleAnalyticsToken: googleAnalyticsToken
+        googleAnalyticsToken: config.googleAnalyticsToken
       });
     });
 

@@ -20,11 +20,13 @@
 
 var path = require('path');
 
-var log;
-if (process.env.LOGENTRIES_TOKEN) {
-  let logentries = require('node-logentries');
-  log = logentries.logger({
-    token: process.env.LOGENTRIES_TOKEN
+var config = require(path.join(__dirname, '..', 'config'));
+
+var logentries;
+if (config.logentriesEnabled) {
+  let LogentriesClient = require('logentries-client');
+  logentries = new LogentriesClient({
+    token: config.logentriesToken
   });
 }
 
@@ -63,7 +65,9 @@ var parseMessage = function (app, data, callback) {
     // TODO
     reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
-  log.log('debug', {log: 'Incomplete feature TxtWeb used', args: data.args, mobile: data.mobile});
+  if (config.logentriesEnabled) {
+    logentries.log('debug', {log: 'Incomplete feature TxtWeb used', args: data.args, mobile: data.mobile});
+  }
   callback(false, reply);
 };
 

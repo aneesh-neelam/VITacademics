@@ -23,18 +23,17 @@ var mongoClient = require('mongodb');
 var path = require('path');
 var underscore = require('underscore');
 
+var config = require(path.join(__dirname, 'config'));
+
 var handleMain = require(path.join(__dirname, 'handlers', 'main'));
 var handleMobile = require(path.join(__dirname, 'handlers', 'mobile'));
 var handleShare = require(path.join(__dirname, 'handlers', 'share'));
-
-var amqpURI = process.env.AMQP_URI || 'amqp://localhost';
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/VITacademics';
 
 var app = {
   db: null,
   queue: null
 };
-
+/*
 var onConnect = function (err, db) {
   app.db = db;
 };
@@ -69,3 +68,4 @@ queue.on('connected', function () {
   };
   underscore.values(queue.queues).forEach(forEachQueue);
 });
+*/

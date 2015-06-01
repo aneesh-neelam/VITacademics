@@ -23,11 +23,13 @@ var cache = require('memory-cache');
 var path = require('path');
 var underscore = require('underscore');
 
-var log;
-if (process.env.LOGENTRIES_TOKEN) {
-  let logentries = require('node-logentries');
-  log = logentries.logger({
-    token: process.env.LOGENTRIES_TOKEN
+var config = require(path.join(__dirname, '..', '..', 'config'));
+
+var logentries;
+if (config.logentriesEnabled) {
+  let LogentriesClient = require('logentries-client');
+  logentries = new LogentriesClient({
+    token: config.logentriesToken
   });
 }
 
@@ -56,8 +58,8 @@ exports.get = function (app, data, callback) {
       var onFetch = function (err, mongoDoc) {
         if (err) {
           data.status = status.mongoDown;
-          if (log) {
-            log.log('debug', data);
+          if (config.logentriesEnabled) {
+            logentries.log('crit', data);
           }
           console.log(JSON.stringify(data));
           callback(true, data);
@@ -78,10 +80,10 @@ exports.get = function (app, data, callback) {
       }
       else {
         if (data.campus === 'vellore') {
-          data.semester = process.env.VELLORE_SEMESTER || 'WS';
+          data.semester = config.velloreSemesterCode;
         }
         else if (data.campus === 'chennai') {
-          data.semester = process.env.CHENNAI_SEMESTER || 'WS14';
+          data.semester = config.chennaiSemesterCode;
         }
         let cookieSerial = cache.get(data.reg_no).cookie;
         let parallelTasks = {
@@ -98,8 +100,8 @@ exports.get = function (app, data, callback) {
         var onFinish = function (err, results) {
           if (err || results.timetable.status.code !== 0) {
             data.status = results.timetable.status;
-            if (log) {
-              log.log('debug', data);
+            if (config.logentriesEnabled) {
+              logentries.log('err', data);
             }
             data.HTML_error = true;
             console.log(JSON.stringify(data));
@@ -202,8 +204,8 @@ exports.get = function (app, data, callback) {
                 var onUpdate = function (err) {
                   if (err) {
                     data.status = status.mongoDown;
-                    if (log) {
-                      log.log('debug', data);
+                    if (config.logentriesEnabled) {
+                      logentries.log('crit', data);
                     }
                     console.log(JSON.stringify(data));
                     callback(true, data);

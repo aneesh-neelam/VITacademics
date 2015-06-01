@@ -20,11 +20,26 @@
 
 'use strict';
 
-var path = require ('path');
+var path = require('path');
 
-var config = {
+var config = require(path.join(__dirname, '..', 'config'));
 
-};
-console.log(JSON.stringify(config));
+var newrelic;
+if (config.newRelicEnabled) {
+    newrelic = require('newrelic');
+}
+
+var logentries;
+if (config.logentriesEnabled) {
+    let LogentriesClient = require('logentries-client');
+    logentries = new LogentriesClient({
+        token: config.logentriesToken
+    });
+}
+
+if (config.logentriesEnabled) {
+    logentries.log('info', config);
+}
+console.log('Worker started, config: ' + JSON.stringify(config));
 
 require(path.join(__dirname, '..', 'background'));

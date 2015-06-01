@@ -1,5 +1,5 @@
 /*
- *  VITacademics - Worker
+ *  VITacademics
  *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
  *  Copyright (C) 2015  Ayush Agarwal <agarwalayush161@gmail.com>
  *

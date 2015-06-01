@@ -26,8 +26,7 @@ var status = require(path.join(__dirname, '..', 'status'));
 var router = express.Router();
 
 router.get('/', function (req, res) {
-  let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-  res.render('index', {googleAnalyticsToken: googleAnalyticsToken});
+  res.render('index', {googleAnalyticsToken: config.googleAnalyticsToken});
 });
 
 router.get('/web', function (req, res) {

@@ -21,13 +21,15 @@
 
 var path = require('path');
 
+var config = require(path.join(__dirname, '..', '..', 'config'));
+
 var captchaParser = require(path.join(__dirname, 'captcha-parser'));
 
-var log;
-if (process.env.LOGENTRIES_TOKEN) {
-  let logentries = require('node-logentries');
-  log = logentries.logger({
-    token: process.env.LOGENTRIES_TOKEN
+var logentries;
+if (config.logentriesEnabled) {
+  let LogentriesClient = require('logentries-client');
+  logentries = new LogentriesClient({
+    token: config.logentriesToken
   });
 }
 
@@ -47,8 +49,8 @@ exports.get = function (app, data, callback) {
       }
       catch (ex) {
         data.status = status.captchaParsing;
-        if (log) {
-          log.log('debug', data);
+        if (config.logentriesEnabled) {
+          logentries.log('err', data);
         }
         console.log(data.status);
         callback(true, data);

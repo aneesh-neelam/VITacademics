@@ -23,11 +23,13 @@ var cheerio = require('cheerio');
 var path = require('path');
 var unirest = require('unirest');
 
-var log;
-if (process.env.LOGENTRIES_TOKEN) {
-  let logentries = require('node-logentries');
-  log = logentries.logger({
-    token: process.env.LOGENTRIES_TOKEN
+var config = require(path.join(__dirname, '..', '..', 'config'));
+
+var logentries;
+if (config.logentriesEnabled) {
+  let LogentriesClient = require('logentries-client');
+  logentries = new LogentriesClient({
+    token: config.logentriesToken
   });
 }
 
@@ -50,8 +52,8 @@ exports.get = function (app, data, callback) {
       delete data['captcha'];
       if (response.error) {
         data.status = status.vitDown;
-        if (log) {
-          log.log('debug', data);
+        if (config.logentriesEnabled) {
+          logentries.log('crit', data);
         }
         console.log(data.status);
         callback(true, data);
@@ -74,8 +76,8 @@ exports.get = function (app, data, callback) {
             var onUpdate = function (err) {
               if (err) {
                 data.status = status.mongoDown;
-                if (log) {
-                  log.log('debug', data);
+                if (config.logentriesEnabled) {
+                  logentries.log('crit', data);
                 }
                 console.log(data.status);
                 callback(true, data);

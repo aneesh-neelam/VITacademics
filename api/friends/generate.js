@@ -22,11 +22,13 @@ var cache = require('memory-cache');
 var path = require('path');
 var underscore = require('underscore');
 
-var log;
-if (process.env.LOGENTRIES_TOKEN) {
-  let logentries = require('node-logentries');
-  log = logentries.logger({
-    token: process.env.LOGENTRIES_TOKEN
+var config = require(path.join(__dirname, '..', '..', 'config'));
+
+var logentries;
+if (config.logentriesEnabled) {
+  let LogentriesClient = require('logentries-client');
+  logentries = new LogentriesClient({
+    token: config.logentriesToken
   });
 }
 
@@ -50,8 +52,8 @@ exports.get = function (app, data, callback) {
   var onFetch = function (err, doc) {
     if (err) {
       data.status = status.mongoDown;
-      if (log) {
-        log.log('debug', data);
+      if (config.logentriesEnabled) {
+        logentries.log('crit', data);
       }
       callback(true, data);
     }

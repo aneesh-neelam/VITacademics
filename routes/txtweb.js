@@ -26,8 +26,6 @@ var api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
 var router = express.Router();
 
 router.get('/', function (req, res) {
-  let googleAnalyticsToken = process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2';
-  let txtWebAppKey = process.env.TXTWEB_APP_KEY || 'randomkey';
   if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
     let args = req.query['txtweb-message'].toUpperCase().split(' ');
     let app = {
@@ -40,10 +38,10 @@ router.get('/', function (req, res) {
     };
     let onGet = function (err, messages) {
       res.render('txtweb', {
-        googleAnalyticsToken: googleAnalyticsToken,
+        googleAnalyticsToken: config.googleAnalyticsToken,
         messages: messages,
         instructions: false,
-        txtWebAppKey: txtWebAppKey
+        txtWebAppKey: config.txtWebAppKey
       });
     };
     api_txtweb.parseMessage(app, data, onGet);
@@ -58,10 +56,10 @@ router.get('/', function (req, res) {
       'Help - @vitacademics help'
     ];
     res.render('txtweb', {
-      googleAnalyticsToken: googleAnalyticsToken,
+      googleAnalyticsToken: config.googleAnalyticsToken,
       messages: messages,
       instructions: true,
-      txtWebAppKey: txtWebAppKey
+      txtWebAppKey: config.txtWebAppKey
     });
   }
 });
