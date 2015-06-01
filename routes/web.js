@@ -21,15 +21,30 @@
 var express = require('express');
 var path = require('path');
 
+var config = require(path.join(__dirname, '..', 'config'));
+
+var newrelic;
+if (config.newRelicEnabled) {
+  newrelic = require('newrelic');
+}
+
 var status = require(path.join(__dirname, '..', 'status'));
 
 var router = express.Router();
 
 router.get('/', function (req, res) {
+  if (config.newRelicEnabled) {
+    let header = newrelic.getBrowserTimingHeader();
+    res.write(header);
+  }
   res.render('index', {googleAnalyticsToken: config.googleAnalyticsToken});
 });
 
 router.get('/web', function (req, res) {
+  if (config.newRelicEnabled) {
+    let header = newrelic.getBrowserTimingHeader();
+    res.write(header);
+  }
   res.send(status.toDo.message);
 });
 

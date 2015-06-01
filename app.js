@@ -81,7 +81,7 @@ async.waterfall([
     app.set('view engine', 'jade');
 
     // New Relic in Template
-    if (newrelic) {
+    if (config.newRelicEnabled) {
       app.locals.newrelic = newrelic;
     }
 
