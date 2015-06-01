@@ -184,8 +184,8 @@ async.waterfall([
     // Development error handler, will print stacktrace
     if (app.get('env') === 'development') {
       app.use(function (err, req, res, next) {
-        if (log) {
-          log.log('debug', {Error: err, Message: err.message});
+        if (config.logentriesEnabled) {
+          logentries.log('err', {Error: err, Message: err.message});
         }
         res.status(err.status || 500);
         res.render('error', {
@@ -199,8 +199,8 @@ async.waterfall([
 
     // Production error handler, no stacktraces leaked to user
     app.use(function (err, req, res, next) {
-      if (log) {
-        log.log('debug', {Error: err, Message: err.message});
+      if (config.logentriesEnabled) {
+        logentries.log('err', {Error: err, Message: err.message});
       }
       res.status(err.status || 500);
       res.render('error', {
