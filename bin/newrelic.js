@@ -1,5 +1,3 @@
-#!/usr/bin/env iojs
-
 /*
  *  VITacademics
  *  Copyright (C) 2015  Aneesh Neelam <neelam.aneesh@gmail.com>
@@ -20,26 +18,19 @@
 
 'use strict';
 
-var path = require('path');
+var path = require(path);
 
-var config = require(path.join(__dirname, '..', 'config'));
+var config = require(path.join(__dirname, 'config'));
 
-var newrelic;
 if (config.newRelicEnabled) {
-    newrelic = require('newrelic');
+  var app_name = config.newRelicAppName;
+  var license = config.newRelicLicense;
 }
 
-var logentries;
-if (config.logentriesEnabled) {
-    let LogentriesClient = require('logentries-client');
-    logentries = new LogentriesClient({
-        token: config.logentriesToken
-    });
-}
-
-if (config.logentriesEnabled) {
-    logentries.log('info', config);
-}
-console.log('Worker started, config: ' + JSON.stringify(config));
-
-require(path.join(__dirname, '..', 'background'));
+exports.config = {
+  app_name: [app_name],
+  license_key: license,
+  logging: {
+    level: 'info'
+  }
+};
