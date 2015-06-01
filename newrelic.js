@@ -22,14 +22,9 @@ var path = require(path);
 
 var config = require(path.join(__dirname, 'config'));
 
-if (config.newRelicEnabled) {
-  var app_name = config.newRelicAppName;
-  var license = config.newRelicLicense;
-}
-
 exports.config = {
-  app_name: [app_name],
-  license_key: license,
+  app_name: [config.newRelicAppName],
+  license_key: config.newRelicLicense,
   logging: {
     level: 'info'
   }
