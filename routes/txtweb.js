@@ -22,11 +22,7 @@ var express = require('express');
 var path = require('path');
 
 var config = require(path.join(__dirname, '..', 'config'));
-
-var newrelic;
-if (config.newRelicEnabled) {
-  newrelic = require('newrelic');
-}
+var status = require(path.join(__dirname, '..', 'status'));
 
 var api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
 
@@ -62,10 +58,6 @@ router.get('/', function (req, res) {
       'Get Marks: @vitacademics marks',
       'Help - @vitacademics help'
     ];
-    if (config.newRelicEnabled) {
-      let header = newrelic.getBrowserTimingHeader();
-      res.write(header);
-    }
     res.render('txtweb', {
       googleAnalyticsToken: config.googleAnalyticsToken,
       messages: messages,
