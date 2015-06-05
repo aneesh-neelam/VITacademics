@@ -1,6 +1,6 @@
 {
-  "name": "VITacademics",
-  "version": "0.98.70",
+  "name": "vitacademics",
+  "version": "0.98.72",
   "description": "VITacademics API Server and Web App",
   "homepage": "https://vitacademics-rel.herokuapp.com/",
   "bugs": {

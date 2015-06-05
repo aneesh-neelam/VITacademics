@@ -29,6 +29,7 @@ var unirest = require('unirest');
 
 var status = require(path.join(__dirname, '..', '..', 'status'));
 
+var day = require(path.join(__dirname, '..', '..', 'utilities', 'day'));
 
 exports.scrapeTimetable = function (app, data, callback) {
   let timetableUri;
@@ -53,9 +54,11 @@ exports.scrapeTimetable = function (app, data, callback) {
       };
       try {
         var baseScraper = cheerio.load(response.body);
+
         var timetableScraper;
         var withdrawnScraper;
         var coursesScraper;
+
         if (baseScraper('b').eq(1).text().substring(0, 2) === 'No') {
           coursesScraper = null;
           withdrawnScraper = null;
@@ -71,16 +74,18 @@ exports.scrapeTimetable = function (app, data, callback) {
           withdrawnScraper = null;
           timetableScraper = cheerio.load(baseScraper('table table').eq(1).html());
         }
-        var tmp = {};
-        var slotTimings = {
+
+        let tmp = {};
+        let slotTimings = {
           theory: {},
           lab: {}
         };
+
         if (coursesScraper) {
           let length = coursesScraper('tr').length;
           var onEachCourse = function (i, elem) {
             if (i > 0 && i < (length - 1)) {
-              var htmlColumn = cheerio.load(coursesScraper(this).html())('td');
+              let htmlColumn = cheerio.load(coursesScraper(this).html())('td');
               let classnbr = parseInt(htmlColumn.eq(1).text());
               let code = htmlColumn.eq(2).text();
               let courseType = htmlColumn.eq(4).text();
@@ -110,16 +115,16 @@ exports.scrapeTimetable = function (app, data, callback) {
                 billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
                 billNumber = parseInt(bill[0]);
               }
-              if (courseType == 'Embedded Theory') {
+              if (courseType === 'Embedded Theory') {
                 code = code + 'ETH';
               }
-              else if (courseType == 'Embedded Lab') {
+              else if (courseType === 'Embedded Lab') {
                 code = code + 'ELA';
               }
-              else if (courseType == 'Theory Only') {
+              else if (courseType === 'Theory Only') {
                 code = code + 'TH';
               }
-              else if (courseType == 'Lab Only') {
+              else if (courseType === 'Lab Only') {
                 code = code + 'LO';
               }
               tmp[code] = classnbr;
@@ -143,6 +148,7 @@ exports.scrapeTimetable = function (app, data, callback) {
           };
           coursesScraper('tr').each(onEachCourse);
         }
+
         if (withdrawnScraper) {
           let length = withdrawnScraper('tr').length;
           var onEachWithdrawn = function (i, elem) {
@@ -160,18 +166,23 @@ exports.scrapeTimetable = function (app, data, callback) {
           };
           withdrawnScraper('tr').each(onEachWithdrawn);
         }
+
         if (timetableScraper) {
+          let timingsPerDay;
           var onEachRow = function (i, elem) {
-            var htmlRow = cheerio.load(timetableScraper(this).html());
-            var htmlColumn = htmlRow('td');
-            let length = htmlColumn.length;
-            if (i <= 1) {
-              for (let elt = 1; elt < length; elt++) {
-                let col = elt;
-                if (!(elt === 7 && i === 0)) {
-                  if (i === 0 && elt > 7) {
-                    col = col - 1;
-                  }
+            let htmlRow = cheerio.load(timetableScraper(this).html());
+            let htmlColumn = htmlRow('td');
+            let CellOneWords = htmlColumn.eq(0).text().split(' ');
+            let jump, diff;
+            if (CellOneWords[CellOneWords.length - 1] === 'HOURS') {
+              diff = 0;
+              for (let elt = 1; elt < htmlColumn.length; elt++) {
+                let col = elt + diff;
+                timingsPerDay = col;
+                if (htmlColumn.eq(elt).attr('bgcolor') === '#C0C0C0' || htmlColumn.eq(elt).attr('bgcolor') === '#999966') {
+                  diff = diff - 1;
+                }
+                else {
                   momentTimezone.tz.setDefault("Asia/Kolkata");
                   let text = htmlColumn.eq(elt).text();
                   let times = text.split('to');
@@ -185,35 +196,52 @@ exports.scrapeTimetable = function (app, data, callback) {
                 }
               }
             }
-            if (i > 1) {
+            else {
+              if (timingsPerDay === htmlColumn.length - 1 || timingsPerDay === htmlColumn.length) {
+                jump = 1;
+                diff = 0;
+              }
+              else {
+                jump = 2;
+                diff = 1;
+              }
               let last = null;
-              for (let elt = 1; elt < length; elt++) {
+              for (let elt = 1; elt < htmlColumn.length; ++elt) {
                 let text = htmlColumn.eq(elt).text().split(' ');
                 let sub = text[0] + text[2];
                 if (tmp[sub]) {
                   let slotType = (text[2] === 'TH' || text[2] === 'ETH') ? 'theory' : 'lab';
+                  let startTime = slotTimings[slotType][elt * jump - diff] ? (slotTimings[slotType][elt * jump - diff].start_time) : (slotTimings['theory'][elt * jump - diff].start_time || slotTimings['lab'][elt * jump - diff].start_time);
+                  let endTime;
+                  if (day.getCodeFromText(CellOneWords[0]) === 4 && htmlColumn.length === timingsPerDay && elt === 9) {
+                    endTime = slotTimings[slotType][elt * jump + 1] ? slotTimings[slotType][elt * jump + 1].end_time : (slotTimings['theory'][elt * jump + 1].end_time || slotTimings['lab'][elt * jump + 1].end_time);
+                  }
+                  else {
+                    endTime = slotTimings[slotType][elt * jump] ? slotTimings[slotType][elt * jump].end_time : (slotTimings['theory'][elt * jump].end_time || slotTimings['lab'][elt * jump].end_time);
+                  }
                   if (last) {
-                    if (last.class_number === tmp[sub] && last.day === (i - 2) && slotType === 'lab') {
-                      last.end_time = slotTimings[slotType][elt].end_time || slotTimings['theory'][elt].end_time || slotTimings['lab'][elt].end_time;
+                    if (last.class_number === tmp[sub] && last.day === day.getCodeFromText(CellOneWords[0]) && slotType === 'lab') {
+                      last.end_time = endTime;
                     }
                     else {
                       timetable.timings.push(last);
                       last = {
                         class_number: tmp[sub],
-                        day: i - 2,
-                        start_time: slotTimings[slotType][elt].start_time || slotTimings['theory'][elt].start_time || slotTimings['lab'][elt].start_time,
-                        end_time: slotTimings[slotType][elt].end_time || slotTimings['theory'][elt].end_time || slotTimings['lab'][elt].end_time
+                        day: day.getCodeFromText(CellOneWords[0]),
+                        start_time: startTime,
+                        end_time: endTime
                       };
                     }
                   }
                   else {
                     last = {
                       class_number: tmp[sub],
-                      day: i - 2,
-                      start_time: slotTimings[slotType][elt].start_time || slotTimings['theory'][elt].start_time || slotTimings['lab'][elt].start_time,
-                        end_time: slotTimings[slotType][elt].end_time || slotTimings['theory'][elt].end_time || slotTimings['lab'][elt].end_time
+                      day: day.getCodeFromText(CellOneWords[0]),
+                      start_time: startTime,
+                      end_time: endTime
                     };
                   }
+
                 }
                 else {
                   if (last) {

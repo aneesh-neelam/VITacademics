@@ -45,8 +45,8 @@
       "course_type": 1,
       "attendance": {
         "registration_date": "2014-12-16T09:03:50.000Z",
-        "attended_classes": 35,
-        "total_classes": 44,
+        "attended_classes": 48,
+        "total_classes": 60,
         "attendance_percentage": 80,
         "details": [
           {
@@ -54,6 +54,7 @@
             "date": "2015-01-05",
             "slot": "F1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -61,6 +62,7 @@
             "date": "2015-01-06",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -68,6 +70,7 @@
             "date": "2015-01-07",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -75,6 +78,7 @@
             "date": "2015-01-08",
             "slot": "F1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -82,6 +86,7 @@
             "date": "2015-01-12",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -89,6 +94,7 @@
             "date": "2015-01-13",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -96,6 +102,7 @@
             "date": "2015-01-14",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -103,6 +110,7 @@
             "date": "2015-01-19",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -110,6 +118,7 @@
             "date": "2015-01-20",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -117,6 +126,7 @@
             "date": "2015-01-21",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -124,6 +134,7 @@
             "date": "2015-01-22",
             "slot": "F1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -131,6 +142,7 @@
             "date": "2015-01-27",
             "slot": "TF1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -138,6 +150,7 @@
             "date": "2015-01-28",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -145,6 +158,7 @@
             "date": "2015-01-29",
             "slot": "F1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -152,6 +166,7 @@
             "date": "2015-02-02",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -159,6 +174,7 @@
             "date": "2015-02-03",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -166,6 +182,7 @@
             "date": "2015-02-04",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -173,6 +190,7 @@
             "date": "2015-02-10",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -180,6 +198,7 @@
             "date": "2015-02-11",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -187,6 +206,7 @@
             "date": "2015-02-12",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -194,6 +214,7 @@
             "date": "2015-02-16",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -201,6 +222,7 @@
             "date": "2015-02-17",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -208,6 +230,7 @@
             "date": "2015-02-18",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -215,6 +238,7 @@
             "date": "2015-02-19",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -222,6 +246,7 @@
             "date": "2015-02-21",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -229,6 +254,7 @@
             "date": "2015-02-23",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -236,6 +262,7 @@
             "date": "2015-02-24",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -243,6 +270,7 @@
             "date": "2015-02-25",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -250,6 +278,7 @@
             "date": "2015-02-26",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -257,6 +286,7 @@
             "date": "2015-03-09",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -264,6 +294,7 @@
             "date": "2015-03-10",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -271,6 +302,7 @@
             "date": "2015-03-11",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -278,6 +310,7 @@
             "date": "2015-03-12",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -285,6 +318,7 @@
             "date": "2015-03-16",
             "slot": "F1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -292,6 +326,7 @@
             "date": "2015-03-17",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -299,6 +334,7 @@
             "date": "2015-03-18",
             "slot": "F1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -306,6 +342,7 @@
             "date": "2015-03-19",
             "slot": "F1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -313,6 +350,7 @@
             "date": "2015-03-23",
             "slot": "F1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -320,6 +358,7 @@
             "date": "2015-03-24",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -327,6 +366,7 @@
             "date": "2015-03-25",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -334,6 +374,7 @@
             "date": "2015-03-26",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -341,6 +382,7 @@
             "date": "2015-03-30",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -348,6 +390,7 @@
             "date": "2015-03-31",
             "slot": "TF1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -355,6 +398,135 @@
             "date": "2015-04-01",
             "slot": "F1",
             "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 45,
+            "date": "2015-04-02",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 46,
+            "date": "2015-04-13",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 47,
+            "date": "2015-04-15",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 48,
+            "date": "2015-04-16",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 49,
+            "date": "2015-04-20",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 50,
+            "date": "2015-04-21",
+            "slot": "TF1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 51,
+            "date": "2015-04-22",
+            "slot": "F1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 52,
+            "date": "2015-04-23",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 53,
+            "date": "2015-04-27",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 54,
+            "date": "2015-04-28",
+            "slot": "TF1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 55,
+            "date": "2015-04-29",
+            "slot": "F1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 56,
+            "date": "2015-04-30",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 57,
+            "date": "2015-05-04",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 58,
+            "date": "2015-05-05",
+            "slot": "TF1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 59,
+            "date": "2015-05-06",
+            "slot": "F1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 60,
+            "date": "2015-05-07",
+            "slot": "F1",
+            "status": "Present",
+            "class_units": 1,
             "reason": " - "
           }
         ],
@@ -363,16 +535,16 @@
       "marks": {
         "cat1": 46,
         "cat1_status": "Present",
-        "cat2": null,
-        "cat2_status": "",
-        "quiz1": null,
-        "quiz1_status": "",
-        "quiz2": null,
-        "quiz2_status": "",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
+        "cat2": 47,
+        "cat2_status": "Present",
+        "quiz1": 3,
+        "quiz1_status": "Present",
+        "quiz2": 3,
+        "quiz2_status": "Present",
+        "quiz3": 4,
+        "quiz3_status": "Present",
+        "assignment": 5,
+        "assignment_status": "Present",
         "marks_type": 1,
         "supported": true
       }
@@ -412,15 +584,16 @@
       "course_type": 1,
       "attendance": {
         "registration_date": "2015-01-06T09:41:45.000Z",
-        "attended_classes": 29,
-        "total_classes": 34,
-        "attendance_percentage": 86,
+        "attended_classes": 37,
+        "total_classes": 42,
+        "attendance_percentage": 89,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-06",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -428,6 +601,7 @@
             "date": "2015-01-07",
             "slot": "TG1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -435,6 +609,7 @@
             "date": "2015-01-09",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -442,6 +617,7 @@
             "date": "2015-01-13",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -449,6 +625,7 @@
             "date": "2015-01-14",
             "slot": "TG1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -456,6 +633,7 @@
             "date": "2015-01-20",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -463,6 +641,7 @@
             "date": "2015-01-21",
             "slot": "TG1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -470,6 +649,7 @@
             "date": "2015-01-23",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -477,6 +657,7 @@
             "date": "2015-01-27",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -484,6 +665,7 @@
             "date": "2015-01-28",
             "slot": "TG1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -491,6 +673,7 @@
             "date": "2015-01-30",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -498,6 +681,7 @@
             "date": "2015-02-03",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -505,6 +689,7 @@
             "date": "2015-02-04",
             "slot": "TG1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -512,6 +697,7 @@
             "date": "2015-02-10",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -519,6 +705,7 @@
             "date": "2015-02-11",
             "slot": "TG1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -526,6 +713,7 @@
             "date": "2015-02-13",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -533,6 +721,7 @@
             "date": "2015-02-17",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -540,6 +729,7 @@
             "date": "2015-02-18",
             "slot": "TG1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -547,6 +737,7 @@
             "date": "2015-02-20",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -554,6 +745,7 @@
             "date": "2015-02-24",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -561,6 +753,7 @@
             "date": "2015-02-25",
             "slot": "TG1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -568,6 +761,7 @@
             "date": "2015-02-27",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -575,6 +769,7 @@
             "date": "2015-03-10",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -582,6 +777,7 @@
             "date": "2015-03-11",
             "slot": "TG1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -589,6 +785,7 @@
             "date": "2015-03-13",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -596,6 +793,7 @@
             "date": "2015-03-17",
             "slot": "G1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -603,6 +801,7 @@
             "date": "2015-03-18",
             "slot": "TG1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -610,6 +809,7 @@
             "date": "2015-03-20",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -617,6 +817,7 @@
             "date": "2015-03-24",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -624,6 +825,7 @@
             "date": "2015-03-25",
             "slot": "TG1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -631,6 +833,7 @@
             "date": "2015-03-27",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -638,6 +841,7 @@
             "date": "2015-03-31",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -645,13 +849,79 @@
             "date": "2015-04-01",
             "slot": "TG1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
             "sl": 34,
+            "date": "2015-04-15",
+            "slot": "TG1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 35,
             "date": "2015-04-17",
             "slot": "G1",
             "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 36,
+            "date": "2015-04-21",
+            "slot": "G1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 37,
+            "date": "2015-04-22",
+            "slot": "TG1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 38,
+            "date": "2015-04-24",
+            "slot": "G1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 39,
+            "date": "2015-04-28",
+            "slot": "G1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 40,
+            "date": "2015-04-29",
+            "slot": "TG1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 41,
+            "date": "2015-05-05",
+            "slot": "G1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 42,
+            "date": "2015-05-06",
+            "slot": "TG1",
+            "status": "Present",
+            "class_units": 1,
             "reason": " - "
           }
         ],
@@ -660,16 +930,16 @@
       "marks": {
         "cat1": 34,
         "cat1_status": "Present",
-        "cat2": null,
-        "cat2_status": "",
-        "quiz1": null,
-        "quiz1_status": "",
-        "quiz2": null,
-        "quiz2_status": "",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
+        "cat2": 43,
+        "cat2_status": "Present",
+        "quiz1": 4,
+        "quiz1_status": "Present",
+        "quiz2": 3,
+        "quiz2_status": "Present",
+        "quiz3": 4,
+        "quiz3_status": "Present",
+        "assignment": 5,
+        "assignment_status": "Present",
         "marks_type": 1,
         "supported": true
       }
@@ -699,15 +969,16 @@
       "course_type": 2,
       "attendance": {
         "registration_date": "2015-01-06T09:41:45.000Z",
-        "attended_classes": 20,
-        "total_classes": 22,
-        "attendance_percentage": 91,
+        "attended_classes": 26,
+        "total_classes": 28,
+        "attendance_percentage": 93,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-08",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -715,6 +986,7 @@
             "date": "2015-01-22",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -722,6 +994,7 @@
             "date": "2015-01-29",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -729,6 +1002,7 @@
             "date": "2015-02-12",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -736,6 +1010,7 @@
             "date": "2015-02-19",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -743,6 +1018,7 @@
             "date": "2015-02-26",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -750,6 +1026,7 @@
             "date": "2015-03-12",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -757,6 +1034,7 @@
             "date": "2015-03-19",
             "slot": "L51+L52",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -764,6 +1042,7 @@
             "date": "2015-03-26",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -771,6 +1050,7 @@
             "date": "2015-04-02",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -778,14 +1058,39 @@
             "date": "2015-04-16",
             "slot": "L51+L52",
             "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-04-23",
+            "slot": "L51+L52",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-04-30",
+            "slot": "L51+L52",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-05-07",
+            "slot": "L51+L52",
+            "status": "Present",
+            "class_units": 2,
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "lab_cam": null,
-        "lab_cam_status": "",
+        "lab_cam": 49,
+        "lab_cam_status": "Present",
         "marks_type": 2,
         "supported": true
       }
@@ -825,15 +1130,16 @@
       "course_type": 3,
       "attendance": {
         "registration_date": "2014-12-16T09:02:21.000Z",
-        "attended_classes": 31,
-        "total_classes": 35,
-        "attendance_percentage": 89,
+        "attended_classes": 37,
+        "total_classes": 45,
+        "attendance_percentage": 83,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-05",
             "slot": "C1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -841,6 +1147,7 @@
             "date": "2015-01-07",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -848,6 +1155,7 @@
             "date": "2015-01-08",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -855,6 +1163,7 @@
             "date": "2015-01-12",
             "slot": "C1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -862,6 +1171,7 @@
             "date": "2015-01-14",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -869,6 +1179,7 @@
             "date": "2015-01-19",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -876,6 +1187,7 @@
             "date": "2015-01-21",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -883,6 +1195,7 @@
             "date": "2015-01-22",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -890,6 +1203,7 @@
             "date": "2015-01-28",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -897,6 +1211,7 @@
             "date": "2015-01-29",
             "slot": "C1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -904,6 +1219,7 @@
             "date": "2015-02-02",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -911,6 +1227,7 @@
             "date": "2015-02-04",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -918,6 +1235,7 @@
             "date": "2015-02-11",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -925,6 +1243,7 @@
             "date": "2015-02-12",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -932,6 +1251,7 @@
             "date": "2015-02-16",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -939,6 +1259,7 @@
             "date": "2015-02-18",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -946,6 +1267,7 @@
             "date": "2015-02-19",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -953,6 +1275,7 @@
             "date": "2015-02-21",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -960,6 +1283,7 @@
             "date": "2015-02-23",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -967,6 +1291,7 @@
             "date": "2015-02-25",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -974,6 +1299,7 @@
             "date": "2015-02-26",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -981,6 +1307,7 @@
             "date": "2015-03-09",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -988,6 +1315,7 @@
             "date": "2015-03-11",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -995,6 +1323,7 @@
             "date": "2015-03-12",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1002,6 +1331,7 @@
             "date": "2015-03-16",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1009,6 +1339,7 @@
             "date": "2015-03-18",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1016,6 +1347,7 @@
             "date": "2015-03-19",
             "slot": "C1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1023,6 +1355,7 @@
             "date": "2015-03-23",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1030,6 +1363,7 @@
             "date": "2015-03-25",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1037,6 +1371,7 @@
             "date": "2015-03-26",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1044,6 +1379,7 @@
             "date": "2015-03-30",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1051,6 +1387,7 @@
             "date": "2015-04-01",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1058,6 +1395,7 @@
             "date": "2015-04-02",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1065,6 +1403,7 @@
             "date": "2015-04-13",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1072,6 +1411,87 @@
             "date": "2015-04-15",
             "slot": "C1",
             "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 36,
+            "date": "2015-04-16",
+            "slot": "C1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 37,
+            "date": "2015-04-20",
+            "slot": "C1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 38,
+            "date": "2015-04-22",
+            "slot": "C1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 39,
+            "date": "2015-04-23",
+            "slot": "C1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 40,
+            "date": "2015-04-27",
+            "slot": "C1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 41,
+            "date": "2015-04-29",
+            "slot": "C1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 42,
+            "date": "2015-04-30",
+            "slot": "C1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 43,
+            "date": "2015-05-04",
+            "slot": "C1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 44,
+            "date": "2015-05-06",
+            "slot": "C1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 45,
+            "date": "2015-05-07",
+            "slot": "C1",
+            "status": "Present",
+            "class_units": 1,
             "reason": " - "
           }
         ],
@@ -1084,46 +1504,46 @@
             "title": "MID SEM EXAM I",
             "max_marks": 50,
             "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
+            "conducted_on": "2015-03-14",
+            "status": "Present",
+            "scored_mark": 40,
+            "scored_%": 8
           },
           {
             "title": "MID SEM EXAM II",
             "max_marks": 50,
             "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
+            "conducted_on": "2015-04-19",
+            "status": "Present",
+            "scored_mark": 47,
+            "scored_%": 9.4
           },
           {
             "title": "QUIZ",
             "max_marks": 10,
             "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
+            "conducted_on": "2015-04-20",
+            "status": "Present",
+            "scored_mark": 7,
+            "scored_%": 7
           },
           {
             "title": "PROJECT I",
             "max_marks": 10,
             "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
+            "conducted_on": "2015-03-03",
+            "status": "Present",
+            "scored_mark": 10,
+            "scored_%": 10
           },
           {
             "title": "PROJECT II",
             "max_marks": 10,
             "weightage": 10,
-            "conducted_on": null,
-            "status": "",
-            "scored_mark": null,
-            "scored_%": null
+            "conducted_on": "2015-04-14",
+            "status": "Present",
+            "scored_mark": 10,
+            "scored_%": 10
           }
         ],
         "supported": true
@@ -1154,15 +1574,16 @@
       "course_type": 2,
       "attendance": {
         "registration_date": "2014-12-16T09:02:21.000Z",
-        "attended_classes": 20,
-        "total_classes": 26,
-        "attendance_percentage": 77,
+        "attended_classes": 26,
+        "total_classes": 32,
+        "attendance_percentage": 82,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-07",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1170,6 +1591,7 @@
             "date": "2015-01-14",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1177,6 +1599,7 @@
             "date": "2015-01-21",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1184,6 +1607,7 @@
             "date": "2015-01-28",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1191,6 +1615,7 @@
             "date": "2015-02-04",
             "slot": "L45+L46",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1198,6 +1623,7 @@
             "date": "2015-02-11",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1205,6 +1631,7 @@
             "date": "2015-02-18",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1212,6 +1639,7 @@
             "date": "2015-02-25",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1219,6 +1647,7 @@
             "date": "2015-03-11",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1226,6 +1655,7 @@
             "date": "2015-03-18",
             "slot": "L45+L46",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1233,6 +1663,7 @@
             "date": "2015-03-25",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1240,6 +1671,7 @@
             "date": "2015-04-01",
             "slot": "L45+L46",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1247,14 +1679,39 @@
             "date": "2015-04-15",
             "slot": "L45+L46",
             "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-04-22",
+            "slot": "L45+L46",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-04-29",
+            "slot": "L45+L46",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 16,
+            "date": "2015-05-06",
+            "slot": "L45+L46",
+            "status": "Present",
+            "class_units": 2,
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "lab_cam": null,
-        "lab_cam_status": "",
+        "lab_cam": 45.5,
+        "lab_cam_status": "Present",
         "marks_type": 2,
         "supported": true
       }
@@ -1294,15 +1751,16 @@
       "course_type": 1,
       "attendance": {
         "registration_date": "2014-12-16T09:01:41.000Z",
-        "attended_classes": 28,
-        "total_classes": 33,
-        "attendance_percentage": 85,
+        "attended_classes": 33,
+        "total_classes": 41,
+        "attendance_percentage": 81,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-06",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1310,6 +1768,7 @@
             "date": "2015-01-08",
             "slot": "D1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1317,6 +1776,7 @@
             "date": "2015-01-09",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1324,6 +1784,7 @@
             "date": "2015-01-13",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1331,6 +1792,7 @@
             "date": "2015-01-20",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1338,6 +1800,7 @@
             "date": "2015-01-22",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1345,6 +1808,7 @@
             "date": "2015-01-23",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1352,6 +1816,7 @@
             "date": "2015-01-27",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1359,6 +1824,7 @@
             "date": "2015-01-29",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1366,6 +1832,7 @@
             "date": "2015-01-30",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1373,6 +1840,7 @@
             "date": "2015-02-03",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1380,6 +1848,7 @@
             "date": "2015-02-10",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1387,6 +1856,7 @@
             "date": "2015-02-12",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1394,6 +1864,7 @@
             "date": "2015-02-13",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1401,6 +1872,7 @@
             "date": "2015-02-17",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1408,6 +1880,7 @@
             "date": "2015-02-19",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1415,6 +1888,7 @@
             "date": "2015-02-20",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1422,6 +1896,7 @@
             "date": "2015-02-24",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1429,6 +1904,7 @@
             "date": "2015-02-26",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1436,6 +1912,7 @@
             "date": "2015-02-27",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1443,6 +1920,7 @@
             "date": "2015-03-10",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1450,6 +1928,7 @@
             "date": "2015-03-12",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1457,6 +1936,7 @@
             "date": "2015-03-13",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1464,6 +1944,7 @@
             "date": "2015-03-17",
             "slot": "D1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1471,6 +1952,7 @@
             "date": "2015-03-19",
             "slot": "D1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1478,6 +1960,7 @@
             "date": "2015-03-20",
             "slot": "D1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1485,6 +1968,7 @@
             "date": "2015-03-24",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1492,6 +1976,7 @@
             "date": "2015-03-26",
             "slot": "D1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1499,6 +1984,7 @@
             "date": "2015-03-27",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1506,6 +1992,7 @@
             "date": "2015-03-31",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1513,6 +2000,7 @@
             "date": "2015-04-02",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1520,6 +2008,7 @@
             "date": "2015-04-16",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1527,6 +2016,71 @@
             "date": "2015-04-17",
             "slot": "D1",
             "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 34,
+            "date": "2015-04-21",
+            "slot": "D1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 35,
+            "date": "2015-04-23",
+            "slot": "D1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 36,
+            "date": "2015-04-24",
+            "slot": "D1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 37,
+            "date": "2015-04-28",
+            "slot": "D1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 38,
+            "date": "2015-04-30",
+            "slot": "D1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 39,
+            "date": "2015-05-05",
+            "slot": "D1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 40,
+            "date": "2015-05-07",
+            "slot": "D1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 41,
+            "date": "2015-05-08",
+            "slot": "D1",
+            "status": "Present",
+            "class_units": 1,
             "reason": " - "
           }
         ],
@@ -1535,16 +2089,16 @@
       "marks": {
         "cat1": 46,
         "cat1_status": "Present",
-        "cat2": null,
-        "cat2_status": "",
-        "quiz1": null,
-        "quiz1_status": "",
-        "quiz2": null,
-        "quiz2_status": "",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
+        "cat2": 46,
+        "cat2_status": "Present",
+        "quiz1": 4,
+        "quiz1_status": "Present",
+        "quiz2": 4,
+        "quiz2_status": "Present",
+        "quiz3": 5,
+        "quiz3_status": "Present",
+        "assignment": 5,
+        "assignment_status": "Present",
         "marks_type": 1,
         "supported": true
       }
@@ -1574,15 +2128,16 @@
       "course_type": 2,
       "attendance": {
         "registration_date": "2014-12-16T09:01:41.000Z",
-        "attended_classes": 16,
-        "total_classes": 18,
-        "attendance_percentage": 89,
+        "attended_classes": 26,
+        "total_classes": 28,
+        "attendance_percentage": 93,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-08",
             "slot": "L49+L50",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1590,6 +2145,7 @@
             "date": "2015-01-22",
             "slot": "L49+L50",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1597,6 +2153,7 @@
             "date": "2015-01-29",
             "slot": "L49+L50",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1604,6 +2161,7 @@
             "date": "2015-02-12",
             "slot": "L49+L50",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1611,6 +2169,7 @@
             "date": "2015-02-19",
             "slot": "L49+L50",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1618,6 +2177,7 @@
             "date": "2015-02-26",
             "slot": "L49+L50",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1625,6 +2185,7 @@
             "date": "2015-03-12",
             "slot": "L49+L50",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1632,6 +2193,7 @@
             "date": "2015-03-19",
             "slot": "L49+L50",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1639,14 +2201,55 @@
             "date": "2015-03-26",
             "slot": "L49+L50",
             "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 10,
+            "date": "2015-04-02",
+            "slot": "L49+L50",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 11,
+            "date": "2015-04-16",
+            "slot": "L49+L50",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 12,
+            "date": "2015-04-23",
+            "slot": "L49+L50",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-04-30",
+            "slot": "L49+L50",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-05-07",
+            "slot": "L49+L50",
+            "status": "Present",
+            "class_units": 2,
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "lab_cam": null,
-        "lab_cam_status": "",
+        "lab_cam": 46,
+        "lab_cam_status": "Present",
         "marks_type": 2,
         "supported": true
       }
@@ -1681,15 +2284,16 @@
       "course_type": 1,
       "attendance": {
         "registration_date": "2014-12-16T09:01:07.000Z",
-        "attended_classes": 9,
-        "total_classes": 21,
-        "attendance_percentage": 43,
+        "attended_classes": 14,
+        "total_classes": 27,
+        "attendance_percentage": 52,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-06",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1697,6 +2301,7 @@
             "date": "2015-01-09",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1704,6 +2309,7 @@
             "date": "2015-01-13",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1711,6 +2317,7 @@
             "date": "2015-01-20",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1718,6 +2325,7 @@
             "date": "2015-01-23",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1725,6 +2333,7 @@
             "date": "2015-01-27",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1732,6 +2341,7 @@
             "date": "2015-01-30",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1739,6 +2349,7 @@
             "date": "2015-02-03",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1746,6 +2357,7 @@
             "date": "2015-02-10",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1753,6 +2365,7 @@
             "date": "2015-02-13",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1760,6 +2373,7 @@
             "date": "2015-02-17",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1767,6 +2381,7 @@
             "date": "2015-02-20",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1774,6 +2389,7 @@
             "date": "2015-02-24",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1781,6 +2397,7 @@
             "date": "2015-02-27",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1788,6 +2405,7 @@
             "date": "2015-03-10",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1795,6 +2413,7 @@
             "date": "2015-03-13",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1802,6 +2421,7 @@
             "date": "2015-03-17",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1809,6 +2429,7 @@
             "date": "2015-03-20",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1816,6 +2437,7 @@
             "date": "2015-03-24",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1823,6 +2445,7 @@
             "date": "2015-03-27",
             "slot": "B1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -1830,6 +2453,55 @@
             "date": "2015-03-31",
             "slot": "B1",
             "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 22,
+            "date": "2015-04-17",
+            "slot": "B1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 23,
+            "date": "2015-04-21",
+            "slot": "B1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 24,
+            "date": "2015-04-24",
+            "slot": "B1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 25,
+            "date": "2015-04-28",
+            "slot": "B1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 26,
+            "date": "2015-05-05",
+            "slot": "B1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 27,
+            "date": "2015-05-08",
+            "slot": "B1",
+            "status": "Present",
+            "class_units": 1,
             "reason": " - "
           }
         ],
@@ -1840,14 +2512,14 @@
         "cat1_status": "Present",
         "cat2": 41,
         "cat2_status": "Present",
-        "quiz1": null,
-        "quiz1_status": "",
-        "quiz2": null,
-        "quiz2_status": "",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
+        "quiz1": 5,
+        "quiz1_status": "Present",
+        "quiz2": 4,
+        "quiz2_status": "Present",
+        "quiz3": 5,
+        "quiz3_status": "Present",
+        "assignment": 4,
+        "assignment_status": "Present",
         "marks_type": 1,
         "supported": true
       }
@@ -1877,15 +2549,16 @@
       "course_type": 2,
       "attendance": {
         "registration_date": "2014-12-16T09:01:07.000Z",
-        "attended_classes": 16,
-        "total_classes": 24,
-        "attendance_percentage": 67,
+        "attended_classes": 22,
+        "total_classes": 30,
+        "attendance_percentage": 74,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-06",
             "slot": "L39+L40",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1893,6 +2566,7 @@
             "date": "2015-01-13",
             "slot": "L39+L40",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1900,6 +2574,7 @@
             "date": "2015-01-20",
             "slot": "L39+L40",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1907,6 +2582,7 @@
             "date": "2015-01-27",
             "slot": "L39+L40",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1914,6 +2590,7 @@
             "date": "2015-02-03",
             "slot": "L39+L40",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1921,6 +2598,7 @@
             "date": "2015-02-10",
             "slot": "L39+L40",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1928,6 +2606,7 @@
             "date": "2015-02-17",
             "slot": "L39+L40",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1935,6 +2614,7 @@
             "date": "2015-02-24",
             "slot": "L39+L40",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1942,6 +2622,7 @@
             "date": "2015-03-10",
             "slot": "L39+L40",
             "status": "Present",
+            "class_units": 2,
             "reason": " - "
           },
           {
@@ -1949,6 +2630,7 @@
             "date": "2015-03-17",
             "slot": "L39+L40",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1956,6 +2638,7 @@
             "date": "2015-03-24",
             "slot": "L39+L40",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -1963,14 +2646,39 @@
             "date": "2015-03-31",
             "slot": "L39+L40",
             "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 13,
+            "date": "2015-04-21",
+            "slot": "L39+L40",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 14,
+            "date": "2015-04-28",
+            "slot": "L39+L40",
+            "status": "Present",
+            "class_units": 2,
+            "reason": " - "
+          },
+          {
+            "sl": 15,
+            "date": "2015-05-05",
+            "slot": "L39+L40",
+            "status": "Present",
+            "class_units": 2,
             "reason": " - "
           }
         ],
         "supported": true
       },
       "marks": {
-        "lab_cam": null,
-        "lab_cam_status": "",
+        "lab_cam": 43,
+        "lab_cam_status": "Present",
         "marks_type": 2,
         "supported": true
       }
@@ -2015,15 +2723,16 @@
       "course_type": 1,
       "attendance": {
         "registration_date": "2014-12-16T09:04:08.000Z",
-        "attended_classes": 21,
-        "total_classes": 47,
-        "attendance_percentage": 45,
+        "attended_classes": 23,
+        "total_classes": 57,
+        "attendance_percentage": 41,
         "details": [
           {
             "sl": 1,
             "date": "2015-01-05",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2031,6 +2740,7 @@
             "date": "2015-01-07",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2038,6 +2748,7 @@
             "date": "2015-01-08",
             "slot": "TE1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2045,6 +2756,7 @@
             "date": "2015-01-09",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2052,6 +2764,7 @@
             "date": "2015-01-12",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2059,6 +2772,7 @@
             "date": "2015-01-14",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2066,6 +2780,7 @@
             "date": "2015-01-19",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2073,6 +2788,7 @@
             "date": "2015-01-21",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2080,6 +2796,7 @@
             "date": "2015-01-22",
             "slot": "TE1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2087,6 +2804,7 @@
             "date": "2015-01-23",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2094,6 +2812,7 @@
             "date": "2015-01-28",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2101,6 +2820,7 @@
             "date": "2015-01-29",
             "slot": "TE1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2108,6 +2828,7 @@
             "date": "2015-01-30",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2115,6 +2836,7 @@
             "date": "2015-02-02",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2122,6 +2844,7 @@
             "date": "2015-02-04",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2129,6 +2852,7 @@
             "date": "2015-02-11",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2136,6 +2860,7 @@
             "date": "2015-02-12",
             "slot": "TE1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2143,6 +2868,7 @@
             "date": "2015-02-13",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2150,6 +2876,7 @@
             "date": "2015-02-16",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2157,6 +2884,7 @@
             "date": "2015-02-18",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2164,6 +2892,7 @@
             "date": "2015-02-19",
             "slot": "TE1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2171,6 +2900,7 @@
             "date": "2015-02-20",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2178,6 +2908,7 @@
             "date": "2015-02-21",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2185,6 +2916,7 @@
             "date": "2015-02-23",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2192,6 +2924,7 @@
             "date": "2015-02-25",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2199,6 +2932,7 @@
             "date": "2015-02-26",
             "slot": "TE1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2206,6 +2940,7 @@
             "date": "2015-02-27",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2213,6 +2948,7 @@
             "date": "2015-03-09",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2220,6 +2956,7 @@
             "date": "2015-03-11",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2227,6 +2964,7 @@
             "date": "2015-03-12",
             "slot": "TE1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2234,6 +2972,7 @@
             "date": "2015-03-13",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2241,6 +2980,7 @@
             "date": "2015-03-16",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2248,6 +2988,7 @@
             "date": "2015-03-18",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2255,6 +2996,7 @@
             "date": "2015-03-19",
             "slot": "TE1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2262,6 +3004,7 @@
             "date": "2015-03-20",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2269,6 +3012,7 @@
             "date": "2015-03-23",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2276,6 +3020,7 @@
             "date": "2015-03-25",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2283,6 +3028,7 @@
             "date": "2015-03-26",
             "slot": "TE1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2290,6 +3036,7 @@
             "date": "2015-03-27",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2297,6 +3044,7 @@
             "date": "2015-03-30",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2304,6 +3052,7 @@
             "date": "2015-04-01",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2311,6 +3060,7 @@
             "date": "2015-04-02",
             "slot": "TE1",
             "status": "Present",
+            "class_units": 1,
             "reason": " - "
           },
           {
@@ -2318,6 +3068,7 @@
             "date": "2015-04-13",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2325,6 +3076,7 @@
             "date": "2015-04-15",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2332,6 +3084,7 @@
             "date": "2015-04-16",
             "slot": "TE1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2339,6 +3092,7 @@
             "date": "2015-04-17",
             "slot": "E1",
             "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           },
           {
@@ -2346,6 +3100,87 @@
             "date": "2015-04-20",
             "slot": "E1",
             "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 48,
+            "date": "2015-04-22",
+            "slot": "E1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 49,
+            "date": "2015-04-23",
+            "slot": "TE1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 50,
+            "date": "2015-04-24",
+            "slot": "E1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 51,
+            "date": "2015-04-27",
+            "slot": "E1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 52,
+            "date": "2015-04-29",
+            "slot": "E1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 53,
+            "date": "2015-04-30",
+            "slot": "TE1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 54,
+            "date": "2015-05-04",
+            "slot": "E1",
+            "status": "Present",
+            "class_units": 1,
+            "reason": " - "
+          },
+          {
+            "sl": 55,
+            "date": "2015-05-06",
+            "slot": "E1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 56,
+            "date": "2015-05-07",
+            "slot": "TE1",
+            "status": "Absent",
+            "class_units": 0,
+            "reason": " - "
+          },
+          {
+            "sl": 57,
+            "date": "2015-05-08",
+            "slot": "E1",
+            "status": "Absent",
+            "class_units": 0,
             "reason": " - "
           }
         ],
@@ -2360,18 +3195,17 @@
         "quiz1_status": "Present",
         "quiz2": 5,
         "quiz2_status": "Present",
-        "quiz3": null,
-        "quiz3_status": "",
-        "assignment": null,
-        "assignment_status": "",
+        "quiz3": 4,
+        "quiz3_status": "Present",
+        "assignment": 5,
+        "assignment_status": "Present",
         "marks_type": 1,
         "supported": true
       }
     }
   ],
-  "refreshed": "2015-04-20T18:34:17.804Z",
-  "withdrawn_courses": [
-  ],
+  "refreshed": "2015-06-05T17:20:44.343Z",
+  "withdrawn_courses": [],
   "cached": false,
   "status": {
     "message": "Successful execution",
