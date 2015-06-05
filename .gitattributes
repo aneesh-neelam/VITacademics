@@ -6,7 +6,6 @@
 *.js text
 *.css text
 *.jade text
-*.ejs text
 *.html text
 *.txt text
 *.md text

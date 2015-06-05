@@ -61,6 +61,7 @@ var app = express();
 
 async.waterfall([
   function (callback) {
+    // Express Logger
     app.use(logger(config.expressLogLevel));
 
     app.set('title', 'VITacademics');
@@ -90,7 +91,7 @@ async.waterfall([
       safe: true
     }));
 
-    // Allow Cross-Origin Resource Eharing
+    // Allow Cross-Origin Resource Sharing
     app.use(function (req, res, next) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -197,7 +198,7 @@ async.waterfall([
       });
     }
 
-    // Production error handler, no stacktraces leaked to user
+    // Production error handler, no stacktrace leaked to user
     app.use(function (err, req, res, next) {
       if (config.logentriesEnabled) {
         logentries.log('err', {Error: err, Message: err.message});

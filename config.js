@@ -31,7 +31,7 @@ var config = {
   amqp_Uri: process.env.AMQP_URI || 'amqp://localhost',
   logentriesEnabled: process.env.LOGENTRIES_TOKEN ? true : false,
   logentriesToken: process.env.LOGENTRIES_TOKEN || 'Unavailable',
-  newRelicEnabled: process.env.NEW_RELIC_APP_NAME && process.env.NEW_RELIC_LICENSE_KEY ? true : false,
+  newRelicEnabled: process.env.NEW_RELIC_APP_NAME && process.env.NEW_RELIC_LICENSE_KEY && process.env.NEW_RELIC_NO_CONFIG_FILE ? true : false,
   newRelicAppName: process.env.NEW_RELIC_APP_NAME || 'Unavailable',
   newRelicLicense: process.env.NEW_RELIC_LICENSE_KEY || 'Unavailable',
   expressLogLevel: process.env.EXPRESS_LOGGER_LEVEL || 'dev',
