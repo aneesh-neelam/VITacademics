@@ -18,7 +18,7 @@
 
 'use strict';
 
-var choose = function (year) {
+var getFromYear = function (year) {
   let date = new Date;
   let arrayIndex = date.getFullYear() - 2000 - year;
   let month = date.getMonth();
@@ -29,4 +29,4 @@ var choose = function (year) {
   return arrayIndex;
 };
 
-module.exports.choose = choose;
+module.exports.getFromYear = getFromYear;

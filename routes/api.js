@@ -22,7 +22,7 @@ var cache = require('memory-cache');
 var express = require('express');
 var path = require('path');
 
-var db = require(path.join(__dirname, '..', 'db'));
+var db = require(path.join(__dirname, '..', 'utilities', 'db'));
 var loginAuto = require(path.join(__dirname, '..', 'api', 'login', 'auto'));
 var dataAggregate = require(path.join(__dirname, '..', 'api', 'scraper', 'aggregate'));
 var dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'));
@@ -38,7 +38,7 @@ router.post('/login', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
+  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -56,7 +56,7 @@ router.post('/refresh', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
+  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -74,7 +74,7 @@ router.post('/grades', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
+  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -92,7 +92,7 @@ router.post('/token', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.choose(parseInt(data.reg_no.slice(0, 2)));
+  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   let app = {
     db: req.dbs[year],
     queue: req.queue
@@ -111,12 +111,12 @@ router.post('/share', function (req, res) {
   if (req.body.token) {
     token = req.body.token.toUpperCase();
     reg_no = cache.get(token);
-    if (reg_no) year = db.choose(parseInt(reg_no.slice(0, 2)));
+    if (reg_no) year = db.getFromYear(parseInt(reg_no.slice(0, 2)));
     else year = 0;
   }
   else if (req.body.regno) {
     reg_no = req.body.regno.toUpperCase();
-    year = db.choose(parseInt(reg_no.slice(0, 2)));
+    year = db.getFromYear(parseInt(reg_no.slice(0, 2)));
   }
   if (req.body.receiver === 'VITacademics Developer/Tester') receiver = req.body.receiver;
   else receiver = req.body.receiver.toUpperCase();
