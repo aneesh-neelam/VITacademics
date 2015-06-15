@@ -1185,9 +1185,9 @@
       "marks": {
         "assessments": [
           {
-            "title": "CAT-I",
+            "title": "Lab CAM",
             "max_marks": 50,
-            "weightage": 15,
+            "weightage": 50,
             "conducted_on": "Tentative, set by lab faculty",
             "status": "Present",
             "scored_marks": 49,
@@ -1196,7 +1196,7 @@
         ],
         "supported": true,
         "max_marks": 50,
-        "max_percentage": 15,
+        "max_percentage": 50,
         "scored_marks": 49,
         "scored_percentage": 49
       }
@@ -1821,9 +1821,9 @@
       "marks": {
         "assessments": [
           {
-            "title": "CAT-I",
+            "title": "Lab CAM",
             "max_marks": 50,
-            "weightage": 15,
+            "weightage": 50,
             "conducted_on": "Tentative, set by lab faculty",
             "status": "Present",
             "scored_marks": 45.5,
@@ -1832,7 +1832,7 @@
         ],
         "supported": true,
         "max_marks": 50,
-        "max_percentage": 15,
+        "max_percentage": 50,
         "scored_marks": 45.5,
         "scored_percentage": 45.5
       }
@@ -2418,9 +2418,9 @@
       "marks": {
         "assessments": [
           {
-            "title": "CAT-I",
+            "title": "Lab CAM",
             "max_marks": 50,
-            "weightage": 15,
+            "weightage": 50,
             "conducted_on": "Tentative, set by lab faculty",
             "status": "Present",
             "scored_marks": 46,
@@ -2429,7 +2429,7 @@
         ],
         "supported": true,
         "max_marks": 50,
-        "max_percentage": 15,
+        "max_percentage": 50,
         "scored_marks": 46,
         "scored_percentage": 46
       }
@@ -2906,9 +2906,9 @@
       "marks": {
         "assessments": [
           {
-            "title": "CAT-I",
+            "title": "Lab CAM",
             "max_marks": 50,
-            "weightage": 15,
+            "weightage": 50,
             "conducted_on": "Tentative, set by lab faculty",
             "status": "Present",
             "scored_marks": 43,
@@ -2917,7 +2917,7 @@
         ],
         "supported": true,
         "max_marks": 50,
-        "max_percentage": 15,
+        "max_percentage": 50,
         "scored_marks": 43,
         "scored_percentage": 43
       }
@@ -3490,10 +3490,8 @@
       }
     }
   ],
-  "refreshed": "2015-06-15T14:40:33.432Z",
-  "withdrawn_courses": [
-
-  ],
+  "refreshed": "2015-06-15T16:04:28.857Z",
+  "withdrawn_courses": [],
   "cached": false,
   "status": {
     "message": "Successful execution",
