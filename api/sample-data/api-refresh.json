@@ -533,20 +533,67 @@
         "supported": true
       },
       "marks": {
-        "cat1": 46,
-        "cat1_status": "Present",
-        "cat2": 47,
-        "cat2_status": "Present",
-        "quiz1": 3,
-        "quiz1_status": "Present",
-        "quiz2": 3,
-        "quiz2_status": "Present",
-        "quiz3": 4,
-        "quiz3_status": "Present",
-        "assignment": 5,
-        "assignment_status": "Present",
-        "marks_type": 1,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 46,
+            "scored_percentage": 13.8
+          },
+          {
+            "title": "CAT-II",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 47,
+            "scored_percentage": 14.1
+          },
+          {
+            "title": "Quiz-I",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 3,
+            "scored_percentage": 3
+          },
+          {
+            "title": "Quiz-II",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 3,
+            "scored_percentage": 3
+          },
+          {
+            "title": "Quiz-III",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 4,
+            "scored_percentage": 4
+          },
+          {
+            "title": "Assignment",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          }
+        ],
+        "supported": true,
+        "max_marks": 120,
+        "max_percentage": 50,
+        "scored_marks": 108,
+        "scored_percentage": 42.9
       }
     },
     {
@@ -928,20 +975,67 @@
         "supported": true
       },
       "marks": {
-        "cat1": 34,
-        "cat1_status": "Present",
-        "cat2": 43,
-        "cat2_status": "Present",
-        "quiz1": 4,
-        "quiz1_status": "Present",
-        "quiz2": 3,
-        "quiz2_status": "Present",
-        "quiz3": 4,
-        "quiz3_status": "Present",
-        "assignment": 5,
-        "assignment_status": "Present",
-        "marks_type": 1,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 34,
+            "scored_percentage": 10.2
+          },
+          {
+            "title": "CAT-II",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 43,
+            "scored_percentage": 12.9
+          },
+          {
+            "title": "Quiz-I",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 4,
+            "scored_percentage": 4
+          },
+          {
+            "title": "Quiz-II",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 3,
+            "scored_percentage": 3
+          },
+          {
+            "title": "Quiz-III",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 4,
+            "scored_percentage": 4
+          },
+          {
+            "title": "Assignment",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          }
+        ],
+        "supported": true,
+        "max_marks": 120,
+        "max_percentage": 50,
+        "scored_marks": 93,
+        "scored_percentage": 39.1
       }
     },
     {
@@ -1089,10 +1183,22 @@
         "supported": true
       },
       "marks": {
-        "lab_cam": 49,
-        "lab_cam_status": "Present",
-        "marks_type": 2,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Tentative, set by lab faculty",
+            "status": "Present",
+            "scored_marks": 49,
+            "scored_percentage": 49
+          }
+        ],
+        "supported": true,
+        "max_marks": 50,
+        "max_percentage": 15,
+        "scored_marks": 49,
+        "scored_percentage": 49
       }
     },
     {
@@ -1498,16 +1604,15 @@
         "supported": true
       },
       "marks": {
-        "marks_type": 4,
-        "details": [
+        "assessments": [
           {
             "title": "MID SEM EXAM I",
             "max_marks": 50,
             "weightage": 10,
             "conducted_on": "2015-03-14",
             "status": "Present",
-            "scored_mark": 40,
-            "scored_%": 8
+            "scored_marks": 40,
+            "scored_percentage": 8
           },
           {
             "title": "MID SEM EXAM II",
@@ -1515,8 +1620,8 @@
             "weightage": 10,
             "conducted_on": "2015-04-19",
             "status": "Present",
-            "scored_mark": 47,
-            "scored_%": 9.4
+            "scored_marks": 47,
+            "scored_percentage": 9.4
           },
           {
             "title": "QUIZ",
@@ -1524,8 +1629,8 @@
             "weightage": 10,
             "conducted_on": "2015-04-20",
             "status": "Present",
-            "scored_mark": 7,
-            "scored_%": 7
+            "scored_marks": 7,
+            "scored_percentage": 7
           },
           {
             "title": "PROJECT I",
@@ -1533,8 +1638,8 @@
             "weightage": 10,
             "conducted_on": "2015-03-03",
             "status": "Present",
-            "scored_mark": 10,
-            "scored_%": 10
+            "scored_marks": 10,
+            "scored_percentage": 10
           },
           {
             "title": "PROJECT II",
@@ -1542,11 +1647,15 @@
             "weightage": 10,
             "conducted_on": "2015-04-14",
             "status": "Present",
-            "scored_mark": 10,
-            "scored_%": 10
+            "scored_marks": 10,
+            "scored_percentage": 10
           }
         ],
-        "supported": true
+        "supported": true,
+        "max_marks": 130,
+        "max_percentage": 50,
+        "scored_marks": 114,
+        "scored_percentage": 44.4
       }
     },
     {
@@ -1710,10 +1819,22 @@
         "supported": true
       },
       "marks": {
-        "lab_cam": 45.5,
-        "lab_cam_status": "Present",
-        "marks_type": 2,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Tentative, set by lab faculty",
+            "status": "Present",
+            "scored_marks": 45.5,
+            "scored_percentage": 45.5
+          }
+        ],
+        "supported": true,
+        "max_marks": 50,
+        "max_percentage": 15,
+        "scored_marks": 45.5,
+        "scored_percentage": 45.5
       }
     },
     {
@@ -2087,20 +2208,67 @@
         "supported": true
       },
       "marks": {
-        "cat1": 46,
-        "cat1_status": "Present",
-        "cat2": 46,
-        "cat2_status": "Present",
-        "quiz1": 4,
-        "quiz1_status": "Present",
-        "quiz2": 4,
-        "quiz2_status": "Present",
-        "quiz3": 5,
-        "quiz3_status": "Present",
-        "assignment": 5,
-        "assignment_status": "Present",
-        "marks_type": 1,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 46,
+            "scored_percentage": 13.8
+          },
+          {
+            "title": "CAT-II",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 46,
+            "scored_percentage": 13.8
+          },
+          {
+            "title": "Quiz-I",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 4,
+            "scored_percentage": 4
+          },
+          {
+            "title": "Quiz-II",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 4,
+            "scored_percentage": 4
+          },
+          {
+            "title": "Quiz-III",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          },
+          {
+            "title": "Assignment",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          }
+        ],
+        "supported": true,
+        "max_marks": 120,
+        "max_percentage": 50,
+        "scored_marks": 110,
+        "scored_percentage": 45.6
       }
     },
     {
@@ -2248,10 +2416,22 @@
         "supported": true
       },
       "marks": {
-        "lab_cam": 46,
-        "lab_cam_status": "Present",
-        "marks_type": 2,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Tentative, set by lab faculty",
+            "status": "Present",
+            "scored_marks": 46,
+            "scored_percentage": 46
+          }
+        ],
+        "supported": true,
+        "max_marks": 50,
+        "max_percentage": 15,
+        "scored_marks": 46,
+        "scored_percentage": 46
       }
     },
     {
@@ -2508,20 +2688,67 @@
         "supported": true
       },
       "marks": {
-        "cat1": 43,
-        "cat1_status": "Present",
-        "cat2": 41,
-        "cat2_status": "Present",
-        "quiz1": 5,
-        "quiz1_status": "Present",
-        "quiz2": 4,
-        "quiz2_status": "Present",
-        "quiz3": 5,
-        "quiz3_status": "Present",
-        "assignment": 4,
-        "assignment_status": "Present",
-        "marks_type": 1,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 43,
+            "scored_percentage": 12.9
+          },
+          {
+            "title": "CAT-II",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 41,
+            "scored_percentage": 12.3
+          },
+          {
+            "title": "Quiz-I",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          },
+          {
+            "title": "Quiz-II",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 4,
+            "scored_percentage": 4
+          },
+          {
+            "title": "Quiz-III",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          },
+          {
+            "title": "Assignment",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 4,
+            "scored_percentage": 4
+          }
+        ],
+        "supported": true,
+        "max_marks": 120,
+        "max_percentage": 50,
+        "scored_marks": 102,
+        "scored_percentage": 43.2
       }
     },
     {
@@ -2677,10 +2904,22 @@
         "supported": true
       },
       "marks": {
-        "lab_cam": 43,
-        "lab_cam_status": "Present",
-        "marks_type": 2,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Tentative, set by lab faculty",
+            "status": "Present",
+            "scored_marks": 43,
+            "scored_percentage": 43
+          }
+        ],
+        "supported": true,
+        "max_marks": 50,
+        "max_percentage": 15,
+        "scored_marks": 43,
+        "scored_percentage": 43
       }
     },
     {
@@ -3187,25 +3426,74 @@
         "supported": true
       },
       "marks": {
-        "cat1": 43,
-        "cat1_status": "Present",
-        "cat2": 47,
-        "cat2_status": "Present",
-        "quiz1": 5,
-        "quiz1_status": "Present",
-        "quiz2": 5,
-        "quiz2_status": "Present",
-        "quiz3": 4,
-        "quiz3_status": "Present",
-        "assignment": 5,
-        "assignment_status": "Present",
-        "marks_type": 1,
-        "supported": true
+        "assessments": [
+          {
+            "title": "CAT-I",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 43,
+            "scored_percentage": 12.9
+          },
+          {
+            "title": "CAT-II",
+            "max_marks": 50,
+            "weightage": 15,
+            "conducted_on": "Check Exam Schedule",
+            "status": "Present",
+            "scored_marks": 47,
+            "scored_percentage": 14.1
+          },
+          {
+            "title": "Quiz-I",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          },
+          {
+            "title": "Quiz-II",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          },
+          {
+            "title": "Quiz-III",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 4,
+            "scored_percentage": 4
+          },
+          {
+            "title": "Assignment",
+            "max_marks": 5,
+            "weightage": 5,
+            "conducted_on": "Tentative, set by course faculty",
+            "status": "Present",
+            "scored_marks": 5,
+            "scored_percentage": 5
+          }
+        ],
+        "supported": true,
+        "max_marks": 120,
+        "max_percentage": 50,
+        "scored_marks": 109,
+        "scored_percentage": 46
       }
     }
   ],
-  "refreshed": "2015-06-05T17:20:44.343Z",
-  "withdrawn_courses": [],
+  "refreshed": "2015-06-15T14:40:33.432Z",
+  "withdrawn_courses": [
+
+  ],
   "cached": false,
   "status": {
     "message": "Successful execution",
