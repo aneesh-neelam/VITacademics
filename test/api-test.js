@@ -41,7 +41,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('reg_no', user.reg_no);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('mobile', user.mobile);
@@ -56,7 +56,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('reg_no', user.reg_no);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('mobile', user.mobile);
@@ -77,7 +77,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('reg_no', user.reg_no);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('mobile', user.mobile);
@@ -102,7 +102,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('reg_no', user.reg_no);
           res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('mobile', user.mobile);
@@ -119,7 +119,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('reg_no', user.reg_no);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('semester');
           res.body.should.have.property('courses');
@@ -134,7 +134,7 @@ var onEach = function (user, i, arr) {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.body.should.have.property('reg_no', user.regno);
+          res.body.should.have.property('reg_no', user.reg_no);
           res.body.should.have.property('campus', user.campus);
           res.body.should.have.property('semester');
           res.body.should.have.property('courses');

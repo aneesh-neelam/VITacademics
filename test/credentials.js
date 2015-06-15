@@ -33,25 +33,32 @@
 
 var users = [
   {
-    describe: 'B.Tech CSE 4th Year Student - Vellore',
+    describe: 'B.Tech CSE 4th Year - Vellore',
     reg_no: '11BCE0260',
     dob: '20101993',
     mobile: '9440668991',
     campus: 'vellore'
   },
   {
-    describe: 'B.Tech CSE 2nd Year Student - Vellore',
+    describe: 'B.Tech CSE 2nd Year - Vellore',
+    reg_no: '13BCE0769',
+    dob: '07071995',
+    mobile: '9443056677',
+    campus: 'vellore'
+  },
+  {
+    describe: 'B.Tech CSE 2nd Year - Vellore',
     reg_no: '13BCE0139',
     dob: '16011995',
     mobile: '9830051893',
     campus: 'vellore'
   },
   {
-    describe: 'Master\'s Student - Chennai',
-    reg_no: '14MMT1019',
-    dob: '19061993',
-    mobile: null,
-    campus: 'chennai'
+    describe: 'B.Tech ECE 2nd Year - Vellore',
+    reg_no: '13BEC0486',
+    dob: '01031995',
+    mobile: '9927026060',
+    campus: 'vellore'
   }
 ];
 
