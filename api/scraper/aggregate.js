@@ -98,148 +98,160 @@ exports.get = function (app, data, callback) {
           }
         };
         var onFinish = function (err, results) {
-          if (err || results.timetable.status.code !== 0) {
-            data.status = results.timetable.status;
-            if (config.logentriesEnabled) {
-              logentries.log('err', data);
+            if (err || results.timetable.status.code !== 0) {
+              data.status = results.timetable.status;
+              if (config.logentriesEnabled) {
+                logentries.log('err', data);
+              }
+              data.HTML_error = true;
+              console.log(JSON.stringify(data));
+              collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
             }
-            data.HTML_error = true;
-            console.log(JSON.stringify(data));
-            collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
-          }
-          else {
-            delete results.timetable.status;
-            data.courses = results.timetable.courses;
-            var forEachCourse = function (element, asyncCallback) {
-              let foundAttendance = false;
-              let foundMarks = false;
-              element.timings = [];
-              switch (element.course_mode.toUpperCase()) {
-                case 'CBL':
-                  element.course_type = 1;
-                  break;
-                case 'LBC':
-                  element.course_type = 2;
-                  break;
-                case 'PBL':
-                  element.course_type = 3;
-                  break;
-                case 'RBL':
-                  element.course_type = 4;
-                  break;
-                case 'PBC':
-                  if (element.project_title) {
-                    element.course_type = 5;
-                  }
-                  else {
-                    element.course_type = 6;
-                  }
-                  break;
-                default:
-                  element.course_type = 0;
-                  break;
-              }
-              var forEachAttendance = function (elt, i, arr) {
-                if (element.class_number === elt.class_number) {
-                  foundAttendance = true;
-                  elt.supported = true;
-                  delete elt.class_number;
-                  delete elt.course_code;
-                  delete elt.course_title;
-                  delete elt.course_type;
-                  delete elt.slot;
-                  element.attendance = elt;
-                }
-              };
-              var forEachMarks = function (elt, i, arr) {
-                if (element.class_number === elt.class_number) {
-                  foundMarks = true;
-                  elt.supported = true;
-                  delete elt.class_number;
-                  delete elt.course_code;
-                  delete elt.course_title;
-                  delete elt.course_type;
-                  if (elt.details) {
-                    let details = [];
-                    var forEachPBLDetails = function (detail, index, list) {
-                      if (detail.title !== 'N/A') {
-                        details.push(detail);
-                      }
-                    };
-                    underscore.values(elt.details).forEach(forEachPBLDetails);
-                    elt.details = details;
-                  }
-                  element.marks = elt;
-                }
-              };
-              var forEachTimings = function (elt, i, arr) {
-                if (element.class_number === elt.class_number) {
-                  delete elt.class_number;
-                  element.timings.push(elt);
-                }
-              };
-              results.attendance.forEach(forEachAttendance);
-              results.marks.forEach(forEachMarks);
-              results.timetable.timings.forEach(forEachTimings);
-              let noData = {
-                supported: false
-              };
-              if (!foundAttendance) {
-                element.attendance = noData;
-              }
-              if (!foundMarks) {
-                element.marks = noData;
-                element.marks.marks_type = 0;
-              }
-              asyncCallback(null, element);
-            };
-            var doneCollate = function (err, newData) {
-              if (err) {
-                callback(true, status.other);
-              }
-              else {
-                data.courses = newData;
-                data.refreshed = new Date().toJSON();
-                data.withdrawn_courses = results.timetable.withdrawn_courses;
-                var onUpdate = function (err) {
-                  if (err) {
-                    data.status = status.mongoDown;
-                    if (config.logentriesEnabled) {
-                      logentries.log('crit', data);
+            else {
+              delete results.timetable.status;
+              data.courses = results.timetable.courses;
+              var forEachCourse = function (element, asyncCallback) {
+                let foundAttendance = false;
+                let foundMarks = false;
+                element.timings = [];
+                switch (element.course_mode.toUpperCase()) {
+                  case 'CBL':
+                    element.course_type = 1;
+                    break;
+                  case 'LBC':
+                    element.course_type = 2;
+                    break;
+                  case 'PBL':
+                    element.course_type = 3;
+                    break;
+                  case 'RBL':
+                    element.course_type = 4;
+                    break;
+                  case 'PBC':
+                    if (element.project_title) {
+                      element.course_type = 5;
                     }
-                    console.log(JSON.stringify(data));
-                    callback(true, data);
-                  }
-                  else {
-                    let validity = 3; // In Minutes
-                    let doc = {
-                      reg_no: data.reg_no,
-                      dob: data.dob,
-                      mobile: data.mobile,
-                      cookie: cookieSerial,
-                      refreshed: true
-                    };
-                    cache.put(data.reg_no, doc, validity * 60 * 1000);
-                    data.cached = false;
-                    data.status = status.success;
-                    callback(null, data);
+                    else {
+                      element.course_type = 6;
+                    }
+                    break;
+                  default:
+                    element.course_type = 0;
+                    break;
+                }
+                var forEachAttendance = function (elt, i, arr) {
+                  if (element.class_number === elt.class_number) {
+                    foundAttendance = true;
+                    elt.supported = true;
+                    delete elt.class_number;
+                    delete elt.course_code;
+                    delete elt.course_title;
+                    delete elt.course_type;
+                    delete elt.slot;
+                    element.attendance = elt;
                   }
                 };
-                collection.findAndModify({reg_no: data.reg_no}, [
-                  ['reg_no', 'asc']
-                ], {
-                  $set: {
-                    courses: data.courses,
-                    semester: data.semester,
-                    refreshed: data.refreshed,
-                    withdrawn_courses: data.withdrawn_courses
+                var forEachMarks = function (elt, i, arr) {
+                  if (element.class_number === elt.class_number) {
+                    foundMarks = true;
+                    elt.supported = true;
+                    delete elt.class_number;
+                    delete elt.course_code;
+                    delete elt.course_title;
+                    delete elt.course_type;
+
+                    if (elt.pbl_details) {
+                      var forEachPblDetail = function (detail, index, list) {
+                        if (detail.title !== 'N/A') {
+                          elt.assessments.push(detail)
+                        }
+                      };
+                      underscore.values(elt.pbl_details).forEach(forEachPblDetail);
+                      delete elt.pbl_details;
+                    }
+
+                    elt.max_marks = 0;
+                    elt.max_percentage = 0;
+                    elt.scored_marks = 0;
+                    elt.scored_percentage = 0;
+                    var forEachAssessment = function (assessment, index, list) {
+                      elt.max_marks = elt.max_marks + assessment.max_marks;
+                      elt.max_percentage = elt.max_percentage + assessment.weightage;
+                      elt.scored_marks = elt.scored_marks + assessment.scored_marks;
+                      elt.scored_percentage = elt.scored_percentage + assessment.scored_percentage;
+                    };
+                    underscore.values(elt.assessments).forEach(forEachAssessment);
+                    element.marks = elt;
                   }
-                }, {safe: true, new: true, upsert: true}, onUpdate);
-              }
-            };
-            async.map(data.courses, forEachCourse, doneCollate);
+                };
+                var forEachTimings = function (elt, i, arr) {
+                  if (element.class_number === elt.class_number) {
+                    delete elt.class_number;
+                    element.timings.push(elt);
+                  }
+                };
+                results.attendance.forEach(forEachAttendance);
+                results.marks.forEach(forEachMarks);
+                results.timetable.timings.forEach(forEachTimings);
+                let noData = {
+                  supported: false
+                };
+                if (!foundAttendance) {
+                  element.attendance = noData;
+                }
+                if (!foundMarks) {
+                  element.marks = noData;
+                }
+                asyncCallback(null, element);
+              };
+              var doneCollate = function (err, newData) {
+                if (err) {
+                  callback(true, status.other);
+                }
+                else {
+                  data.courses = newData;
+                  data.refreshed = new Date().toJSON();
+                  data.withdrawn_courses = results.timetable.withdrawn_courses;
+                  var onUpdate = function (err) {
+                    if (err) {
+                      data.status = status.mongoDown;
+                      if (config.logentriesEnabled) {
+                        logentries.log('crit', data);
+                      }
+                      console.log(JSON.stringify(data));
+                      callback(true, data);
+                    }
+                    else {
+                      let validity = 3; // In Minutes
+                      let doc = {
+                        reg_no: data.reg_no,
+                        dob: data.dob,
+                        mobile: data.mobile,
+                        cookie: cookieSerial,
+                        refreshed: true
+                      };
+                      cache.put(data.reg_no, doc, validity * 60 * 1000);
+                      data.cached = false;
+                      data.status = status.success;
+                      callback(null, data);
+                    }
+                  };
+                  collection.findAndModify({reg_no: data.reg_no}, [
+                    ['reg_no', 'asc']
+                  ], {
+                    $set: {
+                      courses: data.courses,
+                      semester: data.semester,
+                      refreshed: data.refreshed,
+                      withdrawn_courses: data.withdrawn_courses
+                    }
+                  }, {safe: true, new: true, upsert: true}, onUpdate);
+                }
+              };
+              async.map(data.courses, forEachCourse, doneCollate);
+            }
           }
-        };
+          ;
         async.parallel(parallelTasks, onFinish);
       }
     }
