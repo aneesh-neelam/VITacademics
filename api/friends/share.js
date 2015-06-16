@@ -38,9 +38,12 @@ exports.get = function (app, data, callback) {
   var collection = app.db.collection('student');
   let keys = {
     reg_no: 1,
+    dob: 1,
+    mobile: 1,
     courses: 1,
     campus: 1,
-    semester: 1
+    semester: 1,
+    refreshed: 1
   };
   var onFetch = function (err, doc) {
     if (err) {
