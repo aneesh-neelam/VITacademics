@@ -1,0 +1,24 @@
+{
+  "android": {
+    "supported": "3.5.0",
+    "latest": "4.0.0"
+  },
+  "ios": {
+    "supported": "3.0",
+    "latest": "3.0"
+  },
+  "windows": {
+    "supported": "2.0",
+    "latest": "2.0"
+  },
+  "messages": [
+    {
+      "_id": 1,
+      "message": "Hello and thank you for using VITacademics"
+    }
+  ],
+  "status": {
+    "message": "Successful execution",
+    "code": 0
+  }
+}
