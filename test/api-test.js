@@ -86,7 +86,7 @@ var onEach = function (user, i, arr) {
           res.body.should.have.property('credits_earned');
           res.body.should.have.property('cgpa');
           res.body.should.have.property('semester_wise');
-          res.body.should.have.property('grade_summary');
+          res.body.should.have.property('grade_count');
           res.body.should.have.property('cached');
           res.body.cached.should.equal(false);
           res.body.should.have.property('grades_refreshed');
