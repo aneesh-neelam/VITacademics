@@ -143,8 +143,48 @@ exports.get = function (app, data, callback) {
                   break;
               }
             };
+            var gradeCharacter = function (summaryNo) {
+              switch (summaryNo) {
+                case 0:
+                  return 'S';
+                  break;
+
+                case 1:
+                  return 'A';
+                  break;
+
+                case 2:
+                  return 'B';
+                  break;
+
+                case 3:
+                  return 'C';
+                  break;
+
+                case 4:
+                  return 'D';
+                  break;
+
+                case 5:
+                  return 'E';
+                  break;
+
+                case 6:
+                  return 'F';
+                  break;
+
+                case 7:
+                  return 'N';
+                  break;
+
+                default:
+                  return null;
+                  break;
+              }
+            };
             data.grades = [];
             data.semester_wise = {};
+            data.grade_count = [];
             try {
               // Scraping Grades
               var baseScraper = cheerio.load(response.body);
@@ -207,31 +247,21 @@ exports.get = function (app, data, callback) {
 
               // Scraping the grade summary information
               var gradeSummaryTable = baseScraper('table table').eq(3).children('tr').eq(1);
-              data.grade_summary = {
-                s: parseInt(gradeSummaryTable.children('td').eq(0).text()),
-                a: parseInt(gradeSummaryTable.children('td').eq(1).text()),
-                b: parseInt(gradeSummaryTable.children('td').eq(2).text()),
-                c: parseInt(gradeSummaryTable.children('td').eq(3).text()),
-                d: parseInt(gradeSummaryTable.children('td').eq(4).text()),
-                e: parseInt(gradeSummaryTable.children('td').eq(5).text()),
-                f: parseInt(gradeSummaryTable.children('td').eq(6).text()),
-                n: parseInt(gradeSummaryTable.children('td').eq(7).text())
+
+              var forEachGradeCount = function (i, elem) {
+                data.grade_count.push({
+                  count: parseInt(gradeSummaryTable.children('td').eq(i).text()),
+                  value: gradeValue(gradeCharacter(i)),
+                  grade: gradeCharacter(i)
+                });
               };
+              gradeSummaryTable.children('td').each(forEachGradeCount);
             }
             catch (ex) {
               data.credits_registered = 0;
               data.credits_earned = 0;
               data.semester_wise = [];
-              data.grade_summary = {
-                s: 0,
-                a: 0,
-                b: 0,
-                c: 0,
-                d: 0,
-                e: 0,
-                f: 0,
-                n: 0
-              };
+              data.grade_count = [];
               data.cgpa = 0.0;
             }
             finally {
