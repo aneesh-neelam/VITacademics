@@ -37,6 +37,7 @@ var status = require(path.join(__dirname, '..', 'status'));
 exports.get = function (app, data, callback) {
   var clientCollection = app.db.collection('client');
   var messageCollection = app.db.collection('message');
+  var contributorCollection = app.db.collection('contributor');
   let parallelTasks = {
     client: function (asyncCallback) {
       let keys = {
@@ -46,8 +47,11 @@ exports.get = function (app, data, callback) {
       };
       clientCollection.findOne({}, keys, asyncCallback);
     },
-    message: function (asyncCallback) {
+    messages: function (asyncCallback) {
       messageCollection.find({}, {limit: 10, sort: [['_id', 'desc']]}).toArray(asyncCallback);
+    },
+    contributors: function (asyncCallback) {
+      contributorCollection.find().toArray(asyncCallback);
     }
   };
   var onFetch = function (err, results) {
@@ -59,11 +63,12 @@ exports.get = function (app, data, callback) {
       console.log(data.status);
       callback(true, data);
     }
-    else if (results.client && results.message) {
+    else if (results.client && results.messages && results.contributors) {
       data.android = results.client.android;
       data.ios = results.client.ios;
       data.windows = results.client.windows;
-      data.messages = results.message;
+      data.messages = results.messages;
+      data.contributors = results.contributors;
       data.status = status.success;
       callback(false, data);
     }

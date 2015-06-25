@@ -159,6 +159,7 @@ describe('Waiting for Express.js Configuration to complete', function () {
         res.body.should.have.property('ios');
         res.body.should.have.property('windows');
         res.body.should.have.property('messages');
+        res.body.should.have.property('contributors');
         res.body.status.should.deep.equal(status.success);
         done();
       });

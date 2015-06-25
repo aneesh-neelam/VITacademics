@@ -1,20 +1,30 @@
 {
   "android": {
-    "supported": "3.5.0",
+    "supported": "4.0.0",
     "latest": "4.0.0"
   },
   "ios": {
-    "supported": "3.0",
-    "latest": "3.0"
+    "supported": "3.2.1",
+    "latest": "3.2.1"
   },
   "windows": {
-    "supported": "2.0",
-    "latest": "2.0"
+    "supported": "3.0.0.3",
+    "latest": "3.0.0.3"
   },
   "messages": [
     {
       "_id": 1,
-      "message": "Hello and thank you for using VITacademics"
+      "message": "Hello and thank you for using VITacademics",
+      "timestamp": "2015-06-25T08:18:19.133Z"
+    }
+  ],
+  "contributors": [
+    {
+      "_id": 1,
+      "name": "Aneesh Neelam",
+      "role": "Executive, Server Architect",
+      "github_profile": "https://github.com/aneesh-neelam",
+      "email": "neelam.aneesh@gmail.com"
     }
   ],
   "status": {
