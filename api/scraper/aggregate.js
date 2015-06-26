@@ -175,10 +175,10 @@ exports.get = function (app, data, callback) {
                     elt.scored_marks = 0;
                     elt.scored_percentage = 0;
                     var forEachAssessment = function (assessment, index, list) {
-                      elt.max_marks = elt.max_marks + assessment.max_marks;
-                      elt.max_percentage = elt.max_percentage + assessment.weightage;
-                      elt.scored_marks = elt.scored_marks + assessment.scored_marks;
-                      elt.scored_percentage = elt.scored_percentage + assessment.scored_percentage;
+                      elt.max_marks = elt.max_marks + (assessment.max_marks || 0);
+                      elt.max_percentage = elt.max_percentage + (assessment.weightage || 0);
+                      elt.scored_marks = elt.scored_marks + (assessment.scored_marks || 0);
+                      elt.scored_percentage = elt.scored_percentage + (assessment.scored_percentage || 0);
                     };
                     underscore.values(elt.assessments).forEach(forEachAssessment);
                     element.marks = elt;
