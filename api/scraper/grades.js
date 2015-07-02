@@ -50,7 +50,7 @@ exports.get = function (app, data, callback) {
         mobile: 1,
         campus: 1,
         grades: 1,
-        grade_summary: 1,
+        grade_count: 1,
         credits_registered: 1,
         credits_earned: 1,
         cgpa: 1,
@@ -296,7 +296,7 @@ exports.get = function (app, data, callback) {
               ], {
                 $set: {
                   grades: data.grades,
-                  grade_summary: data.grade_summary,
+                  grade_count: data.grade_count,
                   credits_registered: data.credits_registered,
                   credits_earned: data.credits_earned,
                   cgpa: data.cgpa,
