@@ -140,21 +140,21 @@ router.post('/share', function (req, res) {
 });
 
 router.post('/advisor', function (req, res) {
-    let data = {
-        reg_no: req.body.regno,
-        dob: req.body.dob,
-        mobile: req.body.mobile || null,
-        campus: req.originalUrl.split('/')[3].toLowerCase()
-    };
-    let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
-    let app = {
-        db: req.dbs[year],
-        queue: req.queue
-    };
-    let onGet = function (err, response) {
-        res.json(response);
-    }
-    facultyAdvisor.get(app, data, onGet);
+  let data = {
+    reg_no: req.body.regno,
+    dob: req.body.dob,
+    mobile: req.body.mobile || null,
+    campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
+  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
+  };
+  let onGet = function (err, response) {
+    res.json(response);
+  };
+  facultyAdvisor.get(app, data, onGet);
 });
 
 module.exports = router;
