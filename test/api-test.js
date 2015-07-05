@@ -144,6 +144,21 @@ var onEach = function (user, i, arr) {
           done();
         });
     });
+
+    it('Checking if fetching advisor information is successful', function (done) {
+      api.post('/api/v2/' + user.campus + '/advisor')
+        .send({regno: user.reg_no, dob: user.dob, mobile: user.mobile})
+        .expect(200)
+        .end(function (err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('reg_no', user.reg_no);
+          res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('advisor');
+          res.body.should.have.property('cached');
+          res.body.status.should.deep.equal(status.success);
+          done();
+        });
+    });
   });
 };
 
