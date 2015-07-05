@@ -42,21 +42,21 @@ var users = [
     campus: 'vellore'
   },
   {
-    describe: 'B.Tech CSE 2nd Year - Vellore',
+    describe: 'B.Tech CSE 3rd Year - Vellore',
     reg_no: '13BCE0769',
     dob: '07071995',
     mobile: '9443056677',
     campus: 'vellore'
   },
   {
-    describe: 'B.Tech CSE 2nd Year - Vellore',
+    describe: 'B.Tech CSE 3rd Year - Vellore',
     reg_no: '13BCE0139',
     dob: '16011995',
     mobile: '9830051893',
     campus: 'vellore'
   },
   {
-    describe: 'B.Tech ECE 2nd Year - Vellore',
+    describe: 'B.Tech ECE 3rd Year - Vellore',
     reg_no: '13BEC0486',
     dob: '01031995',
     mobile: '9927026060',

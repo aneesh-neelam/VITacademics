@@ -112,7 +112,16 @@ exports.get = function (app, data, callback) {
             faculty['intercom'] = row('td').eq(1).text();
           }
           catch (ex) {
-            faculty = 'Not Found';
+            faculty = {
+              name: null,
+              designation: null,
+              school: null,
+              division: null,
+              phone: null,
+              email: null,
+              cabin: null,
+              intercom: null
+            };
           }
           finally {
             data.status = status.success;
