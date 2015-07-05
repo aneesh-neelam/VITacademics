@@ -22,7 +22,7 @@
 
 var path = require('path');
 
-var status = require(path.join(__dirname, 'status'));
+var status = require(path.join(__dirname, '..', 'status'));
 var config = require(path.join(__dirname, '..', 'config'));
 
 var logentries;
