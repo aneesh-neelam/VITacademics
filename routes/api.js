@@ -31,6 +31,7 @@ var dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'))
 var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
 var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
 var facultyAdvisor = require(path.join(__dirname, '..', 'api', 'scraper', 'advisor'));
+var registerGCM = require(path.join(__dirname, '..', 'api', 'register'));
 
 var router = express.Router();
 
@@ -157,6 +158,26 @@ router.post('/advisor', function (req, res) {
     res.json(response);
   };
   facultyAdvisor.get(app, data, onGet);
+});
+
+router.post('/register', function (req, res) {
+  let data = {
+    reg_no: req.body.regno,
+    dob: req.body.dob,
+    mobile: req.body.mobile || null,
+    campus: req.originalUrl.split('/')[3].toLowerCase(),
+    type: req.body.type,
+    id: req.body.id
+  };
+  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
+  let app = {
+    db: req.dbs[year],
+    queue: req.queue
+  };
+  let onRegister = function (err, response) {
+    res.json(response);
+  };
+  registerGCM.register(app, data, onRegister);
 });
 
 module.exports = router;
