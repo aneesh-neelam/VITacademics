@@ -110,13 +110,12 @@ exports.get = function (app, data, callback) {
             faculty['cabin'] = row('td').eq(1).text();
             row = cheerio.load(scraper('tr').eq(8).html());
             faculty['intercom'] = row('td').eq(1).text();
-            data.status = status.success;
           }
           catch (ex) {
             faculty = 'Not Found';
-            data.status = status.dataParsing;
           }
           finally {
+            data.status = status.success;
             data.advisor = faculty;
             callback(null, data);
             data.cached = false;
