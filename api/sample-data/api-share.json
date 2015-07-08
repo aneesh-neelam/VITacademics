@@ -1,5 +1,6 @@
 {
   "reg_no": "13BCE0139",
+  "dob": "16011995",
   "campus": "vellore",
   "courses": [
     {
@@ -279,6 +280,8 @@
     }
   ],
   "semester": "WS",
+  "refreshed": "2015-07-05T19:40:09.485Z",
+  "mobile": "9830051893",
   "status": {
     "message": "Successful execution",
     "code": 0
