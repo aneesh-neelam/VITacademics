@@ -126,7 +126,6 @@ exports.get = function (app, data, callback) {
           finally {
             data.status = status.success;
             data.advisor = faculty;
-            callback(null, data);
             data.cached = false;
             var onUpdate = function (err) {
               if (err) {
