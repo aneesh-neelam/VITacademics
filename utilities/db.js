@@ -24,7 +24,7 @@ var getFromYear = function (year) {
   let date = new Date;
   let arrayIndex = date.getFullYear() - 2000 - year;
   let month = date.getMonth();
-  if (month >= 0 && month <= 6) {
+  if (month >= 0 && month < 6) {
     arrayIndex = arrayIndex - 1;
   }
   arrayIndex = (arrayIndex < 4) ? arrayIndex : 4;
