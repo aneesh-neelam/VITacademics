@@ -23,7 +23,3 @@ More features are coming soon. The development and release of this API Server sh
 
 ####Licensing
 For [COPYING](https://github.com/saurabhsjoshi/VITacademics-for-Android/blob/master/COPYING), [COPYRIGHT](https://github.com/saurabhsjoshi/VITacademics-for-Android/blob/master/COPYRIGHT) and [LICENSE](https://github.com/saurabhsjoshi/VITacademics-for-Android/blob/master/LICENSE) check the respective files in the repository.
-
-#### External Requirements:
-* MongoDB
-* RabbitMQ
