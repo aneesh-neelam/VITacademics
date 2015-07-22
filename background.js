@@ -31,7 +31,7 @@ const handleMain = require(path.join(__dirname, 'handlers', 'main'));
 const handleMobile = require(path.join(__dirname, 'handlers', 'mobile'));
 const handleShare = require(path.join(__dirname, 'handlers', 'share'));
 
-let app = {};
+const app = {};
 /*
  var onConnect = function (err, db) {
  app.db = db;

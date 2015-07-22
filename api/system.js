@@ -40,9 +40,9 @@ exports.get = function (app, data, callback) {
   const clientCollection = app.db.collection('client');
   const messageCollection = app.db.collection('message');
   const contributorCollection = app.db.collection('contributor');
-  let parallelTasks = {
+  const parallelTasks = {
     client: function (asyncCallback) {
-      let keys = {
+      const keys = {
         android: 1,
         ios: 1,
         windows: 1

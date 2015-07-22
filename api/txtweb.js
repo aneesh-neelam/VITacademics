@@ -39,7 +39,7 @@ const status = require(path.join(__dirname, '..', 'status'));
 
 
 const parseMessage = function (app, data, callback) {
-  const reply = [
+  let reply = [
     'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
     'Get Course Details:  @vitacademics course [CourseCode]',
     'Get Today\'s Classes: @vitacademics today',
