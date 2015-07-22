@@ -54,7 +54,7 @@ exports.scrapeTimetable = function (app, data, callback) {
         withdrawn_courses: [],
         timings: []
       };
-      try {
+      // try {
         const baseScraper = cheerio.load(response.body);
 
         let timetableScraper;
@@ -85,59 +85,139 @@ exports.scrapeTimetable = function (app, data, callback) {
 
         if (coursesScraper) {
           const length = coursesScraper('tr').length;
+
+          let courseCode = null;
+          let courseTitle = null;
+          let registrationStatus = null;
+          let billDate = null;
+          let billNumber = null;
+
           const onEachCourse = function (i, elem) {
             if (i > 0 && i < (length - 1)) {
               const htmlColumn = cheerio.load(coursesScraper(this).html())('td');
-              const classnbr = parseInt(htmlColumn.eq(1).text());
-              let code = htmlColumn.eq(2).text();
-              const courseType = htmlColumn.eq(4).text();
               const columns = htmlColumn.length;
+
+              let tmpCode = null;
+
+              let classNumber = null;
+              let courseType = null;
+              let ltpc = null;
+              let ltpjc = null;
+              let courseMode = null;
+              let courseOption = null;
               let slot = null;
               let venue = null;
               let faculty = null;
-              let registrationStatus = null;
-              let bill = null;
-              let billDate = null;
-              let billNumber = null;
+
               let projectTitle = null;
-              if (columns === 13) {
-                slot = htmlColumn.eq(8).text();
-                venue = htmlColumn.eq(9).text();
-                faculty = htmlColumn.eq(10).text();
-                registrationStatus = htmlColumn.eq(11).text();
-                bill = htmlColumn.eq(12).text().split(' / ');
-                billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
-                billNumber = parseInt(bill[0]);
+
+              if (data.campus === 'chennai') {
+                classNumber = parseInt(htmlColumn.eq(1).text());
+                courseCode = htmlColumn.eq(2).text();
+                courseTitle = htmlColumn.eq(3).text();
+                courseType = htmlColumn.eq(4).text();
+                ltpc = htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, '');
+                courseMode = htmlColumn.eq(6).text();
+                courseOption = htmlColumn.eq(7).text();
+
+                j = '0';
+                ltpjc = ltpc.substr(0, 3) + j + ltpc.substr(3);
+
+                if (columns === 13) {
+                  slot = htmlColumn.eq(8).text();
+                  venue = htmlColumn.eq(9).text();
+                  faculty = htmlColumn.eq(10).text();
+                  registrationStatus = htmlColumn.eq(11).text();
+
+                  let bill = htmlColumn.eq(12).text().split(' / ');
+                  billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
+                  billNumber = parseInt(bill[0]);
+                }
+                else if (columns === 12) {
+                  projectTitle = htmlColumn.eq(8).text().split(':')[1];
+                  faculty = htmlColumn.eq(9).text().split(':')[1];
+                  registrationStatus = htmlColumn.eq(10).text();
+
+                  let bill = htmlColumn.eq(11).text().split(' / ');
+                  billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
+                  billNumber = parseInt(bill[0]);
+                }
               }
-              else if (columns === 12) {
-                projectTitle = htmlColumn.eq(8).text().split(':')[1];
-                faculty = htmlColumn.eq(9).text().split(':')[1];
-                registrationStatus = htmlColumn.eq(10).text();
-                bill = htmlColumn.eq(11).text().split(' / ');
-                billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
-                billNumber = parseInt(bill[0]);
-              }
+              else if (data.campus === 'vellore') {
+                if (columns === 13) {
+                  courseCode = htmlColumn.eq(1).text();
+                  courseTitle = htmlColumn.eq(2).text();
+
+                  classNumber = parseInt(htmlColumn.eq(3).text());
+                  courseType = htmlColumn.eq(4).text();
+                  ltpjc = htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, '');
+                  courseMode = htmlColumn.eq(6).text();
+                  courseOption = htmlColumn.eq(7).text();
+                  slot = htmlColumn.eq(8).text();
+                  venue = htmlColumn.eq(9).text();
+                  faculty = htmlColumn.eq(10).text();
+                  registrationStatus = htmlColumn.eq(11).text();
+
+                  let bill = htmlColumn.eq(12).text().split(' / ');
+                  billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
+                  billNumber = parseInt(bill[0]);
+
+                  ltpc = ltpjc.slice(0, 3) + ltpjc.slice(4);
+                }
+                else if (columns === 8) {
+                  classNumber = parseInt(htmlColumn.eq(0).text());
+                  courseType = htmlColumn.eq(1).text();
+                  ltpjc = htmlColumn.eq(2).text().replace(/[^a-zA-Z0-9]/g, '');
+                  courseMode = htmlColumn.eq(3).text();
+                  courseOption = htmlColumn.eq(4).text();
+                  slot = htmlColumn.eq(5).text();
+                  venue = htmlColumn.eq(6).text();
+                  faculty = htmlColumn.eq(7).text();
+
+                  ltpc = ltpjc.slice(0, 3) + ltpjc.slice(4);
+                }
+                else if (columns === 12) {
+                  courseCode = htmlColumn.eq(1).text();
+                  courseTitle = htmlColumn.eq(2).text();
+                  classNumber = htmlColumn.eq(3).text();
+                  courseType = htmlColumn.eq(4).text();
+                  ltpjc = htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, '');
+                  courseMode = htmlColumn.eq(6).text();
+                  courseOption = htmlColumn.eq(7).text();
+                  projectTitle = htmlColumn.eq(8).text().split(':')[1];
+                  faculty = htmlColumn.eq(9).text().split(':')[1];
+                  registrationStatus = htmlColumn.eq(10).text();
+
+                  let bill = htmlColumn.eq(11).text().split(' / ');
+                  billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
+                  billNumber = parseInt(bill[0]);
+
+                  ltpc = ltpjc.slice(0, 3) + ltpjc.slice(4);
+                }
+            }
+            tmpCode = courseCode;
               if (courseType === 'Embedded Theory') {
-                code = code + 'ETH';
+                tmpCode = tmpCode + 'ETH';
               }
               else if (courseType === 'Embedded Lab') {
-                code = code + 'ELA';
+                tmpCode = tmpCode + 'ELA';
               }
               else if (courseType === 'Theory Only') {
-                code = code + 'TH';
+                tmpCode = tmpCode + 'TH';
               }
               else if (courseType === 'Lab Only') {
-                code = code + 'LO';
+                tmpCode = tmpCode + 'LO';
               }
-              tmp[code] = classnbr;
+              tmp[tmpCode] = classNumber;
               timetable['courses'].push({
-                class_number: classnbr,
-                course_code: htmlColumn.eq(2).text(),
-                course_title: htmlColumn.eq(3).text(),
+                class_number: classNumber,
+                course_code: courseCode,
+                course_title: courseTitle,
                 subject_type: courseType,
-                ltpc: htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
-                course_mode: htmlColumn.eq(6).text(),
-                course_option: htmlColumn.eq(7).text(),
+                ltpc: ltpc,
+                ltpjc: ltpjc,
+                course_mode: courseMode,
+                course_option: courseOption,
                 slot: slot,
                 venue: venue,
                 faculty: faculty,
@@ -258,11 +338,11 @@ exports.scrapeTimetable = function (app, data, callback) {
         }
         timetable.status = status.success;
         callback(null, timetable);
-      }
+      /*}
       catch (ex) {
         data.status = status.dataParsing;
         callback(true, data);
-      }
+      }*/
     }
   };
   CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
