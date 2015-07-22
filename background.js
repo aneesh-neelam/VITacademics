@@ -33,38 +33,38 @@ const handleShare = require(path.join(__dirname, 'handlers', 'share'));
 
 let app = {};
 /*
-var onConnect = function (err, db) {
-  app.db = db;
-};
-mongoClient.connect(mongoURI, onConnect);
+ var onConnect = function (err, db) {
+ app.db = db;
+ };
+ mongoClient.connect(mongoURI, onConnect);
 
-var queue = jackrabbit(amqpURI);
-queue.queues = {
-  main: 'Main',
-  mobile: 'Mobile',
-  share: 'Share'
-};
-queue.on('connected', function () {
-  app.queue = queue;
-  var forEachQueue = function (elt, i, arr) {
-    var onReady = function () {
-      switch (elt) {
-        case queue.queues.main:
-          handleMain(app);
-          break;
-        case queue.queues.mobile:
-          handleMobile(app);
-          break;
-        case queue.queues.share:
-          handleShare(app);
-          break;
-        default:
-          console.log('Unsupported Queue: ' + elt);
-          break;
-      }
-    };
-    queue.create(elt, {prefetch: 500}, onReady);
-  };
-  underscore.values(queue.queues).forEach(forEachQueue);
-});
-*/
+ var queue = jackrabbit(amqpURI);
+ queue.queues = {
+ main: 'Main',
+ mobile: 'Mobile',
+ share: 'Share'
+ };
+ queue.on('connected', function () {
+ app.queue = queue;
+ var forEachQueue = function (elt, i, arr) {
+ var onReady = function () {
+ switch (elt) {
+ case queue.queues.main:
+ handleMain(app);
+ break;
+ case queue.queues.mobile:
+ handleMobile(app);
+ break;
+ case queue.queues.share:
+ handleShare(app);
+ break;
+ default:
+ console.log('Unsupported Queue: ' + elt);
+ break;
+ }
+ };
+ queue.create(elt, {prefetch: 500}, onReady);
+ };
+ underscore.values(queue.queues).forEach(forEachQueue);
+ });
+ */

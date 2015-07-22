@@ -23,7 +23,7 @@
 const getCodeFromText = function (text) {
   let code;
   text = text.toUpperCase();
-  switch(text) {
+  switch (text) {
     case 'MON':
       code = 0;
       break;

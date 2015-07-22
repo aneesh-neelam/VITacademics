@@ -114,13 +114,13 @@ exports.get = function (app, data, callback) {
           }
           catch (ex) {
             faculty.name = null,
-            faculty.designation = null,
-            faculty.school = null,
-            faculty.division = null,
-            faculty.phone = null,
-            faculty.email = null,
-            faculty.cabin = null,
-            faculty.intercom = null
+              faculty.designation = null,
+              faculty.school = null,
+              faculty.division = null,
+              faculty.phone = null,
+              faculty.email = null,
+              faculty.cabin = null,
+              faculty.intercom = null
           }
           finally {
             data.advisor = faculty;

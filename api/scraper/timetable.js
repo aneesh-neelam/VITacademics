@@ -97,7 +97,7 @@ exports.scrapeTimetable = function (app, data, callback) {
               const htmlColumn = cheerio.load(coursesScraper(this).html())('td');
               const columns = htmlColumn.length;
 
-              let tmpCode = null;
+              let tmpCode;
 
               let classNumber = null;
               let courseType = null;
@@ -120,7 +120,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                 courseMode = htmlColumn.eq(6).text();
                 courseOption = htmlColumn.eq(7).text();
 
-                j = '0';
+                const j = '0';
                 ltpjc = ltpc.substr(0, 3) + j + ltpc.substr(3);
 
                 if (columns === 13) {
@@ -129,7 +129,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                   faculty = htmlColumn.eq(10).text();
                   registrationStatus = htmlColumn.eq(11).text();
 
-                  let bill = htmlColumn.eq(12).text().split(' / ');
+                  const bill = htmlColumn.eq(12).text().split(' / ');
                   billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
                   billNumber = parseInt(bill[0]);
 
@@ -141,7 +141,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                   faculty = htmlColumn.eq(9).text().split(':')[1];
                   registrationStatus = htmlColumn.eq(10).text();
 
-                  let bill = htmlColumn.eq(11).text().split(' / ');
+                  const bill = htmlColumn.eq(11).text().split(' / ');
                   billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
                   billNumber = parseInt(bill[0]);
                 }
@@ -161,7 +161,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                   faculty = htmlColumn.eq(10).text();
                   registrationStatus = htmlColumn.eq(11).text();
 
-                  let bill = htmlColumn.eq(12).text().split(' / ');
+                  const bill = htmlColumn.eq(12).text().split(' / ');
                   billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
                   billNumber = parseInt(bill[0]);
 
@@ -193,14 +193,14 @@ exports.scrapeTimetable = function (app, data, callback) {
                   faculty = htmlColumn.eq(9).text().split(':')[1];
                   registrationStatus = htmlColumn.eq(10).text();
 
-                  let bill = htmlColumn.eq(11).text().split(' / ');
+                  const bill = htmlColumn.eq(11).text().split(' / ');
                   billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
                   billNumber = parseInt(bill[0]);
 
                   ltpc = ltpjc.slice(0, 3) + ltpjc.slice(4);
                 }
-            }
-            tmpCode = courseCode;
+              }
+              tmpCode = courseCode;
               if (courseType === 'Embedded Theory') {
                 tmpCode = tmpCode + 'ETH';
               }
