@@ -123,9 +123,7 @@ exports.get = function (app, data, callback) {
             faculty.intercom = null
           }
           finally {
-            data.status = status.success;
             data.advisor = faculty;
-            data.cached = false;
             const onUpdate = function (err) {
               if (err) {
                 data.status = status.mongoDown;
@@ -136,7 +134,6 @@ exports.get = function (app, data, callback) {
                 callback(true, data);
               }
               else {
-                data.status = status.success;
                 const validity = 3;
                 const doc = {
                   reg_no: data.reg_no,
@@ -145,6 +142,8 @@ exports.get = function (app, data, callback) {
                   cookie: cookieSerial
                 };
                 cache.put(data.reg_no, doc, validity * 60 * 1000);
+                data.cached = false;
+                data.status = status.success;
                 callback(null, data);
               }
             };
