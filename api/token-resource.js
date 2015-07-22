@@ -20,7 +20,7 @@
 
 'use strict';
 
-var resources = [
+const resources = [
   'A',
   'B',
   'C',

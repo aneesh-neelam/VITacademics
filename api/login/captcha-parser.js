@@ -21,18 +21,18 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
-var captchaResource = require(path.join(__dirname, 'captcha-resource'));
+const captchaResource = require(path.join(__dirname, 'captcha-resource'));
 
 
-var parseBuffer = function (bitmapBuffer) {
-  let pixelMap = getPixelMapFromBuffer(bitmapBuffer);
+const parseBuffer = function (bitmapBuffer) {
+  const pixelMap = getPixelMapFromBuffer(bitmapBuffer);
   return getCaptcha(pixelMap);
 };
 
-var getPixelMapFromBuffer = function (bitmapBuffer) {
-  let pixelMap = [];
+const getPixelMapFromBuffer = function (bitmapBuffer) {
+  const pixelMap = [];
   let subArray = [];
   let row = 0;
   for (let i = bitmapBuffer.length - (25 * 132), r = 0; i < bitmapBuffer.length; ++i, ++r) {
@@ -48,11 +48,11 @@ var getPixelMapFromBuffer = function (bitmapBuffer) {
   return pixelMap;
 };
 
-var getCaptcha = function (img) {
-  let order = captchaResource.keyOrder;
-  let keys = captchaResource.keyMask;
+const getCaptcha = function (img) {
+  const order = captchaResource.keyOrder;
+  const keys = captchaResource.keyMask;
 
-  var matchImg = function (rx, ry, pix, mask) {
+  const matchImg = function (rx, ry, pix, mask) {
     let flag = 1;
     let breakflag = 0;
     let count = 0;
@@ -86,7 +86,7 @@ var getCaptcha = function (img) {
     return flag;
   };
 
-  var skip = function (start, end, y) {
+  const skip = function (start, end, y) {
     let flag = 0;
     for (let i = 0; i < start.length; ++i) {
       if (y >= start[i] && y <= end[i]) {
@@ -97,7 +97,7 @@ var getCaptcha = function (img) {
     return flag;
   };
 
-  var sort = function (sorter, captcha) {
+  const sort = function (sorter, captcha) {
     for (let i = 0; i < sorter.length; ++i) {
       let less = sorter[i];
       let swap = 0;
@@ -135,10 +135,10 @@ var getCaptcha = function (img) {
   }
   let yoff = 2;
   let xoff = 2;
-  let skipstart = [];
-  let skipend = [];
-  let sorter = [];
-  let captcha = [];
+  const skipstart = [];
+  const skipend = [];
+  const sorter = [];
+  const captcha = [];
   for (let l = 0; l < 36; ++l) {
     let mask = keys[order[l]];
     let f = 0;

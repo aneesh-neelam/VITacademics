@@ -21,32 +21,32 @@
 
 'use strict';
 
-var cache = require('memory-cache');
-var cheerio = require('cheerio');
-var cookie = require('cookie');
-var moment = require('moment');
-var path = require('path');
-var unirest = require('unirest');
-var underscore = require('underscore');
+const cache = require('memory-cache');
+const cheerio = require('cheerio');
+const cookie = require('cookie');
+const moment = require('moment');
+const path = require('path');
+const unirest = require('unirest');
+const underscore = require('underscore');
 
-var config = require(path.join(__dirname, '..', '..', 'config'));
+const config = require(path.join(__dirname, '..', '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
 
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
-    let cacheDoc = cache.get(data.reg_no);
+    const cacheDoc = cache.get(data.reg_no);
     if (cacheDoc.dob === data.dob && cacheDoc.mobile === data.mobile) {
-      var collection = app.db.collection('student');
-      var keys = {
+      const collection = app.db.collection('student');
+      const keys = {
         reg_no: 1,
         dob: 1,
         mobile: 1,
@@ -60,7 +60,7 @@ exports.get = function (app, data, callback) {
         grades_refreshed: 1
       };
 
-      var onFetch = function (err, mongoDoc) {
+      const onFetch = function (err, mongoDoc) {
         if (err) {
           data.status = status.mongoDown;
           if (config.logentriesEnabled) {
@@ -93,10 +93,10 @@ exports.get = function (app, data, callback) {
           gradesUri = 'http://27.251.102.132/parent/student_history.asp';
         }
 
-        var CookieJar = unirest.jar();
-        let cookieSerial = cache.get(data.reg_no).cookie;
+        const CookieJar = unirest.jar();
+        const cookieSerial = cache.get(data.reg_no).cookie;
 
-        var onRequest = function (response) {
+        const onRequest = function (response) {
           if (response.error) {
             data.status = status.vitDown;
             if (config.logentriesEnabled) {
@@ -106,7 +106,7 @@ exports.get = function (app, data, callback) {
             collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
           }
           else {
-            var gradeValue = function (grade) {
+            const gradeValue = function (grade) {
               switch (grade) {
                 case 'S':
                   return 10.0;
@@ -145,7 +145,7 @@ exports.get = function (app, data, callback) {
                   break;
               }
             };
-            var gradeCharacter = function (summaryNo) {
+            const gradeCharacter = function (summaryNo) {
               switch (summaryNo) {
                 case 0:
                   return 'S';
@@ -189,14 +189,14 @@ exports.get = function (app, data, callback) {
             data.grade_count = [];
             try {
               // Scraping Grades
-              var baseScraper = cheerio.load(response.body);
-              var gradesScraper = cheerio.load(baseScraper('table table').eq(1).html());
-              var onEach = function (i, elem) {
+              const baseScraper = cheerio.load(response.body);
+              const gradesScraper = cheerio.load(baseScraper('table table').eq(1).html());
+              const onEach = function (i, elem) {
                 if (i > 0) {
-                  var attrs = baseScraper(this).children('td');
-                  let exam_held = moment(attrs.eq(6).text(), 'MMM-YYYY').format('YYYY-MM');
-                  let grade = attrs.eq(5).text();
-                  let credits = parseInt(attrs.eq(4).text());
+                  const attrs = baseScraper(this).children('td');
+                  const exam_held = moment(attrs.eq(6).text(), 'MMM-YYYY').format('YYYY-MM');
+                  const grade = attrs.eq(5).text();
+                  const credits = parseInt(attrs.eq(4).text());
                   data.grades.push({
                     'course_code': attrs.eq(1).text(),
                     'course_title': attrs.eq(2).text(),
@@ -242,15 +242,15 @@ exports.get = function (app, data, callback) {
               data.semester_wise = underscore.values(data.semester_wise);
 
               // Scraping the credit summary
-              var creditsTable = baseScraper('table table').eq(2).children('tr').eq(1);
+              const creditsTable = baseScraper('table table').eq(2).children('tr').eq(1);
               data.credits_registered = parseInt(creditsTable.children('td').eq(0).text());
               data.credits_earned = parseInt(creditsTable.children('td').eq(1).text());
               data.cgpa = parseFloat(creditsTable.children('td').eq(2).text().trim());
 
               // Scraping the grade summary information
-              var gradeSummaryTable = baseScraper('table table').eq(3).children('tr').eq(1);
+              const gradeSummaryTable = baseScraper('table table').eq(3).children('tr').eq(1);
 
-              var forEachGradeCount = function (i, elem) {
+              const forEachGradeCount = function (i, elem) {
                 data.grade_count.push({
                   count: parseInt(gradeSummaryTable.children('td').eq(i).text()),
                   value: gradeValue(gradeCharacter(i)),
@@ -269,7 +269,7 @@ exports.get = function (app, data, callback) {
             finally {
               data.grades_refreshed = new Date().toJSON();
               data.cached = false;
-              var onUpdate = function (err) {
+              const onUpdate = function (err) {
                 if (err) {
                   data.status = status.mongoDown;
                   if (config.logentriesEnabled) {
@@ -280,8 +280,8 @@ exports.get = function (app, data, callback) {
                 }
                 else {
                   data.status = status.success;
-                  let validity = 3; // In Minutes
-                  let doc = {
+                  const validity = 3; // In Minutes
+                  const doc = {
                     reg_no: data.reg_no,
                     dob: data.dob,
                     mobile: data.mobile,

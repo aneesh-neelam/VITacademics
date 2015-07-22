@@ -21,27 +21,27 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
-var config = require(path.join(__dirname, '..', '..', 'config'));
+const config = require(path.join(__dirname, '..', '..', 'config'));
 
-var captchaParser = require(path.join(__dirname, 'captcha-parser'));
+const captchaParser = require(path.join(__dirname, 'captcha-parser'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var login = require(path.join(__dirname, 'get'));
-var status = require(path.join(__dirname, '..', '..', 'status'));
-var submit = require(path.join(__dirname, 'submit'));
+const login = require(path.join(__dirname, 'get'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
+const submit = require(path.join(__dirname, 'submit'));
 
 
 exports.get = function (app, data, callback) {
-  var parseCaptcha = function (err, captchaImage) {
+  const parseCaptcha = function (err, captchaImage) {
     if (err) {
       callback(true, captchaImage);
     }

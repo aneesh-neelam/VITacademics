@@ -21,12 +21,12 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
-var status = require(path.join(__dirname, '..', 'status'));
+const status = require(path.join(__dirname, '..', 'status'));
 
-var handler = function (app) {
-  var onJob = function (job, ack) {
+const handler = function (app) {
+  const onJob = function (job, ack) {
     job.status = status.toDo;
     console.log(JSON.stringify(job));
     ack();

@@ -21,20 +21,17 @@
 
 'use strict';
 
-var mongoClient = require('mongodb');
-var path = require('path');
-var underscore = require('underscore');
+const mongoClient = require('mongodb');
+const path = require('path');
+const underscore = require('underscore');
 
-var config = require(path.join(__dirname, 'config'));
+const config = require(path.join(__dirname, 'config'));
 
-var handleMain = require(path.join(__dirname, 'handlers', 'main'));
-var handleMobile = require(path.join(__dirname, 'handlers', 'mobile'));
-var handleShare = require(path.join(__dirname, 'handlers', 'share'));
+const handleMain = require(path.join(__dirname, 'handlers', 'main'));
+const handleMobile = require(path.join(__dirname, 'handlers', 'mobile'));
+const handleShare = require(path.join(__dirname, 'handlers', 'share'));
 
-var app = {
-  db: null,
-  queue: null
-};
+let app = {};
 /*
 var onConnect = function (err, db) {
   app.db = db;

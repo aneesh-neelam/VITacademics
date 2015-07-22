@@ -20,30 +20,30 @@
 
 'use strict';
 
-var cheerio = require('cheerio');
-var cache = require('memory-cache');
-var path = require('path');
-var unirest = require('unirest');
+const cheerio = require('cheerio');
+const cache = require('memory-cache');
+const path = require('path');
+const unirest = require('unirest');
 
-var config = require(path.join(__dirname, '..', '..', 'config'));
+const config = require(path.join(__dirname, '..', '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
 
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
-    var collection = app.db.collection('student');
-    let cacheDoc = cache.get(data.reg_no);
-    let cookieSerial = cache.get(data.reg_no).cookie;
+    const collection = app.db.collection('student');
+    const cacheDoc = cache.get(data.reg_no);
+    const cookieSerial = cache.get(data.reg_no).cookie;
     if (cacheDoc.dob === data.dob && cacheDoc.mobile === data.mobile) {
-      var keys = {
+      const keys = {
         reg_no: 1,
         dob: 1,
         mobile: 1,
@@ -51,7 +51,7 @@ exports.get = function (app, data, callback) {
         advisor: 1
       };
 
-      var onFetch = function (err, mongoDoc) {
+      const onFetch = function (err, mongoDoc) {
         if (err) {
           data.status = status.mongoDown;
           if (config.logentriesEnabled) {
@@ -79,8 +79,8 @@ exports.get = function (app, data, callback) {
       else {
         advisorUri = 'http://27.251.102.132/parent/proctor_view.asp';
       }
-      var CookieJar = unirest.jar();
-      var onPost = function (response) {
+      const CookieJar = unirest.jar();
+      const onPost = function (response) {
         if (response.error) {
           data.status = status.vitDown;
           if (config.logentriesEnabled) {
@@ -90,10 +90,11 @@ exports.get = function (app, data, callback) {
           collection.findOne({reg_no: data.reg_no, dob: data.dob, campus: data.campus}, keys, onFetch);
         }
         else {
-          var faculty = {};
+          const faculty = {};
           try {
-            var scraper = cheerio.load(response.body);
+            let scraper = cheerio.load(response.body);
             scraper = cheerio.load(scraper('table table').eq(0).html());
+
             let row = cheerio.load(scraper('tr').eq(1).html());
             faculty['name'] = row('td').eq(1).text();
             row = cheerio.load(scraper('tr').eq(2).html());
@@ -112,23 +113,21 @@ exports.get = function (app, data, callback) {
             faculty['intercom'] = row('td').eq(1).text();
           }
           catch (ex) {
-            faculty = {
-              name: null,
-              designation: null,
-              school: null,
-              division: null,
-              phone: null,
-              email: null,
-              cabin: null,
-              intercom: null
-            };
+            faculty.name = null,
+            faculty.designation = null,
+            faculty.school = null,
+            faculty.division = null,
+            faculty.phone = null,
+            faculty.email = null,
+            faculty.cabin = null,
+            faculty.intercom = null
           }
           finally {
             data.status = status.success;
             data.advisor = faculty;
             callback(null, data);
             data.cached = false;
-            var onUpdate = function (err) {
+            const onUpdate = function (err) {
               if (err) {
                 data.status = status.mongoDown;
                 if (config.logentriesEnabled) {
@@ -139,8 +138,8 @@ exports.get = function (app, data, callback) {
               }
               else {
                 data.status = status.success;
-                let validity = 3;
-                let doc = {
+                const validity = 3;
+                const doc = {
                   reg_no: data.reg_no,
                   dob: data.dob,
                   mobile: data.mobile,

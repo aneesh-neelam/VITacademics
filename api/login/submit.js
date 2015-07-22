@@ -20,28 +20,28 @@
 
 'use strict';
 
-var cache = require('memory-cache');
-var cheerio = require('cheerio');
-var path = require('path');
-var unirest = require('unirest');
+const cache = require('memory-cache');
+const cheerio = require('cheerio');
+const path = require('path');
+const unirest = require('unirest');
 
-var config = require(path.join(__dirname, '..', '..', 'config'));
+const config = require(path.join(__dirname, '..', '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
-    var CookieJar = unirest.jar();
-    let cookieSerial = cache.get(data.reg_no).cookie;
+    const CookieJar = unirest.jar();
+    const cookieSerial = cache.get(data.reg_no).cookie;
     let submitUri;
     if (data.campus === 'vellore') {
       submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
@@ -50,7 +50,7 @@ exports.get = function (app, data, callback) {
       submitUri = 'http://27.251.102.132/parent/parent_login_submit.asp';
     }
     CookieJar.add(unirest.cookie(cookieSerial), submitUri);
-    var onPost = function (response) {
+    const onPost = function (response) {
       delete data['captcha'];
       if (response.error) {
         data.status = status.vitDown;
@@ -62,20 +62,20 @@ exports.get = function (app, data, callback) {
       }
       else {
         try {
-          var scraper = cheerio.load(response.body);
-          var htmlTable = cheerio.load(scraper('table').eq(1).html());
+          const scraper = cheerio.load(response.body);
+          const htmlTable = cheerio.load(scraper('table').eq(1).html());
           let text = htmlTable('td font').eq(0).text();
           text = text.split(' - ')[0].replace(/[^a-zA-Z0-9]/g, '');
           if (text === data.reg_no) {
-            let validity = 3; // In Minutes
-            let doc = {
+            const validity = 3; // In Minutes
+            const doc = {
               reg_no: data.reg_no,
               dob: data.dob,
               mobile: data.mobile,
               cookie: cookieSerial
             };
             cache.put(data.reg_no, doc, validity * 60 * 1000);
-            var onUpdate = function (err) {
+            const onUpdate = function (err) {
               if (err) {
                 data.status = status.mongoDown;
                 if (config.logentriesEnabled) {
@@ -89,7 +89,7 @@ exports.get = function (app, data, callback) {
                 callback(null, data);
               }
             };
-            var collection = app.db.collection('student');
+            const collection = app.db.collection('student');
             collection.findAndModify({reg_no: data.reg_no}, [
               ['reg_no', 'asc']
             ], {$set: {dob: data.dob, mobile: data.mobile, campus: data.campus}}, {

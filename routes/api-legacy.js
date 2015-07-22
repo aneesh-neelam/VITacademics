@@ -20,57 +20,57 @@
 
 'use strict';
 
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
 
-var status = require(path.join(__dirname, '..', 'status'));
+const status = require(path.join(__dirname, '..', 'status'));
 
-var router = express.Router();
+const router = express.Router();
 
 router.get('/login/manual', function (req, res) {
-  let data = {
+  const data = {
     status: status.deprecated
   };
   res.json(data);
 });
 
 router.get('/login/submit', function (req, res) {
-  let data = {
+  const data = {
     status: status.deprecated
   };
   res.json(data);
 });
 
 router.get('/login/auto', function (req, res) {
-  let data = {
+  const data = {
     status: status.deprecated
   };
   res.json(data);
 });
 
 router.get('/data/first', function (req, res) {
-  let data = {
+  const data = {
     status: status.deprecated
   };
   res.json(data);
 });
 
 router.get('/data/refresh', function (req, res) {
-  let data = {
+  const data = {
     status: status.deprecated
   };
   res.json(data);
 });
 
 router.get('/friends/regenerate', function (req, res) {
-  let data = {
+  const data = {
     status: status.deprecated
   };
   res.json(data);
 });
 
 router.get('/friends/share', function (req, res) {
-  let data = {
+  const data = {
     status: status.deprecated
   };
   res.json(data);

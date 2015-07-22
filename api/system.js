@@ -20,26 +20,26 @@
 
 'use strict';
 
-var async = require('async');
-var path = require('path');
+const async = require('async');
+const path = require('path');
 
-var config = require(path.join(__dirname, '..', 'config'));
+const config = require(path.join(__dirname, '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var status = require(path.join(__dirname, '..', 'status'));
+const status = require(path.join(__dirname, '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
-  var clientCollection = app.db.collection('client');
-  var messageCollection = app.db.collection('message');
-  var contributorCollection = app.db.collection('contributor');
+  const clientCollection = app.db.collection('client');
+  const messageCollection = app.db.collection('message');
+  const contributorCollection = app.db.collection('contributor');
   let parallelTasks = {
     client: function (asyncCallback) {
       let keys = {
@@ -56,7 +56,7 @@ exports.get = function (app, data, callback) {
       contributorCollection.find().toArray(asyncCallback);
     }
   };
-  var onFetch = function (err, results) {
+  const onFetch = function (err, results) {
     if (err) {
       data.status = status.mongoDown;
       if (config.logentriesEnabled) {

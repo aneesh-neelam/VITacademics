@@ -22,16 +22,16 @@
 
 'use strict';
 
-var cache = require('memory-cache');
-var cheerio = require('cheerio');
-var moment = require('moment');
-var momentTimezone = require('moment-timezone');
-var path = require('path');
-var unirest = require('unirest');
+const cache = require('memory-cache');
+const cheerio = require('cheerio');
+const moment = require('moment');
+const momentTimezone = require('moment-timezone');
+const path = require('path');
+const unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
 
-var day = require(path.join(__dirname, '..', '..', 'utilities', 'day'));
+const day = require(path.join(__dirname, '..', '..', 'utilities', 'day'));
 
 exports.scrapeTimetable = function (app, data, callback) {
   let timetableUri;
@@ -41,25 +41,25 @@ exports.scrapeTimetable = function (app, data, callback) {
   else if (data.campus === 'chennai') {
     timetableUri = 'http://27.251.102.132/parent/timetable.asp?sem=' + data.semester;
   }
-  var CookieJar = unirest.jar();
-  let cookieSerial = cache.get(data.reg_no).cookie;
-  var onRequest = function (response) {
+  const CookieJar = unirest.jar();
+  const cookieSerial = cache.get(data.reg_no).cookie;
+  const onRequest = function (response) {
     if (response.error) {
       data.status = status.vitDown;
       callback(true, data);
     }
     else {
-      var timetable = {
+      const timetable = {
         courses: [],
         withdrawn_courses: [],
         timings: []
       };
       try {
-        var baseScraper = cheerio.load(response.body);
+        const baseScraper = cheerio.load(response.body);
 
-        var timetableScraper;
-        var withdrawnScraper;
-        var coursesScraper;
+        let timetableScraper;
+        let withdrawnScraper;
+        let coursesScraper;
 
         if (baseScraper('b').eq(1).text().substring(0, 2) === 'No') {
           coursesScraper = null;
@@ -77,26 +77,26 @@ exports.scrapeTimetable = function (app, data, callback) {
           timetableScraper = cheerio.load(baseScraper('table table').eq(1).html());
         }
 
-        let tmp = {};
-        let slotTimings = {
+        const tmp = {};
+        const slotTimings = {
           theory: {},
           lab: {}
         };
 
         if (coursesScraper) {
-          let length = coursesScraper('tr').length;
-          var onEachCourse = function (i, elem) {
+          const length = coursesScraper('tr').length;
+          const onEachCourse = function (i, elem) {
             if (i > 0 && i < (length - 1)) {
-              let htmlColumn = cheerio.load(coursesScraper(this).html())('td');
-              let classnbr = parseInt(htmlColumn.eq(1).text());
+              const htmlColumn = cheerio.load(coursesScraper(this).html())('td');
+              const classnbr = parseInt(htmlColumn.eq(1).text());
               let code = htmlColumn.eq(2).text();
-              let courseType = htmlColumn.eq(4).text();
-              let columns = htmlColumn.length;
+              const courseType = htmlColumn.eq(4).text();
+              const columns = htmlColumn.length;
               let slot = null;
               let venue = null;
               let faculty = null;
               let registrationStatus = null;
-              let bill;
+              let bill = null;
               let billDate = null;
               let billNumber = null;
               let projectTitle = null;
@@ -152,10 +152,10 @@ exports.scrapeTimetable = function (app, data, callback) {
         }
 
         if (withdrawnScraper) {
-          let length = withdrawnScraper('tr').length;
-          var onEachWithdrawn = function (i, elem) {
+          const length = withdrawnScraper('tr').length;
+          const onEachWithdrawn = function (i, elem) {
             if (i > 0 && i < length) {
-              var htmlColumn = cheerio.load(withdrawnScraper(this).html())('td');
+              const htmlColumn = cheerio.load(withdrawnScraper(this).html())('td');
               timetable['withdrawn_courses'].push({
                 class_number: parseInt(htmlColumn.eq(1).text()),
                 course_code: htmlColumn.eq(2).text(),
@@ -171,26 +171,26 @@ exports.scrapeTimetable = function (app, data, callback) {
 
         if (timetableScraper) {
           let timingsPerDay;
-          var onEachRow = function (i, elem) {
-            let htmlRow = cheerio.load(timetableScraper(this).html());
-            let htmlColumn = htmlRow('td');
-            let CellOneWords = htmlColumn.eq(0).text().split(' ');
+          const onEachRow = function (i, elem) {
+            const htmlRow = cheerio.load(timetableScraper(this).html());
+            const htmlColumn = htmlRow('td');
+            const CellOneWords = htmlColumn.eq(0).text().split(' ');
             let jump, diff;
             if (CellOneWords[CellOneWords.length - 1] === 'HOURS') {
               diff = 0;
               for (let elt = 1; elt < htmlColumn.length; elt++) {
-                let col = elt + diff;
+                const col = elt + diff;
                 timingsPerDay = col;
                 if (htmlColumn.eq(elt).attr('bgcolor') === '#C0C0C0' || htmlColumn.eq(elt).attr('bgcolor') === '#999966') {
                   diff = diff - 1;
                 }
                 else {
                   momentTimezone.tz.setDefault("Asia/Kolkata");
-                  let text = htmlColumn.eq(elt).text();
-                  let times = text.split('to');
-                  let startTime = moment(times[0], 'hh:mm A').isValid() ? momentTimezone.tz(times[0], 'hh:mm A', "Asia/Kolkata").utc().format('HH:mm:ss') + 'Z' : null;
-                  let endTime = moment(times[1], 'hh:mm A').isValid() ? momentTimezone.tz(times[1], 'hh:mm A', "Asia/Kolkata").utc().format('HH:mm:ss') + 'Z' : null;
-                  let slotType = i === 0 ? 'theory' : 'lab';
+                  const text = htmlColumn.eq(elt).text();
+                  const times = text.split('to');
+                  const startTime = moment(times[0], 'hh:mm A').isValid() ? momentTimezone.tz(times[0], 'hh:mm A', "Asia/Kolkata").utc().format('HH:mm:ss') + 'Z' : null;
+                  const endTime = moment(times[1], 'hh:mm A').isValid() ? momentTimezone.tz(times[1], 'hh:mm A', "Asia/Kolkata").utc().format('HH:mm:ss') + 'Z' : null;
+                  const slotType = i === 0 ? 'theory' : 'lab';
                   slotTimings[slotType][col] = {
                     start_time: startTime,
                     end_time: endTime
@@ -209,11 +209,11 @@ exports.scrapeTimetable = function (app, data, callback) {
               }
               let last = null;
               for (let elt = 1; elt < htmlColumn.length; ++elt) {
-                let text = htmlColumn.eq(elt).text().split(' ');
-                let sub = text[0] + text[2];
+                const text = htmlColumn.eq(elt).text().split(' ');
+                const sub = text[0] + text[2];
                 if (tmp[sub]) {
-                  let slotType = (text[2] === 'TH' || text[2] === 'ETH') ? 'theory' : 'lab';
-                  let startTime = slotTimings[slotType][elt * jump - diff] ? (slotTimings[slotType][elt * jump - diff].start_time) : (slotTimings['theory'][elt * jump - diff].start_time || slotTimings['lab'][elt * jump - diff].start_time);
+                  const slotType = (text[2] === 'TH' || text[2] === 'ETH') ? 'theory' : 'lab';
+                  const startTime = slotTimings[slotType][elt * jump - diff] ? (slotTimings[slotType][elt * jump - diff].start_time) : (slotTimings['theory'][elt * jump - diff].start_time || slotTimings['lab'][elt * jump - diff].start_time);
                   let endTime;
                   if (day.getCodeFromText(CellOneWords[0]) === 4 && htmlColumn.length === timingsPerDay && elt === 9) {
                     endTime = slotTimings[slotType][elt * jump + 1] ? slotTimings[slotType][elt * jump + 1].end_time : (slotTimings['theory'][elt * jump + 1].end_time || slotTimings['lab'][elt * jump + 1].end_time);

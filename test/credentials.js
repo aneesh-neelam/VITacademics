@@ -33,7 +33,7 @@
  *
  */
 
-var users = [
+const users = [
   {
     describe: 'B.Tech CSE 4th Year - Vellore',
     reg_no: '11BCE0260',

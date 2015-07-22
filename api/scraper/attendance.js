@@ -22,15 +22,15 @@
 
 'use strict';
 
-var async = require('async');
-var cache = require('memory-cache');
-var cheerio = require('cheerio');
-var moment = require('moment');
-var momentTimezone = require('moment-timezone');
-var path = require('path');
-var unirest = require('unirest');
+const async = require('async');
+const cache = require('memory-cache');
+const cheerio = require('cheerio');
+const moment = require('moment');
+const momentTimezone = require('moment-timezone');
+const path = require('path');
+const unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeAttendance = function (app, data, callback) {
@@ -44,24 +44,24 @@ exports.scrapeAttendance = function (app, data, callback) {
     attendanceUri = 'http://27.251.102.132/parent/attn_report.asp?sem=' + data.semester;
     attendanceDetailsUri = 'http://27.251.102.132/parent/attn_report_details.asp';
   }
-  var CookieJar = unirest.jar();
-  let cookieSerial = cache.get(data.reg_no).cookie;
-  var onRequest = function (response) {
+  const CookieJar = unirest.jar();
+  const cookieSerial = cache.get(data.reg_no).cookie;
+  const onRequest = function (response) {
     if (response.error) {
       callback(false, [
         status.vitDown
       ]);
     }
     else {
-      let attendance = [];
+      const attendance = [];
       try {
-        var scraper = cheerio.load(response.body);
+        let scraper = cheerio.load(response.body);
         scraper = cheerio.load(scraper('table table').eq(1).html());
-        var onEach = function (i, elem) {
-          var htmlRow = cheerio.load(scraper(this).html());
-          var htmlColumn = htmlRow('td');
+        const onEach = function (i, elem) {
+          const htmlRow = cheerio.load(scraper(this).html());
+          const htmlColumn = htmlRow('td');
           if (i > 0) {
-            let classnbr = htmlRow('input[name=classnbr]').attr('value');
+            const classnbr = htmlRow('input[name=classnbr]').attr('value');
             attendance.push({
               class_number: parseInt(classnbr),
               course_code: htmlColumn.eq(1).text(),
@@ -82,8 +82,8 @@ exports.scrapeAttendance = function (app, data, callback) {
           }
         };
         scraper('tr').each(onEach);
-        var doDetails = function (doc, asyncCallback) {
-          var onPost = function (response) {
+        const doDetails = function (doc, asyncCallback) {
+          const onPost = function (response) {
             if (response.error) {
               asyncCallback(false, [
                 status.vitDown
@@ -92,11 +92,11 @@ exports.scrapeAttendance = function (app, data, callback) {
             else {
               delete doc.form;
               try {
-                var scraper = cheerio.load(response.body);
+                let scraper = cheerio.load(response.body);
                 scraper = cheerio.load(scraper('table table').eq(1).html());
-                let details = [];
-                var onDay = function (i, elem) {
-                  var htmlColumn = cheerio.load(scraper(this).html())('td');
+                const details = [];
+                const onDay = function (i, elem) {
+                  const htmlColumn = cheerio.load(scraper(this).html())('td');
                   if (i > 1) {
                     details.push({
                       sl: parseInt(htmlColumn.eq(0).text()),

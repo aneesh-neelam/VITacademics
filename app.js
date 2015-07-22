@@ -22,44 +22,44 @@
 
 'use strict';
 
-var async = require('async');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var express = require('express');
-var favicon = require('serve-favicon');
-var ga = require('node-ga');
-var jackrabbit = require('jackrabbit');
-var logger = require('morgan');
-var mongoClient = require('mongodb').MongoClient;
-var path = require('path');
-var underscore = require('underscore');
+const async = require('async');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const express = require('express');
+const favicon = require('serve-favicon');
+const ga = require('node-ga');
+const jackrabbit = require('jackrabbit');
+const logger = require('morgan');
+const mongoClient = require('mongodb').MongoClient;
+const path = require('path');
+const underscore = require('underscore');
 
-var config = require(path.join(__dirname, 'config'));
+const config = require(path.join(__dirname, 'config'));
 
-var newrelic;
+let newrelic;
 if (config.newRelicEnabled) {
   newrelic = require('newrelic');
 }
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var apiRoutes = require(path.join(__dirname, 'routes', 'api'));
-var apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
-var txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
-var webRoutes = require(path.join(__dirname, 'routes', 'web'));
+const apiRoutes = require(path.join(__dirname, 'routes', 'api'));
+const apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
+const txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
+const webRoutes = require(path.join(__dirname, 'routes', 'web'));
 
 /*
  *  API Legacy is now deprecated
  */
-var apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
+const apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
 
-var app = express();
+const app = express();
 
 async.waterfall([
   function (callback) {
@@ -104,8 +104,8 @@ async.waterfall([
   },
   function (callback) {
     // MongoDB
-    var forEachMongoDB = function (mongoURI, asyncCallback) {
-      let mongodbOptions = {
+    const forEachMongoDB = function (mongoURI, asyncCallback) {
+      const mongodbOptions = {
         db: {
           native_parser: true,
           recordQueryStats: true,
@@ -124,7 +124,7 @@ async.waterfall([
       mongoClient.connect(mongoURI, mongodbOptions, asyncCallback)
     };
 
-    var allMongoDB = function (err, results) {
+    const allMongoDB = function (err, results) {
       app.use(function (req, res, next) {
         req.dbs = results;
         next();
@@ -137,7 +137,7 @@ async.waterfall([
   },
   function (callback) {
     // RabbitMQ
-    var queue = jackrabbit(config.amqp_Uri);
+    const queue = jackrabbit(config.amqp_Uri);
 
     queue.queues = {
       main: 'Main',
@@ -151,10 +151,10 @@ async.waterfall([
     });
 
     queue.on('connected', function () {
-      var forEachQueue = function (elt, asyncCallback) {
+      const forEachQueue = function (elt, asyncCallback) {
         queue.create(elt, {prefetch: 0}, asyncCallback);
       };
-      var allQueues = function (err, results) {
+      const allQueues = function (err, results) {
         callback(err);
       };
       async.map(underscore.values(queue.queues), forEachQueue, allQueues);

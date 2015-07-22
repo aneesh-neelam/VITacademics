@@ -21,7 +21,7 @@
 
 'use strict';
 
-var status = {
+const status = {
   success: {
     message: 'Successful execution',
     code: 0

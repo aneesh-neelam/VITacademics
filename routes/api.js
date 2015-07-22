@@ -20,88 +20,88 @@
 
 'use strict';
 
-var cache = require('memory-cache');
-var express = require('express');
-var path = require('path');
+const cache = require('memory-cache');
+const express = require('express');
+const path = require('path');
 
-var db = require(path.join(__dirname, '..', 'utilities', 'db'));
-var loginAuto = require(path.join(__dirname, '..', 'api', 'login', 'auto'));
-var dataAggregate = require(path.join(__dirname, '..', 'api', 'scraper', 'aggregate'));
-var dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'));
-var friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
-var friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
-var facultyAdvisor = require(path.join(__dirname, '..', 'api', 'scraper', 'advisor'));
-var registerGCM = require(path.join(__dirname, '..', 'api', 'register'));
+const db = require(path.join(__dirname, '..', 'utilities', 'db'));
+const loginAuto = require(path.join(__dirname, '..', 'api', 'login', 'auto'));
+const dataAggregate = require(path.join(__dirname, '..', 'api', 'scraper', 'aggregate'));
+const dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'));
+const friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'generate'));
+const friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
+const facultyAdvisor = require(path.join(__dirname, '..', 'api', 'scraper', 'advisor'));
+const registerGCM = require(path.join(__dirname, '..', 'api', 'register'));
 
-var router = express.Router();
+const router = express.Router();
 
 router.post('/login', function (req, res) {
-  let data = {
+  const data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
+  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
+  const app = {
     db: req.dbs[year],
     queue: req.queue
   };
-  let onGet = function (err, response) {
+  const onGet = function (err, response) {
     res.json(response);
   };
   loginAuto.get(app, data, onGet);
 });
 
 router.post('/refresh', function (req, res) {
-  let data = {
+  const data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
+  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
+  const app = {
     db: req.dbs[year],
     queue: req.queue
   };
-  let onGet = function (err, response) {
+  const onGet = function (err, response) {
     res.json(response);
   };
   dataAggregate.get(app, data, onGet);
 });
 
 router.post('/grades', function (req, res) {
-  let data = {
+  const data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
+  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
+  const app = {
     db: req.dbs[year],
     queue: req.queue
   };
-  let onGet = function (err, response) {
+  const onGet = function (err, response) {
     res.send(response);
   };
   dataGrades.get(app, data, onGet);
 });
 
 router.post('/token', function (req, res) {
-  let data = {
+  const data = {
     reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
+  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
+  const app = {
     db: req.dbs[year],
     queue: req.queue
   };
-  let onGet = function (err, response) {
+  const onGet = function (err, response) {
     res.json(response);
   };
   friendsGenerate.get(app, data, onGet);
@@ -124,7 +124,7 @@ router.post('/share', function (req, res) {
   }
   if (req.body.receiver === 'VITacademics Developer/Tester') receiver = req.body.receiver;
   else receiver = req.body.receiver.toUpperCase();
-  let data = {
+  const data = {
     reg_no: reg_no,
     dob: req.body.dob,
     mobile: req.body.mobile || null,
@@ -132,36 +132,36 @@ router.post('/share', function (req, res) {
     receiver: receiver,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let app = {
+  const app = {
     db: req.dbs[year],
     queue: req.queue
   };
-  let onGet = function (err, response) {
+  const onGet = function (err, response) {
     res.json(response);
   };
   friendsShare.get(app, data, onGet);
 });
 
 router.post('/advisor', function (req, res) {
-  let data = {
+  const data = {
     reg_no: req.body.regno,
     dob: req.body.dob,
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
+  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
+  const app = {
     db: req.dbs[year],
     queue: req.queue
   };
-  let onGet = function (err, response) {
+  const onGet = function (err, response) {
     res.json(response);
   };
   facultyAdvisor.get(app, data, onGet);
 });
 
 router.post('/register', function (req, res) {
-  let data = {
+  const data = {
     reg_no: req.body.regno,
     dob: req.body.dob,
     mobile: req.body.mobile || null,
@@ -169,12 +169,12 @@ router.post('/register', function (req, res) {
     type: req.body.type,
     id: req.body.id
   };
-  let year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
-  let app = {
+  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
+  const app = {
     db: req.dbs[year],
     queue: req.queue
   };
-  let onRegister = function (err, response) {
+  const onRegister = function (err, response) {
     res.json(response);
   };
   registerGCM.register(app, data, onRegister);

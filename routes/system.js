@@ -20,20 +20,20 @@
 
 'use strict';
 
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
 
-var system = require(path.join(__dirname, '..', 'api', 'system'));
+const system = require(path.join(__dirname, '..', 'api', 'system'));
 
-var router = express.Router();
+const router = express.Router();
 
 router.get('/', function (req, res) {
-  let app = {
+  const app = {
     db: req.dbs[5],
     queue: req.queue
   };
-  let data = {};
-  let onGet = function (err, response) {
+  const data = {};
+  const onGet = function (err, response) {
     res.json(response);
   };
   system.get(app, data, onGet);

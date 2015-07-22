@@ -20,13 +20,13 @@
 
 'use strict';
 
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
 
-var config = require(path.join(__dirname, '..', 'config'));
-var status = require(path.join(__dirname, '..', 'status'));
+const config = require(path.join(__dirname, '..', 'config'));
+const status = require(path.join(__dirname, '..', 'status'));
 
-var router = express.Router();
+const router = express.Router();
 
 router.get('/', function (req, res) {
   res.render('index', {googleAnalyticsToken: config.googleAnalyticsToken});

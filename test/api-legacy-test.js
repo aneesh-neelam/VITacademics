@@ -22,17 +22,17 @@
 
 'use strict';
 
-var path = require('path');
-var should = require('chai').should();
-var supertest = require('supertest');
+const path = require('path');
+const should = require('chai').should();
+const supertest = require('supertest');
 
-var app = require(path.join(__dirname, '..', 'app'));
-var status = require(path.join(__dirname, '..', 'status'));
-var users = require(path.join(__dirname, '.', 'credentials')).users;
+const app = require(path.join(__dirname, '..', 'app'));
+const status = require(path.join(__dirname, '..', 'status'));
+const users = require(path.join(__dirname, '.', 'credentials')).users;
 
-var api = supertest(app);
+const api = supertest(app);
 
-var onEach = function (user, i, arr) {
+const onEach = function (user, i, arr) {
 
   describe('Testing API-Legacy for User: ' + user.describe, function () {
 

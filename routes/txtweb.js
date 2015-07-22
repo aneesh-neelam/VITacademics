@@ -20,28 +20,28 @@
 
 'use strict';
 
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
 
-var config = require(path.join(__dirname, '..', 'config'));
-var status = require(path.join(__dirname, '..', 'status'));
+const config = require(path.join(__dirname, '..', 'config'));
+const status = require(path.join(__dirname, '..', 'status'));
 
-var api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
+const api_txtweb = require(path.join(__dirname, '..', 'api', 'txtweb'));
 
-var router = express.Router();
+const router = express.Router();
 
 router.get('/', function (req, res) {
   if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
-    let args = req.query['txtweb-message'].toUpperCase().split(' ');
-    let app = {
+    const args = req.query['txtweb-message'].toUpperCase().split(' ');
+    const app = {
       dbs: req.dbs,
       queue: req.queue
     };
-    let data = {
+    const data = {
       args: args,
       mobile: req.query['txtweb-mobile']
     };
-    let onGet = function (err, messages) {
+    const onGet = function (err, messages) {
       res.render('txtweb', {
         googleAnalyticsToken: config.googleAnalyticsToken,
         messages: messages,
@@ -52,7 +52,7 @@ router.get('/', function (req, res) {
     api_txtweb.parseMessage(app, data, onGet);
   }
   else {
-    let messages = [
+    const messages = [
       'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
       'Get Course Details:  @vitacademics course [CourseCode]',
       'Get Today\'s Classes: @vitacademics today',

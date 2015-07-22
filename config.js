@@ -20,7 +20,7 @@
 
 'use strict';
 
-var config = {
+const config = {
   port: process.env.PORT || 3000,
   mongoDb: [
     process.env.MONGODB_URI_0 || 'mongodb://localhost/VITacademics',

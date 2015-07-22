@@ -20,29 +20,29 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
-var status = require(path.join(__dirname, '..', 'status'));
-var config = require(path.join(__dirname, '..', 'config'));
+const status = require(path.join(__dirname, '..', 'status'));
+const config = require(path.join(__dirname, '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
 exports.register = function (app, data, callback) {
-  var collection = app.db.collection('student');
-  let messaging = [];
-  let doc = {
+  const collection = app.db.collection('student');
+  const messaging = [];
+  const doc = {
     type: data.type,
     id: data.id
   };
   messaging.push(doc);
   data.messaging = messaging;
-  var onUpdate = function (err) {
+  const onUpdate = function (err) {
     delete data.type;
     delete data.id;
     if (err) {

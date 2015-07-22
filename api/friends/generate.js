@@ -20,25 +20,25 @@
 
 'use strict';
 
-var cache = require('memory-cache');
-var path = require('path');
-var underscore = require('underscore');
+const cache = require('memory-cache');
+const path = require('path');
+const underscore = require('underscore');
 
-var config = require(path.join(__dirname, '..', '..', 'config'));
+const config = require(path.join(__dirname, '..', '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
-var resource = require(path.join(__dirname, '..', 'token-resource'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
+const resource = require(path.join(__dirname, '..', 'token-resource'));
 
 
-var generate = function (regNo, validity, callback) {
+const generate = function (regNo, validity, callback) {
   let token;
   do
   {
@@ -50,8 +50,8 @@ var generate = function (regNo, validity, callback) {
 };
 
 exports.get = function (app, data, callback) {
-  var collection = app.db.collection('student');
-  var onFetch = function (err, doc) {
+  const collection = app.db.collection('student');
+  const onFetch = function (err, doc) {
     if (err) {
       data.status = status.mongoDown;
       if (config.logentriesEnabled) {
@@ -60,8 +60,8 @@ exports.get = function (app, data, callback) {
       callback(true, data);
     }
     if (doc) {
-      let validity = 24; // In Hours
-      var onGeneration = function (err, token) {
+      const validity = 24; // In Hours
+      const onGeneration = function (err, token) {
         data.share = {
           token: token,
           validity: validity,

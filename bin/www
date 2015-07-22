@@ -22,26 +22,26 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
-var config = require(path.join(__dirname, '..', 'config'));
+const config = require(path.join(__dirname, '..', 'config'));
 
-var newrelic;
+let newrelic;
 if (config.newRelicEnabled) {
     newrelic = require('newrelic');
 }
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-    let LogentriesClient = require('logentries-client');
+    const LogentriesClient = require('logentries-client');
     logentries = new LogentriesClient({
         token: config.logentriesToken
     });
 }
 
-var app = require(path.join(__dirname, '..', 'app'));
+const app = require(path.join(__dirname, '..', 'app'));
 
-var onBind = function () {
+const onBind = function () {
     if (config.logentriesEnabled) {
         logentries.log('info', config);
     }

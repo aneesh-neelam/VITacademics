@@ -20,10 +20,10 @@
 
 'use strict';
 
-var getFromYear = function (year) {
-  let date = new Date;
+const getFromYear = function (year) {
+  const date = new Date;
   let arrayIndex = date.getFullYear() - 2000 - year;
-  let month = date.getMonth();
+  const month = date.getMonth();
   if (month >= 0 && month <= 6) {
     arrayIndex = arrayIndex - 1;
   }

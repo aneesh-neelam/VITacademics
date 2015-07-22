@@ -20,34 +20,34 @@
 
 'use strict';
 
-var async = require('async');
-var cache = require('memory-cache');
-var path = require('path');
-var underscore = require('underscore');
+const async = require('async');
+const cache = require('memory-cache');
+const path = require('path');
+const underscore = require('underscore');
 
-var config = require(path.join(__dirname, '..', '..', 'config'));
+const config = require(path.join(__dirname, '..', '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var attendance = require(path.join(__dirname, 'attendance'));
-var friends = require(path.join(__dirname, '..', 'friends', 'generate'));
-var marks = require(path.join(__dirname, 'marks'));
-var status = require(path.join(__dirname, '..', '..', 'status'));
-var timetable = require(path.join(__dirname, 'timetable'));
+const attendance = require(path.join(__dirname, 'attendance'));
+const friends = require(path.join(__dirname, '..', 'friends', 'generate'));
+const marks = require(path.join(__dirname, 'marks'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
+const timetable = require(path.join(__dirname, 'timetable'));
 
 
 exports.get = function (app, data, callback) {
   if (cache.get(data.reg_no) !== null) {
-    let cacheDoc = cache.get(data.reg_no);
+    const cacheDoc = cache.get(data.reg_no);
     if (cacheDoc.dob === data.dob && cacheDoc.mobile === data.mobile) {
-      var collection = app.db.collection('student');
-      let keys = {
+      const collection = app.db.collection('student');
+      const keys = {
         reg_no: 1,
         dob: 1,
         mobile: 1,
@@ -57,7 +57,7 @@ exports.get = function (app, data, callback) {
         withdrawn_courses: 1,
         refreshed: 1
       };
-      var onFetch = function (err, mongoDoc) {
+      const onFetch = function (err, mongoDoc) {
         if (err) {
           data.status = status.mongoDown;
           if (config.logentriesEnabled) {
@@ -87,8 +87,8 @@ exports.get = function (app, data, callback) {
         else if (data.campus === 'chennai') {
           data.semester = config.chennaiSemesterCode;
         }
-        let cookieSerial = cache.get(data.reg_no).cookie;
-        let parallelTasks = {
+        const cookieSerial = cache.get(data.reg_no).cookie;
+        const parallelTasks = {
           attendance: function (asyncCallback) {
             attendance.scrapeAttendance(app, data, asyncCallback)
           },
@@ -99,7 +99,7 @@ exports.get = function (app, data, callback) {
             timetable.scrapeTimetable(app, data, asyncCallback)
           }
         };
-        var onFinish = function (err, results) {
+        const onFinish = function (err, results) {
             if (err || results.timetable.status.code !== 0) {
               data.status = results.timetable.status;
               if (config.logentriesEnabled) {
@@ -112,9 +112,9 @@ exports.get = function (app, data, callback) {
             else {
               delete results.timetable.status;
               data.courses = results.timetable.courses;
-              var forEachCourse = function (element, asyncCallback) {
-                let foundAttendance = false;
-                let foundMarks = false;
+              const forEachCourse = function (element, asyncCallback) {
+                const foundAttendance = false;
+                const foundMarks = false;
                 element.timings = [];
                 switch (element.course_mode.toUpperCase()) {
                   case 'CBL':
@@ -141,7 +141,7 @@ exports.get = function (app, data, callback) {
                     element.course_type = 0;
                     break;
                 }
-                var forEachAttendance = function (elt, i, arr) {
+                const forEachAttendance = function (elt, i, arr) {
                   if (element.class_number === elt.class_number) {
                     foundAttendance = true;
                     elt.supported = true;
@@ -153,7 +153,7 @@ exports.get = function (app, data, callback) {
                     element.attendance = elt;
                   }
                 };
-                var forEachMarks = function (elt, i, arr) {
+                const forEachMarks = function (elt, i, arr) {
                   if (element.class_number === elt.class_number) {
                     foundMarks = true;
                     elt.supported = true;
@@ -163,7 +163,7 @@ exports.get = function (app, data, callback) {
                     delete elt.course_type;
 
                     if (elt.pbl_details) {
-                      var forEachPblDetail = function (detail, index, list) {
+                      const forEachPblDetail = function (detail, index, list) {
                         if (detail.title !== 'N/A') {
                           elt.assessments.push(detail)
                         }
@@ -176,7 +176,7 @@ exports.get = function (app, data, callback) {
                     elt.max_percentage = 0;
                     elt.scored_marks = 0;
                     elt.scored_percentage = 0;
-                    var forEachAssessment = function (assessment, index, list) {
+                    const forEachAssessment = function (assessment, index, list) {
                       elt.max_marks = elt.max_marks + (assessment.max_marks || 0);
                       elt.max_percentage = elt.max_percentage + (assessment.weightage || 0);
                       elt.scored_marks = elt.scored_marks + (assessment.scored_marks || 0);
@@ -186,7 +186,7 @@ exports.get = function (app, data, callback) {
                     element.marks = elt;
                   }
                 };
-                var forEachTimings = function (elt, i, arr) {
+                const forEachTimings = function (elt, i, arr) {
                   if (element.class_number === elt.class_number) {
                     delete elt.class_number;
                     element.timings.push(elt);
@@ -195,7 +195,7 @@ exports.get = function (app, data, callback) {
                 results.attendance.forEach(forEachAttendance);
                 results.marks.forEach(forEachMarks);
                 results.timetable.timings.forEach(forEachTimings);
-                let noData = {
+                const noData = {
                   supported: false
                 };
                 if (!foundAttendance) {
@@ -206,7 +206,7 @@ exports.get = function (app, data, callback) {
                 }
                 asyncCallback(null, element);
               };
-              var doneCollate = function (err, newData) {
+              const doneCollate = function (err, newData) {
                 if (err) {
                   callback(true, status.other);
                 }
@@ -214,7 +214,7 @@ exports.get = function (app, data, callback) {
                   data.courses = newData;
                   data.refreshed = new Date().toJSON();
                   data.withdrawn_courses = results.timetable.withdrawn_courses;
-                  var onUpdate = function (err) {
+                  const onUpdate = function (err) {
                     if (err) {
                       data.status = status.mongoDown;
                       if (config.logentriesEnabled) {
@@ -224,8 +224,8 @@ exports.get = function (app, data, callback) {
                       callback(true, data);
                     }
                     else {
-                      let validity = 3; // In Minutes
-                      let doc = {
+                      const validity = 3; // In Minutes
+                      const doc = {
                         reg_no: data.reg_no,
                         dob: data.dob,
                         mobile: data.mobile,

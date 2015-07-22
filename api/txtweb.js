@@ -20,26 +20,26 @@
 
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
-var config = require(path.join(__dirname, '..', 'config'));
+const config = require(path.join(__dirname, '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var api_login = require(path.join(__dirname, 'login', 'auto'));
-var api_aggregate = require(path.join(__dirname, 'scraper', 'aggregate'));
-var api_grades = require(path.join(__dirname, 'scraper', 'grades'));
-var status = require(path.join(__dirname, '..', 'status'));
+const api_login = require(path.join(__dirname, 'login', 'auto'));
+const api_aggregate = require(path.join(__dirname, 'scraper', 'aggregate'));
+const api_grades = require(path.join(__dirname, 'scraper', 'grades'));
+const status = require(path.join(__dirname, '..', 'status'));
 
 
-var parseMessage = function (app, data, callback) {
-  let reply = [
+const parseMessage = function (app, data, callback) {
+  const reply = [
     'Register with the VITacademics SMS Service: @vitacademics register [Campus] [RegNo] [DoB]',
     'Get Course Details:  @vitacademics course [CourseCode]',
     'Get Today\'s Classes: @vitacademics today',
@@ -49,26 +49,26 @@ var parseMessage = function (app, data, callback) {
   ];
   if (data.args[0] === 'REGISTER') {
     // TODO
-    reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    reply = ['Feature Incompconste', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
   else if (data.args[0] === 'COURSE') {
     // TODO
-    reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    reply = ['Feature Incompconste', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
   else if (data.args[0] === 'TODAY') {
     // TODO
-    reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    reply = ['Feature Incompconste', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
   else if (data.args[0] === 'ATTENDANCE') {
     // TODO
-    reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    reply = ['Feature Incompconste', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
   else if (data.args[0] === 'MARKS') {
     // TODO
-    reply = ['Feature Incomplete', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
+    reply = ['Feature Incompconste', 'Contribute to aneesh-neelam/VITacademics on GitHub'];
   }
   if (config.logentriesEnabled) {
-    logentries.log('debug', {log: 'Incomplete feature TxtWeb used', args: data.args, mobile: data.mobile});
+    logentries.log('debug', {log: 'Incompconste feature TxtWeb used', args: data.args, mobile: data.mobile});
   }
   callback(false, reply);
 };

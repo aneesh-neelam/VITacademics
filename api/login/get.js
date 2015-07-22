@@ -20,21 +20,21 @@
 
 'use strict';
 
-var cache = require('memory-cache');
-var path = require('path');
-var unirest = require('unirest');
+const cache = require('memory-cache');
+const path = require('path');
+const unirest = require('unirest');
 
-var config = require(path.join(__dirname, '..', '..', 'config'));
+const config = require(path.join(__dirname, '..', '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
@@ -45,7 +45,7 @@ exports.get = function (app, data, callback) {
   else if (data.campus === 'chennai') {
     captchaUri = 'http://27.251.102.132/parent/captcha.asp';
   }
-  var onRequest = function (response) {
+  const onRequest = function (response) {
     if (response.error) {
       data.status = status.vitDown;
       if (config.logentriesEnabled) {
@@ -55,10 +55,10 @@ exports.get = function (app, data, callback) {
       callback(true, data);
     }
     else {
-      let validity = 2; // In Minutes
-      let key = Object.keys(response.cookies)[0];
-      let cookieSerial = key + "=" + response.cookies[key];
-      let doc = {
+      const validity = 2; // In Minutes
+      const key = Object.keys(response.cookies)[0];
+      const cookieSerial = key + "=" + response.cookies[key];
+      const doc = {
         reg_no: data.reg_no,
         cookie: cookieSerial
       };

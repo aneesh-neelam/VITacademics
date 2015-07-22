@@ -21,13 +21,13 @@
 
 'use strict';
 
-var cache = require('memory-cache');
-var cheerio = require('cheerio');
-var moment = require('moment');
-var path = require('path');
-var unirest = require('unirest');
+const cache = require('memory-cache');
+const cheerio = require('cheerio');
+const moment = require('moment');
+const path = require('path');
+const unirest = require('unirest');
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.scrapeMarks = function (app, data, callback) {
@@ -38,9 +38,9 @@ exports.scrapeMarks = function (app, data, callback) {
   else if (data.campus === 'chennai') {
     marksUri = 'http://27.251.102.132/parent/marks.asp?sem=' + data.semester;
   }
-  var CookieJar = unirest.jar();
-  let cookieSerial = cache.get(data.reg_no).cookie;
-  var onRequest = function (response) {
+  const CookieJar = unirest.jar();
+  const cookieSerial = cache.get(data.reg_no).cookie;
+  const onRequest = function (response) {
     if (response.error) {
       callback(false, [
         status.vitDown
@@ -49,9 +49,9 @@ exports.scrapeMarks = function (app, data, callback) {
     else {
       let marks = [];
       try {
-        var scraper = cheerio.load(response.body);
+        let scraper = cheerio.load(response.body);
         let PBL = false;
-        var scraperPBL = null;
+        let scraperPBL = null;
         let CBL = true;
         if (scraper('table table').length > 1) {
           PBL = true;
@@ -64,11 +64,11 @@ exports.scrapeMarks = function (app, data, callback) {
         }
         scraper = cheerio.load(scraper('table table').eq(0).html());
         if (CBL) {
-          var onEach = function (i, elem) {
-            var htmlColumn = cheerio.load(scraper(this).html())('td');
+          const onEach = function (i, elem) {
+            const htmlColumn = cheerio.load(scraper(this).html())('td');
             if (i > 1) {
-              let length = htmlColumn.length;
-              let classnbr = parseInt(htmlColumn.eq(1).text());
+              const length = htmlColumn.length;
+              const classnbr = parseInt(htmlColumn.eq(1).text());
               if (length == 18) {
                 marks.push({
                   class_number: classnbr,
@@ -166,12 +166,12 @@ exports.scrapeMarks = function (app, data, callback) {
           scraper('tr').each(onEach);
         }
         if (PBL) {
-          let pblMarks = [];
-          var onEachPBL = function (i, elem) {
-            var htmlColumn = cheerio.load(scraper(this).html())('td');
-            let j = i - 1;
-            let course = Math.floor(j / 7);
-            let row = j % 7;
+          const pblMarks = [];
+          const onEachPBL = function (i, elem) {
+            const htmlColumn = cheerio.load(scraper(this).html())('td');
+            const j = i - 1;
+            const course = Math.floor(j / 7);
+            const row = j % 7;
             switch (row) {
               case 0:
                 pblMarks[course] = {

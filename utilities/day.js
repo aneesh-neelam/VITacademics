@@ -20,7 +20,7 @@
 
 'use strict';
 
-var getCodeFromText = function (text) {
+const getCodeFromText = function (text) {
   let code;
   text = text.toUpperCase();
   switch(text) {

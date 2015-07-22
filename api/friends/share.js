@@ -20,25 +20,25 @@
 
 'use strict';
 
-var cache = require('memory-cache');
-var path = require('path');
+const cache = require('memory-cache');
+const path = require('path');
 
-var config = require(path.join(__dirname, '..', '..', 'config'));
+const config = require(path.join(__dirname, '..', '..', 'config'));
 
-var logentries;
+let logentries;
 if (config.logentriesEnabled) {
-  let LogentriesClient = require('logentries-client');
+  const LogentriesClient = require('logentries-client');
   logentries = new LogentriesClient({
     token: config.logentriesToken
   });
 }
 
-var status = require(path.join(__dirname, '..', '..', 'status'));
+const status = require(path.join(__dirname, '..', '..', 'status'));
 
 
 exports.get = function (app, data, callback) {
-  var collection = app.db.collection('student');
-  let keys = {
+  const collection = app.db.collection('student');
+  const keys = {
     reg_no: 1,
     dob: 1,
     mobile: 1,
@@ -47,7 +47,7 @@ exports.get = function (app, data, callback) {
     semester: 1,
     refreshed: 1
   };
-  var onFetch = function (err, doc) {
+  const onFetch = function (err, doc) {
     if (err) {
       data.status = status.mongoDown;
       if (config.logentriesEnabled) {
@@ -58,7 +58,7 @@ exports.get = function (app, data, callback) {
     }
     else if (doc) {
       if (doc.courses) {
-        var forEachCourse = function (elt, i, arr) {
+        const forEachCourse = function (elt, i, arr) {
           delete elt.attendance;
           delete elt.marks;
           delete elt.registration_status;
