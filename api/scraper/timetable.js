@@ -180,6 +180,8 @@ exports.scrapeTimetable = function (app, data, callback) {
                   faculty = htmlColumn.eq(7).text();
 
                   ltpc = ltpjc.slice(0, 3) + ltpjc.slice(4);
+                  if (slot === 'NIL') slot = null;
+                  if (venue === 'NIL') venue = null;
                 }
                 else if (columns === 12) {
                   courseCode = htmlColumn.eq(1).text();
