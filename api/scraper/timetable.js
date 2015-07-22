@@ -246,7 +246,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                 course_code: htmlColumn.eq(2).text(),
                 course_title: htmlColumn.eq(3).text(),
                 subject_type: htmlColumn.eq(4).text(),
-                ltpc: htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
+                ltpjc: htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, ''),
                 course_mode: htmlColumn.eq(6).text()
               });
             }
