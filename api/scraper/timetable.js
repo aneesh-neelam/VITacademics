@@ -54,7 +54,7 @@ exports.scrapeTimetable = function (app, data, callback) {
         withdrawn_courses: [],
         timings: []
       };
-      // try {
+      try {
         const baseScraper = cheerio.load(response.body);
 
         let timetableScraper;
@@ -132,6 +132,9 @@ exports.scrapeTimetable = function (app, data, callback) {
                   let bill = htmlColumn.eq(12).text().split(' / ');
                   billDate = moment(bill[1], 'DD/MM/YYYY').isValid() ? moment(bill[1], 'DD/MM/YYYY').format('YYYY-MM-DD') : null;
                   billNumber = parseInt(bill[0]);
+
+                  if (slot === 'NIL') slot = null;
+                  if (venue === 'NIL') venue = null;
                 }
                 else if (columns === 12) {
                   projectTitle = htmlColumn.eq(8).text().split(':')[1];
@@ -163,6 +166,8 @@ exports.scrapeTimetable = function (app, data, callback) {
                   billNumber = parseInt(bill[0]);
 
                   ltpc = ltpjc.slice(0, 3) + ltpjc.slice(4);
+                  if (slot === 'NIL') slot = null;
+                  if (venue === 'NIL') venue = null;
                 }
                 else if (columns === 8) {
                   classNumber = parseInt(htmlColumn.eq(0).text());
@@ -338,11 +343,11 @@ exports.scrapeTimetable = function (app, data, callback) {
         }
         timetable.status = status.success;
         callback(null, timetable);
-      /*}
+      }
       catch (ex) {
         data.status = status.dataParsing;
         callback(true, data);
-      }*/
+      }
     }
   };
   CookieJar.add(unirest.cookie(cookieSerial), timetableUri);
