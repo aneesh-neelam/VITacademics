@@ -113,8 +113,8 @@ exports.get = function (app, data, callback) {
               delete results.timetable.status;
               data.courses = results.timetable.courses;
               const forEachCourse = function (element, asyncCallback) {
-                const foundAttendance = false;
-                const foundMarks = false;
+                let foundAttendance = false;
+                let foundMarks = false;
                 element.timings = [];
                 switch (element.course_mode.toUpperCase()) {
                   case 'CBL':
