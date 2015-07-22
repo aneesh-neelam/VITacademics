@@ -104,8 +104,11 @@ const onEach = function (user, i, arr) {
         .end(function (err, res) {
           should.not.exist(err);
           res.body.should.have.property('reg_no', user.reg_no);
+          res.body.should.have.property('dob', user.dob);
           res.body.should.have.property('campus', user.campus);
+          res.body.should.have.property('mobile', user.mobile);
           res.body.should.have.property('advisor');
+          res.body.should.have.property('cached');
           res.body.status.should.deep.equal(status.success);
           done();
         });

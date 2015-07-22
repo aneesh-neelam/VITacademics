@@ -36,11 +36,10 @@ if (config.logentriesEnabled) {
 exports.register = function (app, data, callback) {
   const collection = app.db.collection('student');
   const messaging = [];
-  const doc = {
+  messaging.push({
     type: data.type,
     id: data.id
-  };
-  messaging.push(doc);
+  });
   data.messaging = messaging;
   const onUpdate = function (err) {
     delete data.type;
@@ -55,11 +54,11 @@ exports.register = function (app, data, callback) {
       callback(null, data);
     }
   };
-  collection.findAndModify({reg_no: data.reg_no}, [
+  collection.update({reg_no: data.reg_no}, [
     ['reg_no', 'asc']
   ], {
-    $set: {
+    $push: {
       messaging: data.messaging
     }
-  }, {safe: true, new: true, upsert: true}, onUpdate);
+  }, onUpdate);
 };

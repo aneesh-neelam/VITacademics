@@ -144,7 +144,7 @@ router.post('/share', function (req, res) {
 
 router.post('/advisor', function (req, res) {
   const data = {
-    reg_no: req.body.regno,
+    reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
@@ -162,11 +162,11 @@ router.post('/advisor', function (req, res) {
 
 router.post('/register', function (req, res) {
   const data = {
-    reg_no: req.body.regno,
+    reg_no: req.body.regno.toUpperCase(),
     dob: req.body.dob,
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase(),
-    type: req.body.type,
+    type: req.body.type.toLowercase(),
     id: req.body.id
   };
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
