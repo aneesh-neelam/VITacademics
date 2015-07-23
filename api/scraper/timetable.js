@@ -186,7 +186,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                 else if (columns === 12) {
                   courseCode = htmlColumn.eq(1).text();
                   courseTitle = htmlColumn.eq(2).text();
-                  classNumber = htmlColumn.eq(3).text();
+                  classNumber = parseInt(htmlColumn.eq(3).text());
                   courseType = htmlColumn.eq(4).text();
                   ltpjc = htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, '');
                   courseMode = htmlColumn.eq(6).text();
