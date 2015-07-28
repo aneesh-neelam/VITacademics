@@ -50,7 +50,7 @@ exports.get = function (app, data, callback) {
       clientCollection.findOne({}, keys, asyncCallback);
     },
     messages: function (asyncCallback) {
-      messageCollection.find({}, {sort: [['_id', 'desc']]}).toArray(asyncCallback);
+      messageCollection.find({}, {limit: 10, sort: [['_id', 'desc']]}).toArray(asyncCallback);
     },
     contributors: function (asyncCallback) {
       contributorCollection.find({}, {sort: [['_id', 'asc']]}).toArray(asyncCallback);
