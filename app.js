@@ -70,7 +70,7 @@ async.waterfall([
 
     // Static and Favicon
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
+    app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
     // Body Parser
     app.use(bodyParser.json());
