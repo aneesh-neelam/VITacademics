@@ -69,97 +69,147 @@ exports.scrapeMarks = function (app, data, callback) {
             if (i > 1) {
               const length = htmlColumn.length;
               const classnbr = parseInt(htmlColumn.eq(1).text());
-              if (length == 18) {
-                marks.push({
-                  class_number: classnbr,
-                  course_code: htmlColumn.eq(2).text(),
-                  course_title: htmlColumn.eq(3).text(),
-                  course_type: htmlColumn.eq(4).text(),
-                  assessments: [
-                    {
-                      title: "CAT-I",
-                      max_marks: 50,
-                      weightage: 15,
-                      conducted_on: "Check Exam Schedule",
-                      status: htmlColumn.eq(5).text(),
-                      scored_marks: parseFloat(htmlColumn.eq(6).text()),
-                      scored_percentage: Math.round(parseFloat(htmlColumn.eq(6).text()) / 50 * 15 * 1e2) / 1e2
-                    },
-                    {
-                      title: "CAT-II",
-                      max_marks: 50,
-                      weightage: 15,
-                      conducted_on: "Check Exam Schedule",
-                      status: htmlColumn.eq(7).text(),
-                      scored_marks: parseFloat(htmlColumn.eq(8).text()),
-                      scored_percentage: Math.round(parseFloat(htmlColumn.eq(8).text()) / 50 * 15 * 1e2) / 1e2
-                    },
-                    {
-                      title: "Quiz-I",
-                      max_marks: 5,
-                      weightage: 5,
-                      conducted_on: "Tentative, set by course faculty",
-                      status: htmlColumn.eq(9).text(),
-                      scored_marks: parseFloat(htmlColumn.eq(10).text()),
-                      scored_percentage: parseFloat(htmlColumn.eq(10).text())
-                    },
-                    {
-                      title: "Quiz-II",
-                      max_marks: 5,
-                      weightage: 5,
-                      conducted_on: "Tentative, set by course faculty",
-                      status: htmlColumn.eq(11).text(),
-                      scored_marks: parseFloat(htmlColumn.eq(12).text()),
-                      scored_percentage: parseFloat(htmlColumn.eq(12).text())
-                    },
-                    {
-                      title: "Quiz-III",
-                      max_marks: 5,
-                      weightage: 5,
-                      conducted_on: "Tentative, set by course faculty",
-                      status: htmlColumn.eq(13).text(),
-                      scored_marks: parseFloat(htmlColumn.eq(14).text()),
-                      scored_percentage: parseFloat(htmlColumn.eq(14).text())
-                    },
-                    {
-                      title: "Assignment",
-                      max_marks: 5,
-                      weightage: 5,
-                      conducted_on: "Tentative, set by course faculty",
-                      status: htmlColumn.eq(15).text(),
-                      scored_marks: parseFloat(htmlColumn.eq(16).text()),
-                      scored_percentage: parseFloat(htmlColumn.eq(16).text())
-                    }
-                  ]
-                });
+              if (parseInt(data.reg_no.slice(0, 2)) < 15) {
+                if (length == 18) {
+                  marks.push({
+                    class_number: classnbr,
+                    course_code: htmlColumn.eq(2).text(),
+                    course_title: htmlColumn.eq(3).text(),
+                    course_type: htmlColumn.eq(4).text(),
+                    assessments: [
+                      {
+                        title: "CAT-I",
+                        max_marks: 50,
+                        weightage: 15,
+                        conducted_on: "Check Exam Schedule",
+                        status: htmlColumn.eq(5).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(6).text()),
+                        scored_percentage: Math.round(parseFloat(htmlColumn.eq(6).text()) / 50 * 15 * 1e2) / 1e2
+                      },
+                      {
+                        title: "CAT-II",
+                        max_marks: 50,
+                        weightage: 15,
+                        conducted_on: "Check Exam Schedule",
+                        status: htmlColumn.eq(7).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(8).text()),
+                        scored_percentage: Math.round(parseFloat(htmlColumn.eq(8).text()) / 50 * 15 * 1e2) / 1e2
+                      },
+                      {
+                        title: "Quiz-I",
+                        max_marks: 5,
+                        weightage: 5,
+                        conducted_on: "Tentative, set by course faculty",
+                        status: htmlColumn.eq(9).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(10).text()),
+                        scored_percentage: parseFloat(htmlColumn.eq(10).text())
+                      },
+                      {
+                        title: "Quiz-II",
+                        max_marks: 5,
+                        weightage: 5,
+                        conducted_on: "Tentative, set by course faculty",
+                        status: htmlColumn.eq(11).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(12).text()),
+                        scored_percentage: parseFloat(htmlColumn.eq(12).text())
+                      },
+                      {
+                        title: "Quiz-III",
+                        max_marks: 5,
+                        weightage: 5,
+                        conducted_on: "Tentative, set by course faculty",
+                        status: htmlColumn.eq(13).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(14).text()),
+                        scored_percentage: parseFloat(htmlColumn.eq(14).text())
+                      },
+                      {
+                        title: "Assignment",
+                        max_marks: 5,
+                        weightage: 5,
+                        conducted_on: "Tentative, set by course faculty",
+                        status: htmlColumn.eq(15).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(16).text()),
+                        scored_percentage: parseFloat(htmlColumn.eq(16).text())
+                      }
+                    ]
+                  });
+                }
+                else if (length == 8) {
+                  marks.push({
+                    class_number: classnbr,
+                    course_code: htmlColumn.eq(2).text(),
+                    course_title: htmlColumn.eq(3).text(),
+                    course_type: htmlColumn.eq(4).text(),
+                    assessments: [
+                      {
+                        title: "Lab CAM",
+                        max_marks: 50,
+                        weightage: 50,
+                        conducted_on: "Tentative, set by lab faculty",
+                        status: htmlColumn.eq(6).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(7).text()),
+                        scored_percentage: parseFloat(htmlColumn.eq(7).text())
+                      }
+                    ]
+                  });
+                }
+                else if (length == 6) {
+                  marks.push({
+                    class_number: classnbr,
+                    course_code: htmlColumn.eq(2).text(),
+                    course_title: htmlColumn.eq(3).text(),
+                    course_type: htmlColumn.eq(4).text(),
+                    assessments: []
+                  });
+                }
               }
-              else if (length == 8) {
-                marks.push({
-                  class_number: classnbr,
-                  course_code: htmlColumn.eq(2).text(),
-                  course_title: htmlColumn.eq(3).text(),
-                  course_type: htmlColumn.eq(4).text(),
-                  assessments: [
-                    {
-                      title: "Lab CAM",
-                      max_marks: 50,
-                      weightage: 50,
-                      conducted_on: "Tentative, set by lab faculty",
-                      status: htmlColumn.eq(6).text(),
-                      scored_marks: parseFloat(htmlColumn.eq(7).text()),
-                      scored_percentage: parseFloat(htmlColumn.eq(7).text())
-                    }
-                  ]
-                });
-              }
-              else if (length == 6) {
-                marks.push({
-                  class_number: classnbr,
-                  course_code: htmlColumn.eq(2).text(),
-                  course_title: htmlColumn.eq(3).text(),
-                  course_type: htmlColumn.eq(4).text(),
-                  assessments: []
-                });
+              else {
+                if (length == 10) {
+                  marks.push({
+                    class_number: classnbr,
+                    course_code: htmlColumn.eq(2).text(),
+                    course_title: htmlColumn.eq(3).text(),
+                    course_type: htmlColumn.eq(4).text(),
+                    assessments: [
+                      {
+                        title: "CAT-I",
+                        max_marks: 50,
+                        weightage: 10,
+                        conducted_on: "Check Exam Schedule",
+                        status: htmlColumn.eq(5).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(6).text()),
+                        scored_percentage: Math.round(parseFloat(htmlColumn.eq(6).text()) / 50 * 10 * 1e2) / 1e2
+                      },
+                      {
+                        title: "CAT-II",
+                        max_marks: 50,
+                        weightage: 10,
+                        conducted_on: "Check Exam Schedule",
+                        status: htmlColumn.eq(7).text(),
+                        scored_marks: parseFloat(htmlColumn.eq(8).text()),
+                        scored_percentage: Math.round(parseFloat(htmlColumn.eq(8).text()) / 50 * 10 * 1e2) / 1e2
+                      },
+                      {
+                        title: "Digital Assignment",
+                        max_marks: 30,
+                        weightage: 30,
+                        conducted_on: "Tentative, set by faculty",
+                        status: "",
+                        scored_marks: parseFloat(htmlColumn.eq(9).text()),
+                        scored_percentage: parseFloat(htmlColumn.eq(9).text())
+                      }
+                    ]
+                  });
+                }
+                else if (length == 6) {
+                  marks.push({
+                    class_number: classnbr,
+                    course_code: htmlColumn.eq(2).text(),
+                    course_title: htmlColumn.eq(3).text(),
+                    course_type: htmlColumn.eq(4).text(),
+                    assessments: []
+                  });
+                }
               }
             }
           };
