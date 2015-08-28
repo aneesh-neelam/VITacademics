@@ -180,11 +180,13 @@ exports.scrapeTimetable = function (app, data, callback) {
                   faculty = htmlColumn.eq(7).text();
 
                   ltpc = ltpjc.slice(0, 3) + ltpjc.slice(4);
+                  if (slot === 'NIL') slot = null;
+                  if (venue === 'NIL') venue = null;
                 }
                 else if (columns === 12) {
                   courseCode = htmlColumn.eq(1).text();
                   courseTitle = htmlColumn.eq(2).text();
-                  classNumber = htmlColumn.eq(3).text();
+                  classNumber = parseInt(htmlColumn.eq(3).text());
                   courseType = htmlColumn.eq(4).text();
                   ltpjc = htmlColumn.eq(5).text().replace(/[^a-zA-Z0-9]/g, '');
                   courseMode = htmlColumn.eq(6).text();

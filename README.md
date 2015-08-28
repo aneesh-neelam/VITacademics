@@ -1,6 +1,8 @@
 VITacademics
 ============
 
+[![Join the chat at https://gitter.im/aneesh-neelam/VITacademics](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aneesh-neelam/VITacademics?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Dependency Status](https://david-dm.org/aneesh-neelam/VITacademics.svg)](https://david-dm.org/aneesh-neelam/VITacademics)
 [![devDependency Status](https://david-dm.org/aneesh-neelam/VITacademics/dev-status.svg)](https://david-dm.org/aneesh-neelam/VITacademics#info=devDependencies)
 

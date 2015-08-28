@@ -53,7 +53,7 @@ exports.get = function (app, data, callback) {
       messageCollection.find({}, {limit: 10, sort: [['_id', 'desc']]}).toArray(asyncCallback);
     },
     contributors: function (asyncCallback) {
-      contributorCollection.find().toArray(asyncCallback);
+      contributorCollection.find({}, {sort: [['_id', 'asc']]}).toArray(asyncCallback);
     }
   };
   const onFetch = function (err, results) {
