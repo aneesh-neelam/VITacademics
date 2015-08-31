@@ -32,6 +32,7 @@ const friendsGenerate = require(path.join(__dirname, '..', 'api', 'friends', 'ge
 const friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share'));
 const facultyAdvisor = require(path.join(__dirname, '..', 'api', 'scraper', 'advisor'));
 const registerGCM = require(path.join(__dirname, '..', 'api', 'register'));
+const spotlight = require(path.join(__dirname, '..', 'api', 'scraper', 'spotlight'));
 
 const router = express.Router();
 
@@ -178,6 +179,18 @@ router.post('/register', function (req, res) {
     res.json(response);
   };
   registerGCM.register(app, data, onRegister);
+});
+
+router.get('/spotlight', function (req, res) {
+  const data = {};
+  const app = {
+    db: req.dbs[5],
+    queue: req.queue
+  };
+  const onGet = function (err, response) {
+    res.json(response);
+  };
+  spotlight.get(app, data, onGet);
 });
 
 module.exports = router;
