@@ -50,6 +50,7 @@ exports.get = function (app, data, callback) {
       const keys = {
         reg_no: 1,
         dob: 1,
+        name: 1,
         mobile: 1,
         campus: 1,
         semester: 1,

@@ -67,6 +67,7 @@ exports.get = function (app, data, callback) {
           let text = htmlTable('td font').eq(0).text();
           text = text.split(' - ')[0].replace(/[^a-zA-Z0-9]/g, '');
           if (text === data.reg_no) {
+            data.name = htmlTable('td font').eq(0).text().split(' - ')[1];
             const validity = 3; // In Minutes
             const doc = {
               reg_no: data.reg_no,
@@ -74,6 +75,7 @@ exports.get = function (app, data, callback) {
               mobile: data.mobile,
               cookie: cookieSerial
             };
+            console.log(doc);
             cache.put(data.reg_no, doc, validity * 60 * 1000);
             const onUpdate = function (err) {
               if (err) {
