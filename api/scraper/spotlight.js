@@ -65,30 +65,37 @@ exports.get = function (app, data, callback) {
       else {
         let details = [];
         try {
-          let scraper = cheerio.load(response.body);
-          scraper = cheerio.load(scraper('table').eq(0).html());
-          //todo - scrape data, format properly, change method of aggregation
-          const onEach = function (i, elem) {
-            const htmlRow = cheerio.load(scraper(this).html());
-            const htmlColumn = htmlRow('td');
-            if (uri.indexOf('01') !== -1) {
-              if (i > 0) {
-                details.push(htmlColumn.text());
+          try {
+            let scraper = cheerio.load(response.body);
+            scraper = cheerio.load(scraper('table').eq(0).html());
+            //todo - scrape data, format properly, change method of aggregation
+            const onEach = function (i, elem) {
+              const htmlRow = cheerio.load(scraper(this).html());
+              const htmlColumn = cheerio.load(htmlRow('td').html());
+              if (htmlColumn('a').eq(0).html() !== null) {
+                details.push({
+                  text: htmlColumn('a font').text(),
+                  url: htmlColumn('a').eq(0).attr('href')
+                });
               }
-            }
-            else if (uri.indexOf('02') !== -1) {
-                details.push(htmlColumn.text());
-            }
-            else {
-                details.push(htmlColumn.text());
-            }
-          };
-          scraper('tr').each(onEach);
+              else if (htmlColumn('p').eq(0).html() !== null) {
+                details.push({
+                  text: htmlRow('td').text(),
+                  url: ''
+                });
+              }
+              else {
+              }
+            };
+            scraper('tr').each(onEach);
+          }
+          catch (ex) {
+            details = [];
+          }
           data.status = status.success;
         }
         catch (ex) {
           details = [];
-          //todo - fix error status
           data.status = status.dataParsing;
         }
         asyncCallback(null, details);
