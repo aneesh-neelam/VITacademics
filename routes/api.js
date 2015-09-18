@@ -182,7 +182,9 @@ router.post('/register', function (req, res) {
 });
 
 router.get('/spotlight', function (req, res) {
-  const data = {};
+  const data = {
+    campus: req.originalUrl.split('/')[3].toLowerCase()
+  };
   const app = {
     db: req.dbs[5],
     queue: req.queue

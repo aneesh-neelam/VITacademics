@@ -67,6 +67,7 @@ exports.get = function (app, data, callback) {
         try {
           let scraper = cheerio.load(response.body);
           scraper = cheerio.load(scraper('table').eq(0).html());
+          //todo - scrape data, format properly, change method of aggregation
           const onEach = function (i, elem) {
             const htmlRow = cheerio.load(scraper(this).html());
             const htmlColumn = htmlRow('td');
@@ -76,20 +77,18 @@ exports.get = function (app, data, callback) {
               }
             }
             else if (uri.indexOf('02') !== -1) {
-              if (i % 2 === 0) {
                 details.push(htmlColumn.text());
-              }
             }
             else {
-              if (i % 2 === 0) {
                 details.push(htmlColumn.text());
-              }
             }
           };
           scraper('tr').each(onEach);
+          data.status = status.success;
         }
         catch (ex) {
           details = [];
+          //todo - fix error status
           data.status = status.dataParsing;
         }
         asyncCallback(null, details);
@@ -102,7 +101,6 @@ exports.get = function (app, data, callback) {
     data.spotlight.academics = results[0];
     data.spotlight.coe = results[1];
     data.spotlight.research = results[2];
-    data.status = status.success;
     callback(null, data);
   };
   async.map(spotlightUris, forEach, doneScraping);
