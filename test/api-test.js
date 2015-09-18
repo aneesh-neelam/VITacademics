@@ -183,6 +183,25 @@ describe('Waiting for Express.js Configuration to complete', function () {
         done();
       });
   });
-
+  it('Checking Vellore Spotlight Scraper', function(done) {
+    api.get('/api/v2/vellore/spotlight')
+      .expect(200)
+      .end(function (err, res) {
+        should.not.exist(err);
+        res.body.should.have.property('spotlight');
+        res.body.status.should.deep.equal(status.success);
+        done();
+      });
+  });
+  it('Checking Chennai Spotlight Scraper', function(done) {
+    api.get('/api/v2/chennai/spotlight')
+      .expect(200)
+      .end(function (err, res) {
+        should.not.exist(err);
+        res.body.should.have.property('spotlight');
+        res.body.status.should.deep.equal(status.success);
+        done();
+      });
+  });
   users.forEach(onEach);
 });

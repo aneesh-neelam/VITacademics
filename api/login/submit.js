@@ -75,7 +75,6 @@ exports.get = function (app, data, callback) {
               mobile: data.mobile,
               cookie: cookieSerial
             };
-            console.log(doc);
             cache.put(data.reg_no, doc, validity * 60 * 1000);
             const onUpdate = function (err) {
               if (err) {
