@@ -168,7 +168,7 @@ const onEach = function (user, i, arr) {
 
 describe('Waiting for Express.js Configuration to complete', function () {
   before(function (done) {
-    setTimeout(done, 10000);
+    setTimeout(done, 5000);
   });
 
   it('Checking if System Endpoint is successful', function (done) {
@@ -204,12 +204,6 @@ describe('Waiting for Express.js Configuration to complete', function () {
         res.body.status.should.deep.equal(status.success);
         done();
       });
-  });
-)};
-
-  describe('Waiting for Express.js Configuration to complete', function () {
-  before(function (done) {
-    setTimeout(done, 5000);
   });
   users.forEach(onEach);
 });
