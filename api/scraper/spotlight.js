@@ -48,7 +48,7 @@ exports.get = function (app, data, callback) {
       'https://academics.vit.ac.in/include_spotlight_part03.asp'
     ];
   }
-  else {
+  else if (data.campus === 'chennai') {
     spotlightUris = [
       'http://27.251.102.132/include_spotlight_part01.asp',
       'http://27.251.102.132/include_spotlight_part02.asp',
@@ -83,8 +83,6 @@ exports.get = function (app, data, callback) {
                   text: htmlRow('td').text(),
                   url: ''
                 });
-              }
-              else {
               }
             };
             scraper('tr').each(onEach);
