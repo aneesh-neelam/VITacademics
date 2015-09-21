@@ -205,5 +205,10 @@ describe('Waiting for Express.js Configuration to complete', function () {
         done();
       });
   });
+
+  describe('Waiting for Express.js Configuration to complete', function () {
+  before(function (done) {
+    setTimeout(done, 5000);
+  });
   users.forEach(onEach);
 });
