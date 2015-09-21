@@ -35,7 +35,7 @@ router.get('/', function (req, res) {
     const args = req.query['txtweb-message'].toUpperCase().split(' ');
     const app = {
       dbs: req.dbs,
-      queue: req.queue
+      rabbit: req.rabbit
     };
     const data = {
       args: args,

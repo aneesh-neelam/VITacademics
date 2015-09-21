@@ -46,7 +46,7 @@ router.post('/login', function (req, res) {
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
     db: req.dbs[year],
-    queue: req.queue
+    rabbit: req.rabbit
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -64,7 +64,7 @@ router.post('/refresh', function (req, res) {
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
     db: req.dbs[year],
-    queue: req.queue
+    rabbit: req.rabbit
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -82,7 +82,7 @@ router.post('/grades', function (req, res) {
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
     db: req.dbs[year],
-    queue: req.queue
+    rabbit: req.rabbit
   };
   const onGet = function (err, response) {
     res.send(response);
@@ -100,7 +100,7 @@ router.post('/token', function (req, res) {
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
     db: req.dbs[year],
-    queue: req.queue
+    rabbit: req.rabbit
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -135,7 +135,7 @@ router.post('/share', function (req, res) {
   };
   const app = {
     db: req.dbs[year],
-    queue: req.queue
+    rabbit: req.rabbit
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -153,7 +153,7 @@ router.post('/advisor', function (req, res) {
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
     db: req.dbs[year],
-    queue: req.queue
+    rabbit: req.rabbit
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -173,7 +173,7 @@ router.post('/register', function (req, res) {
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
     db: req.dbs[year],
-    queue: req.queue
+    rabbit: req.rabbit
   };
   const onRegister = function (err, response) {
     res.json(response);
@@ -187,7 +187,7 @@ router.get('/spotlight', function (req, res) {
   };
   const app = {
     db: req.dbs[5],
-    queue: req.queue
+    rabbit: req.rabbit
   };
   const onGet = function (err, response) {
     res.json(response);

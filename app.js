@@ -137,30 +137,18 @@ async.waterfall([
   },
   function (callback) {
     // RabbitMQ
-    const queue = jackrabbit(config.amqp_Uri);
+    const rabbit = jackrabbit(config.amqp_Uri);
 
-    queue.queues = {
+    rabbit.queues = {
       main: 'Main',
       mobile: 'Mobile',
       share: 'Share'
     };
 
     app.use(function (req, res, next) {
-      req.queue = queue;
+      req.rabbit = rabbit.default();
       next();
     });
-
-    queue.on('connected', function () {
-      const forEachQueue = function (elt, asyncCallback) {
-        queue.create(elt, {prefetch: 0}, asyncCallback);
-      };
-      const allQueues = function (err, results) {
-        callback(err);
-      };
-      async.map(underscore.values(queue.queues), forEachQueue, allQueues);
-    });
-
-
   },
   function (callback) {
     // Routes

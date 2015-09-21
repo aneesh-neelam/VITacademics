@@ -31,7 +31,8 @@ const handler = function (app) {
     console.log(JSON.stringify(job));
     ack();
   };
-  app.queue.handle(app.queue.queues.main, onJob);
+  app.rabbit.queue(app.rabbit.queues.main)
+    .consume(onJob, noAck: false);
 };
 
 module.exports = handler;
