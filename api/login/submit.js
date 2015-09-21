@@ -64,10 +64,10 @@ exports.get = function (app, data, callback) {
         try {
           const scraper = cheerio.load(response.body);
           const htmlTable = cheerio.load(scraper('table').eq(1).html());
-          let text = htmlTable('td font').eq(0).text();
-          text = text.split(' - ')[0].replace(/[^a-zA-Z0-9]/g, '');
-          if (text === data.reg_no) {
-            data.name = htmlTable('td font').eq(0).text().split(' - ')[1];
+          const texts = htmlTable('td font').eq(0).text().split(' - ');
+          const reg = texts[0].replace(/[^a-zA-Z0-9]/g, '');
+          if (reg === data.reg_no) {
+            data.name = texts[1].replace(/[^a-zA-Z0-9]/g, '');
             const validity = 3; // In Minutes
             const doc = {
               reg_no: data.reg_no,
@@ -93,7 +93,7 @@ exports.get = function (app, data, callback) {
             const collection = app.db.collection('student');
             collection.findAndModify({reg_no: data.reg_no}, [
               ['reg_no', 'asc']
-            ], {$set: {dob: data.dob, mobile: data.mobile, campus: data.campus}}, {
+            ], {$set: {name: data.name, dob: data.dob, mobile: data.mobile, campus: data.campus}}, {
               safe: true,
               new: true,
               upsert: true

@@ -1,2 +1,2 @@
-web: iojs bin/www
-worker: iojs bin/worker
+web: node bin/www
+worker: node bin/worker

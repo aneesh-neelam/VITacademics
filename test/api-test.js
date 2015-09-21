@@ -1,4 +1,4 @@
-#!/usr/bin/env iojs
+#!/usr/bin/env node
 
 /*
  *  VITacademics
@@ -65,7 +65,9 @@ const onEach = function (user, i, arr) {
           res.body.should.have.property('semester');
           res.body.should.have.property('courses');
           res.body.should.have.property('cached');
-          res.body.cached.should.equal(false);
+          if (res.body.cached === true) {
+            res.body.should.have.property('name')
+          }
           res.body.should.have.property('refreshed');
           res.body.should.have.property('withdrawn_courses');
           res.body.status.should.deep.equal(status.success);
