@@ -65,7 +65,7 @@ async.waterfall([
   function (callback) {
     // Express Logger
     app.use(logger(config.expressLogLevel));
-
+    
     app.set('title', 'VITacademics');
 
     // Static and Favicon
@@ -149,6 +149,8 @@ async.waterfall([
       req.rabbit = rabbit.default();
       next();
     });
+
+    callback(null);
   },
   function (callback) {
     // Routes
