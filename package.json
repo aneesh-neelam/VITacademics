@@ -1,6 +1,6 @@
 {
   "name": "vitacademics",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "description": "VITacademics API Server and Web App",
   "homepage": "https://vitacademics-rel.herokuapp.com/",
   "bugs": {
@@ -81,11 +81,11 @@
     }
   ],
   "engines": {
-    "node": "4.1.x"
+    "node": "stable"
   },
   "devDependencies": {
-    "chai": "3.2.0",
-    "mocha": "2.3.2",
-    "supertest": "1.1.0"
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3",
+    "supertest": "^1.1.0"
   }
 }
