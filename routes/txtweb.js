@@ -34,8 +34,7 @@ router.get('/', function (req, res) {
   if (req.query['txtweb-message'] && req.query['txtweb-mobile']) {
     const args = req.query['txtweb-message'].toUpperCase().split(' ');
     const app = {
-      dbs: req.dbs,
-      rabbit: req.rabbit
+      dbs: req.dbs
     };
     const data = {
       args: args,

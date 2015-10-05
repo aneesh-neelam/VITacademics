@@ -68,7 +68,7 @@ exports.get = function (app, data, callback) {
         delete doc._id;
         doc.courses.forEach(forEachCourse);
         doc.status = status.success;
-        app.rabbit.publish({receiver: data.receiver, owner: doc.reg_no}, {name: app.rabbit.queues.share});
+        //app.rabbit.publish({receiver: data.receiver, owner: doc.reg_no}, {name: app.rabbit.queues.share});
         callback(false, doc);
       }
       else {

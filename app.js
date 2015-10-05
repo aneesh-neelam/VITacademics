@@ -28,7 +28,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const favicon = require('serve-favicon');
 const ga = require('node-ga');
-const jackrabbit = require('jackrabbit');
+//const jackrabbit = require('jackrabbit');
 const logger = require('morgan');
 const mongoClient = require('mongodb').MongoClient;
 const path = require('path');
@@ -65,7 +65,7 @@ async.waterfall([
   function (callback) {
     // Express Logger
     app.use(logger(config.expressLogLevel));
-    
+
     app.set('title', 'VITacademics');
 
     // Static and Favicon
@@ -135,7 +135,7 @@ async.waterfall([
 
     async.map(config.mongoDb, forEachMongoDB, allMongoDB);
   },
-  function (callback) {
+  /*function (callback) {
     // RabbitMQ
     const rabbit = jackrabbit(config.amqp_Uri);
 
@@ -151,7 +151,7 @@ async.waterfall([
     });
 
     callback(null);
-  },
+},*/
   function (callback) {
     // Routes
     app.use('/', webRoutes);
