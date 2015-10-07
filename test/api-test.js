@@ -167,7 +167,7 @@ const onEach = function (user, i, arr) {
 
 describe('Waiting for Express.js Configuration to complete', function () {
   before(function (done) {
-    setTimeout(done, 5000);
+    setTimeout(done, 10000);
   });
 
   it('Checking if System Endpoint is successful', function (done) {
