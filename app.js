@@ -130,7 +130,7 @@ async.waterfall([
         next();
       });
 
-      callback(err)
+      callback(err);
     };
 
     async.map(config.mongoDb, forEachMongoDB, allMongoDB);
