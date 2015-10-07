@@ -34,7 +34,6 @@ const users = require(path.join(__dirname, '.', 'credentials')).users;
 const api = supertest(app);
 
 const onEach = function (user, i, arr) {
-
   describe('Testing API-v2 for User: ' + user.describe, function () {
 
     it('Checking if login is successful', function (done) {
