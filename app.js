@@ -28,7 +28,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const favicon = require('serve-favicon');
 const ga = require('node-ga');
-const jackrabbit = require('jackrabbit');
+//const jackrabbit = require('jackrabbit');
 const logger = require('morgan');
 const mongoClient = require('mongodb').MongoClient;
 const path = require('path');
@@ -130,12 +130,12 @@ async.waterfall([
         next();
       });
 
-      callback(err)
+      callback(err);
     };
 
     async.map(config.mongoDb, forEachMongoDB, allMongoDB);
   },
-  function (callback) {
+  /*function (callback) {
     // RabbitMQ
     const rabbit = jackrabbit(config.amqp_Uri);
 
@@ -149,7 +149,9 @@ async.waterfall([
       req.rabbit = rabbit.default();
       next();
     });
-  },
+
+    callback(null);
+},*/
   function (callback) {
     // Routes
     app.use('/', webRoutes);

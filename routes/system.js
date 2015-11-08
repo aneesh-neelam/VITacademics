@@ -29,8 +29,7 @@ const router = express.Router();
 
 router.get('/', function (req, res) {
   const app = {
-    db: req.dbs[5],
-    rabbit: req.rabbit
+    db: req.dbs[5]
   };
   const data = {};
   const onGet = function (err, response) {

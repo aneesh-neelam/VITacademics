@@ -1,6 +1,6 @@
 {
   "name": "vitacademics",
-  "version": "1.4.8",
+  "version": "1.4.10",
   "description": "VITacademics API Server and Web App",
   "homepage": "https://vitacademics-rel.herokuapp.com/",
   "bugs": {
@@ -48,25 +48,25 @@
     }
   ],
   "dependencies": {
-    "async": "1.4.2",
-    "body-parser": "1.14.0",
-    "cheerio": "0.19.0",
+    "async": "^1.4.2",
+    "body-parser": "^1.14.1",
+    "cheerio": "^0.19.0",
     "cookie": "^0.2.2",
-    "cookie-parser": "1.4.0",
+    "cookie-parser": "^1.4.0",
     "ejs": "^2.3.4",
-    "express": "4.13.3",
-    "jackrabbit": "4.0.1",
-    "jade": "1.11.0",
-    "logentries-client": "1.0.1",
+    "express": "^4.13.3",
+    "jackrabbit": "^4.0.2",
+    "jade": "^1.11.0",
+    "logentries-client": "^1.0.1",
     "memory-cache": "^0.1.4",
     "moment": "^2.10.6",
     "moment-timezone": "^0.4.0",
-    "mongodb": "^2.0.43",
-    "morgan": "1.6.1",
-    "newrelic": "1.22.0",
-    "node-ga": "0.1.1",
+    "mongodb": "^2.0.45",
+    "morgan": "^1.6.1",
+    "newrelic": "^1.22.1",
+    "node-ga": "^0.1.1",
     "serve-favicon": "^2.3.0",
-    "underscore": "1.8.3",
+    "underscore": "^1.8.3",
     "unirest": "^0.4.2"
   },
   "repository": {
@@ -81,11 +81,11 @@
     }
   ],
   "engines": {
-    "node": "4.1.x"
+    "node": "stable"
   },
   "devDependencies": {
-    "chai": "3.2.0",
-    "mocha": "2.3.2",
-    "supertest": "1.1.0"
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3",
+    "supertest": "^1.1.0"
   }
 }

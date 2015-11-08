@@ -45,8 +45,7 @@ router.post('/login', function (req, res) {
   };
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.dbs[year]
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -63,8 +62,7 @@ router.post('/refresh', function (req, res) {
   };
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.dbs[year]
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -81,8 +79,7 @@ router.post('/grades', function (req, res) {
   };
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.dbs[year]
   };
   const onGet = function (err, response) {
     res.send(response);
@@ -99,8 +96,7 @@ router.post('/token', function (req, res) {
   };
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.dbs[year]
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -134,8 +130,7 @@ router.post('/share', function (req, res) {
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.dbs[year]
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -152,8 +147,7 @@ router.post('/advisor', function (req, res) {
   };
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.dbs[year]
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -172,8 +166,7 @@ router.post('/register', function (req, res) {
   };
   const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.dbs[year]
   };
   const onRegister = function (err, response) {
     res.json(response);
@@ -186,8 +179,7 @@ router.get('/spotlight', function (req, res) {
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   const app = {
-    db: req.dbs[5],
-    rabbit: req.rabbit
+    db: req.dbs[5]
   };
   const onGet = function (err, response) {
     res.json(response);

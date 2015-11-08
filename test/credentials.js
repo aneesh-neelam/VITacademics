@@ -35,13 +35,6 @@
 
 const users = [
   {
-    describe: 'B.Tech ECE 5th Year - Vellore',
-    reg_no: '11BEC0262',
-    dob: '19091992',
-    mobile: '9910004909',
-    campus: 'vellore'
-  },
-  {
     describe: 'B.Tech BME 3rd Year - Vellore',
     reg_no: '13BME0576',
     dob: '14111994',
