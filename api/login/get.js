@@ -43,7 +43,7 @@ exports.get = function (app, data, callback) {
     captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
   }
   else if (data.campus === 'chennai') {
-    captchaUri = 'http://27.251.102.132/parent/captcha.asp';
+    captchaUri = 'http://academicscc.vit.ac.in/parent/captcha.asp';
   }
   const onRequest = function (response) {
     if (response.error) {

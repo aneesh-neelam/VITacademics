@@ -39,7 +39,7 @@ exports.scrapeTimetable = function (app, data, callback) {
     timetableUri = 'https://academics.vit.ac.in/parent/timetable.asp?sem=' + data.semester;
   }
   else if (data.campus === 'chennai') {
-    timetableUri = 'http://27.251.102.132/parent/timetable.asp?sem=' + data.semester;
+    timetableUri = 'http://academicscc.vit.ac.in/parent/timetable.asp?sem=' + data.semester;
   }
   const CookieJar = unirest.jar();
   const cookieSerial = cache.get(data.reg_no).cookie;

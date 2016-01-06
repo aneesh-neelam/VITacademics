@@ -47,7 +47,7 @@ exports.get = function (app, data, callback) {
       submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
     }
     else if (data.campus === 'chennai') {
-      submitUri = 'http://27.251.102.132/parent/parent_login_submit.asp';
+      submitUri = 'http://academicscc.vit.ac.in/parent/parent_login_submit.asp';
     }
     CookieJar.add(unirest.cookie(cookieSerial), submitUri);
     const onPost = function (response) {

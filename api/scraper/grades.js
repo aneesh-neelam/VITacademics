@@ -90,7 +90,7 @@ exports.get = function (app, data, callback) {
           gradesUri = 'https://academics.vit.ac.in/parent/student_history.asp';
         }
         else if (data.campus === 'chennai') {
-          gradesUri = 'http://27.251.102.132/parent/student_history.asp';
+          gradesUri = 'http://academicscc.vit.ac.in/parent/student_history.asp';
         }
 
         const CookieJar = unirest.jar();
