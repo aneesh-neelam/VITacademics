@@ -32,7 +32,11 @@ const handler = function (app) {
     ack();
   };
   pp.rabbit.queue(app.rabbit.queues.mobile)
-    .consume(onJob, noAck: false);
+    .consume(onJob, noAck
+  :
+  false
+  )
+  ;
 };
 
 module.exports = handler;
