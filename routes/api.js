@@ -102,7 +102,7 @@ router.post('/token', function (req, res) {
 router.post('/share', function (req, res) {
   let token;
   let reg_no;
-  let receiver;  
+  let receiver;
   if (req.body.token) {
     token = req.body.token.toUpperCase();
     reg_no = cache.get(token);
