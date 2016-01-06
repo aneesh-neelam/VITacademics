@@ -34,7 +34,6 @@ const users = require(path.join(__dirname, '.', 'credentials')).users;
 const api = supertest(app);
 
 const onEach = function (user, i, arr) {
-
   describe('Testing API-v2 for User: ' + user.describe, function () {
 
     it('Checking if login is successful', function (done) {
@@ -168,7 +167,7 @@ const onEach = function (user, i, arr) {
 
 describe('Waiting for Express.js Configuration to complete', function () {
   before(function (done) {
-    setTimeout(done, 5000);
+    setTimeout(done, 20000);
   });
 
   it('Checking if System Endpoint is successful', function (done) {

@@ -36,7 +36,7 @@ exports.scrapeMarks = function (app, data, callback) {
     marksUri = 'https://academics.vit.ac.in/parent/marks.asp?sem=' + data.semester;
   }
   else if (data.campus === 'chennai') {
-    marksUri = 'http://27.251.102.132/parent/marks.asp?sem=' + data.semester;
+    marksUri = 'http://academicscc.vit.ac.in/parent/marks.asp?sem=' + data.semester;
   }
   const CookieJar = unirest.jar();
   const cookieSerial = cache.get(data.reg_no).cookie;

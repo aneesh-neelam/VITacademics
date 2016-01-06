@@ -24,7 +24,6 @@ const cache = require('memory-cache');
 const express = require('express');
 const path = require('path');
 
-const db = require(path.join(__dirname, '..', 'utilities', 'db'));
 const loginAuto = require(path.join(__dirname, '..', 'api', 'login', 'auto'));
 const dataAggregate = require(path.join(__dirname, '..', 'api', 'scraper', 'aggregate'));
 const dataGrades = require(path.join(__dirname, '..', 'api', 'scraper', 'grades'));
@@ -43,10 +42,8 @@ router.post('/login', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.db
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -61,10 +58,8 @@ router.post('/refresh', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.db
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -79,10 +74,8 @@ router.post('/grades', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.db
   };
   const onGet = function (err, response) {
     res.send(response);
@@ -97,10 +90,8 @@ router.post('/token', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.db
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -111,17 +102,13 @@ router.post('/token', function (req, res) {
 router.post('/share', function (req, res) {
   let token;
   let reg_no;
-  let receiver;
-  let year;
+  let receiver;  
   if (req.body.token) {
     token = req.body.token.toUpperCase();
     reg_no = cache.get(token);
-    if (reg_no) year = db.getFromYear(parseInt(reg_no.slice(0, 2)));
-    else year = 0;
   }
   else if (req.body.regno) {
     reg_no = req.body.regno.toUpperCase();
-    year = db.getFromYear(parseInt(reg_no.slice(0, 2)));
   }
   if (req.body.receiver === 'VITacademics Developer/Tester') receiver = req.body.receiver;
   else receiver = req.body.receiver.toUpperCase();
@@ -134,8 +121,7 @@ router.post('/share', function (req, res) {
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.db
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -150,10 +136,8 @@ router.post('/advisor', function (req, res) {
     mobile: req.body.mobile || null,
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
-  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.db
   };
   const onGet = function (err, response) {
     res.json(response);
@@ -170,10 +154,8 @@ router.post('/register', function (req, res) {
     type: req.body.type.toLowercase(),
     id: req.body.id
   };
-  const year = db.getFromYear(parseInt(data.reg_no.slice(0, 2)));
   const app = {
-    db: req.dbs[year],
-    rabbit: req.rabbit
+    db: req.db
   };
   const onRegister = function (err, response) {
     res.json(response);
@@ -186,8 +168,7 @@ router.get('/spotlight', function (req, res) {
     campus: req.originalUrl.split('/')[3].toLowerCase()
   };
   const app = {
-    db: req.dbs[5],
-    rabbit: req.rabbit
+    db: req.db
   };
   const onGet = function (err, response) {
     res.json(response);

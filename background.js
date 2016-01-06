@@ -27,8 +27,8 @@ const underscore = require('underscore');
 
 const config = require(path.join(__dirname, 'config'));
 
-const handleMain = require(path.join(__dirname, 'handlers', 'main'));
-const handleMobile = require(path.join(__dirname, 'handlers', 'mobile'));
-const handleShare = require(path.join(__dirname, 'handlers', 'share'));
+//const handleMain = require(path.join(__dirname, 'handlers', 'main'));
+//const handleMobile = require(path.join(__dirname, 'handlers', 'mobile'));
+//const handleShare = require(path.join(__dirname, 'handlers', 'share'));
 
 const app = {};

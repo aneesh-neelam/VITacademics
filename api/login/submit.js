@@ -47,7 +47,7 @@ exports.get = function (app, data, callback) {
       submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
     }
     else if (data.campus === 'chennai') {
-      submitUri = 'http://27.251.102.132/parent/parent_login_submit.asp';
+      submitUri = 'http://academicscc.vit.ac.in/parent/parent_login_submit.asp';
     }
     CookieJar.add(unirest.cookie(cookieSerial), submitUri);
     const onPost = function (response) {
@@ -67,7 +67,7 @@ exports.get = function (app, data, callback) {
           const texts = htmlTable('td font').eq(0).text().split(' - ');
           const reg = texts[0].replace(/[^a-zA-Z0-9]/g, '');
           if (reg === data.reg_no) {
-            data.name = texts[1].replace(/[^a-zA-Z0-9]/g, '');
+            data.name = texts[1].trim();
             const validity = 3; // In Minutes
             const doc = {
               reg_no: data.reg_no,

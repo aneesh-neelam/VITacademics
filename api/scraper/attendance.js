@@ -41,8 +41,8 @@ exports.scrapeAttendance = function (app, data, callback) {
     attendanceDetailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
   }
   else if (data.campus === 'chennai') {
-    attendanceUri = 'http://27.251.102.132/parent/attn_report.asp?sem=' + data.semester;
-    attendanceDetailsUri = 'http://27.251.102.132/parent/attn_report_details.asp';
+    attendanceUri = 'http://academicscc.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;
+    attendanceDetailsUri = 'http://academicscc.vit.ac.in/parent/attn_report_details.asp';
   }
   const CookieJar = unirest.jar();
   const cookieSerial = cache.get(data.reg_no).cookie;
