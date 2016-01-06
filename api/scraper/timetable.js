@@ -209,6 +209,9 @@ exports.scrapeTimetable = function (app, data, callback) {
               else if (courseType === 'Embedded Lab') {
                 tmpCode = tmpCode + 'ELA';
               }
+              else if (courseType === 'Theory Only' && courseCode.indexOf('STS') > -1) {
+                tmpCode = tmpCode + 'SS'
+              }
               else if (courseType === 'Theory Only') {
                 tmpCode = tmpCode + 'TH';
               }
@@ -299,7 +302,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                 const text = htmlColumn.eq(elt).text().split(' ');
                 const sub = text[0] + text[2];
                 if (tmp[sub]) {
-                  const slotType = (text[2] === 'TH' || text[2] === 'ETH') ? 'theory' : 'lab';
+                  const slotType = (text[2] === 'TH' || text[2] === 'ETH' || text[2] === 'SS') ? 'theory' : 'lab';
                   const startTime = slotTimings[slotType][elt * jump - diff] ? (slotTimings[slotType][elt * jump - diff].start_time) : (slotTimings['theory'][elt * jump - diff].start_time || slotTimings['lab'][elt * jump - diff].start_time);
                   let endTime;
                   if (day.getCodeFromText(CellOneWords[0]) === 4 && htmlColumn.length === timingsPerDay && elt === 9) {
