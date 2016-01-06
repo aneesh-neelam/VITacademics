@@ -30,7 +30,7 @@ const favicon = require('serve-favicon');
 const ga = require('node-ga');
 //const jackrabbit = require('jackrabbit');
 const logger = require('morgan');
-const mongoClient = require('mongodb').MongoClient;
+const mongodb = require('express-mongo-db');
 const path = require('path');
 const underscore = require('underscore');
 
@@ -104,8 +104,7 @@ async.waterfall([
   },
   function (callback) {
     // MongoDB
-    const forEachMongoDB = function (mongoURI, asyncCallback) {
-      const mongodbOptions = {
+    const mongodbOptions = {
         db: {
           native_parser: true,
           recordQueryStats: true,
@@ -121,19 +120,10 @@ async.waterfall([
           poolSize: 50
         }
       };
-      mongoClient.connect(mongoURI, mongodbOptions, asyncCallback)
-    };
+    app.use(mongodb(config.mongoDb, mongodbOptions));
+    callback(null);
 
-    const allMongoDB = function (err, results) {
-      app.use(function (req, res, next) {
-        req.dbs = results;
-        next();
-      });
 
-      callback(err);
-    };
-
-    async.map(config.mongoDb, forEachMongoDB, allMongoDB);
   },
   /*function (callback) {
     // RabbitMQ

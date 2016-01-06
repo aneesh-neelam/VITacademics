@@ -22,14 +22,7 @@
 
 const config = {
   port: process.env.PORT || 3000,
-  mongoDb: [
-    process.env.MONGODB_URI_0 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI_1 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI_2 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI_3 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI_4 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI || 'mongodb://localhost/VITacademics'
-  ],
+  mongoDb: process.env.MONGODB_URI || 'mongodb://localhost/VITacademics',
   amqp_Uri: process.env.AMQP_URI || 'amqp://localhost',
   logentriesEnabled: process.env.LOGENTRIES_TOKEN ? true : false,
   logentriesToken: process.env.LOGENTRIES_TOKEN || 'Unavailable',
