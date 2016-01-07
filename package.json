@@ -11,7 +11,7 @@
   "main": "bin/www",
   "scripts": {
     "start": "node bin/www",
-    "test": "mocha test"
+    "test": "mocha test --timeout 30000"
   },
   "contributors": [
     {
