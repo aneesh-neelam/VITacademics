@@ -1,8 +1,8 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014-2015  Aneesh Neelam <neelam.aneesh@gmail.com>
- *  Copyright (C) 2014-2015  Karthik Balakrishnan <karthikb351@gmail.com>
- *  Copyright (C) 2014-2015  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
+ *  Copyright (C) 2015-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015-2016  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2015-2016  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
  *
  *  This file is part of VITacademics.
  *
@@ -30,7 +30,7 @@ const favicon = require('serve-favicon');
 const ga = require('node-ga');
 //const jackrabbit = require('jackrabbit');
 const logger = require('morgan');
-const mongoClient = require('mongodb').MongoClient;
+const mongodb = require('express-mongo-db');
 const path = require('path');
 const underscore = require('underscore');
 
@@ -60,159 +60,124 @@ const webRoutes = require(path.join(__dirname, 'routes', 'web'));
 const apiRoutesLegacy = require(path.join(__dirname, 'routes', 'api-legacy'));
 
 const app = express();
+// Express Logger
+app.use(logger(config.expressLogLevel));
 
-async.waterfall([
-  function (callback) {
-    // Express Logger
-    app.use(logger(config.expressLogLevel));
+app.set('title', 'VITacademics');
 
-    app.set('title', 'VITacademics');
+// Static and Favicon
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-    // Static and Favicon
-    app.use(express.static(path.join(__dirname, 'public')));
-    app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+// Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
-    // Body Parser
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}));
+// Cookie Parser
+app.use(cookieParser(config.expressSecretKey, {signed: true}));
 
-    // Cookie Parser
-    app.use(cookieParser(config.expressSecretKey, {signed: true}));
+// View Engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
-    // View Engine
-    app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'jade');
+// New Relic in Template
+if (config.newRelicEnabled) {
+  app.locals.newrelic = newrelic;
+}
 
-    // New Relic in Template
-    if (config.newRelicEnabled) {
-      app.locals.newrelic = newrelic;
-    }
+// Google Analytics
+app.use(ga(config.googleAnalyticsToken, {
+  safe: true
+}));
 
-    // Google Analytics
-    app.use(ga(config.googleAnalyticsToken, {
-      safe: true
-    }));
-
-    // Allow Cross-Origin Resource Sharing
-    app.use(function (req, res, next) {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      next();
-    });
-
-    callback(null);
+// Allow Cross-Origin Resource Sharing
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+// MongoDB
+const mongodbOptions = {
+  db: {
+    native_parser: true,
+    recordQueryStats: true,
+    retryMiliSeconds: 500,
+    numberOfRetries: 10
   },
-  function (callback) {
-    // MongoDB
-    const forEachMongoDB = function (mongoURI, asyncCallback) {
-      const mongodbOptions = {
-        db: {
-          native_parser: true,
-          recordQueryStats: true,
-          retryMiliSeconds: 500,
-          numberOfRetries: 10
-        },
-        server: {
-          socketOptions: {
-            keepAlive: 1,
-            connectTimeoutMS: 10000
-          },
-          auto_reconnect: true,
-          poolSize: 50
-        }
-      };
-      mongoClient.connect(mongoURI, mongodbOptions, asyncCallback)
-    };
+  server: {
+    socketOptions: {
+      keepAlive: 1,
+      connectTimeoutMS: 10000
+    },
+    auto_reconnect: true,
+    poolSize: 50
+  }
+};
+app.use(mongodb(config.mongoDb, mongodbOptions));
+// RabbitMQ
+/*
+ const rabbit = jackrabbit(config.amqp_Uri);
 
-    const allMongoDB = function (err, results) {
-      app.use(function (req, res, next) {
-        req.dbs = results;
-        next();
-      });
+ rabbit.queues = {
+ main: 'Main',
+ mobile: 'Mobile',
+ share: 'Share'
+ };
 
-      callback(err);
-    };
+ app.use(function (req, res, next) {
+ req.rabbit = rabbit.default();
+ next();
+ });
+ */
+// Routes
+app.use('/', webRoutes);
+app.use('/api/txtweb', txtwebRoutes);
+app.use('/api/v2/system', apiSystemRoutes);
+app.use('/api/v2/vellore', apiRoutes);
+app.use('/api/v2/chennai', apiRoutes);
 
-    async.map(config.mongoDb, forEachMongoDB, allMongoDB);
-  },
-  /*function (callback) {
-    // RabbitMQ
-    const rabbit = jackrabbit(config.amqp_Uri);
+/*
+ *  API Legacy is now deprecated
+ */
+app.use('/api/vellore', apiRoutesLegacy);
+app.use('/api/chennai', apiRoutesLegacy);
 
-    rabbit.queues = {
-      main: 'Main',
-      mobile: 'Mobile',
-      share: 'Share'
-    };
+// Catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-    app.use(function (req, res, next) {
-      req.rabbit = rabbit.default();
-      next();
-    });
-
-    callback(null);
-},*/
-  function (callback) {
-    // Routes
-    app.use('/', webRoutes);
-    app.use('/api/txtweb', txtwebRoutes);
-    app.use('/api/v2/system', apiSystemRoutes);
-    app.use('/api/v2/vellore', apiRoutes);
-    app.use('/api/v2/chennai', apiRoutes);
-
-    /*
-     *  API Legacy is now deprecated
-     */
-    app.use('/api/vellore', apiRoutesLegacy);
-    app.use('/api/chennai', apiRoutesLegacy);
-
-    // Catch 404 and forward to error handler
-    app.use(function (req, res, next) {
-      const err = new Error('Not Found');
-      err.status = 404;
-      next(err);
-    });
-
-    // Error handlers
-    // Development error handler, will print stacktrace
-    if (app.get('env') === 'development') {
-      app.use(function (err, req, res, next) {
-        if (config.logentriesEnabled) {
-          logentries.log('err', {Error: err, Message: err.message});
-        }
-        res.status(err.status || 500);
-        res.render('error', {
-          message: err.message,
-          status: err.status,
-          stack: err.stack,
-          googleAnalyticsToken: config.googleAnalyticsToken
-        });
-      });
+// Error handlers
+// Development error handler, will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function (err, req, res, next) {
+    if (config.logentriesEnabled) {
+      logentries.log('err', {Error: err, Message: err.message});
     }
-
-    // Production error handler, no stacktrace leaked to user
-    app.use(function (err, req, res, next) {
-      if (config.logentriesEnabled) {
-        logentries.log('err', {Error: err, Message: err.message});
-      }
-      res.status(err.status || 500);
-      res.render('error', {
-        message: err.message,
-        status: err.status,
-        stack: '',
-        googleAnalyticsToken: config.googleAnalyticsToken
-      });
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      status: err.status,
+      stack: err.stack,
+      googleAnalyticsToken: config.googleAnalyticsToken
     });
+  });
+}
 
-    callback(null);
+// Production error handler, no stacktrace leaked to user
+app.use(function (err, req, res, next) {
+  if (config.logentriesEnabled) {
+    logentries.log('err', {Error: err, Message: err.message});
   }
-], function (err) {
-  if (err) {
-    throw err;
-  }
-  else {
-    console.log('Express.js Configuration Successful');
-  }
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    status: err.status,
+    stack: '',
+    googleAnalyticsToken: config.googleAnalyticsToken
+  });
 });
 
 module.exports = app;

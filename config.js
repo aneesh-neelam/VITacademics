@@ -22,14 +22,7 @@
 
 const config = {
   port: process.env.PORT || 3000,
-  mongoDb: [
-    process.env.MONGODB_URI_0 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI_1 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI_2 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI_3 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI_4 || 'mongodb://localhost/VITacademics',
-    process.env.MONGODB_URI || 'mongodb://localhost/VITacademics'
-  ],
+  mongoDb: process.env.MONGODB_URI || 'mongodb://localhost/VITacademics',
   amqp_Uri: process.env.AMQP_URI || 'amqp://localhost',
   logentriesEnabled: process.env.LOGENTRIES_TOKEN ? true : false,
   logentriesToken: process.env.LOGENTRIES_TOKEN || 'Unavailable',
@@ -40,8 +33,8 @@ const config = {
   expressSecretKey: process.env.EXPRESS_SECRET_KEY || 'randomsecretstring',
   googleAnalyticsToken: process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2',
   txtWebAppKey: process.env.TXTWEB_APP_KEY || 'randomkey',
-  chennaiSemesterCode: process.env.CHENNAI_SEMESTER_CODE || 'FS15',
-  velloreSemesterCode: process.env.VELLORE_SEMESTER_CODE || 'FS'
+  chennaiSemesterCode: process.env.CHENNAI_SEMESTER_CODE || 'WS15',
+  velloreSemesterCode: process.env.VELLORE_SEMESTER_CODE || 'WS'
 };
 
 module.exports = config;

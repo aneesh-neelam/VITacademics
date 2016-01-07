@@ -77,7 +77,7 @@ exports.get = function (app, data, callback) {
         advisorUri = 'https://academics.vit.ac.in/parent/fa_view.asp';
       }
       else {
-        advisorUri = 'http://27.251.102.132/parent/proctor_view.asp';
+        advisorUri = 'http://academicscc.vit.ac.in/parent/proctor_view.asp';
       }
       const CookieJar = unirest.jar();
       const onPost = function (response) {

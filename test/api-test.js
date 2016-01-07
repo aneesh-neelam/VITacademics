@@ -165,11 +165,7 @@ const onEach = function (user, i, arr) {
   });
 };
 
-describe('Waiting for Express.js Configuration to complete', function () {
-  before(function (done) {
-    setTimeout(done, 20000);
-  });
-
+describe('Express.js Configuration Complete', function () {
   it('Checking if System Endpoint is successful', function (done) {
     api.get('/api/v2/system')
       .expect(200)
@@ -184,7 +180,7 @@ describe('Waiting for Express.js Configuration to complete', function () {
         done();
       });
   });
-  it('Checking Vellore Spotlight Scraper', function(done) {
+  it('Checking Vellore Spotlight Scraper', function (done) {
     api.get('/api/v2/vellore/spotlight')
       .expect(200)
       .end(function (err, res) {
@@ -194,7 +190,7 @@ describe('Waiting for Express.js Configuration to complete', function () {
         done();
       });
   });
-  it('Checking Chennai Spotlight Scraper', function(done) {
+  it('Checking Chennai Spotlight Scraper', function (done) {
     api.get('/api/v2/chennai/spotlight')
       .expect(200)
       .end(function (err, res) {

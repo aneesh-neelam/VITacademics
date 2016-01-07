@@ -1,6 +1,6 @@
 {
   "name": "vitacademics",
-  "version": "1.4.10",
+  "version": "1.4.20",
   "description": "VITacademics API Server and Web App",
   "homepage": "https://vitacademics-rel.herokuapp.com/",
   "bugs": {
@@ -55,12 +55,13 @@
     "cookie-parser": "^1.4.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
+    "express-mongo-db": "^2.0.3",
     "jackrabbit": "^4.0.2",
     "jade": "^1.11.0",
     "logentries-client": "^1.0.1",
     "memory-cache": "^0.1.4",
     "moment": "^2.10.6",
-    "moment-timezone": "^0.4.0",
+    "moment-timezone": "^0.5.0",
     "mongodb": "^2.0.45",
     "morgan": "^1.6.1",
     "newrelic": "^1.22.1",
