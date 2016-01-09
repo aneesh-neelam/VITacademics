@@ -1,6 +1,7 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014-2015  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015-2016  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This file is part of VITacademics.
  *
@@ -32,6 +33,7 @@ const friendsShare = require(path.join(__dirname, '..', 'api', 'friends', 'share
 const facultyAdvisor = require(path.join(__dirname, '..', 'api', 'scraper', 'advisor'));
 const registerGCM = require(path.join(__dirname, '..', 'api', 'register'));
 const spotlight = require(path.join(__dirname, '..', 'api', 'scraper', 'spotlight'));
+const facultyInfo = require(path.join(__dirname, '..', 'api', 'faculty-info'));
 
 const router = express.Router();
 
@@ -174,6 +176,19 @@ router.get('/spotlight', function (req, res) {
     res.json(response);
   };
   spotlight.get(app, data, onGet);
+});
+
+router.post('/faculty', function (req, res) {
+  const data = {
+    name: req.body.name.toUpperCase()
+  };
+  const app = {
+    db: req.db
+  };
+  const onGet = function (err, response) {
+    res.json(response);
+  };
+  facultyInfo.get(app, data, onGet);
 });
 
 module.exports = router;
