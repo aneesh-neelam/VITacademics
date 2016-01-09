@@ -63,5 +63,5 @@ exports.get = function (app, data, callback) {
       callback(true, data);
     }
   };
-  collection.find({name: data.name}, keys).toArray(onSearch);
+  collection.findOne({name: data.name}, keys, onSearch);
 };
