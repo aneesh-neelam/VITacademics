@@ -310,7 +310,7 @@ exports.scrapeTimetable = function (app, data, callback) {
                   }
                   else {
                     endTime = slotTimings[slotType][elt * jump] ? slotTimings[slotType][elt * jump].end_time : (slotTimings['theory'][elt * jump].end_time || slotTimings['lab'][elt * jump].end_time);
-                  }
+                  }                  
                   if (last) {
                     if (last.class_number === tmp[sub] && last.day === day.getCodeFromText(CellOneWords[0]) && slotType === 'lab') {
                       last.end_time = endTime;

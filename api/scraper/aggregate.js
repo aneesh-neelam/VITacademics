@@ -209,6 +209,9 @@ exports.get = function (app, data, callback) {
                 const class_count = element.timings.length || 1;
                 const total_classes = parseInt(element.ltpjc.charAt(0)) + parseInt(element.ltpjc.charAt(1)) + parseInt(element.ltpjc.charAt(2));
                 element.class_length = total_classes / class_count;
+                if (element.course_code.indexOf('STS') > -1) {
+                  element.class_length = 1;
+                }
                 asyncCallback(null, element);
               };
               const doneCollate = function (err, newData) {
