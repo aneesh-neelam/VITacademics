@@ -1,8 +1,8 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014-2015  Aneesh Neelam <neelam.aneesh@gmail.com>
- *  Copyright (C) 2014-2015  Saurabh Joshi <battlex94@gmail.com>
- *  Copyright (C) 2014-2015  Ayush Agarwal <agarwalayush161@gmail.com>
+ *  Copyright (C) 2014-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014-2016  Saurabh Joshi <battlex94@gmail.com>
+ *  Copyright (C) 2014-2016  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This file is part of VITacademics.
  *
@@ -314,6 +314,10 @@ exports.scrapeTimetable = function (app, data, callback) {
                   if (last) {
                     if (last.class_number === tmp[sub] && last.day === day.getCodeFromText(CellOneWords[0]) && slotType === 'lab') {
                       last.end_time = endTime;
+                      if (elt === htmlColumn.length - 1) {
+                        timetable.timings.push(last);
+                        last = null;
+                      }
                     }
                     else {
                       timetable.timings.push(last);
@@ -333,7 +337,6 @@ exports.scrapeTimetable = function (app, data, callback) {
                       end_time: endTime
                     };
                   }
-
                 }
                 else {
                   if (last) {
