@@ -1,6 +1,7 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2015-2016  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This file is part of VITacademics.
  *
@@ -20,11 +21,10 @@
 
 'use strict';
 
-const cache = require('memory-cache');
 const path = require('path');
-const unirest = require('unirest');
 
-const config = require(path.join(__dirname, '..', '..', 'config'));
+const status = require(path.join(__dirname, '..', 'status'));
+const config = require(path.join(__dirname, '..', 'config'));
 
 let logentries;
 if (config.logentriesEnabled) {
@@ -34,40 +34,34 @@ if (config.logentriesEnabled) {
   });
 }
 
-const status = require(path.join(__dirname, '..', '..', 'status'));
-
-
 exports.get = function (app, data, callback) {
-  let captchaUri;
-  if (data.campus === 'vellore') {
-    captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
-  }
-  else if (data.campus === 'chennai') {
-    captchaUri = 'http://academicscc.vit.ac.in/parent/captcha.asp';
-  }
-  const onRequest = function (response) {
-    if (response.error) {
-      data.status = status.vitDown;
+  let collection = app.db.collection('faculty');
+  const keys = {
+    name: 1,
+    room: 1,
+    email: 1,
+    school: 1,
+    open_hours: 1
+  };
+  const onSearch = function (err, doc) {
+    if (!err) {
+      if (doc) {
+        doc.status = status.success;
+      }
+      else {
+        doc.status = status.noData;
+      }
+      delete doc._id;
+      callback(null, doc);
+    }
+    else {
+      data.status = status.mongoDown;
       if (config.logentriesEnabled) {
         logentries.log('crit', data);
       }
       console.log(JSON.stringify(data));
       callback(true, data);
     }
-    else {
-      const validity = 2; // In Minutes
-      const key = Object.keys(response.cookies)[0];
-      const cookieSerial = key + "=" + response.cookies[key];
-      const doc = {
-        reg_no: data.reg_no,
-        cookie: cookieSerial
-      };
-      cache.put(data.reg_no, doc, validity * 60 * 1000);
-      callback(null, response.body);
-    }
   };
-  unirest.get(captchaUri)
-    .encoding(null)
-    .timeout(26000)
-    .end(onRequest);
+  collection.findOne({name: data.name}, keys, onSearch);
 };

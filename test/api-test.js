@@ -2,8 +2,8 @@
 
 /*
  *  VITacademics
- *  Copyright (C) 2014-2015  Karthik Balakrishnan <karthikb351@gmail.com>
- *  Copyright (C) 2014-2015  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014-2016  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2014-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
  *
  *  This file is part of VITacademics.
  *
@@ -165,7 +165,7 @@ const onEach = function (user, i, arr) {
   });
 };
 
-describe('Express.js Configuration Complete', function () {
+describe('Unit Tests Beginning', function () {
   it('Checking if System Endpoint is successful', function (done) {
     api.get('/api/v2/system')
       .expect(200)
@@ -199,6 +199,21 @@ describe('Express.js Configuration Complete', function () {
         res.body.status.should.deep.equal(status.success);
         done();
       });
+  });
+  it('Checking Faculty Information', function (done) {
+    api.post('/api/v2/vellore/faculty')
+    .send({name: 'Senthil J'})
+    .expect(200)
+    .end(function (err, res) {
+      should.not.exist(err);
+      res.body.should.have.property('name');
+      res.body.should.have.property('email');
+      res.body.should.have.property('open_hours');
+      res.body.should.have.property('room');
+      res.body.should.have.property('school');
+      res.body.status.should.deep.equal(status.success);
+      done();
+    });
   });
   users.forEach(onEach);
 });
