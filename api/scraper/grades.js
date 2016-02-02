@@ -1,7 +1,7 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014-2015  Aneesh Neelam <neelam.aneesh@gmail.com>
- *  Copyright (C) 2014-2015  Kishore Narendran <kishore.narendran09@gmail.com>
+ *  Copyright (C) 2014-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014-2016  Kishore Narendran <kishore.narendran09@gmail.com>
  *
  *  This file is part of VITacademics.
  *

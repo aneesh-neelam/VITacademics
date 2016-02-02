@@ -1,6 +1,6 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014-2015  Ayush Agarwal <agarwalayush161@gmail.com>
+ *  Copyright (C) 2014-2016  Ayush Agarwal <agarwalayush161@gmail.com>
  *
  *  This file is part of VITacademics.
  *

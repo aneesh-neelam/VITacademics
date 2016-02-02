@@ -1,9 +1,9 @@
 /*
  *  VITacademics
- *  Copyright (C) 2014-2015  Karthik Balakrishnan <karthikb351@gmail.com>
- *  Copyright (C) 2014-2015  Aneesh Neelam <neelam.aneesh@gmail.com>
- *  Copyright (C) 2014-2015  Ayush Agarwal <agarwalayush161@gmail.com>
- *  Copyright (C) 2014-2015  Kunal Nagpal <kunagpal@gmail.com>
+ *  Copyright (C) 2014-2016  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2014-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014-2016  Ayush Agarwal <agarwalayush161@gmail.com>
+ *  Copyright (C) 2014-2016  Kunal Nagpal <kunagpal@gmail.com>
  *
  *  This file is part of VITacademics.
  *
