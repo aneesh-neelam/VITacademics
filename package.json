@@ -49,7 +49,7 @@
   ],
   "dependencies": {
     "async": "^1.5.2",
-    "body-parser": "^1.14.1",
+    "body-parser": "^1.15.0",
     "cheerio": "^0.20.0",
     "cookie": "^0.2.2",
     "cookie-parser": "^1.4.1",
@@ -60,11 +60,11 @@
     "jade": "^1.11.0",
     "logentries-client": "^1.0.1",
     "memory-cache": "^0.1.4",
-    "moment": "^2.11.1",
-    "moment-timezone": "^0.5.0",
-    "mongodb": "^2.1.4",
-    "morgan": "^1.6.1",
-    "newrelic": "^1.25.1",
+    "moment": "^2.12.0",
+    "moment-timezone": "^0.5.1",
+    "mongodb": "^2.1.7",
+    "morgan": "^1.7.0",
+    "newrelic": "^1.25.5",
     "node-ga": "^0.1.1",
     "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3",
@@ -87,6 +87,6 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
-    "supertest": "^1.1.0"
+    "supertest": "^1.2.0"
   }
 }
