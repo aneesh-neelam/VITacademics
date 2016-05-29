@@ -49,26 +49,27 @@
   ],
   "dependencies": {
     "async": "^1.5.2",
-    "body-parser": "^1.15.0",
+    "body-parser": "^1.15.1",
     "cheerio": "^0.20.0",
-    "cookie": "^0.2.2",
-    "cookie-parser": "^1.4.1",
-    "ejs": "^2.4.1",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.4.2",
     "express": "^4.13.4",
     "express-mongo-db": "^2.0.3",
     "jackrabbit": "^4.3.0",
     "jade": "^1.11.0",
     "logentries-client": "^1.0.1",
-    "memory-cache": "^0.1.4",
-    "moment": "^2.12.0",
-    "moment-timezone": "^0.5.1",
-    "mongodb": "^2.1.7",
+    "memory-cache": "^0.1.5",
+    "moment": "^2.13.0",
+    "moment-timezone": "^0.5.4",
+    "mongodb": "^2.1.20",
     "morgan": "^1.7.0",
-    "newrelic": "^1.25.5",
+    "newrelic": "^1.28.0",
     "node-ga": "^0.1.1",
+    "pug": "^2.0.0-alpha8",
     "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3",
-    "unirest": "^0.4.2"
+    "unirest": "^0.5.0"
   },
   "repository": {
     "type": "git",
@@ -86,7 +87,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
+    "mocha": "^2.5.3",
     "supertest": "^1.2.0"
   }
 }

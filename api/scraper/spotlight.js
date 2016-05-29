@@ -50,9 +50,9 @@ exports.get = function (app, data, callback) {
   }
   else if (data.campus === 'chennai') {
     spotlightUris = [
-      'http://academicscc.vit.ac.in/include_spotlight_part01.asp',
-      'http://academicscc.vit.ac.in/include_spotlight_part02.asp',
-      'http://academicscc.vit.ac.in/include_spotlight_part03.asp'
+      'https://academicscc.vit.ac.in/include_spotlight_part01.asp',
+      'https://academicscc.vit.ac.in/include_spotlight_part02.asp',
+      'https://academicscc.vit.ac.in/include_spotlight_part03.asp'
     ];
   }
   const forEach = function (uri, asyncCallback) {
