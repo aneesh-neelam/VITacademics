@@ -37,8 +37,8 @@ exports.scrapeAttendance = function (app, data, callback) {
   let attendanceUri;
   let attendanceDetailsUri;
   if (data.campus === 'vellore') {
-    attendanceUri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;
-    attendanceDetailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
+    attendanceUri = 'https://vtop.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;
+    attendanceDetailsUri = 'https://vtop.vit.ac.in/parent/attn_report_details.asp';
   }
   else if (data.campus === 'chennai') {
     attendanceUri = 'http://academicscc.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;

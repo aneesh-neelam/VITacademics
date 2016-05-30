@@ -74,7 +74,7 @@ exports.get = function (app, data, callback) {
 
       let advisorUri;
       if (data.campus === 'vellore') {
-        advisorUri = 'https://academics.vit.ac.in/parent/fa_view.asp';
+        advisorUri = 'https://vtop.vit.ac.in/parent/fa_view.asp';
       }
       else {
         advisorUri = 'http://academicscc.vit.ac.in/parent/proctor_view.asp';

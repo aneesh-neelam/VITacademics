@@ -43,9 +43,9 @@ exports.get = function (app, data, callback) {
   data.spotlight = {};
   if (data.campus === 'vellore') {
     spotlightUris = [
-      'https://academics.vit.ac.in/include_spotlight_part01.asp',
-      'https://academics.vit.ac.in/include_spotlight_part02.asp',
-      'https://academics.vit.ac.in/include_spotlight_part03.asp'
+      'https://vtop.vit.ac.in/include_spotlight_part01.asp',
+      'https://vtop.vit.ac.in/include_spotlight_part02.asp',
+      'https://vtop.vit.ac.in/include_spotlight_part03.asp'
     ];
   }
   else if (data.campus === 'chennai') {
