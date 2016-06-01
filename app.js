@@ -1,8 +1,8 @@
 /*
  *  VITacademics
- *  Copyright (C) 2015-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
- *  Copyright (C) 2015-2016  Karthik Balakrishnan <karthikb351@gmail.com>
- *  Copyright (C) 2015-2016  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
+ *  Copyright (C) 2014-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014-2016  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2014-2016  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
  *
  *  This file is part of VITacademics.
  *

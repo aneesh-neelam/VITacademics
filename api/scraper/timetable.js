@@ -36,7 +36,7 @@ const day = require(path.join(__dirname, '..', '..', 'utilities', 'day'));
 exports.scrapeTimetable = function (app, data, callback) {
   let timetableUri;
   if (data.campus === 'vellore') {
-    timetableUri = 'https://academics.vit.ac.in/parent/timetable.asp?sem=' + data.semester;
+    timetableUri = 'https://vtop.vit.ac.in/parent/timetable.asp?sem=' + data.semester;
   }
   else if (data.campus === 'chennai') {
     timetableUri = 'http://academicscc.vit.ac.in/parent/timetable.asp?sem=' + data.semester;

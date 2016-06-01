@@ -33,7 +33,7 @@ const status = require(path.join(__dirname, '..', '..', 'status'));
 exports.scrapeMarks = function (app, data, callback) {
   let marksUri;
   if (data.campus === 'vellore') {
-    marksUri = 'https://academics.vit.ac.in/parent/marks.asp?sem=' + data.semester;
+    marksUri = 'https://vtop.vit.ac.in/parent/marks.asp?sem=' + data.semester;
   }
   else if (data.campus === 'chennai') {
     marksUri = 'http://academicscc.vit.ac.in/parent/marks.asp?sem=' + data.semester;
