@@ -33,8 +33,8 @@ const config = {
   expressSecretKey: process.env.EXPRESS_SECRET_KEY || 'randomsecretstring',
   googleAnalyticsToken: process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2',
   txtWebAppKey: process.env.TXTWEB_APP_KEY || 'randomkey',
-  chennaiSemesterCode: process.env.CHENNAI_SEMESTER_CODE || 'WS15',
-  velloreSemesterCode: process.env.VELLORE_SEMESTER_CODE || 'WS'
+  chennaiSemesterCode: process.env.CHENNAI_SEMESTER_CODE || 'SS15',
+  velloreSemesterCode: process.env.VELLORE_SEMESTER_CODE || 'SS'
 };
 
 module.exports = config;
