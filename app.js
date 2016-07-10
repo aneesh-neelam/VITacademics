@@ -30,7 +30,8 @@ const favicon = require('serve-favicon');
 const ga = require('node-ga');
 //const jackrabbit = require('jackrabbit');
 const logger = require('morgan');
-const mongodb = require('express-mongo-db');
+//const mongodb = require('express-mongo-db');
+const mongoClient = require('mongodb');
 const path = require('path');
 const underscore = require('underscore');
 
@@ -113,7 +114,25 @@ const mongodbOptions = {
     poolSize: 50
   }
 };
-app.use(mongodb(config.mongoDb, mongodbOptions));
+
+const mongodb;
+
+const onConnect = function (err, db) {
+  if (!err) {
+    mongodb = db;
+  }
+  else {
+    console.log('Failed to connect to MongoDB');
+  }
+}
+
+mongoClient.connect(config.mongoDb, mongodbOptions, onConnect);
+
+app.use(function (req, res, next) {
+  req.db = mongo;
+  next();
+});
+
 // RabbitMQ
 /*
  const rabbit = jackrabbit(config.amqp_Uri);
@@ -129,6 +148,7 @@ app.use(mongodb(config.mongoDb, mongodbOptions));
  next();
  });
  */
+ 
 // Routes
 app.use('/', webRoutes);
 app.use('/api/txtweb', txtwebRoutes);
