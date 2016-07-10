@@ -115,7 +115,7 @@ const mongodbOptions = {
   }
 };
 
-const mongodb;
+let mongodb;
 
 const onConnect = function (err, db) {
   if (!err) {
@@ -148,7 +148,7 @@ app.use(function (req, res, next) {
  next();
  });
  */
- 
+
 // Routes
 app.use('/', webRoutes);
 app.use('/api/txtweb', txtwebRoutes);
