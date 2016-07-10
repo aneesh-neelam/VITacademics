@@ -129,7 +129,7 @@ const onConnect = function (err, db) {
 mongoClient.connect(config.mongoDb, mongodbOptions, onConnect);
 
 app.use(function (req, res, next) {
-  req.db = mongo;
+  req.db = mongodb;
   next();
 });
 
