@@ -55,6 +55,8 @@ const apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
 const txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
 const webRoutes = require(path.join(__dirname, 'routes', 'web'));
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+ 
 /*
  *  API Legacy is now deprecated
  */
