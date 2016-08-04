@@ -55,6 +55,8 @@ const apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
 const txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
 const webRoutes = require(path.join(__dirname, 'routes', 'web'));
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+ 
 /*
  *  API Legacy is now deprecated
  */
@@ -115,7 +117,7 @@ const mongodbOptions = {
   }
 };
 
-const mongodb;
+let mongodb;
 
 const onConnect = function (err, db) {
   if (!err) {
@@ -129,7 +131,7 @@ const onConnect = function (err, db) {
 mongoClient.connect(config.mongoDb, mongodbOptions, onConnect);
 
 app.use(function (req, res, next) {
-  req.db = mongo;
+  req.db = mongodb;
   next();
 });
 
@@ -148,7 +150,7 @@ app.use(function (req, res, next) {
  next();
  });
  */
- 
+
 // Routes
 app.use('/', webRoutes);
 app.use('/api/txtweb', txtwebRoutes);
