@@ -44,7 +44,7 @@ exports.get = function (app, data, callback) {
     const cookieSerial = cache.get(data.reg_no).cookie;
     let submitUri;
     if (data.campus === 'vellore') {
-      submitUri = 'https://academics.vit.ac.in/parent/parent_login_submit.asp';
+      submitUri = 'https://vtop.vit.ac.in/parent/parent_login_submit.asp';
     }
     else if (data.campus === 'chennai') {
       submitUri = 'http://academicscc.vit.ac.in/parent/parent_login_submit.asp';

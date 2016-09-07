@@ -40,7 +40,7 @@ const status = require(path.join(__dirname, '..', '..', 'status'));
 exports.get = function (app, data, callback) {
   let captchaUri;
   if (data.campus === 'vellore') {
-    captchaUri = 'https://academics.vit.ac.in/parent/captcha.asp';
+    captchaUri = 'https://vtop.vit.ac.in/parent/captcha.asp';
   }
   else if (data.campus === 'chennai') {
     captchaUri = 'http://academicscc.vit.ac.in/parent/captcha.asp';

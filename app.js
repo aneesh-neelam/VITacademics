@@ -1,8 +1,8 @@
 /*
  *  VITacademics
- *  Copyright (C) 2015-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
- *  Copyright (C) 2015-2016  Karthik Balakrishnan <karthikb351@gmail.com>
- *  Copyright (C) 2015-2016  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
+ *  Copyright (C) 2014-2016  Aneesh Neelam <neelam.aneesh@gmail.com>
+ *  Copyright (C) 2014-2016  Karthik Balakrishnan <karthikb351@gmail.com>
+ *  Copyright (C) 2014-2016  Sreeram Boyapati <sreeram.boyapati2011@gmail.com>
  *
  *  This file is part of VITacademics.
  *
@@ -30,7 +30,8 @@ const favicon = require('serve-favicon');
 const ga = require('node-ga');
 //const jackrabbit = require('jackrabbit');
 const logger = require('morgan');
-const mongodb = require('express-mongo-db');
+//const mongodb = require('express-mongo-db');
+const mongoClient = require('mongodb');
 const path = require('path');
 const underscore = require('underscore');
 
@@ -54,6 +55,8 @@ const apiSystemRoutes = require(path.join(__dirname, 'routes', 'system'));
 const txtwebRoutes = require(path.join(__dirname, 'routes', 'txtweb'));
 const webRoutes = require(path.join(__dirname, 'routes', 'web'));
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+ 
 /*
  *  API Legacy is now deprecated
  */
@@ -113,7 +116,25 @@ const mongodbOptions = {
     poolSize: 50
   }
 };
-app.use(mongodb(config.mongoDb, mongodbOptions));
+
+let mongodb;
+
+const onConnect = function (err, db) {
+  if (!err) {
+    mongodb = db;
+  }
+  else {
+    console.log('Failed to connect to MongoDB');
+  }
+}
+
+mongoClient.connect(config.mongoDb, mongodbOptions, onConnect);
+
+app.use(function (req, res, next) {
+  req.db = mongodb;
+  next();
+});
+
 // RabbitMQ
 /*
  const rabbit = jackrabbit(config.amqp_Uri);
@@ -129,6 +150,7 @@ app.use(mongodb(config.mongoDb, mongodbOptions));
  next();
  });
  */
+
 // Routes
 app.use('/', webRoutes);
 app.use('/api/txtweb', txtwebRoutes);

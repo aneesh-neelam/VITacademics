@@ -1,6 +1,6 @@
 {
   "name": "vitacademics",
-  "version": "1.4.30",
+  "version": "1.5.0",
   "description": "VITacademics API Server and Web App",
   "homepage": "https://vitacademics-rel.herokuapp.com/",
   "bugs": {
@@ -48,27 +48,28 @@
     }
   ],
   "dependencies": {
-    "async": "^1.4.2",
-    "body-parser": "^1.14.1",
-    "cheerio": "^0.19.0",
-    "cookie": "^0.2.2",
-    "cookie-parser": "^1.4.0",
-    "ejs": "^2.3.4",
-    "express": "^4.13.3",
+    "async": "^2.0.1",
+    "body-parser": "^1.15.2",
+    "cheerio": "^0.20.0",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
     "express-mongo-db": "^2.0.3",
-    "jackrabbit": "^4.0.2",
+    "jackrabbit": "^4.3.0",
     "jade": "^1.11.0",
     "logentries-client": "^1.0.1",
-    "memory-cache": "^0.1.4",
-    "moment": "^2.10.6",
-    "moment-timezone": "^0.5.0",
-    "mongodb": "^2.0.45",
-    "morgan": "^1.6.1",
-    "newrelic": "^1.22.1",
+    "memory-cache": "^0.1.6",
+    "moment": "^2.14.1",
+    "moment-timezone": "^0.5.5",
+    "mongodb": "^2.2.5",
+    "morgan": "^1.7.0",
+    "newrelic": "^1.29.0",
     "node-ga": "^0.1.1",
+    "pug": "^2.0.0-alpha8",
     "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3",
-    "unirest": "^0.4.2"
+    "unirest": "^0.5.0"
   },
   "repository": {
     "type": "git",
@@ -85,8 +86,8 @@
     "node": "stable"
   },
   "devDependencies": {
-    "chai": "^3.3.0",
-    "mocha": "^2.3.3",
-    "supertest": "^1.1.0"
+    "chai": "^3.5.0",
+    "mocha": "^3.0.1",
+    "supertest": "^2.0.0"
   }
 }

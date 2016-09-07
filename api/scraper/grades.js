@@ -87,7 +87,7 @@ exports.get = function (app, data, callback) {
       else {
         let gradesUri;
         if (data.campus === 'vellore') {
-          gradesUri = 'https://academics.vit.ac.in/parent/student_history.asp';
+          gradesUri = 'https://vtop.vit.ac.in/parent/student_history.asp';
         }
         else if (data.campus === 'chennai') {
           gradesUri = 'http://academicscc.vit.ac.in/parent/student_history.asp';

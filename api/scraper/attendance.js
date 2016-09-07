@@ -37,8 +37,8 @@ exports.scrapeAttendance = function (app, data, callback) {
   let attendanceUri;
   let attendanceDetailsUri;
   if (data.campus === 'vellore') {
-    attendanceUri = 'https://academics.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;
-    attendanceDetailsUri = 'https://academics.vit.ac.in/parent/attn_report_details.asp';
+    attendanceUri = 'https://vtop.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;
+    attendanceDetailsUri = 'https://vtop.vit.ac.in/parent/attn_report_details.asp';
   }
   else if (data.campus === 'chennai') {
     attendanceUri = 'http://academicscc.vit.ac.in/parent/attn_report.asp?sem=' + data.semester;
@@ -73,10 +73,12 @@ exports.scrapeAttendance = function (app, data, callback) {
               total_classes: parseInt(htmlColumn.eq(7).text()),
               attendance_percentage: parseInt(htmlColumn.eq(8).text().split('%')[0]),
               form: {
-                semcode: htmlRow('input[name=semcode]').attr('value'),
+                sem: htmlRow('input[name=sem]').attr('value'),
                 from_date: htmlRow('input[name=from_date]').attr('value'),
                 to_date: htmlRow('input[name=to_date]').attr('value'),
-                classnbr: classnbr
+                classnbr: classnbr,
+                crscd: htmlRow('input[name=crscd]').attr('value'),
+                crstp: htmlRow('input[name=crstp]').attr('value')
               }
             });
           }
