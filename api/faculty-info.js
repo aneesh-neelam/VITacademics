@@ -45,14 +45,16 @@ exports.get = function (app, data, callback) {
   };
   const onSearch = function (err, doc) {
     if (!err) {
-      if (doc) {
-        doc.status = status.success;
+      let results = {};
+      if (doc.length !== 0) {
+        results.faculty = doc;
+        results.status = status.success;
       }
       else {
-        doc.status = status.noData;
+        results.faculty = [];
+        results.status = status.noData;
       }
-      delete doc._id;
-      callback(null, doc);
+      callback(null, results);
     }
     else {
       data.status = status.mongoDown;
@@ -63,5 +65,5 @@ exports.get = function (app, data, callback) {
       callback(true, data);
     }
   };
-  collection.findOne({name: data.name}, keys, onSearch);
+  collection.find({name: { $regex: new RegExp(data.name), $options: 'i'}}, keys).toArray(onSearch);
 };
