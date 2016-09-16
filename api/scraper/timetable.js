@@ -209,8 +209,8 @@ exports.scrapeTimetable = function (app, data, callback) {
               else if (courseType === 'Embedded Lab') {
                 tmpCode = tmpCode + 'ELA';
               }
-              else if (courseType === 'Theory Only' && courseCode.indexOf('STS') > -1) {
-                tmpCode = tmpCode + 'SS'
+              else if (courseType === 'Soft Skill') {
+                tmpCode = tmpCode + 'SS';
               }
               else if (courseType === 'Theory Only') {
                 tmpCode = tmpCode + 'TH';
