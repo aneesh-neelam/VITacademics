@@ -206,11 +206,7 @@ describe('Unit Tests Beginning', function () {
     .expect(200)
     .end(function (err, res) {
       should.not.exist(err);
-      res.body.should.have.property('name');
-      res.body.should.have.property('email');
-      res.body.should.have.property('open_hours');
-      res.body.should.have.property('room');
-      res.body.should.have.property('school');
+      res.body.should.have.property('faculty');
       res.body.status.should.deep.equal(status.success);
       done();
     });
