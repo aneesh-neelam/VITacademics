@@ -34,7 +34,7 @@ const config = {
   googleAnalyticsToken: process.env.GOOGLE_ANALYTICS_TOKEN || 'UA-35429946-2',
   txtWebAppKey: process.env.TXTWEB_APP_KEY || 'randomkey',
   chennaiSemesterCode: process.env.CHENNAI_SEMESTER_CODE || 'FS15',
-  velloreSemesterCode: process.env.VELLORE_SEMESTER_CODE || 'FS'
+  velloreSemesterCode: process.env.VELLORE_SEMESTER_CODE || 'WS'
 };
 
 module.exports = config;
